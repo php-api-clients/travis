@@ -9,7 +9,7 @@
 
 # Goals
 
-* 100% TravisCI API support
+* 100% TravisCI [API](https://docs.travis-ci.com/api) support
 * Both synchronous and asynchronous
 
 # License
