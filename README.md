@@ -1,5 +1,11 @@
-# php-travis-client
-TravisCI API Client for PHP 7
+# TravisCI API Client for PHP 7
+[![Linux Build Status](https://travis-ci.org/WyriHaximus/php-travis-client.png)](https://travis-ci.org/WyriHaximus/php-travis-client)
+[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/travis-client/v/stable.png)](https://packagist.org/packages/WyriHaximus/travis-client)
+[![Total Downloads](https://poser.pugx.org/WyriHaximus/travis-client/downloads.png)](https://packagist.org/packages/WyriHaximus/travis-client)
+[![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/php-travis-client/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/php-travis-client/?branch=master)
+[![License](https://poser.pugx.org/WyriHaximus/travis-client/license.png)](https://packagist.org/packages/wyrihaximus/travis-client)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/php-travis-client/badge.svg)](https://travis-ci.org/WyriHaximus/php-travis-client)
+
 
 # Goals
 
