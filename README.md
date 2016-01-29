@@ -1,5 +1,10 @@
 # php-travis-client
-TravisCI API Client
+TravisCI API Client for PHP 7
+
+# Goals
+
+* 100% TravisCI API support
+* Both synchronous and asynchronous
 
 # License
 
