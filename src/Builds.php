@@ -22,7 +22,10 @@ class Builds implements EndpointInterface
 
     public function getRequest(): RequestInterface
     {
-        return $this->parent->getClient()->createRequert('GET', 'repos/' . $this->repository->getRepository() . '/builds');
+        return $this->parent->getClient()->createRequert(
+            'GET',
+            'repos/' . $this->repository->getRepository() . '/builds'
+        );
     }
 
     public function fromResponse(ResponseInterface $response): EndpointInterface
