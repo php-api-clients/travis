@@ -6,8 +6,8 @@ use WyriHaximus\Travis\Client;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-    public function testVersion()
+    public function testGetVersion()
     {
-        $this->assertInternalType('string', Client::VERSION);
+        $this->assertInternalType('string', Client::getVersion());
     }
 }

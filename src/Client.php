@@ -3,12 +3,12 @@
 namespace WyriHaximus\Travis;
 
 use GuzzleHttp\Psr7\Request;
+use PackageVersions\Versions;
 use Psr\Http\Message\ResponseInterface;
 use React\Promise\Deferred;
 
 class Client
 {
-    const VERSION = '0.0.1-alpha1';
     const USER_AGENT = 'wyrihaximus/travis-client/' . self::VERSION;
     const API_VERSION = 'application/vnd.travis-ci.2+json';
     const API_HOST_OPEN_SOURCE = 'api.travis-ci.org';
@@ -52,7 +52,12 @@ class Client
         $url = self::API_SCHEMA . '://' . self::API_HOST . '/' . $path;
         return new Request($method, $url, [
             'User-Agent' => self::USER_AGENT,
-            'Accept' => self::API_VERSION,
+            'Accept' => self::getVersion(),
         ]);
+    }
+
+    public static function getVersion()
+    {
+        return Versions::getVersion('wyrihaximus/travis-client');
     }
 }
