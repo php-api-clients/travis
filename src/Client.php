@@ -47,7 +47,7 @@ class Client
         return $deferred->promise();
     }
 
-    public function createRequert(string $method, string $path)
+    public function createRequest(string $method, string $path)
     {
         $url = self::API_SCHEMA . '://' . self::API_HOST . '/' . $path;
         return new Request($method, $url, [
