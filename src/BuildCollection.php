@@ -6,7 +6,6 @@ use ArrayIterator;
 use IteratorAggregate;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Traversable;
 
 class BuildCollection implements EndpointInterface, IteratorAggregate
 {
