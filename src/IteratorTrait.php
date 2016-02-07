@@ -3,7 +3,7 @@
 namespace WyriHaximus\Travis;
 
 /**
- * @source https://github.com/jeremeamia/php-design-patterns/blob/master/src/Jeremeamia/PhpPatterns/Structural/Collection/IteratorTrait.php
+ * @source http://bit.ly/1UWg4xx
  */
 trait IteratorTrait
 {
