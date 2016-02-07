@@ -13,8 +13,8 @@
   ],
   "require": {
     "php": "^7.0",
-    "guzzlehttp/guzzle": "^5.0||^6.0",
     "aws/aws-sdk-php": "^3.0",
+    "guzzlehttp/guzzle": "^5.0||^6.0",
     "react/promise": "^2.2",
     "wyrihaximus/react-guzzle-psr7": "^1.0"
   },
