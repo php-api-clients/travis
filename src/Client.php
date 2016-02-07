@@ -8,7 +8,7 @@ use React\Promise\Deferred;
 
 class Client
 {
-    const VERSION = '0.0.1-dev';
+    const VERSION = '0.0.1-alpha1';
     const USER_AGENT = 'wyrihaximus/travis-client/' . self::VERSION;
     const API_VERSION = 'application/vnd.travis-ci.2+json';
     const API_HOST_OPEN_SOURCE = 'api.travis-ci.org';
