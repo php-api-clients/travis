@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5351d6daf718b4c2d0d40138056f92e1",
-    "content-hash": "082e1ff44ab76f2835e362a5c51302c0",
+    "hash": "6549801b709318523cfc2d879d8e46ce",
+    "content-hash": "56f3bc3cb00c7cf523cc97f2854ad2f8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -357,53 +357,6 @@
                 "jsonpath"
             ],
             "time": "2016-01-05 18:25:05"
-        },
-        {
-            "name": "ocramius/package-versions",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "56253310fb94b3086fa123f5f3e7ab76723594aa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/56253310fb94b3086fa123f5f3e7ab76723594aa",
-                "reference": "56253310fb94b3086fa123f5f3e7ab76723594aa",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "~7.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0.0-ALPHA8@ALPHA",
-                "phpunit/phpunit": "^5.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2016-02-02 17:50:05"
         },
         {
             "name": "psr/http-message",
