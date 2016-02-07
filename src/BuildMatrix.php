@@ -2,19 +2,54 @@
 
 namespace WyriHaximus\Travis;
 
-class BuildMatrix
+use Iterator;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use React\Promise\CancellablePromiseInterface;
+use React\Promise\ExtendedPromiseInterface;
+
+class BuildMatrix implements Iterator, ExtendedPromiseInterface, CancellablePromiseInterface, EndpointInterface
 {
-    use ClientAwareTrait;
+    use IteratorTrait;
+    use LazyPromiseTrait;
+    use ParentHasClientAwareTrait;
 
     /**
-     * @var string
+     * @var Build
      */
-    protected $repository;
+    protected $build;
 
-    public function __construct(Client $client)
+    public function __construct(Build $build)
     {
-        $this->setClient($client);
-        $this->repository = $repository;
+        $this->setFactory(function () {
+            return $this->getClient()->requestAsync($this);
+        });
+        $this->setParent($build);
+        $this->build = $build;
+    }
+
+    public function getRequest(): RequestInterface
+    {
+        return $this->parent->getClient()->createRequest(
+            'GET',
+            'builds/' . $this->build->getId()
+        );
+    }
+
+    public function fromResponse(ResponseInterface $response): EndpointInterface
+    {
+        $json = json_decode($response->getBody()->getContents());
+        $jobs = $this->createJobs($json);
+        return new JobCollection($this->build, $jobs);
+    }
+
+    protected function createJobs($json)
+    {
+        $builds = [];
+        foreach ($json->jobs as $build) {
+            $builds[] = new Job($this->build, $build);
+        }
+        return $builds;
     }
 
     public function matrix()

@@ -2,29 +2,30 @@
 
 namespace WyriHaximus\Travis;
 
+use ArrayIterator;
+use IteratorAggregate;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class Build implements EndpointInterface
+class JobCollection implements EndpointInterface, IteratorAggregate
 {
     use ParentHasClientAwareTrait;
 
     /**
      * @var Repository
      */
-    protected $repository;
+    protected $build;
 
     /**
-     * @var int
+     * @var array
      */
-    protected $id;
+    protected $builds;
 
-    public function __construct(Repository $repository, \stdClass $build)
+    public function __construct(Build $build, array $builds)
     {
-        $this->setParent($repository);
-        $this->repository = $repository;
-
-        $this->id = $build->id;
+        $this->setParent($build);
+        $this->build = $build;
+        $this->builds = $builds;
     }
 
     public function getRequest(): RequestInterface
@@ -38,15 +39,15 @@ class Build implements EndpointInterface
     }
 
     /**
-     * @return mixed
+     * @return Repository
      */
-    public function getId(): int
+    public function getBuild()
     {
-        return $this->id;
+        return $this->build;
     }
 
-    public function matrix()
+    public function getIterator()
     {
-        return new BuildMatrix($this);
+        return new ArrayIterator($this->builds);
     }
 }

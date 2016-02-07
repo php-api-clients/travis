@@ -2,11 +2,16 @@
 
 namespace WyriHaximus\Travis;
 
+use Iterator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use React\Promise\CancellablePromiseInterface;
+use React\Promise\ExtendedPromiseInterface;
 
-class Builds implements EndpointInterface
+class Builds implements Iterator, ExtendedPromiseInterface, CancellablePromiseInterface, EndpointInterface
 {
+    use IteratorTrait;
+    use LazyPromiseTrait;
     use ParentHasClientAwareTrait;
 
     /**
@@ -16,6 +21,9 @@ class Builds implements EndpointInterface
 
     public function __construct(Repository $repository)
     {
+        $this->setFactory(function () {
+            return $this->getClient()->requestAsync($this);
+        });
         $this->setParent($repository);
         $this->repository = $repository;
     }
@@ -42,10 +50,5 @@ class Builds implements EndpointInterface
             $builds[] = new Build($this->repository, $build);
         }
         return $builds;
-    }
-
-    public function matrix()
-    {
-
     }
 }
