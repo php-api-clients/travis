@@ -1,5 +1,5 @@
-all: cs dunit unit version
-travis: cs unit-travis version
+all: cs dunit unit
+travis: cs unit-travis
 contrib: cs dunit unit
 
 init:
@@ -19,6 +19,3 @@ dunit: init
 
 travis-coverage: init
 	if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi
-
-version: init
-	php ./version.php
