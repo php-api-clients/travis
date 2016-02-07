@@ -3,7 +3,6 @@
 namespace WyriHaximus\Travis;
 
 use GuzzleHttp\Psr7\Request;
-use PackageVersions\Versions;
 use Psr\Http\Message\ResponseInterface;
 use React\Promise\Deferred;
 
@@ -42,8 +41,9 @@ class Client
         $deferred = new Deferred();
         $handler = $this->handler;
         $handler($endpoint->getRequest())->then(function (ResponseInterface $response) use ($deferred, $endpoint) {
-            var_export($endpoint->fromResponse($response));
             $deferred->resolve($endpoint->fromResponse($response));
+        }, function ($error) use ($deferred) {
+            $deferred->reject($error);
         });
         return $deferred->promise();
     }
@@ -55,10 +55,5 @@ class Client
             'User-Agent' => self::USER_AGENT,
             'Accept' => self::API_VERSION,
         ]);
-    }
-
-    public static function getVersion()
-    {
-        return Versions::getVersion('wyrihaximus/travis-client');
     }
 }
