@@ -11,11 +11,11 @@ cs: init
 unit: init
 	./vendor/bin/phpunit
 
-travis-unit: init
-	./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
-
 dunit: init
 	./vendor/bin/dunit
+
+travis-unit: init
+	./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
 
 travis-coverage: init
 	if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi
