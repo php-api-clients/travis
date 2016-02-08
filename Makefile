@@ -1,5 +1,5 @@
 all: cs dunit unit
-travis: cs unit-travis
+travis: cs travis-unit
 contrib: cs dunit unit
 
 init:
@@ -11,7 +11,7 @@ cs: init
 unit: init
 	./vendor/bin/phpunit
 
-unit-travis: init
+travis-unit: init
 	./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
 
 dunit: init
