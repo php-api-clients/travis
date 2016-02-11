@@ -7,14 +7,14 @@ use React\EventLoop\Factory;
 use WyriHaximus\React\GuzzlePsr7\HttpClientAdapter;
 use WyriHaximus\Travis\BuildCollection;
 use WyriHaximus\Travis\Builds;
-use WyriHaximus\Travis\Client;
+use WyriHaximus\Travis\HttpClient;
 use WyriHaximus\Travis\Travis;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
 
-$client = new Client(new GuzzleHandler(new GuzzleClient([
+$client = new HttpClient(new GuzzleHandler(new GuzzleClient([
     'handler' => HandlerStack::create(new HttpClientAdapter($loop)),
 ])));
 $travis = new Travis($client);

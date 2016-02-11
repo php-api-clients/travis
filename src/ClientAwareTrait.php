@@ -5,16 +5,16 @@ namespace WyriHaximus\Travis;
 trait ClientAwareTrait
 {
     /**
-     * @var Client
+     * @var HttpClient
      */
     protected $client;
 
-    protected function setClient(Client $client)
+    protected function setClient(HttpClient $client)
     {
         $this->client = $client;
     }
 
-    public function getClient(): Client
+    public function getClient(): HttpClient
     {
         return $this->client;
     }
