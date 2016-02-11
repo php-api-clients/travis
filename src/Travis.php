@@ -10,9 +10,9 @@ class Travis implements EndpointInterface
     use ClientAwareTrait;
 
     /**
-     * @param HttpClient $client
+     * @param Client $client
      */
-    public function __construct(HttpClient $client)
+    public function __construct(Client $client)
     {
         $this->setClient($client);
     }
