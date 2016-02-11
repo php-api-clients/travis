@@ -14,7 +14,7 @@ class Repository implements EndpointInterface
      */
     protected $repository;
 
-    public function __construct(Travis $parent, string $repository)
+    public function __construct(ApiClient $parent, string $repository)
     {
         $this->setParent($parent);
         $this->repository = $repository;

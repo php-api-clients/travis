@@ -5,7 +5,7 @@ namespace WyriHaximus\Travis;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class Travis implements EndpointInterface
+class ApiClient implements EndpointInterface
 {
     use ClientAwareTrait;
 

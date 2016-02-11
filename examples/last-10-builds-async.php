@@ -8,7 +8,7 @@ use WyriHaximus\React\GuzzlePsr7\HttpClientAdapter;
 use WyriHaximus\Travis\BuildCollection;
 use WyriHaximus\Travis\Builds;
 use WyriHaximus\Travis\Client;
-use WyriHaximus\Travis\Travis;
+use WyriHaximus\Travis\ApiClient;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -17,7 +17,7 @@ $loop = Factory::create();
 $client = new Client(new GuzzleHandler(new GuzzleClient([
     'handler' => HandlerStack::create(new HttpClientAdapter($loop)),
 ])));
-$travis = new Travis($client);
+$travis = new ApiClient($client);
 $travis->repository('WyriHaximus/php-travis-client')->builds()->then(function (BuildCollection $builds) {
     foreach ($builds as $build) {
         //echo 'Build: #', $build->getId(), PHP_EOL;

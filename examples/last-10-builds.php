@@ -1,12 +1,12 @@
 <?php
 
 use WyriHaximus\Travis\Client;
-use WyriHaximus\Travis\Travis;
+use WyriHaximus\Travis\ApiClient;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $client = new Client();
-$travis = new Travis($client);
+$travis = new ApiClient($client);
 
 foreach ($travis->repository('WyriHaximus/php-travis-client')->builds() as $build) {
     echo 'Build: #', $build->getId(), PHP_EOL;
