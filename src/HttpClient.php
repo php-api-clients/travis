@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
 use React\Promise\Deferred;
 
-class Client
+class HttpClient
 {
     const VERSION = '0.0.1-alpha1';
     const USER_AGENT = 'wyrihaximus/travis-client/' . self::VERSION;

@@ -1,11 +1,11 @@
 <?php
 
-use WyriHaximus\Travis\Client;
+use WyriHaximus\Travis\HttpClient;
 use WyriHaximus\Travis\Travis;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$client = new Client();
+$client = new HttpClient();
 $travis = new Travis($client);
 
 foreach ($travis->repository('WyriHaximus/php-travis-client')->builds() as $build) {
