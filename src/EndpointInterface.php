@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 
 interface EndpointInterface
 {
-    public function getClient(): HttpClient;
+    public function getClient(): Client;
 
     public function getRequest(): RequestInterface;
 

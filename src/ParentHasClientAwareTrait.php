@@ -14,7 +14,7 @@ trait ParentHasClientAwareTrait
         $this->parent = $parent;
     }
 
-    public function getClient(): HttpClient
+    public function getClient(): Client
     {
         return $this->parent->getClient();
     }
