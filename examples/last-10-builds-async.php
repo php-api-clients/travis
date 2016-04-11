@@ -6,7 +6,6 @@ use GuzzleHttp\HandlerStack;
 use React\EventLoop\Factory;
 use WyriHaximus\React\GuzzlePsr7\HttpClientAdapter;
 use WyriHaximus\Travis\BuildCollection;
-use WyriHaximus\Travis\Builds;
 use WyriHaximus\Travis\Client;
 use WyriHaximus\Travis\ApiClient;
 
