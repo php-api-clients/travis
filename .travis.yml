@@ -28,7 +28,6 @@ matrix:
 ## Update composer and configure authentication token
 before_install:
   - composer self-update
-  - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
 
 ## Install or update dependencies
 install:
