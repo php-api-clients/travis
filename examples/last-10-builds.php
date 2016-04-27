@@ -1,18 +1,20 @@
 <?php
 
 use WyriHaximus\Travis\Client;
-use WyriHaximus\Travis\ApiClient;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $client = new Client();
-$travis = new ApiClient($client);
 
-foreach ($travis->repository('WyriHaximus/php-travis-client')->builds() as $build) {
-    echo 'Build: #', $build->getId(), PHP_EOL;
-    foreach ($build->matrix() as $job) {
-        echo "\t", 'Job: #', $job->getId(), PHP_EOL;
-        echo "\t\t", 'php: ', $job->getPHP(), PHP_EOL;
-        echo "\t\t", 'env: ', $job->getEnv(), PHP_EOL;
-    }
+$repository = $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client');
+echo 'Repository: ', PHP_EOL;
+echo 'id: ' . $repository->id(), PHP_EOL;
+echo 'slug: ' . $repository->slug(), PHP_EOL;
+echo 'description: ' . $repository->description(), PHP_EOL;
+echo 'Builds:', PHP_EOL;
+foreach ($repository->builds() as $build) {
+    echo "\t", 'Build', PHP_EOL;
+    echo "\t\t" . 'id: ' . $build->id(), PHP_EOL;
+    echo "\t\t" . 'commit id: ' . $build->commitId(), PHP_EOL;
+    echo "\t\t" . 'duration: ' . $build->duration(), PHP_EOL;
 }

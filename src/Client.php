@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis;
 
-use WyriHaximus\Travis\Resource\Repository;
+use WyriHaximus\Travis\Resource\Sync\Repository;
 use WyriHaximus\Travis\Transport\Client as Transport;
 use WyriHaximus\Travis\Transport\Factory;
 use function Clue\React\Block\await;
+use function React\Promise\resolve;
 
 class Client
 {
@@ -24,6 +25,11 @@ class Client
 
     public function repository(string $repository): Repository
     {
-        return await($this->client->repository($repository), $this->transport->getLoop());
+        return await(
+            $this->transport->request('repos/' . $repository)->then(function ($json) {
+                return resolve($this->transport->hydrate(Repository::class, $json['repo']));
+            }),
+            $this->transport->getLoop()
+        );
     }
 }

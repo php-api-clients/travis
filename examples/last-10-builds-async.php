@@ -1,34 +1,28 @@
 <?php
 
-use Aws\Handler\GuzzleV6\GuzzleHandler;
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\HandlerStack;
-use React\EventLoop\Factory;
-use WyriHaximus\React\GuzzlePsr7\HttpClientAdapter;
-use WyriHaximus\Travis\BuildCollection;
-use WyriHaximus\Travis\Client;
-use WyriHaximus\Travis\ApiClient;
+use Rx\Observer\CallbackObserver;
+use WyriHaximus\Travis\AsyncClient;
+use WyriHaximus\Travis\Resource\Async\Repository;
+use WyriHaximus\Travis\Resource\BuildInterface;
+use WyriHaximus\Travis\Transport\Factory;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$loop = Factory::create();
+$loop = \React\EventLoop\Factory::create();
+$client = new AsyncClient(Factory::create($loop));
 
-$client = new Client(new GuzzleHandler(new GuzzleClient([
-    'handler' => HandlerStack::create(new HttpClientAdapter($loop)),
-])));
-$travis = new ApiClient($client);
-$travis->repository('WyriHaximus/php-travis-client')->builds()->then(function (BuildCollection $builds) {
-    foreach ($builds as $build) {
-        //echo 'Build: #', $build->getId(), PHP_EOL;
-        $build->matrix()->then(function ($matrix) {
-            echo 'Build: #', $matrix->getBuild()->getId(), PHP_EOL;
-            foreach ($matrix as $job) {
-                echo "\t", 'Job: #', $job->getId(), PHP_EOL;
-                echo "\t\t", 'php: ', $job->getPHP(), PHP_EOL;
-                echo "\t\t", 'env: ', $job->getEnv(), PHP_EOL;
-            }
-        });
-    }
+$client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->then(function (Repository $repository) {
+    echo 'Repository: ', PHP_EOL;
+    echo 'id: ' . $repository->id(), PHP_EOL;
+    echo 'slug: ' . $repository->slug(), PHP_EOL;
+    echo 'description: ' . $repository->description(), PHP_EOL;
+    echo 'Builds:', PHP_EOL;
+    $repository->builds()->subscribe(new CallbackObserver(function (BuildInterface $build) {
+        echo "\t", 'Build', PHP_EOL;
+        echo "\t\t" . 'id: ' . $build->id(), PHP_EOL;
+        echo "\t\t" . 'commit id: ' . $build->commitId(), PHP_EOL;
+        echo "\t\t" . 'duration: ' . $build->duration(), PHP_EOL;
+    }));
 });
 
 $loop->run();

@@ -7,55 +7,57 @@ use DateTimeInterface;
 
 class Repository implements RepositoryInterface
 {
+    use TransportAwareTrait;
+
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      */
-    private $description;
+    protected $description;
 
     /**
      * @var int
      */
-    private $last_build_id;
+    protected $last_build_id;
 
     /**
      * @var int
      */
-    private $last_build_number;
+    protected $last_build_number;
 
     /**
      * @var string
      */
-    private $last_build_state;
+    protected $last_build_state;
 
     /**
      * @var int
      */
-    private $last_build_duration;
+    protected $last_build_duration;
 
     /**
      * @var DateTimeInterface
      */
-    private $last_build_started_at;
+    protected $last_build_started_at;
 
     /**
      * @var DateTimeInterface
      */
-    private $last_build_finished_at;
+    protected $last_build_finished_at;
 
     /**
      * @var string
      */
-    private $github_language;
+    protected $github_language;
 
     public function id() : int
     {

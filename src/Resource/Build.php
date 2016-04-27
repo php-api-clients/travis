@@ -5,72 +5,74 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 
-final class Build implements BuildInterface
+class Build implements BuildInterface
 {
-    /**
-     * @var int
-     */
-    private $id;
+    use TransportAwareTrait;
 
     /**
      * @var int
      */
-    private $repository_id;
+    protected $id;
 
     /**
      * @var int
      */
-    private $commit_id;
+    protected $repository_id;
+
+    /**
+     * @var int
+     */
+    protected $commit_id;
 
     /**
      * @var string
      */
-    private $number;
+    protected $number;
 
     /**
      * @var bool
      */
-    private $pull_request;
+    protected $pull_request;
 
     /**
      * @var string
      */
-    private $pull_request_title;
+    protected $pull_request_title;
 
     /**
      * @var string
      */
-    private $pull_request_number;
+    protected $pull_request_number;
 
     /**
      * @var array
      */
-    private $config = [];
+    protected $config = [];
 
     /**
      * @var string
      */
-    private $state;
+    protected $state;
 
     /**
      * @var DateTimeInterface
      */
-    private $started_at;
+    protected $started_at;
 
     /**
      * @var DateTimeInterface
      */
-    private $finished_at;
+    protected $finished_at;
 
     /**
      * @var int
      */
-    private $duration;
+    protected $duration;
 
     /**
      * @var int[]
      */
-    private $job_ids = [];
+    protected $job_ids = [];
 
     public function id() : int
     {

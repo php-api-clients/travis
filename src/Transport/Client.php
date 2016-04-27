@@ -42,17 +42,18 @@ class Client
         $deferred = new Deferred();
         $handler = $this->handler;
         $handler($this->createRequest('GET', $path))->then(function (ResponseInterface $response) use ($deferred) {
-            $deferred->resolve($response);
+            $deferred->resolve(json_decode($response->getBody()->getContents(), true));
         }, function ($error) use ($deferred) {
             $deferred->reject($error);
         });
         return $deferred->promise();
     }
 
-    public function hydrate($class, $response)
+    public function hydrate($class, $json)
     {
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $this->getHydrator($class)->hydrate($json['repo'], new $class);
+        $object = new $class;
+        $object->setTransport($this);
+        return $this->getHydrator($class)->hydrate($json, $object);
     }
 
     protected function getHydrator($class)
