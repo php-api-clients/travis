@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 
-final class Repository implements RepositoryInterface
+class Repository implements RepositoryInterface
 {
     /**
      * @var int
@@ -24,37 +25,37 @@ final class Repository implements RepositoryInterface
     /**
      * @var int
      */
-    private $lastBuildId;
+    private $last_build_id;
 
     /**
      * @var int
      */
-    private $lastBuildNumber;
+    private $last_build_number;
 
     /**
      * @var string
      */
-    private $lastBuildState;
+    private $last_build_state;
 
     /**
      * @var int
      */
-    private $lastBuildDuration;
+    private $last_build_duration;
 
     /**
      * @var DateTimeInterface
      */
-    private $lastBuildStartedAt;
+    private $last_build_started_at;
 
     /**
      * @var DateTimeInterface
      */
-    private $lastBuildFinishedAt;
+    private $last_build_finished_at;
 
     /**
      * @var string
      */
-    private $githubLanguage;
+    private $github_language;
 
     public function id() : int
     {
@@ -73,36 +74,36 @@ final class Repository implements RepositoryInterface
 
     public function lastBuildId() : int
     {
-        return $this->lastBuildId;
+        return $this->last_build_id;
     }
 
     public function lastBuildNumber() : int
     {
-        return $this->lastBuildNumber;
+        return $this->last_build_number;
     }
 
     public function lastBuildState() : string
     {
-        return $this->lastBuildState;
+        return $this->last_build_state;
     }
 
     public function lastBuildDuration() : int
     {
-        return $this->lastBuildDuration;
+        return $this->last_build_duration;
     }
 
     public function lastBuildStartedAt() : DateTimeInterface
     {
-        return $this->lastBuildStartedAt;
+        return $this->last_build_started_at;
     }
 
     public function lastBuildFinishedAt() : DateTimeInterface
     {
-        return $this->lastBuildFinishedAt;
+        return $this->last_build_finished_at;
     }
 
     public function githubLanguage() : string
     {
-        return $this->githubLanguage;
+        return $this->github_language;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
@@ -14,12 +15,12 @@ final class Build implements BuildInterface
     /**
      * @var int
      */
-    private $repositoryId;
+    private $repository_id;
 
     /**
      * @var int
      */
-    private $commitId;
+    private $commit_id;
 
     /**
      * @var string
@@ -29,17 +30,17 @@ final class Build implements BuildInterface
     /**
      * @var bool
      */
-    private $pullRequest;
+    private $pull_request;
 
     /**
      * @var string
      */
-    private $pullRequestTitle;
+    private $pull_request_title;
 
     /**
      * @var string
      */
-    private $pullRequestNumber;
+    private $pull_request_number;
 
     /**
      * @var array
@@ -54,12 +55,12 @@ final class Build implements BuildInterface
     /**
      * @var DateTimeInterface
      */
-    private $startedAt;
+    private $started_at;
 
     /**
      * @var DateTimeInterface
      */
-    private $finishedAt;
+    private $finished_at;
 
     /**
      * @var int
@@ -69,7 +70,7 @@ final class Build implements BuildInterface
     /**
      * @var int[]
      */
-    private $jobIds = [];
+    private $job_ids = [];
 
     public function id() : int
     {
@@ -78,12 +79,12 @@ final class Build implements BuildInterface
 
     public function repositoryId() : int
     {
-        return $this->repositoryId;
+        return $this->repository_id;
     }
 
     public function commitId() : int
     {
-        return $this->commitId;
+        return $this->commit_id;
     }
 
     public function number() : string
@@ -93,17 +94,17 @@ final class Build implements BuildInterface
 
     public function pullRequest() : bool
     {
-        return $this->pullRequest;
+        return $this->pull_request;
     }
 
     public function pullRequestTitle() : string
     {
-        return $this->pullRequestTitle;
+        return $this->pull_request_title;
     }
 
     public function pullRequestNumber() : string
     {
-        return $this->pullRequestNumber;
+        return $this->pull_request_number;
     }
 
     public function config() : array
@@ -118,12 +119,12 @@ final class Build implements BuildInterface
 
     public function startedAt() : DateTimeInterface
     {
-        return $this->startedAt;
+        return $this->started_at;
     }
 
     public function finishedAt() : DateTimeInterface
     {
-        return $this->finishedAt;
+        return $this->finished_at;
     }
 
     public function duration() : int
@@ -133,6 +134,6 @@ final class Build implements BuildInterface
 
     public function jobIds() : array
     {
-        return $this->jobIds;
+        return $this->job_ids;
     }
 }

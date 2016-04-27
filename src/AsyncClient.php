@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis;
 
+use React\Promise\PromiseInterface;
 use WyriHaximus\Travis\Resource\Repository;
 use WyriHaximus\Travis\Transport\Client as Transport;
 use WyriHaximus\Travis\Transport\Factory;
-use function Clue\React\Block\await;
+use function React\Promise\resolve;
 
-class Client
+class AsyncClient
 {
     protected $transport;
-    protected $client;
 
     public function __construct(Transport $transport = null)
     {
@@ -19,11 +19,12 @@ class Client
             $transport = Factory::create();
         }
         $this->transport = $transport;
-        $this->client = new AsyncClient($this->transport);
     }
 
-    public function repository(string $repository): Repository
+    public function repository(string $repository): PromiseInterface
     {
-        return await($this->client->repository($repository), $this->transport->getLoop());
+        return $this->transport->request('repos/' . $repository)->then(function ($response) {
+            return resolve($this->transport->hydrate(Repository::class, $response));
+        });
     }
 }
