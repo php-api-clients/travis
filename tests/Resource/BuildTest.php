@@ -7,13 +7,6 @@ use WyriHaximus\Travis\Resource\BuildInterface;
 
 class BuildTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsFinal()
-    {
-        $reflectionClass = new \ReflectionClass(Build::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
-    }
-
     public function testImplementsBuildInterface()
     {
         $build = new Build();

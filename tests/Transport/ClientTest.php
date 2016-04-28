@@ -1,8 +1,8 @@
 <?php
 
-namespace WyriHaximus\Tests\Travis;
+namespace WyriHaximus\Tests\Travis\Transport;
 
-use WyriHaximus\Travis\Client;
+use WyriHaximus\Travis\Transport\Client;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
