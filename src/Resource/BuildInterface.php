@@ -8,7 +8,7 @@ use DateTimeInterface;
 /**
  * @link https://docs.travis-ci.com/api#builds
  */
-interface BuildInterface
+interface BuildInterface extends ResourceInterface
 {
     public function id() : int;
 
