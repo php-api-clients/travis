@@ -5,9 +5,7 @@ namespace WyriHaximus\Travis\Resource\Async;
 
 use Rx\Observable;
 use Rx\ObservableInterface;
-use Rx\ObserverInterface;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Async\Build;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function React\Promise\resolve;
 
@@ -20,7 +18,7 @@ class Repository extends BaseRepository
         )->flatMap(function ($response) {
             return Observable::fromArray($response['builds']);
         })->map(function ($build) {
-            return $this->getTransport()->hydrate(Build::class, $build);
+            return $this->getTransport()->hydrate('Build', $build);
         });
     }
 }

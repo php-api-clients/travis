@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis;
 
 use React\Promise\PromiseInterface;
-use WyriHaximus\Travis\Resource\Async\Repository;
 use WyriHaximus\Travis\Transport\Client as Transport;
 use WyriHaximus\Travis\Transport\Factory;
 use function React\Promise\resolve;
@@ -16,7 +15,9 @@ class AsyncClient
     public function __construct(Transport $transport = null)
     {
         if (!($transport instanceof Transport)) {
-            $transport = Factory::create();
+            $transport = Factory::create(null, [
+                'resource_namespace' => 'Async',
+            ]);
         }
         $this->transport = $transport;
     }
@@ -24,7 +25,7 @@ class AsyncClient
     public function repository(string $repository): PromiseInterface
     {
         return $this->transport->request('repos/' . $repository)->then(function ($json) {
-            return resolve($this->transport->hydrate(Repository::class, $json['repo']));
+            return resolve($this->transport->hydrate('Repository', $json['repo']));
         });
     }
 }

@@ -17,7 +17,9 @@ class Client
     public function __construct(Transport $transport = null)
     {
         if (!($transport instanceof Transport)) {
-            $transport = Factory::create();
+            $transport = Factory::create(null, [
+                'resource_namespace' => 'Sync',
+            ]);
         }
         $this->transport = $transport;
         $this->client = new AsyncClient($this->transport);
@@ -26,9 +28,7 @@ class Client
     public function repository(string $repository): Repository
     {
         return await(
-            $this->transport->request('repos/' . $repository)->then(function ($json) {
-                return resolve($this->transport->hydrate(Repository::class, $json['repo']));
-            }),
+            $this->client->repository($repository),
             $this->transport->getLoop()
         );
     }
