@@ -1,15 +1,15 @@
 <?php
 
+use React\EventLoop\Factory;
 use Rx\Observer\CallbackObserver;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\Async\Repository;
 use WyriHaximus\Travis\Resource\BuildInterface;
-use WyriHaximus\Travis\Transport\Factory;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$loop = \React\EventLoop\Factory::create();
-$client = new AsyncClient(Factory::create($loop));
+$loop = Factory::create();
+$client = new AsyncClient($loop);
 
 $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->then(function (Repository $repository) {
     echo 'Repository: ', PHP_EOL;

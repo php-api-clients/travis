@@ -3,7 +3,6 @@
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\BuildInterface;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
-use WyriHaximus\Travis\Transport\Factory;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
