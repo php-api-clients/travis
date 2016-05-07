@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis;
 
+use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
 use WyriHaximus\Travis\Transport\Client as Transport;
 use WyriHaximus\Travis\Transport\Factory;
@@ -12,10 +13,10 @@ class AsyncClient
 {
     protected $transport;
 
-    public function __construct(Transport $transport = null)
+    public function __construct(LoopInterface $loop, Transport $transport = null)
     {
         if (!($transport instanceof Transport)) {
-            $transport = Factory::create(null, [
+            $transport = Factory::create($loop, [
                 'resource_namespace' => 'Async',
             ]);
         }

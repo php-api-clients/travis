@@ -16,13 +16,14 @@ class Client
 
     public function __construct(Transport $transport = null)
     {
+        $loop = \React\EventLoop\Factory::create();
         if (!($transport instanceof Transport)) {
-            $transport = Factory::create(null, [
+            $transport = Factory::create($loop, [
                 'resource_namespace' => 'Sync',
             ]);
         }
         $this->transport = $transport;
-        $this->client = new AsyncClient($this->transport);
+        $this->client = new AsyncClient($loop, $this->transport);
     }
 
     public function repository(string $repository): Repository
