@@ -22,7 +22,7 @@ interface BuildInterface extends ResourceInterface
 
     public function pullRequestTitle() : string;
 
-    public function pullRequestNumber() : string;
+    public function pullRequestNumber() : int;
 
     public function config() : array;
 

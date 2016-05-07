@@ -5,7 +5,7 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 
-class Build implements BuildInterface
+abstract class Build implements BuildInterface
 {
     use TransportAwareTrait;
 
@@ -40,7 +40,7 @@ class Build implements BuildInterface
     protected $pull_request_title;
 
     /**
-     * @var string
+     * @var int
      */
     protected $pull_request_number;
 
@@ -104,7 +104,7 @@ class Build implements BuildInterface
         return $this->pull_request_title;
     }
 
-    public function pullRequestNumber() : string
+    public function pullRequestNumber() : int
     {
         return $this->pull_request_number;
     }

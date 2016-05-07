@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Transport;
 
-use GeneratedHydrator\Configuration;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
 use React\EventLoop\LoopInterface;
@@ -20,7 +19,6 @@ class Client
     const API_HOST_PRO = 'api.travis-ci.com';
     const API_HOST = self::API_HOST_OPEN_SOURCE;
     const API_SCHEMA = 'https';
-    const RESOURCE_NAMESPACE = 'WyriHaximus\Travis\Resource\\';
 
     /**
      * @var callable
@@ -28,8 +26,7 @@ class Client
     protected $handler;
     protected $loop;
     protected $options = [];
-
-    protected $hydrators = [];
+    protected $hydrator;
 
     public function __construct(LoopInterface $loop, callable $handler = null, $options = [])
     {
@@ -40,6 +37,7 @@ class Client
 
         $this->handler = $handler;
         $this->options = $options;
+        $this->hydrator = new Hydrator($this, $options);
     }
 
     public function request($path)
@@ -54,56 +52,9 @@ class Client
         return $deferred->promise();
     }
 
-    public function hydrateFQCN($class, $json)
+    public function getHydrator(): Hydrator
     {
-        $object = new $class();
-        $object->setTransport($this);
-        return $this->getHydrator($class)->hydrate($json, $object);
-    }
-
-    public function hydrate($class, $json)
-    {
-        $fullClassName = self::RESOURCE_NAMESPACE . $this->options['resource_namespace'] . '\\' . $class;
-        $object = new $fullClassName();
-        $object->setTransport($this);
-        return $this->getHydrator($fullClassName)->hydrate($json, $object);
-    }
-
-    public function extractFQCN($class, $object)
-    {
-        return $this->getHydrator($class)->extract($object);
-    }
-
-    public function extract($class, $object)
-    {
-        $fullClassName = self::RESOURCE_NAMESPACE . $this->options['resource_namespace'] . '\\' . $class;
-        return $this->getHydrator($fullClassName)->extract($object);
-    }
-
-    public function buildAsyncFromSync($resource, $object)
-    {
-        return $this->hydrateFQCN(
-            static::RESOURCE_NAMESPACE . 'Async\\' . $resource,
-            $this->extractFQCN(
-                static::RESOURCE_NAMESPACE . 'Sync\\' . $resource,
-                $object
-            )
-        );
-    }
-
-    protected function getHydrator($class)
-    {
-        if (isset($this->hydrators[$class])) {
-            return $this->hydrators[$class];
-        }
-
-        $config = new Configuration($class);
-        if (isset($this->options['resource_hydrator_cache_dir'])) {
-            $config->setGeneratedClassesTargetDir($this->options['resource_hydrator_cache_dir']);
-        }
-        $hydrator = $config->createFactory()->getHydratorClass();
-        $this->hydrators[$class] = new $hydrator;
-        return $this->hydrators[$class];
+        return $this->hydrator;
     }
 
     protected function createRequest(string $method, string $path)

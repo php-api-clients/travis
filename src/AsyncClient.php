@@ -26,7 +26,7 @@ class AsyncClient
     public function repository(string $repository): PromiseInterface
     {
         return $this->transport->request('repos/' . $repository)->then(function ($json) {
-            return resolve($this->transport->hydrate('Repository', $json['repo']));
+            return resolve($this->transport->getHydrator()->hydrate('Repository', $json['repo']));
         });
     }
 }

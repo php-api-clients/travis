@@ -5,7 +5,7 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 
-class Repository implements RepositoryInterface
+abstract class Repository implements RepositoryInterface
 {
     use TransportAwareTrait;
 

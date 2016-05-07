@@ -15,7 +15,7 @@ class Repository extends BaseRepository
     {
         return await(
             Promise::fromObservable(
-                $this->getTransport()->buildAsyncFromSync('Repository', $this)->builds()->toArray()
+                $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->builds()->toArray()
             ),
             $this->getTransport()->getLoop()
         );
@@ -24,7 +24,7 @@ class Repository extends BaseRepository
     public function build(int $id): Build
     {
         return await(
-            $this->getTransport()->buildAsyncFromSync('Repository', $this)->build($id),
+            $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->build($id),
             $this->getTransport()->getLoop()
         );
     }

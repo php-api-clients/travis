@@ -19,7 +19,7 @@ class Repository extends BaseRepository
         )->flatMap(function ($response) {
             return Observable::fromArray($response['builds']);
         })->map(function ($build) {
-            return $this->getTransport()->hydrate('Build', $build);
+            return $this->getTransport()->getHydrator()->hydrate('Build', $build);
         });
     }
 
@@ -28,7 +28,7 @@ class Repository extends BaseRepository
         return $this->getTransport()->request(
             'repos/' . $this->slug() . '/builds/' . $id
         )->then(function ($response) {
-            return resolve($this->getTransport()->hydrate('Build', $response['build']));
+            return resolve($this->getTransport()->getHydrator()->hydrate('Build', $response['build']));
         });
     }
 }
