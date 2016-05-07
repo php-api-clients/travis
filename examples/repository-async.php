@@ -3,6 +3,7 @@
 use React\EventLoop\Factory;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
+
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
