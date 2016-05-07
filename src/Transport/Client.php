@@ -80,6 +80,17 @@ class Client
         return $this->getHydrator($fullClassName)->extract($object);
     }
 
+    public function buildAsyncFromSync($resource, $object)
+    {
+        return $this->hydrateFQCN(
+            static::RESOURCE_NAMESPACE . 'Async\\' . $resource,
+            $this->extractFQCN(
+                static::RESOURCE_NAMESPACE . 'Sync\\' . $resource,
+                $object
+            )
+        );
+    }
+
     protected function getHydrator($class)
     {
         if (isset($this->hydrators[$class])) {
