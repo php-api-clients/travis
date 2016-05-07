@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis;
 
+use React\EventLoop\Factory as LoopFactory;
 use WyriHaximus\Travis\Resource\Sync\Repository;
 use WyriHaximus\Travis\Transport\Client as Transport;
 use WyriHaximus\Travis\Transport\Factory;
@@ -16,7 +17,7 @@ class Client
 
     public function __construct(Transport $transport = null)
     {
-        $loop = \React\EventLoop\Factory::create();
+        $loop = LoopFactory::create();
         if (!($transport instanceof Transport)) {
             $transport = Factory::create($loop, [
                 'resource_namespace' => 'Sync',
