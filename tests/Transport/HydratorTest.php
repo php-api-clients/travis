@@ -47,4 +47,44 @@ class HydratorTest extends TestCase
         $this->assertSame($finished_at, $asyncRepository->lastBuildFinishedAt());
         $this->assertSame('php', $asyncRepository->githubLanguage());
     }
+
+    public function testSetGeneratedClassesTargetDir()
+    {
+        $json = [
+            'id' => 1,
+            'slug' => 'Wyrihaximus/php-travis-client',
+            'description' => '(A)Sync PHP Travis client',
+            'last_build_id' => 2,
+            'last_build_number' => 3,
+            'last_build_state' => 'complete',
+            'last_build_duration' => 456,
+            'last_build_started_at' => new DateTime(),
+            'last_build_finished_at' => new DateTime(),
+            'github_language' => 'php',
+        ];
+        $tmpDir = $this->getTmpDir();
+        $hydrator = new Hydrator(Phake::mock(Client::class), [
+            'resource_namespace' => 'Async',
+            'resource_hydrator_cache_dir' => $tmpDir,
+        ]);
+        $hydrator->hydrate(
+            'Repository',
+            $json,
+            'Async'
+        );
+        $files = [];
+        $directory = dir($tmpDir);
+        while (false !== ($entry = $directory->read())) {
+            if (in_array($entry, ['.', '..'])) {
+                continue;
+            }
+
+            if (is_file($tmpDir . $entry)) {
+                $files[] = $tmpDir . $entry;
+                continue;
+            }
+        }
+        $directory->close();
+        $this->assertSame(1, count($files));
+    }
 }
