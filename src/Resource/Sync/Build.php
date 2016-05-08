@@ -18,4 +18,12 @@ class Build extends BaseBuild
             $this->getTransport()->getLoop()
         );
     }
+
+    public function job(int $id): Job
+    {
+        return await(
+            $this->getTransport()->getHydrator()->buildAsyncFromSync('Build', $this)->job($id),
+            $this->getTransport()->getLoop()
+        );
+    }
 }
