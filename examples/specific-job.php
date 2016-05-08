@@ -22,4 +22,3 @@ echo "\t\t" . 'Job', PHP_EOL;
 echo "\t\t\t" . 'id: ' . $job->id(), PHP_EOL;
 echo "\t\t\t" . 'number: ' . $job->number(), PHP_EOL;
 echo "\t\t\t" . 'state: ' . $job->state(), PHP_EOL;
-
