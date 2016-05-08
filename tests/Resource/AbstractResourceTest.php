@@ -4,23 +4,15 @@ declare(strict_types=1);
 namespace WyriHaximus\Tests\Travis\Resource;
 
 use Generator;
-use Phake;
 use ReflectionClass;
-use WyriHaximus\Travis\Transport\Client;
+use WyriHaximus\Tests\Travis\TestCase;
 use WyriHaximus\Travis\Transport\Hydrator;
 
-abstract class AbstractResourceTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractResourceTest extends TestCase
 {
     abstract public function getNamespace(): string;
     abstract public function getClass(): string;
     abstract public function hydrateProvider(): Generator;
-
-    public function hydrate($class, $json)
-    {
-        return (new Hydrator(Phake::mock(Client::class), [
-            'resource_namespace' => $this->getNamespace(),
-        ]))->hydrateFQCN($class, $json);
-    }
 
     /**
      * @dataProvider hydrateProvider
@@ -32,7 +24,8 @@ abstract class AbstractResourceTest extends \PHPUnit_Framework_TestCase
             $class,
             $json + [
                 'transport' => null,
-            ]
+            ],
+            $this->getNamespace()
         );
         $this->assertSame($type, (string)(new ReflectionClass($class))->getMethod($method)->getReturnType());
         $result = $object->$method();
