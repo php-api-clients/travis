@@ -17,6 +17,7 @@ class HydratorTest extends TestCase
     {
         $hydrator = new Hydrator(Phake::mock(Client::class), [
             'resource_hydrator_cache_dir' => $this->getTmpDir(),
+            'resource_hydrator_namespace' => $this->getRandomNameSpace(),
         ]);
         $started_at = new DateTime();
         $finished_at = new DateTime();
@@ -68,6 +69,7 @@ class HydratorTest extends TestCase
         $hydrator = new Hydrator(Phake::mock(Client::class), [
             'resource_namespace' => 'Async',
             'resource_hydrator_cache_dir' => $tmpDir,
+            'resource_hydrator_namespace' => $this->getRandomNameSpace(),
         ]);
         $hydrator->hydrate(
             'Repository',
@@ -107,6 +109,7 @@ class HydratorTest extends TestCase
         $hydrator = new Hydrator(Phake::mock(Client::class), [
             'resource_namespace' => 'Async',
             'resource_hydrator_cache_dir' => $tmpDir,
+            'resource_hydrator_namespace' => $this->getRandomNameSpace(),
         ]);
         $repository = $hydrator->hydrate(
             'Repository',

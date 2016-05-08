@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Travis;
 
+use GeneratedHydrator\Configuration;
 use Phake;
 use WyriHaximus\Travis\Transport\Client;
 use WyriHaximus\Travis\Transport\Hydrator;
@@ -54,11 +55,17 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         return $this->tmpDir;
     }
 
+    protected function getRandomNameSpace(): string
+    {
+        return Configuration::DEFAULT_GENERATED_CLASS_NAMESPACE . uniqid('WyriHaimusPHPTravisClientTestNamespace');
+    }
+
     public function hydrate($class, $json, $namespace)
     {
         return (new Hydrator(Phake::mock(Client::class), [
             'resource_namespace' => $namespace,
             'resource_hydrator_cache_dir' => $this->getTmpDir(),
+            'resource_hydrator_namespace' => $this->getRandomNameSpace(),
         ]))->hydrateFQCN($class, $json);
     }
 }

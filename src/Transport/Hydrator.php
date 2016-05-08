@@ -33,6 +33,12 @@ class Hydrator
         return $this->hydrateFQCN($fullClassName, $json);
     }
 
+    /**
+     * Takes a fully qualified class name and extracts the data for that class from the given $object
+     * @param $class
+     * @param $object
+     * @return array
+     */
     public function extractFQCN($class, $object): array
     {
         return $this->getHydrator($class)->extract($object);
@@ -64,6 +70,9 @@ class Hydrator
         $config = new Configuration($class);
         if (isset($this->options['resource_hydrator_cache_dir'])) {
             $config->setGeneratedClassesTargetDir($this->options['resource_hydrator_cache_dir']);
+        }
+        if (isset($this->options['resource_hydrator_namespace'])) {
+            $config->setGeneratedClassesNamespace($this->options['resource_hydrator_namespace']);
         }
         $hydrator = $config->createFactory()->getHydratorClass();
         $this->hydrators[$class] = new $hydrator;
