@@ -6,6 +6,7 @@ namespace WyriHaximus\Travis\Transport;
 use GeneratedHydrator\Configuration;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\ResourceInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class Hydrator
 {
@@ -54,7 +55,7 @@ class Hydrator
         );
     }
 
-    protected function getHydrator($class)
+    protected function getHydrator($class): HydratorInterface
     {
         if (isset($this->hydrators[$class])) {
             return $this->hydrators[$class];
