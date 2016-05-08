@@ -16,7 +16,7 @@ interface BuildInterface extends ResourceInterface
 
     public function commitId() : int;
 
-    public function number() : string;
+    public function number() : int;
 
     public function pullRequest() : bool;
 

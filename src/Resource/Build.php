@@ -89,7 +89,7 @@ abstract class Build implements BuildInterface
         return $this->commit_id;
     }
 
-    public function number() : string
+    public function number() : int
     {
         return $this->number;
     }

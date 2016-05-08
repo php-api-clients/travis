@@ -65,6 +65,13 @@ abstract class BuildTest extends AbstractResourceTest
 
         yield [
             $json,
+            2,
+            'number',
+            'int',
+        ];
+
+        yield [
+            $json,
             true,
             'pullRequest',
             'bool',
