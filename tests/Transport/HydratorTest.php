@@ -71,8 +71,7 @@ class HydratorTest extends TestCase
         ]);
         $hydrator->hydrate(
             'Repository',
-            $json,
-            'Async'
+            $json
         );
         $files = [];
         $directory = dir($tmpDir);
