@@ -50,7 +50,7 @@ class Hydrator
         return $this->extractFQCN($fullClassName, $object);
     }
 
-    public function buildAsyncFromSync($resource, $object): RepositoryInterface
+    public function buildAsyncFromSync($resource, $object): ResourceInterface
     {
         return $this->hydrateFQCN(
             static::RESOURCE_NAMESPACE . 'Async\\' . $resource,
