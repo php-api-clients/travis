@@ -58,6 +58,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     {
         return (new Hydrator(Phake::mock(Client::class), [
             'resource_namespace' => $namespace,
+            'resource_hydrator_cache_dir' => $this->getTmpDir(),
         ]))->hydrateFQCN($class, $json);
     }
 }

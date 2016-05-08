@@ -15,7 +15,9 @@ class HydratorTest extends TestCase
 {
     public function testBuildAsyncFromSync()
     {
-        $hydrator = new Hydrator(Phake::mock(Client::class), []);
+        $hydrator = new Hydrator(Phake::mock(Client::class), [
+            'resource_hydrator_cache_dir' => $this->getTmpDir(),
+        ]);
         $started_at = new DateTime();
         $finished_at = new DateTime();
         $syncRepository = $this->hydrate(
