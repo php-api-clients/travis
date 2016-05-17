@@ -9,7 +9,7 @@ cs: init
 	./vendor/bin/phpcs --standard=PSR2 src/
 
 unit: init
-	./vendor/bin/phpunit
+	./vendor/bin/phpunit --coverage-text --coverage-html covHtml
 
 dunit: init
 	./vendor/bin/dunit

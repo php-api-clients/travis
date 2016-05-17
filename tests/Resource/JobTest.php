@@ -6,9 +6,9 @@ namespace WyriHaximus\Tests\Travis\Resource;
 use DateTime;
 use DateTimeInterface;
 use Generator;
-use WyriHaximus\Travis\Resource\BuildInterface;
+use WyriHaximus\Travis\Resource\JobInterface;
 
-abstract class BuildTest extends AbstractResourceTest
+abstract class JobTest extends AbstractResourceTest
 {
     public function hydrateProvider(): Generator
     {
@@ -16,12 +16,11 @@ abstract class BuildTest extends AbstractResourceTest
         $finished_at = new DateTime();
         $json = [
             'id' => 1,
+            'build_id' => 1,
             'repository_id' => 1,
             'commit_id' => 1,
-            'number' => 2,
-            'pull_request' => true,
-            'pull_request_title' => '#1',
-            'pull_request_number' => 1,
+            'log_id' => 1,
+            'number' => '1.2',
             'config' => [
                 'php' => 7.0,
                 'lowest' => true,
@@ -29,8 +28,9 @@ abstract class BuildTest extends AbstractResourceTest
             'state' => 'done',
             'started_at' => $started_at,
             'finished_at' => $finished_at,
-            'duration' => 345,
-            'job_ids' => [
+            'queue' => 'queue',
+            'allow_failure' => true,
+            'annotation_ids'=> [
                 1,
                 2,
                 3,
@@ -65,30 +65,16 @@ abstract class BuildTest extends AbstractResourceTest
 
         yield [
             $json,
-            2,
-            'number',
-            'int',
-        ];
-
-        yield [
-            $json,
-            true,
-            'pullRequest',
-            'bool',
-        ];
-
-        yield [
-            $json,
-            '#1',
-            'pullRequestTitle',
-            'string',
-        ];
-
-        yield [
-            $json,
             1,
-            'pullRequestNumber',
+            'logId',
             'int',
+        ];
+
+        yield [
+            $json,
+            '1.2',
+            'number',
+            'string',
         ];
 
         yield [
@@ -124,9 +110,16 @@ abstract class BuildTest extends AbstractResourceTest
 
         yield [
             $json,
-            345,
-            'duration',
-            'int',
+            'queue',
+            'queue',
+            'string',
+        ];
+
+        yield [
+            $json,
+            true,
+            'allowFailure',
+            'bool',
         ];
 
         yield [
@@ -141,18 +134,18 @@ abstract class BuildTest extends AbstractResourceTest
                 7,
                 8,
             ],
-            'jobIds',
+            'annotationIds',
             'array',
         ];
     }
 
     public function getClass(): string
     {
-        return 'Build';
+        return 'Job';
     }
 
-    public function testImplementsBuildInterface()
+    public function testImplementsJobInterface()
     {
-        $this->assertInstanceOf(BuildInterface::class, $this->getBuild());
+        $this->assertInstanceOf(JobInterface::class, $this->getJob());
     }
 }

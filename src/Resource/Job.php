@@ -5,7 +5,7 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 
-abstract class Build implements BuildInterface
+class Job implements JobInterface
 {
     use TransportAwareTrait;
 
@@ -13,6 +13,11 @@ abstract class Build implements BuildInterface
      * @var int
      */
     protected $id;
+
+    /**
+     * @var int
+     */
+    protected $build_id;
 
     /**
      * @var int
@@ -25,24 +30,14 @@ abstract class Build implements BuildInterface
     protected $commit_id;
 
     /**
+     * @var int
+     */
+    protected $log_id;
+
+    /**
      * @var string
      */
     protected $number;
-
-    /**
-     * @var bool
-     */
-    protected $pull_request;
-
-    /**
-     * @var string
-     */
-    protected $pull_request_title;
-
-    /**
-     * @var int
-     */
-    protected $pull_request_number;
 
     /**
      * @var array
@@ -65,18 +60,28 @@ abstract class Build implements BuildInterface
     protected $finished_at;
 
     /**
-     * @var int
+     * @var string
      */
-    protected $duration;
+    protected $queue;
+
+    /**
+     * @var bool
+     */
+    protected $allow_failure;
 
     /**
      * @var int[]
      */
-    protected $job_ids = [];
+    protected $annotation_ids;
 
     public function id() : int
     {
         return $this->id;
+    }
+
+    public function buildId() : int
+    {
+        return $this->build_id;
     }
 
     public function repositoryId() : int
@@ -89,24 +94,14 @@ abstract class Build implements BuildInterface
         return $this->commit_id;
     }
 
-    public function number() : int
+    public function logId() : int
+    {
+        return $this->log_id;
+    }
+
+    public function number() : string
     {
         return $this->number;
-    }
-
-    public function pullRequest() : bool
-    {
-        return $this->pull_request;
-    }
-
-    public function pullRequestTitle() : string
-    {
-        return $this->pull_request_title;
-    }
-
-    public function pullRequestNumber() : int
-    {
-        return $this->pull_request_number;
     }
 
     public function config() : array
@@ -129,13 +124,18 @@ abstract class Build implements BuildInterface
         return $this->finished_at;
     }
 
-    public function duration() : int
+    public function queue() : string
     {
-        return $this->duration;
+        return $this->queue;
     }
 
-    public function jobIds() : array
+    public function allowFailure() : bool
     {
-        return $this->job_ids;
+        return $this->allow_failure;
+    }
+
+    public function annotationIds() : array
+    {
+        return $this->annotation_ids;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
@@ -7,7 +8,7 @@ use DateTimeInterface;
 /**
  * @link https://docs.travis-ci.com/api#repositories
  */
-interface RepositoryInterface
+interface RepositoryInterface extends ResourceInterface
 {
     public function id() : int;
 

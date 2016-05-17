@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d61ed56996863805c18077ba8aad8fe6",
-    "content-hash": "b9c57f1f9913de9398c09c62937e9783",
+    "hash": "46988d8b55d496274fdc0bd589187055",
+    "content-hash": "7a743af6132319f2c76919c79d9ee977",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -85,6 +85,54 @@
                 "sdk"
             ],
             "time": "2016-01-28 21:33:18"
+        },
+        {
+            "name": "clue/block-react",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/php-block-react.git",
+                "reference": "ed70f8d497dd265e30bc7dd19cf86b2e149b1ecf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/php-block-react/zipball/ed70f8d497dd265e30bc7dd19cf86b2e149b1ecf",
+                "reference": "ed70f8d497dd265e30bc7dd19cf86b2e149b1ecf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "0.4.*|0.3.*",
+                "react/promise": "~2.1|~1.2",
+                "react/promise-timer": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Integrate async React PHP components into your blocking environment",
+            "homepage": "https://github.com/clue/php-block-react",
+            "keywords": [
+                "async",
+                "blocking",
+                "event loop",
+                "promise",
+                "reactphp",
+                "synchronous"
+            ],
+            "time": "2016-03-09 15:10:22"
         },
         {
             "name": "evenement/evenement",
@@ -359,6 +407,170 @@
             "time": "2016-01-05 18:25:05"
         },
         {
+            "name": "nikic/php-parser",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "ce5be709d59b32dd8a88c80259028759991a4206"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ce5be709d59b32dd8a88c80259028759991a4206",
+                "reference": "ce5be709d59b32dd8a88c80259028759991a4206",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2016-02-28 19:48:28"
+        },
+        {
+            "name": "ocramius/code-generator-utils",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ocramius/CodeGenerationUtils.git",
+                "reference": "7dc0be1dec3376d95ba094688f0d84f7cf95f300"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ocramius/CodeGenerationUtils/zipball/7dc0be1dec3376d95ba094688f0d84f7cf95f300",
+                "reference": "7dc0be1dec3376d95ba094688f0d84f7cf95f300",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "~2.0",
+                "php": "~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeGenerationUtils\\": "src/CodeGenerationUtils"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A set of code generator utilities built on top of PHP-Parsers that ease its use when combined with Reflection",
+            "homepage": "https://github.com/Ocramius/CodeGenerationUtils",
+            "keywords": [
+                "code generation",
+                "compiler",
+                "parser",
+                "php code",
+                "reflection"
+            ],
+            "time": "2016-01-12 09:22:58"
+        },
+        {
+            "name": "ocramius/generated-hydrator",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ocramius/GeneratedHydrator.git",
+                "reference": "98a731e7d4e393513cb6f4e7f120da853680fb50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ocramius/GeneratedHydrator/zipball/98a731e7d4e393513cb6f4e7f120da853680fb50",
+                "reference": "98a731e7d4e393513cb6f4e7f120da853680fb50",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "~2.0",
+                "ocramius/code-generator-utils": "0.4.*",
+                "php": "~7.0",
+                "zendframework/zend-hydrator": "^2.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.6",
+                "phpunit/phpunit": "~5.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "GeneratedHydrator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "An Object Hydrator that allows very fast array to object to array conversion",
+            "homepage": "https://github.com/Ocramius/GeneratedHydrator",
+            "keywords": [
+                "array conversion",
+                "hydrator",
+                "object conversion",
+                "performance",
+                "serializer"
+            ],
+            "time": "2016-01-12 11:39:06"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0",
             "source": {
@@ -621,6 +833,56 @@
             "time": "2015-07-03 13:48:55"
         },
         {
+            "name": "react/promise-timer",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise-timer.git",
+                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/6a46050d801688e08d1a550b97b1f3735505c62a",
+                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\Timer\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Trivial timeout implementation for Promises",
+            "homepage": "https://github.com/react/promise-timer",
+            "keywords": [
+                "async",
+                "event-loop",
+                "promise",
+                "reactphp",
+                "timeout",
+                "timer"
+            ],
+            "time": "2016-02-29 19:03:45"
+        },
+        {
             "name": "react/socket",
             "version": "v0.4.2",
             "source": {
@@ -752,6 +1014,69 @@
             "time": "2015-10-07 18:32:58"
         },
         {
+            "name": "reactivex/rxphp",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ReactiveX/RxPHP.git",
+                "reference": "a0ef3c25f7593832cc6b2970ba48a7f15a006ab1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/a0ef3c25f7593832cc6b2970ba48a7f15a006ab1",
+                "reference": "a0ef3c25f7593832cc6b2970ba48a7f15a006ab1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.5|~7.0"
+            },
+            "require-dev": {
+                "react/event-loop": "~0.4.1",
+                "react/promise": "~2.2"
+            },
+            "suggest": {
+                "react/event-loop": "For using event-loop based scheduling.",
+                "react/promise": "For converting promises to and from observables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rx\\": "lib/Rx"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com"
+                },
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net"
+                }
+            ],
+            "description": "Reactive extensions for php.",
+            "homepage": "https://github.com/ReactiveX/RxPHP",
+            "keywords": [
+                "extensions",
+                "reactive",
+                "rx"
+            ],
+            "time": "2016-04-01 23:27:53"
+        },
+        {
             "name": "wyrihaximus/react-guzzle-http-client",
             "version": "3.0.1",
             "source": {
@@ -842,6 +1167,113 @@
             ],
             "description": "Asyncronous Guzzle (PSR7) adapter powered by react/http-client",
             "time": "2015-08-09 20:04:16"
+        },
+        {
+            "name": "zendframework/zend-hydrator",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-hydrator.git",
+                "reference": "e530a90cd30040190449ee1ad7a466688c2971c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/e530a90cd30040190449ee1ad7a466688c2971c4",
+                "reference": "e530a90cd30040190449ee1ad7a466688c2971c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-stdlib": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5",
+                "squizlabs/php_codesniffer": "^2.3.1",
+                "zendframework/zend-eventmanager": "^3.0",
+                "zendframework/zend-filter": "^2.6",
+                "zendframework/zend-inputfilter": "^2.6",
+                "zendframework/zend-serializer": "^2.6.1",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0, to support aggregate hydrator usage",
+                "zendframework/zend-filter": "^2.6, to support naming strategy hydrator usage",
+                "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-release-1.0": "1.0-dev",
+                    "dev-release-1.1": "1.1-dev",
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Hydrator",
+                    "config-provider": "Zend\\Hydrator\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Hydrator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-hydrator",
+            "keywords": [
+                "hydrator",
+                "zf2"
+            ],
+            "time": "2016-04-06 19:10:21"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-stdlib.git",
+                "reference": "22eb098958980fbbe6b9a06f209f5a4b496cc0c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/22eb098958980fbbe6b9a06f209f5a4b496cc0c1",
+                "reference": "22eb098958980fbbe6b9a06f209f5a4b496cc0c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev",
+                    "dev-develop": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Stdlib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-stdlib",
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2016-02-03 16:53:37"
         }
     ],
     "packages-dev": [
@@ -940,6 +1372,64 @@
                 "object graph"
             ],
             "time": "2015-11-07 22:20:37"
+        },
+        {
+            "name": "phake/phake",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mlively/Phake.git",
+                "reference": "2202d361d34f2712dcc257afdedc6c30060dc9bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mlively/Phake/zipball/2202d361d34f2712dcc257afdedc6c30060dc9bd",
+                "reference": "2202d361d34f2712dcc257afdedc6c30060dc9bd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "sebastian/comparator": "~1.1"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "doctrine/common": "2.3.*",
+                "ext-soap": "*",
+                "hamcrest/hamcrest-php": "1.1.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "doctrine/common": "Allows mock annotations to use import statements for classes.",
+                "hamcrest/hamcrest-php": "Use Hamcrest matchers."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Phake": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Lively",
+                    "email": "m@digitalsandwich.com"
+                }
+            ],
+            "description": "The Phake mock testing library",
+            "homepage": "https://github.com/mlively/Phake",
+            "keywords": [
+                "mock",
+                "testing"
+            ],
+            "time": "2016-03-04 18:49:33"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1835,32 +2325,35 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "1.5.6",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5"
+                "reference": "1bcdf03b068a530ac1962ce671dead356eeba43b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6f3e42d311b882b25b4d409d23a289f4d3b803d5",
-                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1bcdf03b068a530ac1962ce671dead356eeba43b",
+                "reference": "1bcdf03b068a530ac1962ce671dead356eeba43b",
                 "shasum": ""
             },
             "require": {
+                "ext-simplexml": "*",
                 "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
                 "php": ">=5.1.2"
             },
-            "suggest": {
-                "phpunit/php-timer": "dev-master"
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
             },
             "bin": [
-                "scripts/phpcs"
+                "scripts/phpcs",
+                "scripts/phpcbf"
             ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-phpcs-fixer": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -1869,12 +2362,12 @@
                     "CodeSniffer/CLI.php",
                     "CodeSniffer/Exception.php",
                     "CodeSniffer/File.php",
+                    "CodeSniffer/Fixer.php",
                     "CodeSniffer/Report.php",
                     "CodeSniffer/Reporting.php",
                     "CodeSniffer/Sniff.php",
                     "CodeSniffer/Tokens.php",
                     "CodeSniffer/Reports/",
-                    "CodeSniffer/CommentParser/",
                     "CodeSniffer/Tokenizers/",
                     "CodeSniffer/DocGenerators/",
                     "CodeSniffer/Standards/AbstractPatternSniff.php",
@@ -1900,13 +2393,13 @@
                     "role": "lead"
                 }
             ],
-            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
             "homepage": "http://www.squizlabs.com/php-codesniffer",
             "keywords": [
                 "phpcs",
                 "standards"
             ],
-            "time": "2014-12-04 22:32:15"
+            "time": "2016-04-03 22:58:34"
         },
         {
             "name": "symfony/yaml",

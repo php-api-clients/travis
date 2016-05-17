@@ -6,23 +6,21 @@ namespace WyriHaximus\Travis\Resource;
 use DateTimeInterface;
 
 /**
- * @link https://docs.travis-ci.com/api#builds
+ * @link https://docs.travis-ci.com/api#jobs
  */
-interface BuildInterface extends ResourceInterface
+interface JobInterface extends ResourceInterface
 {
     public function id() : int;
+
+    public function buildId() : int;
 
     public function repositoryId() : int;
 
     public function commitId() : int;
 
-    public function number() : int;
+    public function logId() : int;
 
-    public function pullRequest() : bool;
-
-    public function pullRequestTitle() : string;
-
-    public function pullRequestNumber() : int;
+    public function number() : string;
 
     public function config() : array;
 
@@ -32,7 +30,9 @@ interface BuildInterface extends ResourceInterface
 
     public function finishedAt() : DateTimeInterface;
 
-    public function duration() : int;
+    public function queue() : string;
 
-    public function jobIds() : array;
+    public function allowFailure() : bool;
+
+    public function annotationIds() : array;
 }

@@ -8,17 +8,17 @@ cache:
 
 ## PHP versions we test against
 php:
-  - 7
+  - 7.0
   - hhvm
 
 ## Build matrix for lowest and highest possible targets
 matrix:
   include:
-    - php: 7
+    - php: 7.0
       env: dependencies=lowest
     - php: hhvm
       env: dependencies=lowest
-    - php: 7
+    - php: 7.0
       env: dependencies=highest
     - php: hhvm
       env: dependencies=highest
@@ -28,7 +28,6 @@ matrix:
 ## Update composer and configure authentication token
 before_install:
   - composer self-update
-  - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
 
 ## Install or update dependencies
 install:
