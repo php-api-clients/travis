@@ -6,7 +6,7 @@ namespace WyriHaximus\Tests\Travis\Resource;
 use Generator;
 use ReflectionClass;
 use WyriHaximus\Tests\Travis\TestCase;
-use WyriHaximus\Travis\Transport\Hydrator;
+use WyriHaximus\Travis\ApiSettings;
 
 abstract class AbstractResourceTest extends TestCase
 {
@@ -19,7 +19,7 @@ abstract class AbstractResourceTest extends TestCase
      */
     public function testHydrate(array $json, $value, string $method, string $type)
     {
-        $class = Hydrator::RESOURCE_NAMESPACE . $this->getNamespace() . $this->getClass();
+        $class = ApiSettings::TRANSPORT_OPTIONS['namespace'] . '\\' . $this->getNamespace() . $this->getClass();
         $object = $this->hydrate(
             $class,
             $json + [

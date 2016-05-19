@@ -5,8 +5,8 @@ namespace WyriHaximus\Tests\Travis;
 
 use GeneratedHydrator\Configuration;
 use Phake;
-use WyriHaximus\Travis\Transport\Client;
-use WyriHaximus\Travis\Transport\Hydrator;
+use WyriHaximus\ApiClient\Transport\Client;
+use WyriHaximus\ApiClient\Transport\Hydrator;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
