@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
+use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
 
 abstract class Build implements BuildInterface
 {
