@@ -1,0 +1,13 @@
+namespace: WyriHaximus\Travis\Resource
+class: Commit
+properties:
+  id: int
+  sha: string
+  branch: string
+  message: string
+  comitted_at: DateTimeInterface
+  author_name: string
+  author_email: string
+  committer_name: string
+  committer_email: string
+  compare_url: string
