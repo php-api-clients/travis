@@ -942,12 +942,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-api-client.git",
-                "reference": "537896eea872c851b9e212536b40514593c53b0e"
+                "reference": "1941f21a37737b40903303573667872e050cf840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-api-client/zipball/537896eea872c851b9e212536b40514593c53b0e",
-                "reference": "537896eea872c851b9e212536b40514593c53b0e",
+                "url": "https://api.github.com/repos/WyriHaximus/php-api-client/zipball/1941f21a37737b40903303573667872e050cf840",
+                "reference": "1941f21a37737b40903303573667872e050cf840",
                 "shasum": ""
             },
             "require": {
@@ -986,7 +986,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-05-18 18:04:54"
+            "time": "2016-05-21 13:51:22"
         },
         {
             "name": "wyrihaximus/react-guzzle-http-client",
