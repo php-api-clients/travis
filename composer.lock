@@ -1035,12 +1035,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-api-client.git",
-                "reference": "1941f21a37737b40903303573667872e050cf840"
+                "reference": "cdc5794ffe86d51d29384eb893124a163baf5220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-api-client/zipball/1941f21a37737b40903303573667872e050cf840",
-                "reference": "1941f21a37737b40903303573667872e050cf840",
+                "url": "https://api.github.com/repos/WyriHaximus/php-api-client/zipball/cdc5794ffe86d51d29384eb893124a163baf5220",
+                "reference": "cdc5794ffe86d51d29384eb893124a163baf5220",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-05-21 13:51:22"
+            "time": "2016-05-21 21:48:59"
         },
         {
             "name": "wyrihaximus/pusher-client",
@@ -1087,12 +1087,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-pusher-client.git",
-                "reference": "4566524900649d0b3e28afc470be9a7fc4c15de2"
+                "reference": "5c8022cc4603ccbc57574f5ab957810419faf5d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-pusher-client/zipball/4566524900649d0b3e28afc470be9a7fc4c15de2",
-                "reference": "4566524900649d0b3e28afc470be9a7fc4c15de2",
+                "url": "https://api.github.com/repos/WyriHaximus/php-pusher-client/zipball/5c8022cc4603ccbc57574f5ab957810419faf5d4",
+                "reference": "5c8022cc4603ccbc57574f5ab957810419faf5d4",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-05-21 19:44:58"
+            "time": "2016-05-21 21:53:41"
         },
         {
             "name": "wyrihaximus/react-guzzle-http-client",
