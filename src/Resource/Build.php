@@ -139,4 +139,9 @@ abstract class Build implements BuildInterface
     {
         return $this->job_ids;
     }
+
+    public function refresh()
+    {
+        // TODO
+    }
 }

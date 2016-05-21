@@ -139,4 +139,9 @@ abstract class Commit implements CommitInterface
     {
         return $this->compare_url;
     }
+
+    public function refresh()
+    {
+        // TODO
+    }
 }
