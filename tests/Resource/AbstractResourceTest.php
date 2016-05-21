@@ -24,6 +24,7 @@ abstract class AbstractResourceTest extends TestCase
             $class,
             $json + [
                 'transport' => null,
+                'pusher' => null,
             ],
             $this->getNamespace()
         );
