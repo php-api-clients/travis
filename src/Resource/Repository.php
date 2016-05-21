@@ -109,4 +109,9 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->github_language;
     }
+
+    public function refresh()
+    {
+        // TODO
+    }
 }

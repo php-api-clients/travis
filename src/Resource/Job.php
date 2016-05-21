@@ -139,4 +139,9 @@ class Job implements JobInterface
     {
         return $this->annotation_ids;
     }
+
+    public function refresh()
+    {
+        // TODO
+    }
 }

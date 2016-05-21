@@ -3,39 +3,27 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use Rx\Observable;
-use Rx\React\Promise;
+use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository
 {
+    use CallAsyncTrait;
+
     public function builds(): array
     {
-        return await(
-            Promise::fromObservable(
-                $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->builds()->toArray()
-            ),
-            $this->getTransport()->getLoop()
-        );
+        return $this->wait($this->observableToPromise($this->callAsync('builds')->toArray()));
     }
 
     public function build(int $id): Build
     {
-        return await(
-            $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->build($id),
-            $this->getTransport()->getLoop()
-        );
+        return $this->wait($this->callAsync('build', $id));
     }
 
     public function commits(): array
     {
-        return await(
-            Promise::fromObservable(
-                $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->commits()->toArray()
-            ),
-            $this->getTransport()->getLoop()
-        );
+        return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
     }
 }
