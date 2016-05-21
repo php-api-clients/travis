@@ -5,8 +5,8 @@ namespace WyriHaximus\Travis;
 
 use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
-use WyriHaximus\Travis\Transport\Client as Transport;
-use WyriHaximus\Travis\Transport\Factory;
+use WyriHaximus\ApiClient\Transport\Client as Transport;
+use WyriHaximus\ApiClient\Transport\Factory;
 use function React\Promise\resolve;
 
 class AsyncClient
@@ -18,7 +18,7 @@ class AsyncClient
         if (!($transport instanceof Transport)) {
             $transport = Factory::create($loop, [
                 'resource_namespace' => 'Async',
-            ]);
+            ] + ApiSettings::TRANSPORT_OPTIONS);
         }
         $this->transport = $transport;
     }

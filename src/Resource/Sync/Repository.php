@@ -28,4 +28,14 @@ class Repository extends BaseRepository
             $this->getTransport()->getLoop()
         );
     }
+
+    public function commits(): array
+    {
+        return await(
+            Promise::fromObservable(
+                $this->getTransport()->getHydrator()->buildAsyncFromSync('Repository', $this)->commits()->toArray()
+            ),
+            $this->getTransport()->getLoop()
+        );
+    }
 }
