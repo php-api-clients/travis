@@ -7,4 +7,8 @@ use WyriHaximus\Travis\Resource\Job as BaseJob;
 
 class Job extends BaseJob
 {
+    public function refresh(): Job
+    {
+        return $this->wait($this->callAsync('refresh'));
+    }
 }

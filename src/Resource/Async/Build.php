@@ -31,4 +31,11 @@ class Build extends BaseBuild
             return resolve($this->getTransport()->getHydrator()->hydrate('Job', $response['job']));
         });
     }
+
+    public function refresh(): PromiseInterface
+    {
+        return $this->getTransport()->request('builds/' . $this->id)->then(function ($json) {
+            return resolve($this->getTransport()->getHydrator()->hydrate('Build', $json['build']));
+        });
+    }
 }

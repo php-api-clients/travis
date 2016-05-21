@@ -7,4 +7,8 @@ use WyriHaximus\Travis\Resource\Commit as BaseCommit;
 
 class Commit extends BaseCommit
 {
+    public function refresh(): Commit
+    {
+        return $this->wait($this->callAsync('refresh'));
+    }
 }

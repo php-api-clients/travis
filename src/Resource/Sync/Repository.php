@@ -26,4 +26,9 @@ class Repository extends BaseRepository
     {
         return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
     }
+
+    public function refresh(): Repository
+    {
+        return $this->wait($this->callAsync('refresh'));
+    }
 }

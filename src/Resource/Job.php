@@ -142,6 +142,6 @@ class Job implements JobInterface
 
     public function refresh()
     {
-        // TODO
+        throw new \Exception();
     }
 }
