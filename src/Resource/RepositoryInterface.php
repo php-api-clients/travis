@@ -19,7 +19,7 @@ interface RepositoryInterface extends ResourceInterface
 
     public function lastBuildId() : int;
 
-    public function lastBuildNumber() : int;
+    public function lastBuildNumber() : string;
 
     public function lastBuildState() : string;
 

@@ -33,7 +33,7 @@ abstract class Repository implements RepositoryInterface
     protected $last_build_id;
 
     /**
-     * @var int
+     * @var string
      */
     protected $last_build_number;
 
@@ -82,7 +82,7 @@ abstract class Repository implements RepositoryInterface
         return $this->last_build_id;
     }
 
-    public function lastBuildNumber() : int
+    public function lastBuildNumber() : string
     {
         return $this->last_build_number;
     }

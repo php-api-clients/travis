@@ -19,7 +19,7 @@ abstract class RepositoryTest extends AbstractResourceTest
             'slug' => 'Wyrihaximus/php-travis-client',
             'description' => '(A)Sync PHP Travis client',
             'last_build_id' => 2,
-            'last_build_number' => 3,
+            'last_build_number' => '3',
             'last_build_state' => 'complete',
             'last_build_duration' => 456,
             'last_build_started_at' => $started_at,
@@ -57,9 +57,9 @@ abstract class RepositoryTest extends AbstractResourceTest
 
         yield [
             $json,
-            3,
+            '3',
             'lastBuildNumber',
-            'int',
+            'string',
         ];
 
         yield [
