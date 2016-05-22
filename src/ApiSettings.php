@@ -7,6 +7,7 @@ class ApiSettings
 {
     /**
      * Travis' Pusher App ID as found on: https://docs.travis-ci.com/api?http#external-apis
+     * Will automate the retrieval of that key later in the PR
      */
     const PUSHER_KEY = '5df8ac576dcccf4fd076';
 
