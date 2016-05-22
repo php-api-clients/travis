@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis;
 
 use React\EventLoop\Factory as LoopFactory;
+use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Sync\Repository;
 use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
@@ -30,7 +31,7 @@ class Client
     public function repository(string $repository): Repository
     {
         return await(
-            $this->client->repository($repository),
+            Promise::fromObservable($this->client->repository($repository)),
             $this->transport->getLoop()
         );
     }

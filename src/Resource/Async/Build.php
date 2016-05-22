@@ -3,12 +3,10 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
-use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Build as BaseBuild;
-use function React\Promise\resolve;
 
 class Build extends BaseBuild
 {
@@ -23,12 +21,12 @@ class Build extends BaseBuild
         });
     }
 
-    public function job(int $id): PromiseInterface
+    public function job(int $id): ObservableInterface
     {
-        return $this->getTransport()->request(
-            'jobs/' . $id
-        )->then(function ($response) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Job', $response['job']));
+        return Promise::toObservable(
+            $this->getTransport()->request('jobs/' . $id)
+        )->map(function ($response) {
+            return $this->getTransport()->getHydrator()->hydrate('Job', $response['job']);
         });
     }
 }

@@ -19,7 +19,7 @@ class Repository extends BaseRepository
 
     public function build(int $id): Build
     {
-        return $this->wait($this->callAsync('build', $id));
+        return $this->wait($this->observableToPromise($this->callAsync('build', $id)));
     }
 
     public function commits(): array
