@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb7a1cec077fbaa80dcb185eb9911f81",
-    "content-hash": "07c4325e031b3495b8671650e7916409",
+    "hash": "c4452b822c2abe69d69d6b53f1cc28bf",
+    "content-hash": "6dd2d16b15286e2363184caef1c2c444",
     "packages": [
         {
             "name": "clue/block-react",
@@ -1140,16 +1140,16 @@
         },
         {
             "name": "wyrihaximus/pusher-client",
-            "version": "dev-change-rxwebsocket-client",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-pusher-client.git",
-                "reference": "afde420334ea25371b3fa719f202b9da11f50a7a"
+                "reference": "05453bb3c21aaa74a54d99cdbacac95bd1bdcab6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-pusher-client/zipball/afde420334ea25371b3fa719f202b9da11f50a7a",
-                "reference": "afde420334ea25371b3fa719f202b9da11f50a7a",
+                "url": "https://api.github.com/repos/WyriHaximus/php-pusher-client/zipball/05453bb3c21aaa74a54d99cdbacac95bd1bdcab6",
+                "reference": "05453bb3c21aaa74a54d99cdbacac95bd1bdcab6",
                 "shasum": ""
             },
             "require": {
@@ -1180,7 +1180,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-05-22 08:46:19"
+            "time": "2016-05-22 21:20:35"
         },
         {
             "name": "wyrihaximus/react-guzzle-http-client",
@@ -2186,99 +2186,6 @@
                 "xunit"
             ],
             "time": "2016-04-20 14:39:26"
-        },
-        {
-            "name": "ratchet/pawl",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ratchetphp/Pawl.git",
-                "reference": "67acb1f21d22bcd4d152badb0564f0617263044a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Pawl/zipball/67acb1f21d22bcd4d152badb0564f0617263044a",
-                "reference": "67acb1f21d22bcd4d152badb0564f0617263044a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "ratchet/rfc6455": "^0.2.1",
-                "react/socket-client": "^0.4.3|^0.5"
-            },
-            "suggest": {
-                "reactivex/rxphp": "~1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ratchet\\Client\\": "src"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Asynchronous WebSocket client",
-            "keywords": [
-                "Ratchet",
-                "async",
-                "client",
-                "websocket",
-                "websocket client"
-            ],
-            "time": "2016-04-14 21:43:44"
-        },
-        {
-            "name": "ratchet/rfc6455",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ratchetphp/RFC6455.git",
-                "reference": "055b3eca13f314fb910ea55052a9f7d4e516fbc8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/055b3eca13f314fb910ea55052a9f7d4e516fbc8",
-                "reference": "055b3eca13f314fb910ea55052a9f7d4e516fbc8",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/psr7": "^1.0",
-                "php": ">=5.4.2"
-            },
-            "require-dev": {
-                "react/http": "^0.4.1",
-                "react/socket-client": "^0.4.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ratchet\\RFC6455\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Boden",
-                    "email": "cboden@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "RFC6455 WebSocket protocol handler",
-            "homepage": "http://socketo.me",
-            "keywords": [
-                "WebSockets",
-                "rfc6455",
-                "websocket"
-            ],
-            "time": "2016-03-16 12:32:52"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
