@@ -5,10 +5,12 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use WyriHaximus\Pusher\PusherAwareTrait;
 
 class Job implements JobInterface
 {
     use TransportAwareTrait;
+    use PusherAwareTrait;
 
     /**
      * @var int
