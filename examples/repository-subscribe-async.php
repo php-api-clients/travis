@@ -29,6 +29,7 @@ foreach ($repos as $repo) {
         echo 'Repo: ', $repo->slug(), PHP_EOL;
         $repo->subscribe()->subscribe(new CallbackObserver(function (Repository $repo) {
             echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
+            echo 'Last build #: ', $repo->lastBuildNumber(), PHP_EOL;
             echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
         }));
     });
