@@ -5,10 +5,12 @@ namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
 use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use WyriHaximus\Pusher\PusherAwareTrait;
 
 abstract class Repository implements RepositoryInterface
 {
     use TransportAwareTrait;
+    use PusherAwareTrait;
 
     /**
      * @var int

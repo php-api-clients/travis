@@ -1,8 +1,12 @@
 <?php
 
 use React\EventLoop\Factory;
+use Rx\Observer\CallbackObserver;
+use Rx\Scheduler\EventLoopScheduler;
 use WyriHaximus\Travis\AsyncClient;
+use WyriHaximus\Travis\Resource\Async\Repository;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
+use function EventLoop\getLoop;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -21,8 +25,12 @@ if (count($argv) > 1) {
 }
 
 foreach ($repos as $repo) {
-    $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        var_export($repo);
+    $client->repository($repo)->then(function (Repository $repo) {
+        echo 'Repo: ', $repo->slug(), PHP_EOL;
+        $repo->subscribe()->subscribe(new CallbackObserver(function (Repository $repo) {
+            echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
+            echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
+        }));
     });
 }
 

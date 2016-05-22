@@ -42,4 +42,21 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
         });
     }
+
+    public function subscribe(): ObservableInterface
+    {
+        return $this->getPusher()->channel('repo-' . $this->id)->filter(function ($message) {
+            return !in_array($message->event, [
+                'build:created',
+                'build:started',
+                'build:finished',
+            ]);
+        })->map(function ($message) {
+            return json_decode($message->data, true);
+        })->filter(function ($json) {
+            return !isset($json['repository']);
+        })->map(function ($json) {
+            return $this->getTransport()->getHydrator()->hydrate('Repository', $json['repository']);
+        });
+    }
 }
