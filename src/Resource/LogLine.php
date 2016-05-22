@@ -15,7 +15,9 @@ abstract class LogLine implements LogLineInterface
     /**
      * @var string
      */
+    // @codingStandardsIgnoreStart
     protected $_log;
+    // @codingStandardsIgnoreEnd
 
     /**
      * @var int
