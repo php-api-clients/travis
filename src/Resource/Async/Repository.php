@@ -46,7 +46,7 @@ class Repository extends BaseRepository
     public function subscribe(): ObservableInterface
     {
         return $this->getPusher()->channel('repo-' . $this->id)->filter(function ($message) {
-            return !in_array($message->event, [
+            return in_array($message->event, [
                 'build:created',
                 'build:started',
                 'build:finished',
@@ -54,7 +54,7 @@ class Repository extends BaseRepository
         })->map(function ($message) {
             return json_decode($message->data, true);
         })->filter(function ($json) {
-            return !isset($json['repository']);
+            return isset($json['repository']);
         })->map(function ($json) {
             return $this->getTransport()->getHydrator()->hydrate('Repository', $json['repository']);
         });
