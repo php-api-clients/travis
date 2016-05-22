@@ -26,8 +26,9 @@ if (count($argv) > 1) {
 
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (Repository $repo) {
-        echo 'Repo: ', $repo->slug(), PHP_EOL;
+        echo 'Listening on repository: ', $repo->slug(), PHP_EOL;
         $repo->subscribe()->subscribe(new CallbackObserver(function (Repository $repo) {
+            echo 'Repo: ', $repo->slug(), PHP_EOL;
             echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
             echo 'Last build #: ', $repo->lastBuildNumber(), PHP_EOL;
             echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
