@@ -6,7 +6,7 @@ use WyriHaximus\Travis\Resource\RepositoryInterface;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$loop = Factory::create();
+$loop   = Factory::create();
 $client = new AsyncClient($loop);
 
 $repos = [
@@ -20,10 +20,15 @@ if (count($argv) > 1) {
     }
 }
 
-foreach ($repos as $repo) {
-    $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        var_export($repo);
-    });
-}
+$repos = \Rx\Observable::fromArray($repos);
+
+$repo = $repos->flatMap(function ($repo) use ($client) {
+    return $client->repository($repo);
+});
+
+$repo->subscribeCallback(function (RepositoryInterface $repo) {
+    var_export($repo);
+});
+
 
 $loop->run();

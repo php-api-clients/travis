@@ -18,6 +18,6 @@ class Build extends BaseBuild
 
     public function job(int $id): Job
     {
-        return $this->wait($this->callAsync('job', $id));
+        return $this->wait($this->observableToPromise($this->callAsync('job', $id)));
     }
 }

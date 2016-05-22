@@ -1,18 +1,16 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
-use React\Promise\PromiseInterface;
 use Rx\Observable;
-use Rx\ObservableInterface;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository
 {
-    public function builds(): ObservableInterface
+    public function builds(): Observable
     {
         return Promise::toObservable(
             $this->getTransport()->request('repos/' . $this->slug() . '/builds')
@@ -23,16 +21,23 @@ class Repository extends BaseRepository
         });
     }
 
-    public function build(int $id): PromiseInterface
+    public function build(int $id): Observable
     {
-        return $this->getTransport()->request(
-            'repos/' . $this->slug() . '/builds/' . $id
-        )->then(function ($response) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Build', $response['build']));
+        return Promise::toObservable(
+            $this->getTransport()->request('repos/' . $this->slug() . '/builds/' . $id)
+        )->map(function ($response) {
+            return $this->getTransport()->getHydrator()->hydrate('Build', $response['build']);
         });
     }
 
-    public function commits(): ObservableInterface
+    public function jobs(int $buildId): Observable
+    {
+        return $this->build($buildId)->flatMap(function (Build $build) {
+            return $build->jobs();
+        });
+    }
+
+    public function commits(): Observable
     {
         return Promise::toObservable(
             $this->getTransport()->request('repos/' . $this->slug() . '/builds')
@@ -43,7 +48,7 @@ class Repository extends BaseRepository
         });
     }
 
-    public function subscribe(): ObservableInterface
+    public function events(): Observable
     {
         return $this->getPusher()->channel('repo-' . $this->id)->filter(function ($message) {
             return in_array($message->event, [

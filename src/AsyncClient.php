@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis;
 
 use React\EventLoop\LoopInterface;
-use React\Promise\PromiseInterface;
+use Rx\Observable;
+use Rx\React\Promise;
 use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
 use WyriHaximus\Pusher\AsyncClient as PusherAsyncClient;
-use function React\Promise\resolve;
 
 class AsyncClient
 {
@@ -28,10 +28,11 @@ class AsyncClient
         $this->transport = $transport;
     }
 
-    public function repository(string $repository): PromiseInterface
+    public function repository(string $repository): Observable
     {
-        return $this->transport->request('repos/' . $repository)->then(function ($json) {
-            return resolve($this->transport->getHydrator()->hydrate('Repository', $json['repo']));
-        });
+        return Promise::toObservable($this->transport->request('repos/' . $repository))
+            ->map(function ($json) {
+                return $this->transport->getHydrator()->hydrate('Repository', $json['repo']);
+            });
     }
 }
