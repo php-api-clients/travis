@@ -1,16 +1,14 @@
 <?php
 
 use React\EventLoop\Factory;
+use Rx\Observable;
 use Rx\Observer\CallbackObserver;
-use Rx\Scheduler\EventLoopScheduler;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\Async\Repository;
-use WyriHaximus\Travis\Resource\RepositoryInterface;
-use function EventLoop\getLoop;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$loop = Factory::create();
+$loop   = Factory::create();
 $client = new AsyncClient($loop);
 
 $repos = [
@@ -24,16 +22,19 @@ if (count($argv) > 1) {
     }
 }
 
-foreach ($repos as $repo) {
-    $client->repository($repo)->then(function (Repository $repo) {
+Observable::fromArray($repos)
+    ->flatMap(function ($repo) use ($client) {
+        return $client->repository($repo);
+    })
+    ->flatMap(function (Repository $repo) {
         echo 'Listening on repository: ', $repo->slug(), PHP_EOL;
-        $repo->subscribe()->subscribe(new CallbackObserver(function (Repository $repo) {
-            echo 'Repo: ', $repo->slug(), PHP_EOL;
-            echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
-            echo 'Last build #: ', $repo->lastBuildNumber(), PHP_EOL;
-            echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
-        }));
-    });
-}
+        return $repo->events();
+    })
+    ->subscribe(new CallbackObserver(function (Repository $repo) {
+        echo 'Repo: ', $repo->slug(), PHP_EOL;
+        echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
+        echo 'Last build #: ', $repo->lastBuildNumber(), PHP_EOL;
+        echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
+    }));
 
 $loop->run();
