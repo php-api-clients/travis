@@ -112,6 +112,6 @@ abstract class Repository implements RepositoryInterface
 
     public function refresh()
     {
-        throw new \Exception();
+        throw new AbstractMethodException();
     }
 }

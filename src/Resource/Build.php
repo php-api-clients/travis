@@ -142,6 +142,6 @@ abstract class Build implements BuildInterface
 
     public function refresh()
     {
-        throw new \Exception();
+        throw new AbstractMethodException();
     }
 }
