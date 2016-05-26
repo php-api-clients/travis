@@ -28,9 +28,6 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             $this->tmpDir = 'C:\\temp\\';
         }
         mkdir($this->tmpDir, 0777, true);
-        do {
-            sleep(1);
-        } while (!file_exists($this->tmpDir));
         $this->tmpNamespace = Configuration::DEFAULT_GENERATED_CLASS_NAMESPACE . uniqid('WyriHaimusPHPTravisClientTestNamespace');
     }
 
