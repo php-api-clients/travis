@@ -1,0 +1,16 @@
+namespace: WyriHaximus\Travis\Resource
+class: Job
+properties:
+  id: int
+  build_id: int
+  repository_id: int
+  commit_id: int
+  log_id: int
+  number: string
+  config: array
+  state: string
+  started_at: DateTimeInterface
+  finished_at: DateTimeInterface
+  queue: string
+  allow_failure: bool
+  annotation_ids: array
