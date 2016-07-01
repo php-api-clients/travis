@@ -1,0 +1,5 @@
+namespace: WyriHaximus\Travis\Resource
+class: SSHKey
+properties:
+  description: string
+  fingerprint: string
