@@ -42,4 +42,15 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
         });
     }
+
+    public function caches(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->getTransport()->request('repos/' . $this->slug() . '/caches')
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['caches']);
+        })->map(function ($cache) {
+            return $this->getTransport()->getHydrator()->hydrate('Cache', $cache);
+        });
+    }
 }
