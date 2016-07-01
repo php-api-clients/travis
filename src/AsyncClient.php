@@ -13,12 +13,18 @@ class AsyncClient
 {
     protected $transport;
 
-    public function __construct(LoopInterface $loop, Transport $transport = null)
+    public function __construct(LoopInterface $loop, string $token = '', Transport $transport = null)
     {
         if (!($transport instanceof Transport)) {
-            $transport = Factory::create($loop, [
+            $options = [
                 'resource_namespace' => 'Async',
-            ] + ApiSettings::TRANSPORT_OPTIONS);
+            ] + ApiSettings::TRANSPORT_OPTIONS;
+
+            if ($token !== '') {
+                $options['headers']['Authorization'] = 'token ' . $token;
+            }
+
+            $transport = Factory::create($loop, $options);
         }
         $this->transport = $transport;
     }
