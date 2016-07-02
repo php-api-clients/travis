@@ -19,6 +19,10 @@ class Build extends BaseBuild
         return $this->wait($this->observableToPromise($this->callAsync('jobs')->toArray()));
     }
 
+    /**
+     * @param int $id
+     * @return Job
+     */
     public function job(int $id): Job
     {
         return $this->wait($this->callAsync('job', $id));
