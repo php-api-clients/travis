@@ -5,6 +5,7 @@ namespace WyriHaximus\Travis;
 
 use React\EventLoop\Factory as LoopFactory;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
+use WyriHaximus\Travis\Resource\SSHKeyInterface;
 use WyriHaximus\Travis\Resource\Sync\Repository;
 use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
@@ -38,6 +39,14 @@ class Client
     {
         return await(
             $this->client->repository($repository),
+            $this->transport->getLoop()
+        );
+    }
+
+    public function sshKey(int $id): SSHKeyInterface
+    {
+        return await(
+            $this->client->sshKey($id),
             $this->transport->getLoop()
         );
     }
