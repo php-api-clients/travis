@@ -52,4 +52,24 @@ class Client
             $this->transport->getLoop()
         );
     }
+
+    public function accounts(): array
+    {
+        return await(
+            Promise::fromObservable(
+                $this->client->accounts()->toArray()
+            ),
+            $this->transport->getLoop()
+        );
+    }
+
+    public function broadcasts(): array
+    {
+        return await(
+            Promise::fromObservable(
+                $this->client->broadcasts()->toArray()
+            ),
+            $this->transport->getLoop()
+        );
+    }
 }

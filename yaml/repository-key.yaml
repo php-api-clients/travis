@@ -1,5 +1,5 @@
 namespace: WyriHaximus\Travis\Resource
 class: RepositoryKey
 properties:
-  public_key: string
+  key: string
   fingerprint: string
