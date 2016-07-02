@@ -52,4 +52,6 @@ interface UserInterface extends ResourceInterface
      * @return DateTimeInterface
      */
     public function createdAt() : DateTimeInterface;
+
+    public function sync();
 }
