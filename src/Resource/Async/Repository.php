@@ -127,6 +127,9 @@ class Repository extends BaseRepository
         );
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function branches(): ObservableInterface
     {
         return Promise::toObservable(
