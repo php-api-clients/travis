@@ -61,6 +61,10 @@ class AsyncClient
         });
     }
 
+    /**
+     * @param int $id
+     * @return PromiseInterface
+     */
     public function sshKey(int $id): PromiseInterface
     {
         return $this->transport->request('settings/ssh_key/' . $id)->then(function ($json) {
