@@ -82,6 +82,9 @@ class Client
         );
     }
 
+    /**
+     * @return array
+     */
     public function hooks(): array
     {
         return await(
