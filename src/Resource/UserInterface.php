@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use DateTimeInterface;
 use WyriHaximus\ApiClient\Resource\ResourceInterface;
 
 interface UserInterface extends ResourceInterface

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use DateTime;
+use DateTimeInterface;
 use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
 
 abstract class User implements UserInterface
@@ -107,7 +109,7 @@ abstract class User implements UserInterface
      */
     public function syncedAt() : DateTimeInterface
     {
-        return $this->synced_at;
+        return new DateTime($this->synced_at);
     }
 
     /**
@@ -123,6 +125,6 @@ abstract class User implements UserInterface
      */
     public function createdAt() : DateTimeInterface
     {
-        return $this->created_at;
+        return new DateTime($this->created_at);
     }
 }
