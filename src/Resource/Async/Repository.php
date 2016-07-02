@@ -42,4 +42,15 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
         });
     }
+
+    public function vars(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->getTransport()->request('/settings/env_vars?repository_id=' . $this->id())
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['env_vars']);
+        })->map(function ($var) {
+            return $this->getTransport()->getHydrator()->hydrate('EnvironmentVariable', $var);
+        });
+    }
 }
