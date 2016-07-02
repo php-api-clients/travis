@@ -155,6 +155,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function caches(): ObservableInterface
     {
         return Promise::toObservable(
