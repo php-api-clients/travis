@@ -51,6 +51,9 @@ class AsyncClient
         });
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function user(): PromiseInterface
     {
         return $this->transport->request('users')->then(function ($json) {
