@@ -43,6 +43,17 @@ class Repository extends BaseRepository
         });
     }
 
+    public function caches(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->getTransport()->request('repos/' . $this->slug() . '/caches')
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['caches']);
+        })->map(function ($cache) {
+            return $this->getTransport()->getHydrator()->hydrate('Cache', $cache);
+        });
+    }
+
     public function key(): PromiseInterface
     {
         return $this->getTransport()->request('repos/' . $this->slug() . '/key')->then(function ($key) {
