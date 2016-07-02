@@ -42,4 +42,15 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
         });
     }
+
+    public function branches(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->getTransport()->request('repos/' . $this->slug() . '/branches')
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['branches']);
+        })->map(function ($branch) {
+            return $this->getTransport()->getHydrator()->hydrate('Branch', $branch);
+        });
+    }
 }
