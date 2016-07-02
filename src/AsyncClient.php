@@ -39,6 +39,17 @@ class AsyncClient
         });
     }
 
+    public function hooks(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->transport->request('hooks')
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['hooks']);
+        })->map(function ($hook) {
+            return $this->transport->getHydrator()->hydrate('Hook', $hook);
+        });
+    }
+
     public function accounts(): ObservableInterface
     {
         return Promise::toObservable(

@@ -43,6 +43,16 @@ class Client
         );
     }
 
+    public function hooks(): array
+    {
+        return await(
+            Promise::fromObservable(
+                $this->client->hooks()->toArray()
+            ),
+            $this->transport->getLoop()
+        );
+    }
+
     public function accounts(): array
     {
         return await(
