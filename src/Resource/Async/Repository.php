@@ -14,6 +14,9 @@ use function React\Promise\resolve;
 
 class Repository extends BaseRepository
 {
+    /**
+     * @return ObservableInterface
+     */
     public function builds(): ObservableInterface
     {
         return Promise::toObservable(
