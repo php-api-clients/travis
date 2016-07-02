@@ -99,6 +99,9 @@ class Repository extends BaseRepository
         return $this->setActiveStatus(true);
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function disable(): PromiseInterface
     {
         return $this->setActiveStatus(false);
