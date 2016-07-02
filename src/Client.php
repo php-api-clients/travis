@@ -59,6 +59,9 @@ class Client
         );
     }
 
+    /**
+     * @return UserInterface
+     */
     public function user(): UserInterface
     {
         return await(
