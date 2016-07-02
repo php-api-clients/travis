@@ -5,6 +5,9 @@ namespace WyriHaximus\Travis;
 
 use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
+use Rx\Observable;
+use Rx\ObservableInterface;
+use Rx\React\Promise;
 use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
 use function React\Promise\resolve;
@@ -33,6 +36,17 @@ class AsyncClient
     {
         return $this->transport->request('repos/' . $repository)->then(function ($json) {
             return resolve($this->transport->getHydrator()->hydrate('Repository', $json['repo']));
+        });
+    }
+
+    public function hooks(): ObservableInterface
+    {
+        return Promise::toObservable(
+            $this->transport->request('hooks')
+        )->flatMap(function ($response) {
+            return Observable::fromArray($response['hooks']);
+        })->map(function ($hook) {
+            return $this->transport->getHydrator()->hydrate('Hook', $hook);
         });
     }
 }
