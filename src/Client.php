@@ -7,7 +7,6 @@ use React\EventLoop\Factory as LoopFactory;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\SSHKeyInterface;
-use WyriHaximus\Travis\Resource\Sync\Repository;
 use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
 use function Clue\React\Block\await;
