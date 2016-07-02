@@ -10,6 +10,9 @@ use WyriHaximus\Travis\Resource\Job as BaseJob;
 
 class Job extends BaseJob
 {
+    /**
+     * @return ObservableInterface
+     */
     public function annotations(): ObservableInterface
     {
         return Promise::toObservable(
