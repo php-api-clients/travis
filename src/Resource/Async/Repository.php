@@ -141,6 +141,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function vars(): ObservableInterface
     {
         return Promise::toObservable(
