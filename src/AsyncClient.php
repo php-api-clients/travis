@@ -39,6 +39,13 @@ class AsyncClient
         });
     }
 
+    public function sshKey(int $id): PromiseInterface
+    {
+        return $this->transport->request('settings/ssh_key/' . $id)->then(function ($json) {
+            return resolve($this->transport->getHydrator()->hydrate('SSHKey', $json['ssh_key']));
+        });
+    }
+
     public function hooks(): ObservableInterface
     {
         return Promise::toObservable(
