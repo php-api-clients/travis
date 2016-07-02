@@ -12,7 +12,7 @@ abstract class RepositoryKey implements RepositoryKeyInterface
     /**
      * @var string
      */
-    protected $public_key;
+    protected $key;
 
     /**
      * @var string
@@ -22,9 +22,9 @@ abstract class RepositoryKey implements RepositoryKeyInterface
     /**
      * @return string
      */
-    public function publicKey() : string
+    public function key() : string
     {
-        return $this->public_key;
+        return $this->key;
     }
 
     /**

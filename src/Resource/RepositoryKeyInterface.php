@@ -10,7 +10,7 @@ interface RepositoryKeyInterface extends ResourceInterface
     /**
      * @return string
      */
-    public function publicKey() : string;
+    public function key() : string;
 
     /**
      * @return string
