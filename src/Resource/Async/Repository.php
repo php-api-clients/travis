@@ -53,4 +53,11 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Cache', $cache);
         });
     }
+
+    public function key(): PromiseInterface
+    {
+        return $this->getTransport()->request('repos/' . $this->slug() . '/key')->then(function ($key) {
+            return resolve($this->getTransport()->getHydrator()->hydrate('RepositoryKey', $key));
+        });
+    }
 }
