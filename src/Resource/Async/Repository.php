@@ -28,6 +28,10 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @param int $id
+     * @return PromiseInterface
+     */
     public function build(int $id): PromiseInterface
     {
         return $this->getTransport()->request(
