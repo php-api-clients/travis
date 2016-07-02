@@ -30,4 +30,10 @@ interface RepositoryInterface extends ResourceInterface
     public function lastBuildFinishedAt() : DateTimeInterface;
 
     public function githubLanguage() : string;
+
+    public function isActive();
+
+    public function enable();
+
+    public function disable();
 }
