@@ -1,0 +1,14 @@
+namespace: WyriHaximus\Travis\Resource
+class: Branch
+properties:
+  id: int
+  repository_id: int
+  commit_id: int
+  number: string
+  config: array
+  state: string
+  started_at: DateTimeInterface
+  finished_at: DateTimeInterface
+  duration: int
+  job_ids: array
+  pull_request: bool

@@ -1,0 +1,5 @@
+namespace: WyriHaximus\Travis\Resource
+class: Broadcast
+properties:
+  id: int
+  message: string
