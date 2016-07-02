@@ -8,6 +8,7 @@ use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
+use function React\Promise\reject;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository
@@ -40,6 +41,27 @@ class Repository extends BaseRepository
             return Observable::fromArray($response['commits']);
         })->map(function ($build) {
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
+        });
+    }
+
+    public function isActive(): PromiseInterface
+    {
+        return $this->getTransport()->request(
+            'hooks'
+        )->then(function ($response) {
+            $active = false;
+            foreach ($response['hooks'] as $hook) {
+                if ($hook['id'] == $this->id()) {
+                    $active = (bool)$hook['active'];
+                    break;
+                }
+            }
+
+            if ($active) {
+                return resolve($active);
+            }
+
+            return reject($active);
         });
     }
 }
