@@ -1,0 +1,13 @@
+namespace: WyriHaximus\Travis\Resource
+class: RepositoryKey
+properties:
+  id: int
+  repository_id: int
+  commit_id: int
+  created_at: DateTimeInterface
+  owner_id: int
+  owner_type: string
+  event_type: string
+  result: string
+  pull_request: bool
+  branch: string
