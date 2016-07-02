@@ -26,6 +26,10 @@ class Build extends BaseBuild
         });
     }
 
+    /**
+     * @param int $id
+     * @return PromiseInterface
+     */
     public function job(int $id): PromiseInterface
     {
         return $this->getTransport()->request(
