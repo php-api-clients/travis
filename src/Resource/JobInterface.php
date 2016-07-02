@@ -36,4 +36,6 @@ interface JobInterface extends ResourceInterface
     public function allowFailure() : bool;
 
     public function annotationIds() : array;
+
+    public function annotations();
 }
