@@ -27,6 +27,11 @@ class Repository extends BaseRepository
         return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
     }
 
+    public function isActive(): bool
+    {
+        return $this->wait($this->callAsync('isActive'));
+    }
+
     public function enable(): Repository
     {
         return $this->wait($this->callAsync('enable'));
