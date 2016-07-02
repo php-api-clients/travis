@@ -45,6 +45,15 @@ class Repository extends BaseRepository
         });
     }
 
+    public function settings(): PromiseInterface
+    {
+        return $this->getTransport()->request(
+            'repos/' . $this->id() . '/settings'
+        )->then(function ($response) {
+            return resolve($this->getTransport()->getHydrator()->hydrate('Settings', $response['settings']));
+        });
+    }
+
     public function isActive(): PromiseInterface
     {
         return $this->getTransport()->request(

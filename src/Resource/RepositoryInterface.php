@@ -31,6 +31,8 @@ interface RepositoryInterface extends ResourceInterface
 
     public function githubLanguage() : string;
 
+    public function settings();
+
     public function isActive();
 
     public function enable();
