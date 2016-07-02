@@ -19,6 +19,10 @@ class Client
      * @var Transport
      */
     protected $transport;
+
+    /**
+     * @var AsyncClient
+     */
     protected $client;
 
     public function __construct(string $token = '', Transport $transport = null)
