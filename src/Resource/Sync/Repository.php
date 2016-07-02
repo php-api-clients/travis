@@ -55,6 +55,9 @@ class Repository extends BaseRepository
         return $this->wait($this->callAsync('isActive'));
     }
 
+    /**
+     * @return Repository
+     */
     public function enable(): Repository
     {
         return $this->wait($this->callAsync('enable'));
