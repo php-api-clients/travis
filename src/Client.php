@@ -95,6 +95,9 @@ class Client
         );
     }
 
+    /**
+     * @return array
+     */
     public function accounts(): array
     {
         return await(
