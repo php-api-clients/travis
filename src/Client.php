@@ -108,6 +108,9 @@ class Client
         );
     }
 
+    /**
+     * @return array
+     */
     public function broadcasts(): array
     {
         return await(
