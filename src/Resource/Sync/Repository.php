@@ -39,6 +39,9 @@ class Repository extends BaseRepository
         return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
     }
 
+    /**
+     * @return SettingsInterface
+     */
     public function settings(): SettingsInterface
     {
         return $this->wait($this->callAsync('settings'));
