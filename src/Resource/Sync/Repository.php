@@ -14,6 +14,9 @@ class Repository extends BaseRepository
 {
     use CallAsyncTrait;
 
+    /**
+     * @return array
+     */
     public function builds(): array
     {
         return $this->wait($this->observableToPromise($this->callAsync('builds')->toArray()));
