@@ -95,6 +95,9 @@ class Repository extends BaseRepository
         return $this->wait($this->observableToPromise($this->callAsync('caches')->toArray()));
     }
 
+    /**
+     * @return RepositoryKeyInterface
+     */
     public function key(): RepositoryKeyInterface
     {
         return $this->wait($this->callAsync('key'));
