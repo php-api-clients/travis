@@ -2,7 +2,6 @@
 
 use React\EventLoop\Factory;
 use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\UserInterface;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
