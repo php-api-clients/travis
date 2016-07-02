@@ -169,6 +169,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function key(): PromiseInterface
     {
         return $this->getTransport()->request('repos/' . $this->slug() . '/key')->then(function ($key) {
