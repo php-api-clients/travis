@@ -67,6 +67,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function isActive(): PromiseInterface
     {
         return $this->getTransport()->request(
