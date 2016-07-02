@@ -47,6 +47,10 @@ class Client
         $this->client = new AsyncClient($loop, $token, $this->transport);
     }
 
+    /**
+     * @param string $repository
+     * @return RepositoryInterface
+     */
     public function repository(string $repository): RepositoryInterface
     {
         return await(
