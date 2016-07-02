@@ -71,6 +71,9 @@ class Repository extends BaseRepository
         return $this->wait($this->callAsync('disable'));
     }
 
+    /**
+     * @return array
+     */
     public function branches(): array
     {
         return $this->wait($this->observableToPromise($this->callAsync('branches')->toArray()));
