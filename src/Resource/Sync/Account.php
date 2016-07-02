@@ -7,6 +7,9 @@ use WyriHaximus\Travis\Resource\Account as BaseAccount;
 
 class Account extends BaseAccount
 {
+    /**
+     * @return Account
+     */
     public function refresh() : Account
     {
         return $this->wait($this->callAsync('refresh'));
