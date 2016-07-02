@@ -35,4 +35,11 @@ class AsyncClient
             return resolve($this->transport->getHydrator()->hydrate('Repository', $json['repo']));
         });
     }
+
+    public function user(): PromiseInterface
+    {
+        return $this->transport->request('users')->then(function ($json) {
+            return resolve($this->transport->getHydrator()->hydrate('User', $json['user']));
+        });
+    }
 }
