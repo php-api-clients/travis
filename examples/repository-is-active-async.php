@@ -7,7 +7,7 @@ use WyriHaximus\Travis\Resource\RepositoryInterface;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient($loop);
+$client = new AsyncClient($loop, require 'resolve_key.php');
 
 $repos = [
     'WyriHaximus/php-travis-client',
