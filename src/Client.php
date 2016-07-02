@@ -12,6 +12,7 @@ use WyriHaximus\ApiClient\Transport\Client as Transport;
 use WyriHaximus\ApiClient\Transport\Factory;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
+use WyriHaximus\Travis\Resource\UserInterface;
 
 class Client
 {
@@ -40,6 +41,14 @@ class Client
     {
         return await(
             $this->client->repository($repository),
+            $this->transport->getLoop()
+        );
+    }
+
+    public function user(): UserInterface
+    {
+        return await(
+            $this->client->user(),
             $this->transport->getLoop()
         );
     }
