@@ -40,6 +40,10 @@ class AsyncClient
         $this->transport = $transport;
     }
 
+    /**
+     * @param string $repository
+     * @return PromiseInterface
+     */
     public function repository(string $repository): PromiseInterface
     {
         return $this->transport->request('repos/' . $repository)->then(function ($json) {
