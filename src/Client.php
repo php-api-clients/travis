@@ -16,6 +16,9 @@ use WyriHaximus\Travis\Resource\UserInterface;
 
 class Client
 {
+    /**
+     * @var Transport
+     */
     protected $transport;
     protected $client;
 
