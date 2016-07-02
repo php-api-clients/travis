@@ -63,6 +63,9 @@ class Repository extends BaseRepository
         return $this->wait($this->callAsync('enable'));
     }
 
+    /**
+     * @return Repository
+     */
     public function disable(): Repository
     {
         return $this->wait($this->callAsync('disable'));
