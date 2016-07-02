@@ -11,6 +11,9 @@ use function React\Promise\resolve;
 
 class AsyncClient
 {
+    /**
+     * @var Transport
+     */
     protected $transport;
 
     public function __construct(LoopInterface $loop, Transport $transport = null)
