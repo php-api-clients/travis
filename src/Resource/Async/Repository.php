@@ -107,6 +107,10 @@ class Repository extends BaseRepository
         return $this->setActiveStatus(false);
     }
 
+    /**
+     * @param bool $status
+     * @return PromiseInterface
+     */
     protected function setActiveStatus(bool $status)
     {
         return $this->getTransport()->requestPsr7(
