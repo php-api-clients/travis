@@ -100,6 +100,9 @@ class AsyncClient
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function broadcasts(): ObservableInterface
     {
         return Promise::toObservable(
