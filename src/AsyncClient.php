@@ -72,6 +72,9 @@ class AsyncClient
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function hooks(): ObservableInterface
     {
         return Promise::toObservable(
