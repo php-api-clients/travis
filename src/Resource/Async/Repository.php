@@ -41,6 +41,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function commits(): ObservableInterface
     {
         return Promise::toObservable(
