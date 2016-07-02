@@ -70,6 +70,10 @@ class Client
         );
     }
 
+    /**
+     * @param int $id
+     * @return SSHKeyInterface
+     */
     public function sshKey(int $id): SSHKeyInterface
     {
         return await(
