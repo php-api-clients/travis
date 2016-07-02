@@ -22,6 +22,10 @@ class Repository extends BaseRepository
         return $this->wait($this->observableToPromise($this->callAsync('builds')->toArray()));
     }
 
+    /**
+     * @param int $id
+     * @return Build
+     */
     public function build(int $id): Build
     {
         return $this->wait($this->callAsync('build', $id));
