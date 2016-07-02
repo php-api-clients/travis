@@ -47,6 +47,9 @@ class Repository extends BaseRepository
         return $this->wait($this->callAsync('settings'));
     }
 
+    /**
+     * @return bool
+     */
     public function isActive(): bool
     {
         return $this->wait($this->callAsync('isActive'));
