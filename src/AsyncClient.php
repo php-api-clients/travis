@@ -86,6 +86,9 @@ class AsyncClient
         });
     }
 
+    /**
+     * @return ObservableInterface
+     */
     public function accounts(): ObservableInterface
     {
         return Promise::toObservable(
