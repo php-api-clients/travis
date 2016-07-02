@@ -19,6 +19,11 @@ class AsyncClient
      */
     protected $transport;
 
+    /**
+     * @param LoopInterface $loop
+     * @param string $token
+     * @param Transport|null $transport
+     */
     public function __construct(LoopInterface $loop, string $token = '', Transport $transport = null)
     {
         if (!($transport instanceof Transport)) {
