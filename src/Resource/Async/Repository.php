@@ -91,6 +91,9 @@ class Repository extends BaseRepository
         });
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function enable(): PromiseInterface
     {
         return $this->setActiveStatus(true);
