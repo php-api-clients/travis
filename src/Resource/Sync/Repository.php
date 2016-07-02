@@ -28,6 +28,11 @@ class Repository extends BaseRepository
         return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
     }
 
+    public function branches(): array
+    {
+        return $this->wait($this->observableToPromise($this->callAsync('branches')->toArray()));
+    }
+
     public function vars(): array
     {
         return $this->wait($this->observableToPromise($this->callAsync('vars')->toArray()));
