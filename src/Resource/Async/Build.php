@@ -12,6 +12,9 @@ use function React\Promise\resolve;
 
 class Build extends BaseBuild
 {
+    /**
+     * @return ObservableInterface
+     */
     public function jobs(): ObservableInterface
     {
         return Promise::toObservable(
