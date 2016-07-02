@@ -7,6 +7,7 @@ use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
+use WyriHaximus\Travis\Resource\RepositoryKeyInterface;
 
 class Repository extends BaseRepository
 {
@@ -25,5 +26,20 @@ class Repository extends BaseRepository
     public function commits(): array
     {
         return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
+    }
+
+    public function vars(): array
+    {
+        return $this->wait($this->observableToPromise($this->callAsync('vars')->toArray()));
+    }
+
+    public function caches(): array
+    {
+        return $this->wait($this->observableToPromise($this->callAsync('caches')->toArray()));
+    }
+
+    public function key(): RepositoryKeyInterface
+    {
+        return $this->wait($this->callAsync('key'));
     }
 }
