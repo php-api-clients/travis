@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
+use GuzzleHttp\Psr7\Request;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -63,5 +64,31 @@ class Repository extends BaseRepository
 
             return reject($active);
         });
+    }
+
+    public function enable(): PromiseInterface
+    {
+        return $this->setActiveStatus(true);
+    }
+
+    public function disable(): PromiseInterface
+    {
+        return $this->setActiveStatus(false);
+    }
+
+    protected function setActiveStatus(bool $status)
+    {
+        return $this->getTransport()->requestPsr7(
+            new Request(
+                'PUT',
+                $this->getTransport()->getBaseURL() . 'hooks/' . $this->id(),
+                $this->getTransport()->getHeaders(),
+                json_encode([
+                    'hook' => [
+                        'active' => $status,
+                    ],
+                ])
+            )
+        );
     }
 }
