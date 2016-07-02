@@ -25,6 +25,10 @@ class Client
      */
     protected $client;
 
+    /**
+     * @param string $token
+     * @param Transport|null $transport
+     */
     public function __construct(string $token = '', Transport $transport = null)
     {
         $loop = LoopFactory::create();
