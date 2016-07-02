@@ -42,4 +42,13 @@ class Repository extends BaseRepository
             return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
         });
     }
+
+    public function settings(): PromiseInterface
+    {
+        return $this->getTransport()->request(
+            'repos/' . $this->id() . '/settings'
+        )->then(function ($response) {
+            return resolve($this->getTransport()->getHydrator()->hydrate('Settings', $response['settings']));
+        });
+    }
 }
