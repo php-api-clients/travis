@@ -12,6 +12,9 @@ class User extends BaseUser
         return $this->wait($this->callAsync('sync'));
     }
 
+    /**
+     * @return User
+     */
     public function refresh() : User
     {
         return $this->wait($this->callAsync('refresh'));
