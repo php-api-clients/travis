@@ -10,6 +10,9 @@ class Commit extends BaseCommit
 {
     use CallAsyncTrait;
 
+    /**
+     * @return Commit
+     */
     public function refresh(): Commit
     {
         return $this->wait($this->callAsync('refresh'));
