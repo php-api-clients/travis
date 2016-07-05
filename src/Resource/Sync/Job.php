@@ -18,6 +18,9 @@ class Job extends BaseJob
         return $this->wait($this->observableToPromise($this->callAsync('annotations')->toArray()));
     }
 
+    /**
+     * @return Job
+     */
     public function refresh(): Job
     {
         return $this->wait($this->callAsync('refresh'));
