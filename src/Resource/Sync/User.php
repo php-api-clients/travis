@@ -7,6 +7,9 @@ use WyriHaximus\Travis\Resource\User as BaseUser;
 
 class User extends BaseUser
 {
+    /**
+     * @return User
+     */
     public function sync() : User
     {
         return $this->wait($this->callAsync('sync'));
