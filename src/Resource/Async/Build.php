@@ -12,6 +12,9 @@ use function React\Promise\resolve;
 
 class Build extends BaseBuild
 {
+    /**
+     * @return ObservableInterface
+     */
     public function jobs(): ObservableInterface
     {
         return Promise::toObservable(
@@ -23,6 +26,10 @@ class Build extends BaseBuild
         });
     }
 
+    /**
+     * @param int $id
+     * @return PromiseInterface
+     */
     public function job(int $id): PromiseInterface
     {
         return $this->getTransport()->request(

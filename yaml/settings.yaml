@@ -1,0 +1,7 @@
+namespace: WyriHaximus\Travis\Resource
+class: Settings
+properties:
+  builds_only_with_travis_yml: bool
+  build_pushes: bool
+  build_pull_requests: bool
+  maximum_number_of_builds: int

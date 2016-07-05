@@ -1,0 +1,8 @@
+namespace: WyriHaximus\Travis\Resource
+class: Account
+properties:
+  id: int
+  name: string
+  type: string
+  login: string
+  repos_count: int

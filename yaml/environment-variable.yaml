@@ -1,0 +1,8 @@
+namespace: WyriHaximus\Travis\Resource
+class: EnvironmentVariable
+properties:
+  id: string
+  name: string
+  value: string
+  public: bool
+  repository_id: int

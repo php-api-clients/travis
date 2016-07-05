@@ -8,6 +8,13 @@ use WyriHaximus\Travis\Resource\Job as BaseJob;
 
 class Job extends BaseJob
 {
+    /**
+     * @return array
+     */
+    public function annotations(): array
+    {
+        return $this->wait($this->observableToPromise($this->callAsync('annotations')->toArray()));
+    }
     use CallAsyncTrait;
 
     public function refresh(): Job
