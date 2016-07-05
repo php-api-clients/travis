@@ -103,6 +103,9 @@ class Repository extends BaseRepository
         return $this->wait($this->callAsync('key'));
     }
 
+    /**
+     * @return Repository
+     */
     public function refresh(): Repository
     {
         return $this->wait($this->callAsync('refresh'));
