@@ -17,6 +17,9 @@ class User extends BaseUser
         });
     }
 
+    /**
+     * @return PromiseInterface
+     */
     public function sync(): PromiseInterface
     {
         return $this->getTransport()->requestPsr7(
