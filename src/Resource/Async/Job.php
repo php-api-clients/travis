@@ -25,6 +25,10 @@ class Job extends BaseJob
             return $this->getTransport()->getHydrator()->hydrate('Annotation', $annotation);
         });
     }
+
+    /**
+     * @return PromiseInterface
+     */
     public function refresh(): PromiseInterface
     {
         return $this->getTransport()->request('jobs/' . $this->id)->then(function ($json) {
