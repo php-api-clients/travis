@@ -8,6 +8,11 @@ use WyriHaximus\ApiClient\Resource\ResourceInterface;
 interface SSHKeyInterface extends ResourceInterface
 {
     /**
+     * @return int
+     */
+    public function id() : int;
+
+    /**
      * @return string
      */
     public function description() : string;
