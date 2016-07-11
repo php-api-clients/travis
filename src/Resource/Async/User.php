@@ -10,6 +10,9 @@ use function React\Promise\resolve;
 
 class User extends BaseUser
 {
+    /**
+     * @return PromiseInterface
+     */
     public function refresh() : PromiseInterface
     {
         return $this->getTransport()->request('users/' . $this->id())->then(function ($json) {
