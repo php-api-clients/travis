@@ -4,6 +4,7 @@ use React\EventLoop\Factory;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\SettingsInterface;
+use function WyriHaximus\ApiClient\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -24,7 +25,8 @@ if (count($argv) > 1) {
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) {
         $repo->settings()->then(function (SettingsInterface $settings) use ($repo) {
-            echo $repo->slug(), ': ', var_export($settings, true), PHP_EOL;
+            echo $repo->slug(), ': ', PHP_EOL;
+            resource_pretty_print($settings, 1);
         });
     });
 }
