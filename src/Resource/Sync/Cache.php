@@ -7,6 +7,9 @@ use WyriHaximus\Travis\Resource\Cache as BaseCache;
 
 class Cache extends BaseCache
 {
+    /**
+     * @return Cache
+     */
     public function refresh() : Cache
     {
         return $this->wait($this->callAsync('refresh'));
