@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Resource\TransportAwareTrait;
 
 abstract class Commit implements CommitInterface
 {

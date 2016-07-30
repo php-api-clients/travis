@@ -6,9 +6,9 @@ namespace WyriHaximus\Travis;
 use React\EventLoop\LoopInterface;
 use Rx\Observable;
 use Rx\React\Promise;
-use WyriHaximus\ApiClient\Transport\Client as Transport;
-use WyriHaximus\ApiClient\Transport\Factory;
-use WyriHaximus\Pusher\AsyncClient as PusherAsyncClient;
+use ApiClients\Foundation\Transport\Client as Transport;
+use ApiClients\Foundation\Transport\Factory;
+use ApiClients\Pusher\AsyncClient as PusherAsyncClient;
 
 class AsyncClient
 {

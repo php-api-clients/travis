@@ -2,7 +2,7 @@
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
+use ApiClients\Foundation\Resource\ResourceInterface;
 
 interface LogLineInterface extends ResourceInterface
 {

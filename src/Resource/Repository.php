@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
-use WyriHaximus\Pusher\PusherAwareTrait;
+use ApiClients\Foundation\Resource\TransportAwareTrait;
+use ApiClients\Pusher\PusherAwareTrait;
 
 abstract class Repository implements RepositoryInterface
 {

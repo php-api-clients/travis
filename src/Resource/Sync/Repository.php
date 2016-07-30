@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
+use ApiClients\Foundation\Resource\CallAsyncTrait;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;

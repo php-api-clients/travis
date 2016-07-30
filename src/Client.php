@@ -6,8 +6,8 @@ namespace WyriHaximus\Travis;
 use React\EventLoop\Factory as LoopFactory;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Sync\Repository;
-use WyriHaximus\ApiClient\Transport\Client as Transport;
-use WyriHaximus\ApiClient\Transport\Factory;
+use ApiClients\Foundation\Transport\Client as Transport;
+use ApiClients\Foundation\Transport\Factory;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 

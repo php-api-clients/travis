@@ -2,7 +2,7 @@
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Resource\TransportAwareTrait;
 
 abstract class LogLine implements LogLineInterface
 {

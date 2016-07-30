@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace WyriHaximus\Travis\Resource;
 
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
+use ApiClients\Foundation\Resource\ResourceInterface;
 
 /**
  * @link https://docs.travis-ci.com/api#jobs
