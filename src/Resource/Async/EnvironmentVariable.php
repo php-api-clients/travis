@@ -12,13 +12,18 @@ class EnvironmentVariable extends BaseEnvironmentVariable
 {
     public function refresh() : PromiseInterface
     {
-        return $this->getTransport()->request('settings/env_vars?repository_id=' . $this->repositoryId())->then(function ($json) {
+        return $this->getTransport()->request(
+            'settings/env_vars?repository_id=' . $this->repositoryId()
+        )->then(function ($json) {
             foreach ($json['env_vars'] as $envVar) {
                 if ($envVar['id'] != $this->id()) {
                     continue;
                 }
 
-                return resolve($this->getTransport()->getHydrator()->hydrate('EnvironmentVariable', $envVar));
+                return resolve($this->getTransport()->getHydrator()->hydrate(
+                    'EnvironmentVariable',
+                    $envVar
+                ));
             }
 
             return reject();
