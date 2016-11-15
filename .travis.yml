@@ -9,32 +9,38 @@ cache:
 ## PHP versions we test against
 php:
   - 7.0
+  - 7.1
   - hhvm
+  - nightly
 
 ## Build matrix for lowest and highest possible targets
 matrix:
   include:
     - php: 7.0
       env: dependencies=lowest
+    - php: 7.1
+      env: dependencies=lowest
     - php: hhvm
+      env: dependencies=lowest
+    - php: nightly
       env: dependencies=lowest
     - php: 7.0
       env: dependencies=highest
+    - php: 7.1
+      env: dependencies=highest
     - php: hhvm
+      env: dependencies=highest
+    - php: nightly
       env: dependencies=highest
   allow_failures:
     - php: hhvm
-
-## Update composer and configure authentication token
-before_install:
-  - composer self-update
 
 ## Install or update dependencies
 install:
   - if [ -z "$dependencies" ]; then composer install --prefer-dist; fi;
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n; fi;
   - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n; fi;
-  - composer show -i
+  - composer show
 
 ## Run the actual test
 script: make travis

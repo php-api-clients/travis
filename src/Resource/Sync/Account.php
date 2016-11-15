@@ -1,0 +1,17 @@
+<?php
+declare(strict_types=1);
+
+namespace WyriHaximus\Travis\Resource\Sync;
+
+use WyriHaximus\Travis\Resource\Account as BaseAccount;
+
+class Account extends BaseAccount
+{
+    /**
+     * @return Account
+     */
+    public function refresh() : Account
+    {
+        return $this->wait($this->callAsync('refresh'));
+    }
+}

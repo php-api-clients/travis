@@ -3,6 +3,7 @@
 use React\EventLoop\Factory;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
+use function WyriHaximus\ApiClient\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -20,6 +21,11 @@ if (count($argv) > 1) {
     }
 }
 
+foreach ($repos as $repo) {
+    $client->repository($repo)->then(function (RepositoryInterface $repo) {
+        resource_pretty_print($repo);
+    });
+}
 $repos = \Rx\Observable::fromArray($repos);
 
 $repo = $repos->flatMap(function ($repo) use ($client) {

@@ -1,0 +1,5 @@
+namespace: WyriHaximus\Travis\Resource
+class: Hook
+properties:
+  id: int
+  active: bool

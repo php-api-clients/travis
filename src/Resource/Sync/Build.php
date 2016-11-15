@@ -11,13 +11,28 @@ class Build extends BaseBuild
 {
     use CallAsyncTrait;
 
+    /**
+     * @return array
+     */
     public function jobs(): array
     {
         return $this->wait($this->observableToPromise($this->callAsync('jobs')->toArray()));
     }
 
+    /**
+     * @param int $id
+     * @return Job
+     */
     public function job(int $id): Job
     {
         return $this->wait($this->observableToPromise($this->callAsync('job', $id)));
+    }
+
+    /**
+     * @return Build
+     */
+    public function refresh(): Build
+    {
+        return $this->wait($this->callAsync('refresh'));
     }
 }

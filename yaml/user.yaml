@@ -1,0 +1,12 @@
+namespace: WyriHaximus\Travis\Resource
+class: User
+properties:
+  id: int
+  name: string
+  login: string
+  email: string
+  gravatar_id: string
+  is_syncing: bool
+  synced_at: DateTimeInterface
+  correct_scopes: bool
+  created_at: DateTimeInterface
