@@ -178,4 +178,11 @@ class Repository extends BaseRepository
             return resolve($this->getTransport()->getHydrator()->hydrate('RepositoryKey', $key));
         });
     }
+
+    public function refresh(): PromiseInterface
+    {
+        return $this->getTransport()->request('repos/' . $this->slug)->then(function ($json) {
+            return resolve($this->getTransport()->getHydrator()->hydrate('Repository', $json['repo']));
+        });
+    }
 }

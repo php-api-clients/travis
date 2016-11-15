@@ -140,8 +140,13 @@ class Job implements JobInterface
         return $this->annotation_ids;
     }
 
+    public function annotations()
+    {
+        throw new AbstractMethodException();
+    }
+
     public function refresh()
     {
-        // TODO
+        throw new AbstractMethodException();
     }
 }

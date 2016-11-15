@@ -1,9 +1,10 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
 use React\Promise\PromiseInterface;
+use function React\Promise\reject;
+use function React\Promise\resolve;
 use WyriHaximus\Travis\Resource\Branch as BaseBranch;
 
 class Branch extends BaseBranch
@@ -13,6 +14,16 @@ class Branch extends BaseBranch
      */
     public function refresh() : PromiseInterface
     {
-        return $this->wait($this->callAsync('refresh'));
+        return $this->getTransport()->request('repos/' . $this->repositoryId() . '/branches')->then(function ($json) {
+            foreach ($json['branches'] as $branch) {
+                if ($branch['id'] != $this->id()) {
+                    continue;
+                }
+
+                return resolve($this->getTransport()->getHydrator()->hydrate('Branch', $branch));
+            }
+
+            return reject();
+        });
     }
 }

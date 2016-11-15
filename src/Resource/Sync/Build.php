@@ -27,4 +27,12 @@ class Build extends BaseBuild
     {
         return $this->wait($this->callAsync('job', $id));
     }
+
+    /**
+     * @return Build
+     */
+    public function refresh(): Build
+    {
+        return $this->wait($this->callAsync('refresh'));
+    }
 }

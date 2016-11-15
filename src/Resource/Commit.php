@@ -142,6 +142,6 @@ abstract class Commit implements CommitInterface
 
     public function refresh()
     {
-        // TODO
+        throw new AbstractMethodException();
     }
 }

@@ -10,6 +10,11 @@ abstract class SSHKey implements SSHKeyInterface
     use TransportAwareTrait;
 
     /**
+     * @var int
+     */
+    protected $id;
+
+    /**
      * @var string
      */
     protected $description;
@@ -18,6 +23,14 @@ abstract class SSHKey implements SSHKeyInterface
      * @var string
      */
     protected $fingerprint;
+
+    /**
+     * @return int
+     */
+    public function id() : int
+    {
+        return $this->id;
+    }
 
     /**
      * @return string

@@ -7,13 +7,19 @@ use WyriHaximus\Travis\Resource\User as BaseUser;
 
 class User extends BaseUser
 {
-    public function refresh() : User
-    {
-        return $this->wait($this->callAsync('refresh'));
-    }
-
+    /**
+     * @return User
+     */
     public function sync() : User
     {
         return $this->wait($this->callAsync('sync'));
+    }
+
+    /**
+     * @return User
+     */
+    public function refresh() : User
+    {
+        return $this->wait($this->callAsync('refresh'));
     }
 }
