@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6678e71b05ec8c1fe59a7b7f3a641b5a",
-    "content-hash": "00c23b5bb66b290830498e575df22de4",
+    "hash": "2e13c671641ba309066cf5eb6a0689ce",
+    "content-hash": "27dd6ccc6e07408d758e4c8c15fc5f8b",
     "packages": [
         {
             "name": "clue/block-react",
@@ -986,6 +986,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
+            "abandoned": "api-clients/foundation",
             "time": "2016-07-02 12:03:40"
         },
         {
