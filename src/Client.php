@@ -3,26 +3,22 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis;
 
+use ApiClients\Foundation\Factory;
 use React\EventLoop\Factory as LoopFactory;
+use React\EventLoop\LoopInterface;
 use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\SSHKeyInterface;
-use WyriHaximus\ApiClient\Transport\Client as Transport;
-use WyriHaximus\ApiClient\Transport\Factory;
-use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Sync\Repository;
-use ApiClients\Foundation\Transport\Client as Transport;
-use ApiClients\Foundation\Transport\Factory;
+use WyriHaximus\Travis\Resource\UserInterface;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
-use WyriHaximus\Travis\Resource\UserInterface;
 
 class Client
 {
     /**
-     * @var Transport
+     * @var LoopInterface
      */
-    protected $transport;
+    protected $loop;
 
     /**
      * @var AsyncClient
@@ -31,24 +27,12 @@ class Client
 
     /**
      * @param string $token
-     * @param Transport|null $transport
      */
-    public function __construct(string $token = '', Transport $transport = null)
+    public function __construct(string $token = '')
     {
-        $loop = LoopFactory::create();
-        if (!($transport instanceof Transport)) {
-            $options = [
-                    'resource_namespace' => 'Async',
-                ] + ApiSettings::TRANSPORT_OPTIONS;
-
-            if ($token !== '') {
-                $options['headers']['Authorization'] = 'token ' . $token;
-            }
-
-            $transport = Factory::create($loop, $options);
-        }
-        $this->transport = $transport;
-        $this->client = new AsyncClient($loop, $token, $this->transport);
+        $this->loop = LoopFactory::create();
+        $this->options = ApiSettings::getOptions($token, 'Sync');
+        $this->client = new AsyncClient($this->loop, $token, Factory::create($this->loop, $this->options));
     }
 
     /**
@@ -58,8 +42,8 @@ class Client
     public function repository(string $repository): RepositoryInterface
     {
         return await(
-            Promise::fromObservable($this->client->repository($repository)),
-            $this->transport->getLoop()
+            $this->client->repository($repository),
+            $this->loop
         );
     }
 
@@ -70,7 +54,7 @@ class Client
     {
         return await(
             $this->client->user(),
-            $this->transport->getLoop()
+            $this->loop
         );
     }
 
@@ -82,7 +66,7 @@ class Client
     {
         return await(
             $this->client->sshKey($id),
-            $this->transport->getLoop()
+            $this->loop
         );
     }
 
@@ -95,7 +79,7 @@ class Client
             Promise::fromObservable(
                 $this->client->hooks()->toArray()
             ),
-            $this->transport->getLoop()
+            $this->loop
         );
     }
 
@@ -108,7 +92,7 @@ class Client
             Promise::fromObservable(
                 $this->client->accounts()->toArray()
             ),
-            $this->transport->getLoop()
+            $this->loop
         );
     }
 
@@ -121,7 +105,7 @@ class Client
             Promise::fromObservable(
                 $this->client->broadcasts()->toArray()
             ),
-            $this->transport->getLoop()
+            $this->loop
         );
     }
 }
