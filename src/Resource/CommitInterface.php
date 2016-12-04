@@ -1,13 +1,14 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use ApiClients\Foundation\Resource\ResourceInterface;
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
 
 interface CommitInterface extends ResourceInterface
 {
+    const HYDRATE_CLASS = 'Commit';
+
     /**
      * @return int
      */
@@ -31,7 +32,7 @@ interface CommitInterface extends ResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function committedAt() : DateTimeInterface;
+    public function comittedAt() : DateTimeInterface;
 
     /**
      * @return string

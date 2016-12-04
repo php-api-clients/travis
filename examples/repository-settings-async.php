@@ -4,12 +4,12 @@ use React\EventLoop\Factory;
 use WyriHaximus\Travis\AsyncClient;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\SettingsInterface;
-use function WyriHaximus\ApiClient\resource_pretty_print;
+use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient($loop);
+$client = new AsyncClient($loop, require 'resolve_key.php');
 
 $repos = [
     'WyriHaximus/php-travis-client',

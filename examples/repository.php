@@ -1,10 +1,12 @@
 <?php
 
 use WyriHaximus\Travis\Client;
-use function WyriHaximus\ApiClient\resource_pretty_print;
+use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $client = new Client();
 
-resource_pretty_print($client->repository($argv[1] ?? 'WyriHaximus/php-travis-client'));
+$repo = $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client');
+resource_pretty_print($repo);
+resource_pretty_print($repo->refresh());

@@ -11,6 +11,7 @@
 # Goals
 
 * 100% TravisCI [API](https://docs.travis-ci.com/api) support
+* Third party API support (like Pusher)
 * Both synchronous and asynchronous
 
 # License

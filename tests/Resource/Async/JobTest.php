@@ -1,20 +1,23 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Travis\Resource\Async;
 
-use WyriHaximus\Tests\Travis\Resource\JobTest as BaseJobTest;
-use WyriHaximus\Travis\Resource\Async\Job;
+use ApiClients\Tools\ResourceTestUtilities\AbstractResourceTest;
+use WyriHaximus\Travis\ApiSettings;
+use WyriHaximus\Travis\Resource\Job;
 
-class JobTest extends BaseJobTest
+class JobTest extends AbstractResourceTest
 {
-    public function getNamespace(): string
+    public function getSyncAsync() : string
     {
-        return 'Async\\';
+        return 'Async';
     }
-
-    public function getJob()
+    public function getClass() : string
     {
-        return new Job();
+        return Job::class;
+    }
+    public function getNamespace() : string
+    {
+        return Apisettings::NAMESPACE;
     }
 }

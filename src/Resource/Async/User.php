@@ -3,7 +3,11 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
+use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use React\Promise\PromiseInterface;
 use WyriHaximus\Travis\Resource\User as BaseUser;
 use function React\Promise\resolve;
@@ -15,8 +19,10 @@ class User extends BaseUser
      */
     public function refresh() : PromiseInterface
     {
-        return $this->getTransport()->request('users/' . $this->id())->then(function ($json) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('User', $json['user']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('users/' . $this->id())
+        )->then(function (ResponseInterface $response) {
+            return resolve($this->handleCommand(new HydrateCommand('User', $response->getBody()->getJson()['user'])));
         });
     }
 
@@ -25,13 +31,12 @@ class User extends BaseUser
      */
     public function sync(): PromiseInterface
     {
-        return $this->getTransport()->requestPsr7(
+        return $this->handleCommand(new RequestCommand(
             new Request(
                 'POST',
-                $this->getTransport()->getBaseURL() . 'users/sync',
-                $this->getTransport()->getHeaders()
+                'users/sync'
             )
-        )->then(function () {
+        ))->then(function () {
             return $this->refresh();
         });
     }

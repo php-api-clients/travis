@@ -1,14 +1,15 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 
-abstract class Broadcast implements BroadcastInterface
+/**
+ * @EmptyResource("EmptyBroadcast")
+ */
+abstract class Broadcast extends AbstractResource implements BroadcastInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */

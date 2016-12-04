@@ -1,15 +1,16 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
 
-class Job implements JobInterface
+/**
+ * @EmptyResource("EmptyJob")
+ */
+abstract class Job extends AbstractResource implements JobInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
@@ -43,7 +44,7 @@ class Job implements JobInterface
     /**
      * @var array
      */
-    protected $config = [];
+    protected $config;
 
     /**
      * @var string
@@ -71,82 +72,111 @@ class Job implements JobInterface
     protected $allow_failure;
 
     /**
-     * @var int[]
+     * @var array
      */
     protected $annotation_ids;
 
+    /**
+     * @return int
+     */
     public function id() : int
     {
         return $this->id;
     }
 
+    /**
+     * @return int
+     */
     public function buildId() : int
     {
         return $this->build_id;
     }
 
+    /**
+     * @return int
+     */
     public function repositoryId() : int
     {
         return $this->repository_id;
     }
 
+    /**
+     * @return int
+     */
     public function commitId() : int
     {
         return $this->commit_id;
     }
 
+    /**
+     * @return int
+     */
     public function logId() : int
     {
         return $this->log_id;
     }
 
+    /**
+     * @return string
+     */
     public function number() : string
     {
         return $this->number;
     }
 
+    /**
+     * @return array
+     */
     public function config() : array
     {
         return $this->config;
     }
 
+    /**
+     * @return string
+     */
     public function state() : string
     {
         return $this->state;
     }
 
+    /**
+     * @return DateTimeInterface
+     */
     public function startedAt() : DateTimeInterface
     {
         return $this->started_at;
     }
 
+    /**
+     * @return DateTimeInterface
+     */
     public function finishedAt() : DateTimeInterface
     {
         return $this->finished_at;
     }
 
+    /**
+     * @return string
+     */
     public function queue() : string
     {
         return $this->queue;
     }
 
+    /**
+     * @return bool
+     */
     public function allowFailure() : bool
     {
         return $this->allow_failure;
     }
 
+    /**
+     * @return array
+     */
     public function annotationIds() : array
     {
         return $this->annotation_ids;
-    }
-
-    public function annotations()
-    {
-        throw new AbstractMethodException();
-    }
-
-    public function refresh()
-    {
-        throw new AbstractMethodException();
     }
 }

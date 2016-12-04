@@ -1,20 +1,23 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Travis\Resource\Async;
 
-use WyriHaximus\Tests\Travis\Resource\RepositoryTest as BaseRepositoryTest;
-use WyriHaximus\Travis\Resource\Async\Repository;
+use ApiClients\Tools\ResourceTestUtilities\AbstractResourceTest;
+use WyriHaximus\Travis\ApiSettings;
+use WyriHaximus\Travis\Resource\Repository;
 
-class RepositoryTest extends BaseRepositoryTest
+class RepositoryTest extends AbstractResourceTest
 {
-    public function getNamespace(): string
+    public function getSyncAsync() : string
     {
-        return 'Async\\';
+        return 'Async';
     }
-
-    public function getRepository()
+    public function getClass() : string
     {
-        return new Repository();
+        return Repository::class;
+    }
+    public function getNamespace() : string
+    {
+        return Apisettings::NAMESPACE;
     }
 }

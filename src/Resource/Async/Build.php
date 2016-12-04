@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
+use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
+use Psr\Http\Message\ResponseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -18,11 +21,11 @@ class Build extends BaseBuild
     public function jobs(): ObservableInterface
     {
         return Promise::toObservable(
-            $this->getTransport()->request('builds/' . $this->id())
+            $this->handleCommand(new SimpleRequestCommand('builds/' . $this->id()))
         )->flatMap(function ($response) {
-            return Observable::fromArray($response['jobs']);
-        })->map(function ($job) {
-            return $this->getTransport()->getHydrator()->hydrate('Job', $job);
+            return Observable::fromArray($response->getBody()->getJson()['jobs']);
+        })->flatMap(function ($job) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('Job', $job)));
         });
     }
 
@@ -32,17 +35,23 @@ class Build extends BaseBuild
      */
     public function job(int $id): PromiseInterface
     {
-        return $this->getTransport()->request(
-            'jobs/' . $id
-        )->then(function ($response) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Job', $response['job']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('jobs/' . $id)
+        )->then(function (ResponseInterface $response) {
+            return $this->handleCommand(
+                new HydrateCommand('Job', $response->getBody()->getJson()['job'])
+            );
         });
     }
 
     public function refresh(): PromiseInterface
     {
-        return $this->getTransport()->request('builds/' . $this->id)->then(function ($json) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Build', $json['build']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('builds/' . $this->id)
+        )->then(function (ResponseInterface $response) {
+            return resolve($this->handleCommand(
+                new SimpleRequestCommand('Build', $response->getBody()->getJson()['build'])
+            ));
         });
     }
 }

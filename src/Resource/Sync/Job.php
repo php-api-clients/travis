@@ -1,28 +1,34 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Job as BaseJob;
+use WyriHaximus\Travis\Resource\JobInterface;
 
 class Job extends BaseJob
 {
-    use CallAsyncTrait;
-
     /**
      * @return array
      */
     public function annotations(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('annotations')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (JobInterface $job) {
+                return Promise::fromObservable($job->annotations());
+            })
+        );
     }
 
-    /**
-     * @return Job
-     */
-    public function refresh(): Job
+    public function refresh() : Job
     {
-        return $this->wait($this->callAsync('refresh'));
+        return $this->wait($this->handleCommand(
+            new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+        )->then(function (JobInterface $job) {
+            return $job->refresh();
+        }));
     }
 }

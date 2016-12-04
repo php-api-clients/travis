@@ -5,8 +5,8 @@ namespace WyriHaximus\Travis\Resource\Async;
 
 use Exception;
 use React\Promise\PromiseInterface;
-use function React\Promise\reject;
 use WyriHaximus\Travis\Resource\Settings as BaseSettings;
+use function React\Promise\reject;
 
 class Settings extends BaseSettings
 {

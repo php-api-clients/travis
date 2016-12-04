@@ -1,0 +1,8 @@
+yaml_location: yaml
+api_settings: WyriHaximus\Travis\ApiSettings
+src:
+  path: src/Resource
+  namespace: WyriHaximus\Travis\Resource
+tests:
+  path: tests/Resource
+  namespace: WyriHaximus\Tests\Travis\Resource

@@ -1,22 +1,26 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Build as BaseBuild;
-use function Clue\React\Block\await;
+use WyriHaximus\Travis\Resource\BuildInterface;
 
 class Build extends BaseBuild
 {
-    use CallAsyncTrait;
-
     /**
      * @return array
      */
     public function jobs(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('jobs')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (BuildInterface $build) {
+                return Promise::fromObservable($build->jobs());
+            })
+        );
     }
 
     /**
@@ -25,14 +29,26 @@ class Build extends BaseBuild
      */
     public function job(int $id): Job
     {
-        return $this->wait($this->callAsync('job', $id));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (BuildInterface $build) use ($id) {
+                return $build->job($id);
+            })
+        );
     }
 
     /**
      * @return Build
      */
-    public function refresh(): Build
+    public function refresh() : Build
     {
-        return $this->wait($this->callAsync('refresh'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (BuildInterface $build) {
+                return $build->refresh();
+            })
+        );
     }
 }

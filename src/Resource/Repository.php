@@ -1,15 +1,15 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 
-abstract class Repository implements RepositoryInterface
+/**
+ * @EmptyResource("EmptyRepository")
+ */
+abstract class Repository extends AbstractResource implements RepositoryInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
@@ -46,12 +46,12 @@ abstract class Repository implements RepositoryInterface
     protected $last_build_duration;
 
     /**
-     * @var DateTimeInterface
+     * @var int
      */
     protected $last_build_started_at;
 
     /**
-     * @var DateTimeInterface
+     * @var int
      */
     protected $last_build_finished_at;
 
@@ -60,58 +60,83 @@ abstract class Repository implements RepositoryInterface
      */
     protected $github_language;
 
+    /**
+     * @return int
+     */
     public function id() : int
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function slug() : string
     {
         return $this->slug;
     }
 
+    /**
+     * @return string
+     */
     public function description() : string
     {
         return $this->description;
     }
 
+    /**
+     * @return int
+     */
     public function lastBuildId() : int
     {
-        return $this->last_build_id;
+        return (int)$this->last_build_id;
     }
 
+    /**
+     * @return int
+     */
     public function lastBuildNumber() : int
     {
         return $this->last_build_number;
     }
 
+    /**
+     * @return string
+     */
     public function lastBuildState() : string
     {
         return $this->last_build_state;
     }
 
+    /**
+     * @return int
+     */
     public function lastBuildDuration() : int
     {
         return $this->last_build_duration;
     }
 
-    public function lastBuildStartedAt() : DateTimeInterface
+    /**
+     * @return int
+     */
+    public function lastBuildStartedAt() : int
     {
         return $this->last_build_started_at;
     }
 
-    public function lastBuildFinishedAt() : DateTimeInterface
+    /**
+     * @return int
+     */
+    public function lastBuildFinishedAt() : int
     {
         return $this->last_build_finished_at;
     }
 
+    /**
+     * @return string
+     */
     public function githubLanguage() : string
     {
         return $this->github_language;
-    }
-
-    public function refresh()
-    {
-        throw new AbstractMethodException();
     }
 }

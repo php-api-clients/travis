@@ -1,15 +1,16 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
 
-abstract class Commit implements CommitInterface
+/**
+ * @EmptyResource("EmptyCommit")
+ */
+abstract class Commit extends AbstractResource implements CommitInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
@@ -33,7 +34,7 @@ abstract class Commit implements CommitInterface
     /**
      * @var DateTimeInterface
      */
-    protected $committed_at;
+    protected $comitted_at;
 
     /**
      * @var string
@@ -95,9 +96,9 @@ abstract class Commit implements CommitInterface
     /**
      * @return DateTimeInterface
      */
-    public function committedAt() : DateTimeInterface
+    public function comittedAt() : DateTimeInterface
     {
-        return $this->committed_at;
+        return $this->comitted_at;
     }
 
     /**
@@ -138,10 +139,5 @@ abstract class Commit implements CommitInterface
     public function compareUrl() : string
     {
         return $this->compare_url;
-    }
-
-    public function refresh()
-    {
-        throw new AbstractMethodException();
     }
 }
