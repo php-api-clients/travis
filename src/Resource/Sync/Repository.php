@@ -1,25 +1,29 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Resource\CallAsyncTrait;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
-use WyriHaximus\Travis\Resource\SettingsInterface;
+use WyriHaximus\Travis\Resource\RepositoryInterface;
 use WyriHaximus\Travis\Resource\RepositoryKeyInterface;
+use WyriHaximus\Travis\Resource\SettingsInterface;
+use function React\Promise\resolve;
 
 class Repository extends BaseRepository
 {
-    use CallAsyncTrait;
-
     /**
      * @return array
      */
     public function builds(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('builds')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return Promise::fromObservable($repository->builds()->toArray());
+            })
+        );
     }
 
     /**
@@ -28,7 +32,13 @@ class Repository extends BaseRepository
      */
     public function build(int $id): Build
     {
-        return $this->wait($this->observableToPromise($this->callAsync('build', $id)));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) use ($id) {
+                return $repository->build($id);
+            })
+        );
     }
 
     /**
@@ -36,7 +46,13 @@ class Repository extends BaseRepository
      */
     public function commits(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('commits')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return Promise::fromObservable($repository->commits()->toArray());
+            })
+        );
     }
 
     /**
@@ -44,7 +60,13 @@ class Repository extends BaseRepository
      */
     public function settings(): SettingsInterface
     {
-        return $this->wait($this->callAsync('settings'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->settings();
+            })
+        );
     }
 
     /**
@@ -52,7 +74,15 @@ class Repository extends BaseRepository
      */
     public function isActive(): bool
     {
-        return $this->wait($this->callAsync('isActive'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->isActive();
+            })->otherwise(function (bool $state) {
+                return resolve($state);
+            })
+        );
     }
 
     /**
@@ -60,7 +90,13 @@ class Repository extends BaseRepository
      */
     public function enable(): Repository
     {
-        return $this->wait($this->callAsync('enable'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->enable();
+            })
+        );
     }
 
     /**
@@ -68,7 +104,13 @@ class Repository extends BaseRepository
      */
     public function disable(): Repository
     {
-        return $this->wait($this->callAsync('disable'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->disable();
+            })
+        );
     }
 
     /**
@@ -76,7 +118,13 @@ class Repository extends BaseRepository
      */
     public function branches(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('branches')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return Promise::fromObservable($repository->branches()->toArray());
+            })
+        );
     }
 
     /**
@@ -84,7 +132,13 @@ class Repository extends BaseRepository
      */
     public function vars(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('vars')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return Promise::fromObservable($repository->vars()->toArray());
+            })
+        );
     }
 
     /**
@@ -92,7 +146,13 @@ class Repository extends BaseRepository
      */
     public function caches(): array
     {
-        return $this->wait($this->observableToPromise($this->callAsync('caches')->toArray()));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return Promise::fromObservable($repository->caches()->toArray());
+            })
+        );
     }
 
     /**
@@ -100,14 +160,26 @@ class Repository extends BaseRepository
      */
     public function key(): RepositoryKeyInterface
     {
-        return $this->wait($this->callAsync('key'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->key();
+            })
+        );
     }
 
     /**
      * @return Repository
      */
-    public function refresh(): Repository
+    public function refresh() : Repository
     {
-        return $this->wait($this->callAsync('refresh'));
+        return $this->wait(
+            $this->handleCommand(
+                new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+            )->then(function (RepositoryInterface $repository) {
+                return $repository->refresh();
+            })
+        );
     }
 }

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
+use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use React\Promise\PromiseInterface;
 use WyriHaximus\Travis\Resource\Account as BaseAccount;
 use function React\Promise\reject;
@@ -15,13 +17,13 @@ class Account extends BaseAccount
      */
     public function refresh() : PromiseInterface
     {
-        return $this->getTransport()->request('accounts')->then(function ($json) {
+        return $this->handleCommand(new SimpleRequestCommand('accounts'))->then(function ($json) {
             foreach ($json['accounts'] as $account) {
                 if ($account['id'] != $this->id()) {
                     continue;
                 }
 
-                return resolve($this->getTransport()->getHydrator()->hydrate('Account', $account));
+                return resolve($this->handleCommand(new HydrateCommand('Account', $account)));
             }
 
             return reject();

@@ -1,41 +1,60 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use DateTimeInterface;
 use ApiClients\Foundation\Resource\ResourceInterface;
 
-/**
- * @link https://docs.travis-ci.com/api#repositories
- */
 interface RepositoryInterface extends ResourceInterface
 {
+    const HYDRATE_CLASS = 'Repository';
+
+    /**
+     * @return int
+     */
     public function id() : int;
 
+    /**
+     * @return string
+     */
     public function slug() : string;
 
+    /**
+     * @return string
+     */
     public function description() : string;
 
+    /**
+     * @return int
+     */
     public function lastBuildId() : int;
 
-    public function lastBuildNumber() : string;
+    /**
+     * @return int
+     */
+    public function lastBuildNumber() : int;
 
+    /**
+     * @return string
+     */
     public function lastBuildState() : string;
 
+    /**
+     * @return int
+     */
     public function lastBuildDuration() : int;
 
-    public function lastBuildStartedAt() : DateTimeInterface;
+    /**
+     * @return int
+     */
+    public function lastBuildStartedAt() : int;
 
-    public function lastBuildFinishedAt() : DateTimeInterface;
+    /**
+     * @return int
+     */
+    public function lastBuildFinishedAt() : int;
 
+    /**
+     * @return string
+     */
     public function githubLanguage() : string;
-
-    public function settings();
-
-    public function isActive();
-
-    public function enable();
-
-    public function disable();
 }

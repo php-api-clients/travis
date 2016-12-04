@@ -49,7 +49,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildState() : int
+    public function lastBuildState() : string
     {
         return null;
     }

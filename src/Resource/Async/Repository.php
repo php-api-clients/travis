@@ -1,13 +1,23 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Async;
 
+use ApiClients\Client\Pusher\AsyncClient;
+use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
+use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
+use ApiClients\Foundation\Transport\JsonStream;
 use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
+use Rx\Observer\CallbackObserver;
+use Rx\ObserverInterface;
 use Rx\React\Promise;
+use Rx\SchedulerInterface;
+use WyriHaximus\Travis\ApiSettings;
 use WyriHaximus\Travis\Resource\Repository as BaseRepository;
 use function React\Promise\reject;
 use function React\Promise\resolve;
@@ -17,41 +27,33 @@ class Repository extends BaseRepository
     public function builds(): Observable
     {
         return Promise::toObservable(
-            $this->getTransport()->request('repos/' . $this->slug() . '/builds')
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['builds']);
-        })->map(function ($build) {
-            return $this->getTransport()->getHydrator()->hydrate('Build', $build);
-        });
-    }
-
-    public function build(int $id): Observable
-    {
-        return Promise::toObservable(
-            $this->getTransport()->request('repos/' . $this->slug() . '/builds/' . $id)
-        )->map(function ($response) {
-            return $this->getTransport()->getHydrator()->hydrate('Build', $response['build']);
+            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
+        )->flatMap(function (ResponseInterface $response) {
+            return Observable::fromArray($response->getBody()->getJson()['builds']);
+        })->flatMap(function (array $build) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('Build', $build)));
         });
     }
 
     public function jobs(int $buildId): Observable
     {
-        return $this->build($buildId)->flatMap(function (Build $build) {
+        return Promise::toObservable($this->build($buildId))->flatMap(function (Build $build) {
             return $build->jobs();
         });
     }
 
-    public function commits(): Observable
     /**
      * @param int $id
      * @return PromiseInterface
      */
     public function build(int $id): PromiseInterface
     {
-        return $this->getTransport()->request(
-            'repos/' . $this->slug() . '/builds/' . $id
-        )->then(function ($response) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Build', $response['build']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('repos/' . $this->slug() . '/builds/' . $id)
+        )->then(function (ResponseInterface $response) {
+            return resolve($this->handleCommand(
+                new HydrateCommand('Build', $response->getBody()->getJson()['build'])
+            ));
         });
     }
 
@@ -61,28 +63,43 @@ class Repository extends BaseRepository
     public function commits(): ObservableInterface
     {
         return Promise::toObservable(
-            $this->getTransport()->request('repos/' . $this->slug() . '/builds')
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['commits']);
-        })->map(function ($build) {
-            return $this->getTransport()->getHydrator()->hydrate('Commit', $build);
+            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
+        )->flatMap(function (ResponseInterface $response) {
+            return Observable::fromArray($response->getBody()->getJson()['commits']);
+        })->flatMap(function (array $commit) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('Commit', $commit)));
         });
     }
 
     public function events(): Observable
     {
-        return $this->getPusher()->channel('repo-' . $this->id)->filter(function ($message) {
-            return in_array($message->event, [
-                'build:created',
-                'build:started',
-                'build:finished',
-            ]);
-        })->map(function ($message) {
-            return json_decode($message->data, true);
-        })->filter(function ($json) {
-            return isset($json['repository']);
-        })->map(function ($json) {
-            return $this->getTransport()->getHydrator()->hydrate('Repository', $json['repository']);
+        return Observable::create(function (
+            ObserverInterface $observer,
+            SchedulerInterface $scheduler
+        ) {
+            $this->handleCommand(
+                new SharedAppClientCommand(ApiSettings::PUSHER_KEY)
+            )->then(function ($pusher) use ($observer) {
+                $pusher->channel('repo-' . $this->id)->filter(function ($message) {
+                    return in_array($message->event, [
+                        'build:created',
+                        'build:started',
+                        'build:finished',
+                    ]);
+                })->map(function ($message) {
+                    return json_decode($message->data, true);
+                })->filter(function ($json) {
+                    return isset($json['repository']);
+                })->flatMap(function ($json) {
+                    return Promise::toObservable(
+                        $this->handleCommand(
+                            new HydrateCommand('Repository', $json['repository'])
+                        )
+                    );
+                })->subscribe(new CallbackObserver(function ($repository) use ($observer) {
+                    $observer->onNext($repository);
+                }));
+            });
         });
     }
 
@@ -91,10 +108,12 @@ class Repository extends BaseRepository
      */
     public function settings(): PromiseInterface
     {
-        return $this->getTransport()->request(
-            'repos/' . $this->id() . '/settings'
-        )->then(function ($response) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Settings', $response['settings']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('repos/' . $this->id() . '/settings')
+        )->then(function (ResponseInterface $response) {
+            return resolve($this->handleCommand(
+                new HydrateCommand('Settings', $response->getBody()->getJson()['settings'])
+            ));
         });
     }
 
@@ -103,11 +122,9 @@ class Repository extends BaseRepository
      */
     public function isActive(): PromiseInterface
     {
-        return $this->getTransport()->request(
-            'hooks'
-        )->then(function ($response) {
+        return $this->handleCommand(new SimpleRequestCommand('hooks'))->then(function (ResponseInterface $response) {
             $active = false;
-            foreach ($response['hooks'] as $hook) {
+            foreach ($response->getBody()->getJson()['hooks'] as $hook) {
                 if ($hook['id'] == $this->id()) {
                     $active = (bool)$hook['active'];
                     break;
@@ -144,18 +161,20 @@ class Repository extends BaseRepository
      */
     protected function setActiveStatus(bool $status)
     {
-        return $this->getTransport()->requestPsr7(
+        return $this->handleCommand(new RequestCommand(
             new Request(
                 'PUT',
-                $this->getTransport()->getBaseURL() . 'hooks/' . $this->id(),
-                $this->getTransport()->getHeaders(),
-                json_encode([
+                'hooks/' . $this->id(),
+                [],
+                new JsonStream([
                     'hook' => [
                         'active' => $status,
                     ],
                 ])
             )
-        );
+        ))->then(function () {
+            return $this->refresh();
+        });
     }
 
     /**
@@ -164,11 +183,11 @@ class Repository extends BaseRepository
     public function branches(): ObservableInterface
     {
         return Promise::toObservable(
-            $this->getTransport()->request('repos/' . $this->slug() . '/branches')
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['branches']);
-        })->map(function ($branch) {
-            return $this->getTransport()->getHydrator()->hydrate('Branch', $branch);
+            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/branches'))
+        )->flatMap(function (ResponseInterface $response) {
+            return Observable::fromArray($response->getBody()->getJson()['branches']);
+        })->flatMap(function (array $branch) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('Branch', $branch)));
         });
     }
 
@@ -178,11 +197,11 @@ class Repository extends BaseRepository
     public function vars(): ObservableInterface
     {
         return Promise::toObservable(
-            $this->getTransport()->request('/settings/env_vars?repository_id=' . $this->id())
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['env_vars']);
-        })->map(function ($var) {
-            return $this->getTransport()->getHydrator()->hydrate('EnvironmentVariable', $var);
+            $this->handleCommand(new SimpleRequestCommand('settings/env_vars?repository_id=' . $this->id()))
+        )->flatMap(function (ResponseInterface $response) {
+            return Observable::fromArray($response->getBody()->getJson()['env_vars']);
+        })->flatMap(function (array $envVar) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('EnvironmentVariable', $envVar)));
         });
     }
 
@@ -192,11 +211,11 @@ class Repository extends BaseRepository
     public function caches(): ObservableInterface
     {
         return Promise::toObservable(
-            $this->getTransport()->request('repos/' . $this->slug() . '/caches')
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['caches']);
-        })->map(function ($cache) {
-            return $this->getTransport()->getHydrator()->hydrate('Cache', $cache);
+            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/caches'))
+        )->flatMap(function (ResponseInterface $response) {
+            return Observable::fromArray($response->getBody()->getJson()['caches']);
+        })->flatMap(function (array $cache) {
+            return Promise::toObservable($this->handleCommand(new HydrateCommand('Cache', $cache)));
         });
     }
 
@@ -205,15 +224,21 @@ class Repository extends BaseRepository
      */
     public function key(): PromiseInterface
     {
-        return $this->getTransport()->request('repos/' . $this->slug() . '/key')->then(function ($key) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('RepositoryKey', $key));
+        return $this->handleCommand(
+            new SimpleRequestCommand('repos/' . $this->slug() . '/key')
+        )->then(function (ResponseInterface $response) {
+            return resolve($this->handleCommand(new HydrateCommand('RepositoryKey', $response->getBody()->getJson())));
         });
     }
 
     public function refresh(): PromiseInterface
     {
-        return $this->getTransport()->request('repos/' . $this->slug)->then(function ($json) {
-            return resolve($this->getTransport()->getHydrator()->hydrate('Repository', $json['repo']));
+        return $this->handleCommand(
+            new SimpleRequestCommand('repos/' . $this->slug)
+        )->then(function ($response) {
+            return resolve($this->handleCommand(
+                new HydrateCommand('Repository', $response->getBody()->getJson()['repo'])
+            ));
         });
     }
 }

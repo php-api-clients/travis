@@ -1,20 +1,19 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource\Sync;
 
-use WyriHaximus\ApiClient\Resource\CallAsyncTrait;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use WyriHaximus\Travis\Resource\Commit as BaseCommit;
+use WyriHaximus\Travis\Resource\CommitInterface;
 
 class Commit extends BaseCommit
 {
-    use CallAsyncTrait;
-
-    /**
-     * @return Commit
-     */
-    public function refresh(): Commit
+    public function refresh() : Commit
     {
-        return $this->wait($this->callAsync('refresh'));
+        return $this->wait($this->handleCommand(
+            new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)
+        )->then(function (CommitInterface $commit) {
+            return $commit->refresh();
+        }));
     }
 }

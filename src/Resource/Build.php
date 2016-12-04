@@ -1,15 +1,16 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 use DateTimeInterface;
-use ApiClients\Foundation\Resource\TransportAwareTrait;
 
-abstract class Build implements BuildInterface
+/**
+ * @EmptyResource("EmptyBuild")
+ */
+abstract class Build extends AbstractResource implements BuildInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
@@ -48,7 +49,7 @@ abstract class Build implements BuildInterface
     /**
      * @var array
      */
-    protected $config = [];
+    protected $config;
 
     /**
      * @var string
@@ -71,77 +72,111 @@ abstract class Build implements BuildInterface
     protected $duration;
 
     /**
-     * @var int[]
+     * @var array
      */
-    protected $job_ids = [];
+    protected $job_ids;
 
+    /**
+     * @return int
+     */
     public function id() : int
     {
         return $this->id;
     }
 
+    /**
+     * @return int
+     */
     public function repositoryId() : int
     {
         return $this->repository_id;
     }
 
+    /**
+     * @return int
+     */
     public function commitId() : int
     {
         return $this->commit_id;
     }
 
-    public function number() : int
+    /**
+     * @return string
+     */
+    public function number() : string
     {
         return $this->number;
     }
 
+    /**
+     * @return bool
+     */
     public function pullRequest() : bool
     {
         return $this->pull_request;
     }
 
+    /**
+     * @return string
+     */
     public function pullRequestTitle() : string
     {
         return $this->pull_request_title;
     }
 
+    /**
+     * @return int
+     */
     public function pullRequestNumber() : int
     {
         return $this->pull_request_number;
     }
 
+    /**
+     * @return array
+     */
     public function config() : array
     {
         return $this->config;
     }
 
+    /**
+     * @return string
+     */
     public function state() : string
     {
         return $this->state;
     }
 
+    /**
+     * @return DateTimeInterface
+     */
     public function startedAt() : DateTimeInterface
     {
         return $this->started_at;
     }
 
+    /**
+     * @return DateTimeInterface
+     */
     public function finishedAt() : DateTimeInterface
     {
         return $this->finished_at;
     }
 
+    /**
+     * @return int
+     */
     public function duration() : int
     {
         return $this->duration;
     }
 
+    /**
+     * @return array
+     */
     public function jobIds() : array
     {
         return $this->job_ids;
-    }
-
-    public function refresh()
-    {
-        throw new AbstractMethodException();
     }
 }

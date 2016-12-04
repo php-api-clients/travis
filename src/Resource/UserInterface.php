@@ -1,13 +1,14 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
+use ApiClients\Foundation\Resource\ResourceInterface;
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
 
 interface UserInterface extends ResourceInterface
 {
+    const HYDRATE_CLASS = 'User';
+
     /**
      * @return int
      */
@@ -52,6 +53,4 @@ interface UserInterface extends ResourceInterface
      * @return DateTimeInterface
      */
     public function createdAt() : DateTimeInterface;
-
-    public function sync();
 }

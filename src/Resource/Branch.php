@@ -1,14 +1,16 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
+use DateTimeInterface;
 
-abstract class Branch implements BranchInterface
+/**
+ * @EmptyResource("EmptyBranch")
+ */
+abstract class Branch extends AbstractResource implements BranchInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */

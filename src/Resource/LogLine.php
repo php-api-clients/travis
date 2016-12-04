@@ -1,22 +1,24 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use ApiClients\Foundation\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 
-abstract class LogLine implements LogLineInterface
+/**
+ * @EmptyResource("EmptyLogLine")
+ */
+abstract class LogLine extends AbstractResource implements LogLineInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
     protected $id;
 
+    // @codingStandardsIgnoreStart
     /**
      * @var string
      */
-    // @codingStandardsIgnoreStart
     protected $_log;
     // @codingStandardsIgnoreEnd
 
@@ -60,10 +62,5 @@ abstract class LogLine implements LogLineInterface
     public function final() : bool
     {
         return $this->final;
-    }
-
-    public function refresh()
-    {
-        throw new \Exception();
     }
 }

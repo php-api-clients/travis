@@ -1,14 +1,16 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
+use DateTimeInterface;
 
-abstract class Cache implements CacheInterface
+/**
+ * @EmptyResource("EmptyCache")
+ */
+abstract class Cache extends AbstractResource implements CacheInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */

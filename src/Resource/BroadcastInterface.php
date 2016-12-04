@@ -1,12 +1,13 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
+use ApiClients\Foundation\Resource\ResourceInterface;
 
 interface BroadcastInterface extends ResourceInterface
 {
+    const HYDRATE_CLASS = 'Broadcast';
+
     /**
      * @return int
      */

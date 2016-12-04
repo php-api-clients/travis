@@ -1,16 +1,17 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use DateTime;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 use DateTimeInterface;
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use DateTimeImmutable;
 
-abstract class User implements UserInterface
+/**
+ * @EmptyResource("EmptyUser")
+ */
+abstract class User extends AbstractResource implements UserInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var int
      */
@@ -109,7 +110,7 @@ abstract class User implements UserInterface
      */
     public function syncedAt() : DateTimeInterface
     {
-        return new DateTime($this->synced_at);
+        return new DateTimeImmutable($this->synced_at);
     }
 
     /**
@@ -125,6 +126,6 @@ abstract class User implements UserInterface
      */
     public function createdAt() : DateTimeInterface
     {
-        return new DateTime($this->created_at);
+        return new DateTimeImmutable($this->created_at);
     }
 }

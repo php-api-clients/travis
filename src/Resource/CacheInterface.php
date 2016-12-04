@@ -1,12 +1,14 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\ResourceInterface;
+use ApiClients\Foundation\Resource\ResourceInterface;
+use DateTimeInterface;
 
 interface CacheInterface extends ResourceInterface
 {
+    const HYDRATE_CLASS = 'Cache';
+
     /**
      * @return int
      */

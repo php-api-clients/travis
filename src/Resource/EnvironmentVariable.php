@@ -1,14 +1,15 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Travis\Resource;
 
-use WyriHaximus\ApiClient\Resource\TransportAwareTrait;
+use ApiClients\Foundation\Hydrator\Annotations\EmptyResource;
+use ApiClients\Foundation\Resource\AbstractResource;
 
-abstract class EnvironmentVariable implements EnvironmentVariableInterface
+/**
+ * @EmptyResource("EmptyEnvironmentVariable")
+ */
+abstract class EnvironmentVariable extends AbstractResource implements EnvironmentVariableInterface
 {
-    use TransportAwareTrait;
-
     /**
      * @var string
      */
