@@ -23,10 +23,7 @@ class ApiSettings
     const TRANSPORT_OPTIONS = [
         FoundationOptions::HYDRATOR_OPTIONS => [
             HydratorOptions::NAMESPACE => self::NAMESPACE,
-            HydratorOptions::NAMESPACE_DIR => __DIR__ .
-                DIRECTORY_SEPARATOR .
-                'Resource' .
-                DIRECTORY_SEPARATOR,
+            HydratorOptions::NAMESPACE_DIR => __DIR__ . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR,
         ],
         FoundationOptions::TRANSPORT_OPTIONS => [
             TransportOptions::HOST => 'api.travis-ci.org',
@@ -52,18 +49,18 @@ class ApiSettings
         string $suffix
     ): array {
         $options = self::TRANSPORT_OPTIONS;
-        $transportOptions[HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
+        $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
 
         if (!empty($token)) {
+            $transportOptions = $options[FoundationOptions::TRANSPORT_OPTIONS];
             $transportOptions[TransportOptions::MIDDLEWARE][] = TokenAuthorizationHeaderMiddleware::class;
-            $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
+            $options[FoundationOptions::TRANSPORT_OPTIONS][TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
                 TokenAuthorizationHeaderMiddleware::class => [
                     Options::TOKEN => $token,
                 ],
             ];
+            $options[FoundationOptions::TRANSPORT_OPTIONS] = $transportOptions;
         }
-
-        $options[FoundationOptions::HYDRATOR_OPTIONS] = $transportOptions;
 
         return $options;
     }
