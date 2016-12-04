@@ -1,20 +1,23 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Travis\Resource\Sync;
 
-use WyriHaximus\Tests\Travis\Resource\BuildTest as BaseBuildTest;
-use WyriHaximus\Travis\Resource\Sync\Build;
+use ApiClients\Tools\ResourceTestUtilities\AbstractResourceTest;
+use WyriHaximus\Travis\ApiSettings;
+use WyriHaximus\Travis\Resource\Build;
 
-class BuildTest extends BaseBuildTest
+class BuildTest extends AbstractResourceTest
 {
-    public function getNamespace(): string
+    public function getSyncAsync() : string
     {
-        return 'Sync\\';
+        return 'Sync';
     }
-
-    public function getBuild()
+    public function getClass() : string
     {
-        return new Build();
+        return Build::class;
+    }
+    public function getNamespace() : string
+    {
+        return Apisettings::NAMESPACE;
     }
 }
