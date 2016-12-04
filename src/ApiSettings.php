@@ -5,6 +5,7 @@ namespace WyriHaximus\Travis;
 use ApiClients\Foundation\Hydrator\Options as HydratorOptions;
 use ApiClients\Foundation\Options as FoundationOptions;
 use ApiClients\Foundation\Transport\Middleware\JsonDecodeMiddleware;
+use ApiClients\Foundation\Transport\Middleware\JsonEncodeMiddleware;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
 use ApiClients\Foundation\Transport\UserAgentStrategies;
 use WyriHaximus\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
@@ -22,7 +23,10 @@ class ApiSettings
     const TRANSPORT_OPTIONS = [
         FoundationOptions::HYDRATOR_OPTIONS => [
             HydratorOptions::NAMESPACE => self::NAMESPACE,
-            HydratorOptions::NAMESPACE_DIR => __DIR__ . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR,
+            HydratorOptions::NAMESPACE_DIR => __DIR__ .
+                DIRECTORY_SEPARATOR .
+                'Resource' .
+                DIRECTORY_SEPARATOR,
         ],
         FoundationOptions::TRANSPORT_OPTIONS => [
             TransportOptions::HOST => 'api.travis-ci.org',
@@ -33,28 +37,33 @@ class ApiSettings
             TransportOptions::PACKAGE => 'wyrihaximus/travis-client',
             TransportOptions::MIDDLEWARE => [
                 JsonDecodeMiddleware::class,
+                JsonEncodeMiddleware::class,
             ],
         ],
     ];
 
+    /**
+     * @param string $token
+     * @param string $suffix
+     * @return array
+     */
     public static function getOptions(
         string $token,
         string $suffix
     ): array {
         $options = self::TRANSPORT_OPTIONS;
-        $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
+        $transportOptions[HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
 
         if (!empty($token)) {
-            $options[FoundationOptions::TRANSPORT_OPTIONS][TransportOptions::MIDDLEWARE] = [
-                JsonDecodeMiddleware::class,
-                TokenAuthorizationHeaderMiddleware::class,
-            ];
-            $options[FoundationOptions::TRANSPORT_OPTIONS][TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
+            $transportOptions[TransportOptions::MIDDLEWARE][] = TokenAuthorizationHeaderMiddleware::class;
+            $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
                 TokenAuthorizationHeaderMiddleware::class => [
                     Options::TOKEN => $token,
                 ],
             ];
         }
+
+        $options[FoundationOptions::HYDRATOR_OPTIONS] = $transportOptions;
 
         return $options;
     }
