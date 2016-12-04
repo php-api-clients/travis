@@ -5,7 +5,7 @@ properties:
   description: string
   last_build_id: int
   last_build_number: int
-  last_build_state: int
+  last_build_state: string
   last_build_duration: int
   last_build_started_at: int
   last_build_finished_at: int
