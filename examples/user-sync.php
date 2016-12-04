@@ -16,5 +16,6 @@ if ($user->isSyncing()) {
         sleep(1);
         $user = $user->refresh();
     } while ($user->isSyncing());
+    echo PHP_EOL;
 }
 echo 'Sync at: ', $user->syncedAt()->format(DATE_ISO8601), PHP_EOL;

@@ -3,9 +3,9 @@
 use React\EventLoop\Factory;
 use Rx\Observer\CallbackObserver;
 use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\CacheInterface;
 use WyriHaximus\Travis\Resource\EnvironmentVariableInterface;
 use WyriHaximus\Travis\Resource\RepositoryInterface;
+use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -25,11 +25,8 @@ if (count($argv) > 1) {
 
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        $repo->vars()->subscribe(new CallbackObserver(function (EnvironmentVariableInterface $var) {
-            echo 'Environment variable', PHP_EOL;
-            echo "\t" . 'id: ' . $var->id(), PHP_EOL;
-            echo "\t" . 'name: ' . $var->name(), PHP_EOL;
-            echo "\t" . 'public: ' . (string)$var->public(), PHP_EOL;
+        $repo->vars()->subscribe(new CallbackObserver(function (EnvironmentVariableInterface $envVar) {
+            resource_pretty_print($envVar);
         }));
     });
 }
