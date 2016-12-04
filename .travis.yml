@@ -47,6 +47,7 @@ matrix:
 ## Install or update dependencies
 install:
   - if [ -z "$dependencies" ]; then composer install --prefer-dist; fi;
+  - if [ "$dependencies" = "lowest" ]; then phpenv config-rm xdebug.ini; fi;
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n -vvv --profile; fi;
   - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n; fi;
   - composer show
