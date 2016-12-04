@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ced88bae8e62585e054d30f38ef76f2c",
+    "hash": "4534a69851f755992015cdb5563a89f2",
     "content-hash": "07a3521589ba79bb7ce6fca3d1fee6ff",
     "packages": [
         {
@@ -2470,12 +2470,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/resource-test-utilities.git",
-                "reference": "ddc07441842ab4e34962a0ee7ce9420eaf34a53f"
+                "reference": "1ea29f9ca96919fc7ae1319eb67a11085e72cb6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/resource-test-utilities/zipball/ddc07441842ab4e34962a0ee7ce9420eaf34a53f",
-                "reference": "ddc07441842ab4e34962a0ee7ce9420eaf34a53f",
+                "url": "https://api.github.com/repos/php-api-clients/resource-test-utilities/zipball/1ea29f9ca96919fc7ae1319eb67a11085e72cb6b",
+                "reference": "1ea29f9ca96919fc7ae1319eb67a11085e72cb6b",
                 "shasum": ""
             },
             "require": {
@@ -2512,7 +2512,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-12-04 11:29:31"
+            "time": "2016-12-04 11:31:59"
         },
         {
             "name": "api-clients/test-utilities",

@@ -1,6 +1,7 @@
 {
   "name": "api-clients/travis",
   "homepage": "https://php-api-clients.org/clients/travis/",
+  "description": "Async first TravisCI PHP API Client",
   "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
