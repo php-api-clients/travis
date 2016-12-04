@@ -1,6 +1,6 @@
 <?php
 
-use WyriHaximus\Travis\Client;
+use ApiClients\Client\Travis\Client;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 

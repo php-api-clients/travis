@@ -2,9 +2,9 @@
 
 use React\EventLoop\Factory;
 use React\Promise\Deferred;
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\Async\User;
-use WyriHaximus\Travis\Resource\UserInterface;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\Async\User;
+use ApiClients\Client\Travis\Resource\UserInterface;
 use function React\Promise\resolve;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';

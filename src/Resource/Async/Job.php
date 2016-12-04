@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
@@ -13,8 +13,8 @@ use Rx\Observer\CallbackObserver;
 use Rx\ObserverInterface;
 use Rx\React\Promise;
 use Rx\SchedulerInterface;
-use WyriHaximus\Travis\ApiSettings;
-use WyriHaximus\Travis\Resource\Job as BaseJob;
+use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\Resource\Job as BaseJob;
 use function React\Promise\resolve;
 
 class Job extends BaseJob

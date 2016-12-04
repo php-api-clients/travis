@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Broadcast as BaseBroadcast;
-use WyriHaximus\Travis\Resource\BroadcastInterface;
+use ApiClients\Client\Travis\Resource\Broadcast as BaseBroadcast;
+use ApiClients\Client\Travis\Resource\BroadcastInterface;
 
 class Broadcast extends BaseBroadcast
 {

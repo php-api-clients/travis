@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis;
+namespace ApiClients\Client\Travis;
 
 use ApiClients\Foundation\Factory;
 use React\EventLoop\Factory as LoopFactory;
 use React\EventLoop\LoopInterface;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\RepositoryInterface;
-use WyriHaximus\Travis\Resource\SSHKeyInterface;
-use WyriHaximus\Travis\Resource\UserInterface;
+use ApiClients\Client\Travis\Resource\RepositoryInterface;
+use ApiClients\Client\Travis\Resource\SSHKeyInterface;
+use ApiClients\Client\Travis\Resource\UserInterface;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 

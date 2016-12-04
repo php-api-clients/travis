@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Tests\Travis\Middleware;
+namespace ApiClients\Tests\Client\Travis\Middleware;
 
 use ApiClients\Tools\TestUtilities\TestCase;
 use React\EventLoop\Factory;
 use RingCentral\Psr7\Request;
-use WyriHaximus\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
-use WyriHaximus\Travis\Options;
+use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
+use ApiClients\Client\Travis\Options;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 

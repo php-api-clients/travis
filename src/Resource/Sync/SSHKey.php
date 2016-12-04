@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\SSHKey as BaseSSHKey;
-use WyriHaximus\Travis\Resource\SSHKeyInterface;
+use ApiClients\Client\Travis\Resource\SSHKey as BaseSSHKey;
+use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 
 class SSHKey extends BaseSSHKey
 {

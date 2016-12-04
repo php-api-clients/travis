@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Middleware;
+namespace ApiClients\Client\Travis\Middleware;
 
 use ApiClients\Foundation\Middleware\DefaultPriorityTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
 use Psr\Http\Message\RequestInterface;
 use React\Promise\CancellablePromiseInterface;
-use WyriHaximus\Travis\Options;
+use ApiClients\Client\Travis\Options;
 use function React\Promise\resolve;
 
 class TokenAuthorizationHeaderMiddleware implements MiddlewareInterface

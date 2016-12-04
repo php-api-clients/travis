@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use React\Promise\PromiseInterface;
-use WyriHaximus\Travis\Resource\SSHKey as BaseSSHKey;
+use ApiClients\Client\Travis\Resource\SSHKey as BaseSSHKey;
 use function React\Promise\resolve;
 
 class SSHKey extends BaseSSHKey

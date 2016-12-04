@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
-use WyriHaximus\Travis\Resource\LogLine as BaseLogLine;
+use ApiClients\Client\Travis\Resource\LogLine as BaseLogLine;
 
 class LogLine extends BaseLogLine
 {

@@ -2,9 +2,9 @@
 
 use React\EventLoop\Factory;
 use Rx\Observer\CallbackObserver;
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\BranchInterface;
-use WyriHaximus\Travis\Resource\RepositoryInterface;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\BranchInterface;
+use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';

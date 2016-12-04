@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
-use WyriHaximus\Travis\Resource\RepositoryKey as BaseRepositoryKey;
+use ApiClients\Client\Travis\Resource\RepositoryKey as BaseRepositoryKey;
 
 class RepositoryKey extends BaseRepositoryKey
 {

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Build as BaseBuild;
-use WyriHaximus\Travis\Resource\BuildInterface;
+use ApiClients\Client\Travis\Resource\Build as BaseBuild;
+use ApiClients\Client\Travis\Resource\BuildInterface;
 
 class Build extends BaseBuild
 {

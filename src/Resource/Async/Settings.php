@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use Exception;
 use React\Promise\PromiseInterface;
-use WyriHaximus\Travis\Resource\Settings as BaseSettings;
+use ApiClients\Client\Travis\Resource\Settings as BaseSettings;
 use function React\Promise\reject;
 
 class Settings extends BaseSettings

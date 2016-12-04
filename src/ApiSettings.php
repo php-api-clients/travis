@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis;
+namespace ApiClients\Client\Travis;
 
 use ApiClients\Foundation\Hydrator\Options as HydratorOptions;
 use ApiClients\Foundation\Options as FoundationOptions;
@@ -8,7 +8,7 @@ use ApiClients\Foundation\Transport\Middleware\JsonDecodeMiddleware;
 use ApiClients\Foundation\Transport\Middleware\JsonEncodeMiddleware;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
 use ApiClients\Foundation\Transport\UserAgentStrategies;
-use WyriHaximus\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
+use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
 
 class ApiSettings
 {
@@ -18,7 +18,7 @@ class ApiSettings
      */
     const PUSHER_KEY = '5df8ac576dcccf4fd076';
 
-    const NAMESPACE = 'WyriHaximus\\Travis\\Resource';
+    const NAMESPACE = 'ApiClients\\Client\\Travis\\Resource';
 
     const TRANSPORT_OPTIONS = [
         FoundationOptions::HYDRATOR_OPTIONS => [
@@ -31,7 +31,7 @@ class ApiSettings
                 'Accept' => 'application/vnd.travis-ci.2+json',
             ],
             TransportOptions::USER_AGENT_STRATEGY => UserAgentStrategies::PACKAGE_VERSION,
-            TransportOptions::PACKAGE => 'wyrihaximus/travis-client',
+            TransportOptions::PACKAGE => 'api-clients/travis',
             TransportOptions::MIDDLEWARE => [
                 JsonDecodeMiddleware::class,
                 JsonEncodeMiddleware::class,

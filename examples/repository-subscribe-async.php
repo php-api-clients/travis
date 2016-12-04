@@ -3,8 +3,8 @@
 use React\EventLoop\Factory;
 use Rx\Observable;
 use Rx\Observer\CallbackObserver;
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\Async\Repository;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\Async\Repository;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Tests\Travis\Resource\Async;
+namespace ApiClients\Tests\Client\Travis\Resource\Async;
 
 use ApiClients\Tools\ResourceTestUtilities\AbstractResourceTest;
-use WyriHaximus\Travis\ApiSettings;
-use WyriHaximus\Travis\Resource\LogLine;
+use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\Resource\LogLine;
 
 class LogLineTest extends AbstractResourceTest
 {

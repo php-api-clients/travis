@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis;
+namespace ApiClients\Client\Travis;
 
 use ApiClients\Foundation\Client;
 use ApiClients\Foundation\Factory;

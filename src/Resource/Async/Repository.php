@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
@@ -17,8 +17,8 @@ use Rx\Observer\CallbackObserver;
 use Rx\ObserverInterface;
 use Rx\React\Promise;
 use Rx\SchedulerInterface;
-use WyriHaximus\Travis\ApiSettings;
-use WyriHaximus\Travis\Resource\Repository as BaseRepository;
+use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 

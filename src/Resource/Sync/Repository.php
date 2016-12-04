@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Repository as BaseRepository;
-use WyriHaximus\Travis\Resource\RepositoryInterface;
-use WyriHaximus\Travis\Resource\RepositoryKeyInterface;
-use WyriHaximus\Travis\Resource\SettingsInterface;
+use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
+use ApiClients\Client\Travis\Resource\RepositoryInterface;
+use ApiClients\Client\Travis\Resource\RepositoryKeyInterface;
+use ApiClients\Client\Travis\Resource\SettingsInterface;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository

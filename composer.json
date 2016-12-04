@@ -1,5 +1,5 @@
 {
-  "name": "wyrihaximus/travis-client",
+  "name": "api-clients/travis",
   "homepage": "https://php-api-clients.org/clients/travis/",
   "license": "MIT",
   "minimum-stability": "dev",
@@ -25,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "WyriHaximus\\Travis\\": "src/"
+      "ApiClients\\Client\\Travis\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "WyriHaximus\\Tests\\Travis\\": "tests/"
+      "ApiClients\\Tests\\Client\\Travis\\": "tests/"
     }
   },
   "config": {

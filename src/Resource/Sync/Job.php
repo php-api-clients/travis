@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Job as BaseJob;
-use WyriHaximus\Travis\Resource\JobInterface;
+use ApiClients\Client\Travis\Resource\Job as BaseJob;
+use ApiClients\Client\Travis\Resource\JobInterface;
 
 class Job extends BaseJob
 {

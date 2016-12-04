@@ -1,8 +1,8 @@
 <?php
 
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\Async\Repository;
-use WyriHaximus\Travis\Resource\BuildInterface;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\Async\Repository;
+use ApiClients\Client\Travis\Resource\BuildInterface;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Cache as BaseCache;
-use WyriHaximus\Travis\Resource\CacheInterface;
+use ApiClients\Client\Travis\Resource\Cache as BaseCache;
+use ApiClients\Client\Travis\Resource\CacheInterface;
 
 class Cache extends BaseCache
 {

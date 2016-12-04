@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\RepositoryKey as BaseRepositoryKey;
-use WyriHaximus\Travis\Resource\RepositoryKeyInterface;
+use ApiClients\Client\Travis\Resource\RepositoryKey as BaseRepositoryKey;
+use ApiClients\Client\Travis\Resource\RepositoryKeyInterface;
 
 class RepositoryKey extends BaseRepositoryKey
 {

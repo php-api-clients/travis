@@ -3,9 +3,9 @@
 use React\EventLoop\Factory;
 use Rx\Observer\CallbackObserver;
 use Rx\React\Promise;
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\Async\Repository;
-use WyriHaximus\Travis\Resource\CommitInterface;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\Async\Repository;
+use ApiClients\Client\Travis\Resource\CommitInterface;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 

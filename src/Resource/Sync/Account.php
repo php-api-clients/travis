@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Account as BaseAccount;
-use WyriHaximus\Travis\Resource\AccountInterface;
+use ApiClients\Client\Travis\Resource\Account as BaseAccount;
+use ApiClients\Client\Travis\Resource\AccountInterface;
 
 class Account extends BaseAccount
 {

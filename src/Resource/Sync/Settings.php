@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Settings as BaseSettings;
-use WyriHaximus\Travis\Resource\SettingsInterface;
+use ApiClients\Client\Travis\Resource\Settings as BaseSettings;
+use ApiClients\Client\Travis\Resource\SettingsInterface;
 
 class Settings extends BaseSettings
 {

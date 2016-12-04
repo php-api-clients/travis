@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource;
+namespace ApiClients\Client\Travis\Resource;
 
 use ApiClients\Foundation\Resource\EmptyResourceInterface;
 

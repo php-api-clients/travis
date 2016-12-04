@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Tests\Travis\Resource\Sync;
+namespace ApiClients\Tests\Client\Travis\Resource\Sync;
 
 use ApiClients\Tools\ResourceTestUtilities\AbstractResourceTest;
-use WyriHaximus\Travis\ApiSettings;
-use WyriHaximus\Travis\Resource\Settings;
+use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\Resource\Settings;
 
 class SettingsTest extends AbstractResourceTest
 {

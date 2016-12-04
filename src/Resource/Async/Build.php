@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
@@ -10,7 +10,7 @@ use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
-use WyriHaximus\Travis\Resource\Build as BaseBuild;
+use ApiClients\Client\Travis\Resource\Build as BaseBuild;
 use function React\Promise\resolve;
 
 class Build extends BaseBuild

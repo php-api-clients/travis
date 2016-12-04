@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
-use WyriHaximus\Travis\Resource\EmptyCache as BaseEmptyCache;
+use ApiClients\Client\Travis\Resource\EmptyCache as BaseEmptyCache;
 
 class EmptyCache extends BaseEmptyCache
 {

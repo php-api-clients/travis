@@ -4,11 +4,11 @@ use React\EventLoop\Factory;
 use Rx\Observable;
 use Rx\Observer\CallbackObserver;
 use Rx\React\Promise;
-use WyriHaximus\Travis\AsyncClient;
-use WyriHaximus\Travis\Resource\Async\Build;
-use WyriHaximus\Travis\Resource\Async\Job;
-use WyriHaximus\Travis\Resource\Async\LogLine;
-use WyriHaximus\Travis\Resource\Async\Repository;
+use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\Resource\Async\Build;
+use ApiClients\Client\Travis\Resource\Async\Job;
+use ApiClients\Client\Travis\Resource\Async\LogLine;
+use ApiClients\Client\Travis\Resource\Async\Repository;
 use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';

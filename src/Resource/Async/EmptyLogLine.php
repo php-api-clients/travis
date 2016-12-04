@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
-use WyriHaximus\Travis\Resource\EmptyLogLine as BaseEmptyLogLine;
+use ApiClients\Client\Travis\Resource\EmptyLogLine as BaseEmptyLogLine;
 
 class EmptyLogLine extends BaseEmptyLogLine
 {

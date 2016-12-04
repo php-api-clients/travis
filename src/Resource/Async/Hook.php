@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use React\Promise\PromiseInterface;
-use WyriHaximus\Travis\Resource\Hook as BaseHook;
+use ApiClients\Client\Travis\Resource\Hook as BaseHook;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 

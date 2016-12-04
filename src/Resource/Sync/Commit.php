@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Commit as BaseCommit;
-use WyriHaximus\Travis\Resource\CommitInterface;
+use ApiClients\Client\Travis\Resource\Commit as BaseCommit;
+use ApiClients\Client\Travis\Resource\CommitInterface;
 
 class Commit extends BaseCommit
 {

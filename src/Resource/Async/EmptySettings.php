@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Async;
+namespace ApiClients\Client\Travis\Resource\Async;
 
-use WyriHaximus\Travis\Resource\EmptySettings as BaseEmptySettings;
+use ApiClients\Client\Travis\Resource\EmptySettings as BaseEmptySettings;
 
 class EmptySettings extends BaseEmptySettings
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\User as BaseUser;
-use WyriHaximus\Travis\Resource\UserInterface;
+use ApiClients\Client\Travis\Resource\User as BaseUser;
+use ApiClients\Client\Travis\Resource\UserInterface;
 
 class User extends BaseUser
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Hook as BaseHook;
-use WyriHaximus\Travis\Resource\HookInterface;
+use ApiClients\Client\Travis\Resource\Hook as BaseHook;
+use ApiClients\Client\Travis\Resource\HookInterface;
 
 class Hook extends BaseHook
 {

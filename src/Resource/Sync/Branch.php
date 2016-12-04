@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\Travis\Resource\Sync;
+namespace ApiClients\Client\Travis\Resource\Sync;
 
 use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use WyriHaximus\Travis\Resource\Branch as BaseBranch;
-use WyriHaximus\Travis\Resource\BranchInterface;
+use ApiClients\Client\Travis\Resource\Branch as BaseBranch;
+use ApiClients\Client\Travis\Resource\BranchInterface;
 
 class Branch extends BaseBranch
 {
