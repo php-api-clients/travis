@@ -1,5 +1,6 @@
 {
   "name": "wyrihaximus/travis-client",
+  "homepage": "https://php-api-clients.org/clients/travis/",
   "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -31,5 +32,45 @@
     "psr-4": {
       "WyriHaximus\\Tests\\Travis\\": "tests/"
     }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "ensure-installed": "composer install --ansi -n -q",
+    "cs": [
+      "@ensure-installed",
+      "phpcs --standard=PSR2 src/"
+    ],
+    "unit": [
+      "@ensure-installed",
+      "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml"
+    ],
+    "lint-php": [
+      "@ensure-installed",
+      "parallel-lint --exclude vendor ."
+    ],
+    "qa-all": [
+      "@lint-php",
+      "@cs",
+      "@unit"
+    ],
+    "qa-windows": [
+      "@lint-php",
+      "@cs",
+      "@unit"
+    ],
+    "qa-ci": [
+      "@qa-all"
+    ],
+    "qa-ci-windows": [
+      "@qa-windows"
+    ],
+    "qa-contrib": [
+      "@qa-all"
+    ],
+    "ci-coverage": [
+      "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
+    ]
   }
 }

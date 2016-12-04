@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "568b2707eb13da2b37689b82f810f4e3",
+    "hash": "66c06bd48a7a4518ddd0e5722aac2de3",
     "content-hash": "ad57eea86380c31b694bd578324b4ca5",
     "packages": [
         {
@@ -263,29 +263,36 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/pusher.git",
-                "reference": "9a62404086466a3bf5a500e2ecadd2848f0ec483"
+                "reference": "a79cb523b229928179a096a28634746125e58178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/9a62404086466a3bf5a500e2ecadd2848f0ec483",
-                "reference": "9a62404086466a3bf5a500e2ecadd2848f0ec483",
+                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/a79cb523b229928179a096a28634746125e58178",
+                "reference": "a79cb523b229928179a096a28634746125e58178",
                 "shasum": ""
             },
             "require": {
-                "api-clients/foundation": "dev-master",
+                "api-clients/command-bus": "dev-master",
+                "clue/block-react": "^1.1",
+                "ocramius/package-versions": "^1.1",
                 "php": "^7.0",
                 "rx/websocket": "^0.9.2"
             },
             "require-dev": {
-                "api-clients/resource-generator": "dev-master",
-                "phake/phake": "^2.3",
-                "phpunit/phpunit": "^5.2.3",
-                "squizlabs/php_codesniffer": "^2.6"
+                "api-clients/test-utilities": "dev-master"
             },
             "type": "library",
+            "extra": {
+                "api-clients": {
+                    "command-bus": {
+                        "path": "src/CommandBus",
+                        "namespace": "ApiClients\\Client\\Pusher\\CommandBus"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "ApiClients\\Pusher\\": "src/"
+                    "ApiClients\\Client\\Pusher\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -298,7 +305,8 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-08-24 11:15:48"
+            "homepage": "https://php-api-clients.org/clients/pusher",
+            "time": "2016-12-03 21:27:09"
         },
         {
             "name": "api-clients/resource",
@@ -306,12 +314,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/resource.git",
-                "reference": "b6e7f6c45dfc072f457721ada486369789c1ff9b"
+                "reference": "3a4b867dbb9ba04cd78f6197e3cb0240878de8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/resource/zipball/b6e7f6c45dfc072f457721ada486369789c1ff9b",
-                "reference": "b6e7f6c45dfc072f457721ada486369789c1ff9b",
+                "url": "https://api.github.com/repos/php-api-clients/resource/zipball/3a4b867dbb9ba04cd78f6197e3cb0240878de8af",
+                "reference": "3a4b867dbb9ba04cd78f6197e3cb0240878de8af",
                 "shasum": ""
             },
             "require": {
@@ -341,7 +349,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-11-30 07:11:26"
+            "time": "2016-12-01 07:01:25"
         },
         {
             "name": "api-clients/service",
@@ -383,58 +391,17 @@
             "time": "2016-11-05 17:17:37"
         },
         {
-            "name": "api-clients/test-utilities",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-api-clients/test-utilities.git",
-                "reference": "99062f51b9bbc4a7e4980bb31c225c1277b2e491"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/test-utilities/zipball/99062f51b9bbc4a7e4980bb31c225c1277b2e491",
-                "reference": "99062f51b9bbc4a7e4980bb31c225c1277b2e491",
-                "shasum": ""
-            },
-            "require": {
-                "clue/block-react": "^1.1",
-                "humbug/humbug": "1.0.0-alpha2",
-                "phake/phake": "^2.3",
-                "php": "^7.0",
-                "phpspec/prophecy": "^1.6",
-                "phpunit/phpunit": "^5.6",
-                "squizlabs/php_codesniffer": "^2.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ApiClients\\Tools\\TestUtilities\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "time": "2016-11-26 22:01:56"
-        },
-        {
             "name": "api-clients/transport",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/transport.git",
-                "reference": "65939beb85c8969a40ae191dbdf08d4ee4d2d849"
+                "reference": "5279a2bd3c2a3e115a2721ec718ebb4b57760fb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/65939beb85c8969a40ae191dbdf08d4ee4d2d849",
-                "reference": "65939beb85c8969a40ae191dbdf08d4ee4d2d849",
+                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/5279a2bd3c2a3e115a2721ec718ebb4b57760fb5",
+                "reference": "5279a2bd3c2a3e115a2721ec718ebb4b57760fb5",
                 "shasum": ""
             },
             "require": {
@@ -442,7 +409,6 @@
                 "api-clients/middleware": "dev-master",
                 "api-clients/resource": "dev-master",
                 "api-clients/service": "dev-master",
-                "api-clients/test-utilities": "dev-master",
                 "clue/block-react": "^1.1",
                 "clue/buzz-react": "^1.1",
                 "container-interop/container-interop": "^1.1",
@@ -458,6 +424,7 @@
                 "wyrihaximus/ticking-promise": "^1.6"
             },
             "require-dev": {
+                "api-clients/test-utilities": "dev-master",
                 "humbug/humbug": "1.0.0-alpha2",
                 "phake/phake": "^2.3",
                 "php-di/php-di": "^5.4",
@@ -494,7 +461,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-11-20 01:35:26"
+            "time": "2016-12-02 21:59:02"
         },
         {
             "name": "clue/block-react",
@@ -800,60 +767,6 @@
             "time": "2016-10-29 11:16:17"
         },
         {
-            "name": "doctrine/instantiator",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3,<8.0-DEV"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "ext-pdo": "*",
-                "ext-phar": "*",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
-                }
-            ],
-            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-            "homepage": "https://github.com/doctrine/instantiator",
-            "keywords": [
-                "constructor",
-                "instantiate"
-            ],
-            "time": "2015-06-14 21:17:01"
-        },
-        {
             "name": "doctrine/lexer",
             "version": "v1.0.1",
             "source": {
@@ -1010,73 +923,6 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
-        },
-        {
-            "name": "humbug/humbug",
-            "version": "1.0.0-alpha2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/padraic/humbug.git",
-                "reference": "06b1c059e432dab8c22c36bc8b6e1ffc7e587c07"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/padraic/humbug/zipball/06b1c059e432dab8c22c36bc8b6e1ffc7e587c07",
-                "reference": "06b1c059e432dab8c22c36bc8b6e1ffc7e587c07",
-                "shasum": ""
-            },
-            "require": {
-                "padraic/phar-updater": "^1.0.0",
-                "padraic/phpunit-accelerator": "^1.0.2",
-                "padraic/phpunit-extensions": "^1.0.0",
-                "php": ">=5.4.0",
-                "phpunit/phpunit": "^4.5|^5.0",
-                "sebastian/diff": "^1.1",
-                "symfony/console": "^2.6|^3.0",
-                "symfony/event-dispatcher": "^2.6|^3.0",
-                "symfony/finder": "^2.6|^3.0",
-                "symfony/process": "^2.6|^3.0"
-            },
-            "require-dev": {
-                "behat/behat": "^3.0.15",
-                "mikey179/vfsstream": "^1.4",
-                "mockery/mockery": "^0.9",
-                "symfony/filesystem": "^2.6|^3.0"
-            },
-            "bin": [
-                "bin/humbug"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Humbug\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pádraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
-                }
-            ],
-            "description": "Humbug is a Mutation Testing framework for PHP. Whereas Code Coverage can tell you what code your tests are executing, Mutation Testing is intended to help you judge how well your unit tests actually perform and where they could be improved.",
-            "homepage": "https://github.com/padraic/humbug",
-            "keywords": [
-                "coverage",
-                "mutation testing",
-                "testing",
-                "unit testing"
-            ],
-            "time": "2016-08-01 10:27:00"
         },
         {
             "name": "igorw/get-in",
@@ -1325,48 +1171,6 @@
             "time": "2015-12-31 12:41:26"
         },
         {
-            "name": "myclabs/deep-copy",
-            "version": "1.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
-            "keywords": [
-                "clone",
-                "copy",
-                "duplicate",
-                "object",
-                "object graph"
-            ],
-            "time": "2016-10-31 17:19:45"
-        },
-        {
             "name": "nikic/php-parser",
             "version": "v2.1.1",
             "source": {
@@ -1576,6 +1380,1604 @@
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "time": "2016-07-25 07:13:56"
+        },
+        {
+            "name": "php-di/invoker",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/Invoker.git",
+                "reference": "1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7",
+                "reference": "1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "~1.1"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Invoker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generic and extensible callable invoker",
+            "homepage": "https://github.com/PHP-DI/Invoker",
+            "keywords": [
+                "callable",
+                "dependency",
+                "dependency-injection",
+                "injection",
+                "invoke",
+                "invoker"
+            ],
+            "time": "2016-07-14 13:09:58"
+        },
+        {
+            "name": "php-di/php-di",
+            "version": "5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/PHP-DI.git",
+                "reference": "e348393488fa909e4bc0707ba5c9c44cd602a1cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/e348393488fa909e4bc0707ba5c9c44cd602a1cb",
+                "reference": "e348393488fa909e4bc0707ba5c9c44cd602a1cb",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "~1.0",
+                "php": ">=5.5.0",
+                "php-di/invoker": "^1.3.2",
+                "php-di/phpdoc-reader": "^2.0.1"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.0"
+            },
+            "replace": {
+                "mnapoli/php-di": "*"
+            },
+            "require-dev": {
+                "doctrine/annotations": "~1.2",
+                "doctrine/cache": "~1.4",
+                "mnapoli/phpunit-easymock": "~0.2.0",
+                "ocramius/proxy-manager": "~1.0|~2.0",
+                "phpunit/phpunit": "~4.5"
+            },
+            "suggest": {
+                "doctrine/annotations": "Install it if you want to use annotations (version ~1.2)",
+                "doctrine/cache": "Install it if you want to use the cache (version ~1.4)",
+                "ocramius/proxy-manager": "Install it if you want to use lazy injection (version ~1.0 or ~2.0)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DI\\": "src/DI/"
+                },
+                "files": [
+                    "src/DI/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The dependency injection container for humans",
+            "homepage": "http://php-di.org/",
+            "keywords": [
+                "container",
+                "dependency injection",
+                "di"
+            ],
+            "time": "2016-08-23 20:18:00"
+        },
+        {
+            "name": "php-di/phpdoc-reader",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/PhpDocReader.git",
+                "reference": "83f5ead159defccfa8e7092e5b6c1c533b326d68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/83f5ead159defccfa8e7092e5b6c1c533b326d68",
+                "reference": "83f5ead159defccfa8e7092e5b6c1c533b326d68",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpDocReader\\": "src/PhpDocReader"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpDocReader parses @var and @param values in PHP docblocks (supports namespaced class names with the same resolution rules as PHP)",
+            "keywords": [
+                "phpdoc",
+                "reflection"
+            ],
+            "time": "2015-11-29 10:34:25"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06 14:39:51"
+        },
+        {
+            "name": "react/cache",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/cache.git",
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/promise": "~2.0|~1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Cache\\": "src\\"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async caching.",
+            "keywords": [
+                "cache"
+            ],
+            "time": "2016-02-25 18:17:16"
+        },
+        {
+            "name": "react/dns",
+            "version": "v0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/dns.git",
+                "reference": "751b3129556e04944f164e3556a20ca6e201e459"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/751b3129556e04944f164e3556a20ca6e201e459",
+                "reference": "751b3129556e04944f164e3556a20ca6e201e459",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/cache": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2",
+                "react/socket": "~0.4.0|~0.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Dns\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async DNS resolver.",
+            "keywords": [
+                "dns",
+                "dns-resolver"
+            ],
+            "time": "2016-08-01 10:09:07"
+        },
+        {
+            "name": "react/event-loop",
+            "version": "v0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/event-loop.git",
+                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/164799f73175e1c80bba92a220ea35df6ca371dd",
+                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "ext-event": "~1.0",
+                "ext-libev": "*",
+                "ext-libevent": ">=0.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\EventLoop\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Event loop abstraction layer that libraries can use for evented I/O.",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2016-03-08 02:09:32"
+        },
+        {
+            "name": "react/http",
+            "version": "v0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/http.git",
+                "reference": "abedac54967d7ea237ad104cff8274e2c4077cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/http/zipball/abedac54967d7ea237ad104cff8274e2c4077cf4",
+                "reference": "abedac54967d7ea237ad104cff8274e2c4077cf4",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^2.0",
+                "guzzlehttp/psr7": "^1.0",
+                "php": ">=5.4.0",
+                "react/socket": "^0.4",
+                "react/stream": "^0.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Http\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for building an evented http server.",
+            "keywords": [
+                "http"
+            ],
+            "time": "2016-11-09 15:20:39"
+        },
+        {
+            "name": "react/http-client",
+            "version": "v0.4.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/http-client.git",
+                "reference": "01e919008363622334f91419a9908b3a51754ccd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/01e919008363622334f91419a9908b3a51754ccd",
+                "reference": "01e919008363622334f91419a9908b3a51754ccd",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "~2.0",
+                "guzzlehttp/psr7": "^1.0",
+                "php": ">=5.4.0",
+                "react/dns": "0.4.*",
+                "react/event-loop": "0.4.*",
+                "react/promise": "~2.2",
+                "react/socket-client": "^0.5 || ^0.4 || ^0.3",
+                "react/stream": "0.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\HttpClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Asynchronous HTTP client library.",
+            "keywords": [
+                "http"
+            ],
+            "time": "2016-12-02 10:17:42"
+        },
+        {
+            "name": "react/promise",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise.git",
+                "reference": "8025426794f1944de806618671d4fa476dc7626f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
+                "reference": "8025426794f1944de806618671d4fa476dc7626f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com"
+                }
+            ],
+            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
+            "time": "2016-05-03 17:50:52"
+        },
+        {
+            "name": "react/promise-timer",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise-timer.git",
+                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/6a46050d801688e08d1a550b97b1f3735505c62a",
+                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\Timer\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Trivial timeout implementation for Promises",
+            "homepage": "https://github.com/react/promise-timer",
+            "keywords": [
+                "async",
+                "event-loop",
+                "promise",
+                "reactphp",
+                "timeout",
+                "timer"
+            ],
+            "time": "2016-02-29 19:03:45"
+        },
+        {
+            "name": "react/socket",
+            "version": "v0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/socket.git",
+                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce015ec5879b96f5d30905f035f223aa85013fcc",
+                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "~2.0|~1.0",
+                "php": ">=5.3.0",
+                "react/event-loop": "0.4.*|0.3.*",
+                "react/stream": "0.4.*|0.3.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\Socket\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for building an evented socket server.",
+            "keywords": [
+                "Socket"
+            ],
+            "time": "2016-03-01 20:10:35"
+        },
+        {
+            "name": "react/socket-client",
+            "version": "v0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/socket-client.git",
+                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3cb406a14008c092207d95a63ebe7739f74843bf",
+                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/dns": "0.4.*|0.3.*",
+                "react/event-loop": "0.4.*|0.3.*",
+                "react/promise": "^2.1 || ^1.2",
+                "react/promise-timer": "~1.0",
+                "react/stream": "0.4.*|0.3.*"
+            },
+            "require-dev": {
+                "clue/block-react": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\SocketClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async connector to open TCP/IP and SSL/TLS based connections.",
+            "keywords": [
+                "Socket"
+            ],
+            "time": "2016-11-20 00:11:24"
+        },
+        {
+            "name": "react/stream",
+            "version": "v0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/stream.git",
+                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/23389503012e1ab721ad498a5a1f4b39f7a43c00",
+                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^2.0|^1.0",
+                "php": ">=5.3.8"
+            },
+            "require-dev": {
+                "clue/stream-filter": "~1.2",
+                "react/event-loop": "^0.4|^0.3",
+                "react/promise": "^2.0|^1.0"
+            },
+            "suggest": {
+                "react/event-loop": "^0.4",
+                "react/promise": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Stream\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Basic readable and writable stream interfaces that support piping.",
+            "keywords": [
+                "pipe",
+                "stream"
+            ],
+            "time": "2016-11-13 17:06:02"
+        },
+        {
+            "name": "reactivex/rxphp",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ReactiveX/RxPHP.git",
+                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
+                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.5|~7.0"
+            },
+            "require-dev": {
+                "react/event-loop": "~0.4.1",
+                "react/promise": "~2.2"
+            },
+            "suggest": {
+                "react/event-loop": "For using event-loop based scheduling.",
+                "react/promise": "For converting promises to and from observables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rx\\": "lib/Rx"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com"
+                },
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net"
+                }
+            ],
+            "description": "Reactive extensions for php.",
+            "homepage": "https://github.com/ReactiveX/RxPHP",
+            "keywords": [
+                "extensions",
+                "reactive",
+                "rx"
+            ],
+            "time": "2016-08-23 17:17:58"
+        },
+        {
+            "name": "ringcentral/psr7",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ringcentral/psr7.git",
+                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ringcentral/psr7/zipball/2594fb47cdc659f3fcf0aa1559b7355460555303",
+                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RingCentral\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "PSR-7 message implementation",
+            "keywords": [
+                "http",
+                "message",
+                "stream",
+                "uri"
+            ],
+            "time": "2016-03-25 17:36:49"
+        },
+        {
+            "name": "rx/websocket",
+            "version": "0.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RxPHP/RxWebsocket.git",
+                "reference": "b93125668a0f89b3ade8100f50318e12ac4bbd41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RxPHP/RxWebsocket/zipball/b93125668a0f89b3ade8100f50318e12ac4bbd41",
+                "reference": "b93125668a0f89b3ade8100f50318e12ac4bbd41",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/psr7": "^1.2",
+                "react/http": "^0.4.1",
+                "react/http-client": "^0.4.8",
+                "reactivex/rxphp": "^1.0",
+                "voryx/event-loop": "^0.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rx\\Websocket\\": "src/Websocket/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Async Websockets for PHP using Rx",
+            "keywords": [
+                "WebSockets",
+                "react",
+                "reactive",
+                "rfc6455",
+                "rx",
+                "rx.php",
+                "rxphp",
+                "websocket"
+            ],
+            "time": "2016-02-09 03:27:41"
+        },
+        {
+            "name": "voryx/event-loop",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voryx/event-loop.git",
+                "reference": "8ef08db3d7646fe60d1791ba9625ce65adf935cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voryx/event-loop/zipball/8ef08db3d7646fe60d1791ba9625ce65adf935cd",
+                "reference": "8ef08db3d7646fe60d1791ba9625ce65adf935cd",
+                "shasum": ""
+            },
+            "require": {
+                "react/event-loop": "~0.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EventLoop\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Global static wrapper for react event-loop",
+            "keywords": [
+                "event-loop",
+                "eventloop",
+                "global",
+                "static",
+                "timer"
+            ],
+            "time": "2015-11-23 22:10:36"
+        },
+        {
+            "name": "wyrihaximus/tactician-command-handler-mapper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-tactician-command-handler-mapper.git",
+                "reference": "b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-tactician-command-handler-mapper/zipball/b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a",
+                "reference": "b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "^1.2",
+                "php": "^7.0 || ^5.5"
+            },
+            "require-dev": {
+                "phake/phake": "^2.3",
+                "phpunit/phpunit": "^5.0 || ^4.8",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Tactician\\CommandHandler\\": "src/"
+                },
+                "files": [
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Command to Handler mapper for Tactician",
+            "time": "2016-09-06 09:52:48"
+        },
+        {
+            "name": "wyrihaximus/ticking-promise",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/TickingPromise.git",
+                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/TickingPromise/zipball/8d26b1458e32c367ba6fb8ad5042046279acdb12",
+                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12",
+                "shasum": ""
+            },
+            "require": {
+                "react/event-loop": "^0.4",
+                "react/promise": "~2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4",
+                "squizlabs/php_codesniffer": "^1.5.6",
+                "vectorface/dunit": "~1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "Wrapping ticks into a promise",
+            "time": "2016-03-05 20:23:05"
+        },
+        {
+            "name": "zendframework/zend-hydrator",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-hydrator.git",
+                "reference": "0ac0d3e569781f1895670b0c8d0dc7f25b8a3182"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/0ac0d3e569781f1895670b0c8d0dc7f25b8a3182",
+                "reference": "0ac0d3e569781f1895670b0c8d0dc7f25b8a3182",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-stdlib": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5",
+                "squizlabs/php_codesniffer": "^2.3.1",
+                "zendframework/zend-eventmanager": "^3.0",
+                "zendframework/zend-filter": "^2.6",
+                "zendframework/zend-inputfilter": "^2.6",
+                "zendframework/zend-serializer": "^2.6.1",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0, to support aggregate hydrator usage",
+                "zendframework/zend-filter": "^2.6, to support naming strategy hydrator usage",
+                "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-release-1.0": "1.0-dev",
+                    "dev-release-1.1": "1.1-dev",
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Hydrator",
+                    "config-provider": "Zend\\Hydrator\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Hydrator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-hydrator",
+            "keywords": [
+                "hydrator",
+                "zf2"
+            ],
+            "time": "2016-04-18 17:59:29"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-stdlib.git",
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "^2.6.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev",
+                    "dev-develop": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Stdlib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-stdlib",
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2016-09-13 14:38:50"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "api-clients/resource-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-api-clients/resource-generator.git",
+                "reference": "fe9772301b4f4211ca4ce354266f21d65354dd15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-api-clients/resource-generator/zipball/fe9772301b4f4211ca4ce354266f21d65354dd15",
+                "reference": "fe9772301b4f4211ca4ce354266f21d65354dd15",
+                "shasum": ""
+            },
+            "require": {
+                "api-clients/foundation": "dev-master",
+                "api-clients/hydrator": "dev-master",
+                "api-clients/resource": "dev-master",
+                "api-clients/resource-test-utilities": "dev-master",
+                "doctrine/inflector": "^1.1",
+                "friendsofphp/php-cs-fixer": "1.11.8",
+                "nikic/php-parser": "^2.1",
+                "php": "^7.0",
+                "symfony/yaml": "^2.8||^3.0"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "dev-master"
+            },
+            "bin": [
+                "api-client-resource-generator"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApiClients\\Tools\\ResourceGenerator\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "time": "2016-11-29 21:35:44"
+        },
+        {
+            "name": "api-clients/resource-test-utilities",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-api-clients/resource-test-utilities.git",
+                "reference": "6244044a93478bd383b6ff39d99d8cb3be78826d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-api-clients/resource-test-utilities/zipball/6244044a93478bd383b6ff39d99d8cb3be78826d",
+                "reference": "6244044a93478bd383b6ff39d99d8cb3be78826d",
+                "shasum": ""
+            },
+            "require": {
+                "api-clients/foundation": "dev-master",
+                "api-clients/hydrator": "dev-master",
+                "api-clients/resource": "dev-master",
+                "api-clients/test-utilities": "dev-master",
+                "doctrine/annotations": "^1.2",
+                "doctrine/inflector": "^1.1",
+                "php": "^7.0",
+                "phpdocumentor/reflection-docblock": "^3.0 || ^2.0"
+            },
+            "require-dev": {
+                "phake/phake": "^2.3",
+                "phpunit/phpunit": "^5.5",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "suggest": {
+                "api-clients/resource-generator": "Easy wireframing of resources"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApiClients\\Tools\\ResourceTestUtilities\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "time": "2016-11-30 21:43:56"
+        },
+        {
+            "name": "api-clients/test-utilities",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-api-clients/test-utilities.git",
+                "reference": "3ea34a0a67d7692f5aef3ce302e70f5fc4ce609c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-api-clients/test-utilities/zipball/3ea34a0a67d7692f5aef3ce302e70f5fc4ce609c",
+                "reference": "3ea34a0a67d7692f5aef3ce302e70f5fc4ce609c",
+                "shasum": ""
+            },
+            "require": {
+                "clue/block-react": "^1.1",
+                "humbug/humbug": "1.0.0-alpha2",
+                "jakub-onderka/php-console-highlighter": "^0.3.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phake/phake": "^2.3",
+                "php": "^7.0",
+                "phpspec/prophecy": "^1.6",
+                "phpunit/phpunit": "^5.6",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApiClients\\Tools\\TestUtilities\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "time": "2016-12-03 23:10:25"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Inflector\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "inflection",
+                "pluralize",
+                "singularize",
+                "string"
+            ],
+            "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "doctrine/instantiator",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3,<8.0-DEV"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "ext-pdo": "*",
+                "ext-phar": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+            "homepage": "https://github.com/doctrine/instantiator",
+            "keywords": [
+                "constructor",
+                "instantiate"
+            ],
+            "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "friendsofphp/php-cs-fixer",
+            "version": "v1.11.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
+                "reference": "117137e9970054d022b7656209f094dab852b90c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/117137e9970054d022b7656209f094dab852b90c",
+                "reference": "117137e9970054d022b7656209f094dab852b90c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.3.6",
+                "sebastian/diff": "~1.1",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/event-dispatcher": "~2.1|~3.0",
+                "symfony/filesystem": "~2.1|~3.0",
+                "symfony/finder": "~2.1|~3.0",
+                "symfony/process": "~2.3|~3.0",
+                "symfony/stopwatch": "~2.5|~3.0"
+            },
+            "conflict": {
+                "hhvm": "<3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5|^5",
+                "satooshi/php-coveralls": "^0.7.1"
+            },
+            "bin": [
+                "php-cs-fixer"
+            ],
+            "type": "application",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\CS\\": "Symfony/CS/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Rumiński",
+                    "email": "dariusz.ruminski@gmail.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "A tool to automatically fix PHP code style",
+            "time": "2016-08-16 23:31:05"
+        },
+        {
+            "name": "humbug/humbug",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/padraic/humbug.git",
+                "reference": "06b1c059e432dab8c22c36bc8b6e1ffc7e587c07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/padraic/humbug/zipball/06b1c059e432dab8c22c36bc8b6e1ffc7e587c07",
+                "reference": "06b1c059e432dab8c22c36bc8b6e1ffc7e587c07",
+                "shasum": ""
+            },
+            "require": {
+                "padraic/phar-updater": "^1.0.0",
+                "padraic/phpunit-accelerator": "^1.0.2",
+                "padraic/phpunit-extensions": "^1.0.0",
+                "php": ">=5.4.0",
+                "phpunit/phpunit": "^4.5|^5.0",
+                "sebastian/diff": "^1.1",
+                "symfony/console": "^2.6|^3.0",
+                "symfony/event-dispatcher": "^2.6|^3.0",
+                "symfony/finder": "^2.6|^3.0",
+                "symfony/process": "^2.6|^3.0"
+            },
+            "require-dev": {
+                "behat/behat": "^3.0.15",
+                "mikey179/vfsstream": "^1.4",
+                "mockery/mockery": "^0.9",
+                "symfony/filesystem": "^2.6|^3.0"
+            },
+            "bin": [
+                "bin/humbug"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Humbug\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                }
+            ],
+            "description": "Humbug is a Mutation Testing framework for PHP. Whereas Code Coverage can tell you what code your tests are executing, Mutation Testing is intended to help you judge how well your unit tests actually perform and where they could be improved.",
+            "homepage": "https://github.com/padraic/humbug",
+            "keywords": [
+                "coverage",
+                "mutation testing",
+                "testing",
+                "unit testing"
+            ],
+            "time": "2016-08-01 10:27:00"
+        },
+        {
+            "name": "jakub-onderka/php-console-color",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Console-Color.git",
+                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Color/zipball/e0b393dacf7703fc36a4efc3df1435485197e6c1",
+                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "jakub-onderka/php-code-style": "1.0",
+                "jakub-onderka/php-parallel-lint": "0.*",
+                "jakub-onderka/php-var-dump-check": "0.*",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JakubOnderka\\PhpConsoleColor": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "jakub.onderka@gmail.com",
+                    "homepage": "http://www.acci.cz"
+                }
+            ],
+            "time": "2014-04-08 15:00:19"
+        },
+        {
+            "name": "jakub-onderka/php-console-highlighter",
+            "version": "v0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
+                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "shasum": ""
+            },
+            "require": {
+                "jakub-onderka/php-console-color": "~0.1",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "jakub-onderka/php-code-style": "~1.0",
+                "jakub-onderka/php-parallel-lint": "~0.5",
+                "jakub-onderka/php-var-dump-check": "~0.1",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JakubOnderka\\PhpConsoleHighlighter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "acci@acci.cz",
+                    "homepage": "http://www.acci.cz/"
+                }
+            ],
+            "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "jakub-onderka/php-parallel-lint",
+            "version": "v0.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Parallel-Lint.git",
+                "reference": "2ead2e4043ab125bee9554f356e0a86742c2d4fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Parallel-Lint/zipball/2ead2e4043ab125bee9554f356e0a86742c2d4fa",
+                "reference": "2ead2e4043ab125bee9554f356e0a86742c2d4fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-console-highlighter": "~0.3",
+                "nette/tester": "~1.3"
+            },
+            "suggest": {
+                "jakub-onderka/php-console-highlighter": "Highlight syntax in code snippet"
+            },
+            "bin": [
+                "parallel-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "jakub.onderka@gmail.com"
+                }
+            ],
+            "description": "This tool check syntax of PHP files about 20x faster than serial check.",
+            "homepage": "https://github.com/JakubOnderka/PHP-Parallel-Lint",
+            "time": "2015-12-15 10:42:16"
+        },
+        {
+            "name": "myclabs/deep-copy",
+            "version": "1.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/399c1f9781e222f6eb6cc238796f5200d1b7f108",
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "doctrine/collections": "1.*",
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Create deep copies (clones) of your objects",
+            "homepage": "https://github.com/myclabs/DeepCopy",
+            "keywords": [
+                "clone",
+                "copy",
+                "duplicate",
+                "object",
+                "object graph"
+            ],
+            "time": "2016-10-31 17:19:45"
         },
         {
             "name": "padraic/humbug_get_contents",
@@ -1848,146 +3250,6 @@
                 "testing"
             ],
             "time": "2016-03-04 18:49:33"
-        },
-        {
-            "name": "php-di/invoker",
-            "version": "1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/Invoker.git",
-                "reference": "1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7",
-                "reference": "1f4ca63b9abc66109e53b255e465d0ddb5c2e3f7",
-                "shasum": ""
-            },
-            "require": {
-                "container-interop/container-interop": "~1.1"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Invoker\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Generic and extensible callable invoker",
-            "homepage": "https://github.com/PHP-DI/Invoker",
-            "keywords": [
-                "callable",
-                "dependency",
-                "dependency-injection",
-                "injection",
-                "invoke",
-                "invoker"
-            ],
-            "time": "2016-07-14 13:09:58"
-        },
-        {
-            "name": "php-di/php-di",
-            "version": "5.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "e348393488fa909e4bc0707ba5c9c44cd602a1cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/e348393488fa909e4bc0707ba5c9c44cd602a1cb",
-                "reference": "e348393488fa909e4bc0707ba5c9c44cd602a1cb",
-                "shasum": ""
-            },
-            "require": {
-                "container-interop/container-interop": "~1.0",
-                "php": ">=5.5.0",
-                "php-di/invoker": "^1.3.2",
-                "php-di/phpdoc-reader": "^2.0.1"
-            },
-            "provide": {
-                "container-interop/container-interop-implementation": "^1.0"
-            },
-            "replace": {
-                "mnapoli/php-di": "*"
-            },
-            "require-dev": {
-                "doctrine/annotations": "~1.2",
-                "doctrine/cache": "~1.4",
-                "mnapoli/phpunit-easymock": "~0.2.0",
-                "ocramius/proxy-manager": "~1.0|~2.0",
-                "phpunit/phpunit": "~4.5"
-            },
-            "suggest": {
-                "doctrine/annotations": "Install it if you want to use annotations (version ~1.2)",
-                "doctrine/cache": "Install it if you want to use the cache (version ~1.4)",
-                "ocramius/proxy-manager": "Install it if you want to use lazy injection (version ~1.0 or ~2.0)"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DI\\": "src/DI/"
-                },
-                "files": [
-                    "src/DI/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "The dependency injection container for humans",
-            "homepage": "http://php-di.org/",
-            "keywords": [
-                "container",
-                "dependency injection",
-                "di"
-            ],
-            "time": "2016-08-23 20:18:00"
-        },
-        {
-            "name": "php-di/phpdoc-reader",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/PhpDocReader.git",
-                "reference": "83f5ead159defccfa8e7092e5b6c1c533b326d68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/83f5ead159defccfa8e7092e5b6c1c533b326d68",
-                "reference": "83f5ead159defccfa8e7092e5b6c1c533b326d68",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PhpDocReader\\": "src/PhpDocReader"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PhpDocReader parses @var and @param values in PHP docblocks (supports namespaced class names with the same resolution rules as PHP)",
-            "keywords": [
-                "phpdoc",
-                "reflection"
-            ],
-            "time": "2015-11-29 10:34:25"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2444,16 +3706,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.6.7",
+            "version": "5.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "38810e97481723ef918f6e35c03cb1014a645bd5"
+                "reference": "336aff0ac52e306c98e7455bc3e8d7b0bf777a5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/38810e97481723ef918f6e35c03cb1014a645bd5",
-                "reference": "38810e97481723ef918f6e35c03cb1014a645bd5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/336aff0ac52e306c98e7455bc3e8d7b0bf777a5e",
+                "reference": "336aff0ac52e306c98e7455bc3e8d7b0bf777a5e",
                 "shasum": ""
             },
             "require": {
@@ -2472,7 +3734,7 @@
                 "phpunit/phpunit-mock-objects": "^3.2",
                 "sebastian/comparator": "~1.2.2",
                 "sebastian/diff": "~1.2",
-                "sebastian/environment": "^1.3 || ^2.0",
+                "sebastian/environment": "^1.3.4 || ^2.0",
                 "sebastian/exporter": "~2.0",
                 "sebastian/global-state": "~1.0",
                 "sebastian/object-enumerator": "~2.0",
@@ -2496,7 +3758,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.6.x-dev"
+                    "dev-master": "5.7.x-dev"
                 }
             },
             "autoload": {
@@ -2522,7 +3784,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-11-28 16:04:24"
+            "time": "2016-12-03 08:33:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2584,56 +3846,6 @@
             "time": "2016-11-27 07:52:03"
         },
         {
-            "name": "psr/http-message",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "homepage": "https://github.com/php-fig/http-message",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2016-08-06 14:39:51"
-        },
-        {
             "name": "psr/log",
             "version": "1.0.2",
             "source": {
@@ -2679,595 +3891,6 @@
                 "psr-3"
             ],
             "time": "2016-10-10 12:19:37"
-        },
-        {
-            "name": "react/cache",
-            "version": "v0.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/cache.git",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "react/promise": "~2.0|~1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Cache\\": "src\\"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Async caching.",
-            "keywords": [
-                "cache"
-            ],
-            "time": "2016-02-25 18:17:16"
-        },
-        {
-            "name": "react/dns",
-            "version": "v0.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/dns.git",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/751b3129556e04944f164e3556a20ca6e201e459",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "react/cache": "~0.4.0|~0.3.0",
-                "react/promise": "~2.1|~1.2",
-                "react/socket": "~0.4.0|~0.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Dns\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Async DNS resolver.",
-            "keywords": [
-                "dns",
-                "dns-resolver"
-            ],
-            "time": "2016-08-01 10:09:07"
-        },
-        {
-            "name": "react/event-loop",
-            "version": "v0.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/event-loop.git",
-                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/164799f73175e1c80bba92a220ea35df6ca371dd",
-                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "suggest": {
-                "ext-event": "~1.0",
-                "ext-libev": "*",
-                "ext-libevent": ">=0.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\EventLoop\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Event loop abstraction layer that libraries can use for evented I/O.",
-            "keywords": [
-                "asynchronous",
-                "event-loop"
-            ],
-            "time": "2016-03-08 02:09:32"
-        },
-        {
-            "name": "react/http",
-            "version": "v0.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/http.git",
-                "reference": "abedac54967d7ea237ad104cff8274e2c4077cf4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http/zipball/abedac54967d7ea237ad104cff8274e2c4077cf4",
-                "reference": "abedac54967d7ea237ad104cff8274e2c4077cf4",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "^2.0",
-                "guzzlehttp/psr7": "^1.0",
-                "php": ">=5.4.0",
-                "react/socket": "^0.4",
-                "react/stream": "^0.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Http\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for building an evented http server.",
-            "keywords": [
-                "http"
-            ],
-            "time": "2016-11-09 15:20:39"
-        },
-        {
-            "name": "react/http-client",
-            "version": "v0.4.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/http-client.git",
-                "reference": "24104ddd30a2a76d0697c05950ba2ae43b51de3f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/24104ddd30a2a76d0697c05950ba2ae43b51de3f",
-                "reference": "24104ddd30a2a76d0697c05950ba2ae43b51de3f",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0",
-                "guzzlehttp/psr7": "^1.0",
-                "php": ">=5.4.0",
-                "react/dns": "0.4.*",
-                "react/event-loop": "0.4.*",
-                "react/promise": "~2.2",
-                "react/socket-client": "^0.5 || ^0.4 || ^0.3",
-                "react/stream": "0.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\HttpClient\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Asynchronous HTTP client library.",
-            "keywords": [
-                "http"
-            ],
-            "time": "2016-10-28 18:03:41"
-        },
-        {
-            "name": "react/promise",
-            "version": "v2.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com"
-                }
-            ],
-            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-05-03 17:50:52"
-        },
-        {
-            "name": "react/promise-timer",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/6a46050d801688e08d1a550b97b1f3735505c62a",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "react/event-loop": "~0.4.0|~0.3.0",
-                "react/promise": "~2.1|~1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\Timer\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@lueck.tv"
-                }
-            ],
-            "description": "Trivial timeout implementation for Promises",
-            "homepage": "https://github.com/react/promise-timer",
-            "keywords": [
-                "async",
-                "event-loop",
-                "promise",
-                "reactphp",
-                "timeout",
-                "timer"
-            ],
-            "time": "2016-02-29 19:03:45"
-        },
-        {
-            "name": "react/socket",
-            "version": "v0.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/socket.git",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce015ec5879b96f5d30905f035f223aa85013fcc",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0|~1.0",
-                "php": ">=5.3.0",
-                "react/event-loop": "0.4.*|0.3.*",
-                "react/stream": "0.4.*|0.3.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\Socket\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for building an evented socket server.",
-            "keywords": [
-                "Socket"
-            ],
-            "time": "2016-03-01 20:10:35"
-        },
-        {
-            "name": "react/socket-client",
-            "version": "v0.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3cb406a14008c092207d95a63ebe7739f74843bf",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "react/dns": "0.4.*|0.3.*",
-                "react/event-loop": "0.4.*|0.3.*",
-                "react/promise": "^2.1 || ^1.2",
-                "react/promise-timer": "~1.0",
-                "react/stream": "0.4.*|0.3.*"
-            },
-            "require-dev": {
-                "clue/block-react": "~1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\SocketClient\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Async connector to open TCP/IP and SSL/TLS based connections.",
-            "keywords": [
-                "Socket"
-            ],
-            "time": "2016-11-20 00:11:24"
-        },
-        {
-            "name": "react/stream",
-            "version": "v0.4.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/stream.git",
-                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/23389503012e1ab721ad498a5a1f4b39f7a43c00",
-                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "^2.0|^1.0",
-                "php": ">=5.3.8"
-            },
-            "require-dev": {
-                "clue/stream-filter": "~1.2",
-                "react/event-loop": "^0.4|^0.3",
-                "react/promise": "^2.0|^1.0"
-            },
-            "suggest": {
-                "react/event-loop": "^0.4",
-                "react/promise": "^2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Stream\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Basic readable and writable stream interfaces that support piping.",
-            "keywords": [
-                "pipe",
-                "stream"
-            ],
-            "time": "2016-11-13 17:06:02"
-        },
-        {
-            "name": "reactivex/rxphp",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
-                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.5|~7.0"
-            },
-            "require-dev": {
-                "react/event-loop": "~0.4.1",
-                "react/promise": "~2.2"
-            },
-            "suggest": {
-                "react/event-loop": "For using event-loop based scheduling.",
-                "react/promise": "For converting promises to and from observables."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rx\\": "lib/Rx"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander",
-                    "email": "iam.asm89@gmail.com"
-                },
-                {
-                    "name": "David Dan",
-                    "email": "davidwdan@gmail.com"
-                },
-                {
-                    "name": "Matt Bonneau",
-                    "email": "matt@bonneau.net"
-                }
-            ],
-            "description": "Reactive extensions for php.",
-            "homepage": "https://github.com/ReactiveX/RxPHP",
-            "keywords": [
-                "extensions",
-                "reactive",
-                "rx"
-            ],
-            "time": "2016-08-23 17:17:58"
-        },
-        {
-            "name": "ringcentral/psr7",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ringcentral/psr7.git",
-                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ringcentral/psr7/zipball/2594fb47cdc659f3fcf0aa1559b7355460555303",
-                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "psr/http-message": "~1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RingCentral\\Psr7\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "PSR-7 message implementation",
-            "keywords": [
-                "http",
-                "message",
-                "stream",
-                "uri"
-            ],
-            "time": "2016-03-25 17:36:49"
-        },
-        {
-            "name": "rx/websocket",
-            "version": "0.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RxPHP/RxWebsocket.git",
-                "reference": "b93125668a0f89b3ade8100f50318e12ac4bbd41"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RxPHP/RxWebsocket/zipball/b93125668a0f89b3ade8100f50318e12ac4bbd41",
-                "reference": "b93125668a0f89b3ade8100f50318e12ac4bbd41",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/psr7": "^1.2",
-                "react/http": "^0.4.1",
-                "react/http-client": "^0.4.8",
-                "reactivex/rxphp": "^1.0",
-                "voryx/event-loop": "^0.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Rx\\Websocket\\": "src/Websocket/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Bonneau",
-                    "email": "matt@bonneau.net",
-                    "role": "Developer"
-                },
-                {
-                    "name": "David Dan",
-                    "email": "davidwdan@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Async Websockets for PHP using Rx",
-            "keywords": [
-                "WebSockets",
-                "react",
-                "reactive",
-                "rfc6455",
-                "rx",
-                "rx.php",
-                "rxphp",
-                "websocket"
-            ],
-            "time": "2016-02-09 03:27:41"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4041,6 +4664,55 @@
             "time": "2016-10-13 06:29:04"
         },
         {
+            "name": "symfony/filesystem",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
+                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-11-24 00:46:43"
+        },
+        {
             "name": "symfony/finder",
             "version": "v3.2.0",
             "source": {
@@ -4198,6 +4870,55 @@
             "time": "2016-11-24 10:40:28"
         },
         {
+            "name": "symfony/stopwatch",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/stopwatch.git",
+                "reference": "5b139e1c4290e6c7640ba80d9c9b5e49ef22b841"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5b139e1c4290e6c7640ba80d9c9b5e49ef22b841",
+                "reference": "5b139e1c4290e6c7640ba80d9c9b5e49ef22b841",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Stopwatch\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Stopwatch Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:43:10"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.2.0",
             "source": {
@@ -4253,58 +4974,6 @@
             "time": "2016-11-18 21:17:59"
         },
         {
-            "name": "voryx/event-loop",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/voryx/event-loop.git",
-                "reference": "8ef08db3d7646fe60d1791ba9625ce65adf935cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/voryx/event-loop/zipball/8ef08db3d7646fe60d1791ba9625ce65adf935cd",
-                "reference": "8ef08db3d7646fe60d1791ba9625ce65adf935cd",
-                "shasum": ""
-            },
-            "require": {
-                "react/event-loop": "~0.4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "EventLoop\\": "src"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Bonneau",
-                    "email": "matt@bonneau.net",
-                    "role": "Developer"
-                },
-                {
-                    "name": "David Dan",
-                    "email": "davidwdan@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Global static wrapper for react event-loop",
-            "keywords": [
-                "event-loop",
-                "eventloop",
-                "global",
-                "static",
-                "timer"
-            ],
-            "time": "2015-11-23 22:10:36"
-        },
-        {
             "name": "webmozart/assert",
             "version": "1.2.0",
             "source": {
@@ -4353,531 +5022,6 @@
                 "validate"
             ],
             "time": "2016-11-23 20:04:58"
-        },
-        {
-            "name": "wyrihaximus/tactician-command-handler-mapper",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-tactician-command-handler-mapper.git",
-                "reference": "b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-tactician-command-handler-mapper/zipball/b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a",
-                "reference": "b34e9669e386f7b3c3f4ae4be3101ba8ab4e3a8a",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "^1.2",
-                "php": "^7.0 || ^5.5"
-            },
-            "require-dev": {
-                "phake/phake": "^2.3",
-                "phpunit/phpunit": "^5.0 || ^4.8",
-                "squizlabs/php_codesniffer": "^2.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\Tactician\\CommandHandler\\": "src/"
-                },
-                "files": [
-                    "src/bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Command to Handler mapper for Tactician",
-            "time": "2016-09-06 09:52:48"
-        },
-        {
-            "name": "wyrihaximus/ticking-promise",
-            "version": "1.6.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/TickingPromise.git",
-                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/TickingPromise/zipball/8d26b1458e32c367ba6fb8ad5042046279acdb12",
-                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12",
-                "shasum": ""
-            },
-            "require": {
-                "react/event-loop": "^0.4",
-                "react/promise": "~2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.4",
-                "squizlabs/php_codesniffer": "^1.5.6",
-                "vectorface/dunit": "~1.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\React\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "Wrapping ticks into a promise",
-            "time": "2016-03-05 20:23:05"
-        },
-        {
-            "name": "zendframework/zend-hydrator",
-            "version": "2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "0ac0d3e569781f1895670b0c8d0dc7f25b8a3182"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/0ac0d3e569781f1895670b0c8d0dc7f25b8a3182",
-                "reference": "0ac0d3e569781f1895670b0c8d0dc7f25b8a3182",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5",
-                "squizlabs/php_codesniffer": "^2.3.1",
-                "zendframework/zend-eventmanager": "^3.0",
-                "zendframework/zend-filter": "^2.6",
-                "zendframework/zend-inputfilter": "^2.6",
-                "zendframework/zend-serializer": "^2.6.1",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
-            },
-            "suggest": {
-                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0, to support aggregate hydrator usage",
-                "zendframework/zend-filter": "^2.6, to support naming strategy hydrator usage",
-                "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-release-1.0": "1.0-dev",
-                    "dev-release-1.1": "1.1-dev",
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
-                },
-                "zf": {
-                    "component": "Zend\\Hydrator",
-                    "config-provider": "Zend\\Hydrator\\ConfigProvider"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Hydrator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "homepage": "https://github.com/zendframework/zend-hydrator",
-            "keywords": [
-                "hydrator",
-                "zf2"
-            ],
-            "time": "2016-04-18 17:59:29"
-        },
-        {
-            "name": "zendframework/zend-stdlib",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/debedcfc373a293f9250cc9aa03cf121428c8e78",
-                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "^2.6.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev",
-                    "dev-develop": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Stdlib\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "homepage": "https://github.com/zendframework/zend-stdlib",
-            "keywords": [
-                "stdlib",
-                "zf2"
-            ],
-            "time": "2016-09-13 14:38:50"
-        }
-    ],
-    "packages-dev": [
-        {
-            "name": "api-clients/resource-generator",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-api-clients/resource-generator.git",
-                "reference": "fe9772301b4f4211ca4ce354266f21d65354dd15"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/resource-generator/zipball/fe9772301b4f4211ca4ce354266f21d65354dd15",
-                "reference": "fe9772301b4f4211ca4ce354266f21d65354dd15",
-                "shasum": ""
-            },
-            "require": {
-                "api-clients/foundation": "dev-master",
-                "api-clients/hydrator": "dev-master",
-                "api-clients/resource": "dev-master",
-                "api-clients/resource-test-utilities": "dev-master",
-                "doctrine/inflector": "^1.1",
-                "friendsofphp/php-cs-fixer": "1.11.8",
-                "nikic/php-parser": "^2.1",
-                "php": "^7.0",
-                "symfony/yaml": "^2.8||^3.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "dev-master"
-            },
-            "bin": [
-                "api-client-resource-generator"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ApiClients\\Tools\\ResourceGenerator\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "time": "2016-11-29 21:35:44"
-        },
-        {
-            "name": "api-clients/resource-test-utilities",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-api-clients/resource-test-utilities.git",
-                "reference": "6244044a93478bd383b6ff39d99d8cb3be78826d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/resource-test-utilities/zipball/6244044a93478bd383b6ff39d99d8cb3be78826d",
-                "reference": "6244044a93478bd383b6ff39d99d8cb3be78826d",
-                "shasum": ""
-            },
-            "require": {
-                "api-clients/foundation": "dev-master",
-                "api-clients/hydrator": "dev-master",
-                "api-clients/resource": "dev-master",
-                "api-clients/test-utilities": "dev-master",
-                "doctrine/annotations": "^1.2",
-                "doctrine/inflector": "^1.1",
-                "php": "^7.0",
-                "phpdocumentor/reflection-docblock": "^3.0 || ^2.0"
-            },
-            "require-dev": {
-                "phake/phake": "^2.3",
-                "phpunit/phpunit": "^5.5",
-                "squizlabs/php_codesniffer": "^2.6"
-            },
-            "suggest": {
-                "api-clients/resource-generator": "Easy wireframing of resources"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ApiClients\\Tools\\ResourceTestUtilities\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "time": "2016-11-30 21:43:56"
-        },
-        {
-            "name": "doctrine/inflector",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Inflector\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string"
-            ],
-            "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "friendsofphp/php-cs-fixer",
-            "version": "v1.11.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "117137e9970054d022b7656209f094dab852b90c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/117137e9970054d022b7656209f094dab852b90c",
-                "reference": "117137e9970054d022b7656209f094dab852b90c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=5.3.6",
-                "sebastian/diff": "~1.1",
-                "symfony/console": "~2.3|~3.0",
-                "symfony/event-dispatcher": "~2.1|~3.0",
-                "symfony/filesystem": "~2.1|~3.0",
-                "symfony/finder": "~2.1|~3.0",
-                "symfony/process": "~2.3|~3.0",
-                "symfony/stopwatch": "~2.5|~3.0"
-            },
-            "conflict": {
-                "hhvm": "<3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5|^5",
-                "satooshi/php-coveralls": "^0.7.1"
-            },
-            "bin": [
-                "php-cs-fixer"
-            ],
-            "type": "application",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\CS\\": "Symfony/CS/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dariusz Rumiński",
-                    "email": "dariusz.ruminski@gmail.com"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "A tool to automatically fix PHP code style",
-            "time": "2016-08-16 23:31:05"
-        },
-        {
-            "name": "symfony/filesystem",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Filesystem\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Filesystem Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-11-24 00:46:43"
-        },
-        {
-            "name": "symfony/stopwatch",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "5b139e1c4290e6c7640ba80d9c9b5e49ef22b841"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5b139e1c4290e6c7640ba80d9c9b5e49ef22b841",
-                "reference": "5b139e1c4290e6c7640ba80d9c9b5e49ef22b841",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Stopwatch\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Stopwatch Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:43:10"
         }
     ],
     "aliases": [],
