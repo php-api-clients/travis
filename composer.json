@@ -37,6 +37,14 @@
   "config": {
     "sort-packages": true
   },
+  "extra": {
+    "api-clients": {
+      "command-bus": {
+        "path": "src/CommandBus",
+        "namespace": "ApiClients\\Client\\Travis\\CommandBus"
+      }
+    }
+  },
   "scripts": {
     "ensure-installed": "composer install --ansi -n -q",
     "cs": [
