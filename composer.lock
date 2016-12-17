@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9058aa3c3b342bb2bc30eae331455633",
-    "content-hash": "6ab583087f4757a682e3e8b50e742477",
+    "hash": "bc999a7b2e5bab995b1c19765fb2842c",
+    "content-hash": "b1f4288eaf9058cde385afb90f8524aa",
     "packages": [
         {
             "name": "api-clients/command-bus",
@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/foundation.git",
-                "reference": "a2dc262b94f3938a91d00d8ab1139335fd353ba4"
+                "reference": "1da4978b2cc4062b6931b34796987773cca0dc2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/a2dc262b94f3938a91d00d8ab1139335fd353ba4",
-                "reference": "a2dc262b94f3938a91d00d8ab1139335fd353ba4",
+                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/1da4978b2cc4062b6931b34796987773cca0dc2b",
+                "reference": "1da4978b2cc4062b6931b34796987773cca0dc2b",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-12-16 21:31:09"
+            "time": "2016-12-17 22:15:01"
         },
         {
             "name": "api-clients/hydrator",
@@ -310,6 +310,49 @@
             ],
             "description": "Abstract resource",
             "time": "2016-12-09 16:48:22"
+        },
+        {
+            "name": "api-clients/rx",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-api-clients/rx.git",
+                "reference": "92fd712d2406ff879abc1afdce763b89a093b175"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-api-clients/rx/zipball/92fd712d2406ff879abc1afdce763b89a093b175",
+                "reference": "92fd712d2406ff879abc1afdce763b89a093b175",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "react/promise": "^2.4",
+                "reactivex/rxphp": "dev-custom_operators as 1.4.0"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApiClients\\Tools\\Rx\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "time": "2016-12-17 23:53:52"
         },
         {
             "name": "api-clients/service",
@@ -1938,24 +1981,27 @@
         },
         {
             "name": "reactivex/rxphp",
-            "version": "1.4.1",
+            "version": "dev-custom_operators",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b"
+                "url": "https://github.com/mbonneau/RxPHP.git",
+                "reference": "7d977bf80f860799afa37cd8481ba8bc1b16a179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
-                "reference": "3cbdf48fe1027da5b64a9c4378825dd02d107d2b",
+                "url": "https://api.github.com/repos/mbonneau/RxPHP/zipball/7d977bf80f860799afa37cd8481ba8bc1b16a179",
+                "reference": "7d977bf80f860799afa37cd8481ba8bc1b16a179",
                 "shasum": ""
             },
             "require": {
                 "php": "~5.5|~7.0"
             },
             "require-dev": {
+                "phpunit/phpcov": "^3.1",
+                "phpunit/phpunit": "^5.5",
                 "react/event-loop": "~0.4.1",
-                "react/promise": "~2.2"
+                "react/promise": "~2.2",
+                "satooshi/php-coveralls": "~1.0"
             },
             "suggest": {
                 "react/event-loop": "For using event-loop based scheduling.",
@@ -1972,7 +2018,6 @@
                     "Rx\\": "lib/Rx"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1997,7 +2042,10 @@
                 "reactive",
                 "rx"
             ],
-            "time": "2016-08-23 17:17:58"
+            "support": {
+                "source": "https://github.com/mbonneau/RxPHP/tree/custom_operators"
+            },
+            "time": "2016-10-11 20:57:12"
         },
         {
             "name": "ringcentral/psr7",
@@ -2467,7 +2515,7 @@
         },
         {
             "name": "api-clients/test-utilities",
-            "version": "dev-master",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/test-utilities.git",
@@ -4693,13 +4741,21 @@
             "time": "2016-11-23 20:04:58"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-custom_operators",
+            "package": "reactivex/rxphp"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "api-clients/foundation": 20,
         "api-clients/pusher": 20,
-        "api-clients/resource-generator": 20,
-        "api-clients/test-utilities": 20
+        "api-clients/rx": 20,
+        "reactivex/rxphp": 20,
+        "api-clients/resource-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
