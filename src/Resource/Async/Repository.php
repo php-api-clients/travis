@@ -4,6 +4,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
@@ -234,11 +235,7 @@ class Repository extends BaseRepository
     public function refresh(): PromiseInterface
     {
         return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->slug)
-        )->then(function ($response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Repository', $response->getBody()->getJson()['repo'])
-            ));
-        });
+            new RepositoryCommand($this->slug)
+        );
     }
 }

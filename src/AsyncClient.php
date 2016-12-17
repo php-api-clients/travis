@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis;
 
+use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Foundation\Client;
 use ApiClients\Foundation\Factory;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
@@ -42,9 +43,7 @@ class AsyncClient
      */
     public function repository(string $repository): CancellablePromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('repos/' . $repository))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('Repository', $response->getBody()->getJson()['repo']));
-        });
+        return $this->client->handle(new Command\RepositoryCommand($repository));
     }
 
     /**
