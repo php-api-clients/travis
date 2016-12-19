@@ -14,6 +14,7 @@ use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
 class AsyncClient
@@ -86,13 +87,9 @@ class AsyncClient
      */
     public function accounts(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('accounts'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['accounts']);
-        })->flatMap(function ($account) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Account', $account)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\AccountsCommand()
+        ));
     }
 
     /**
@@ -100,12 +97,8 @@ class AsyncClient
      */
     public function broadcasts(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('broadcasts'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['broadcasts']);
-        })->flatMap(function ($broadcast) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Broadcast', $broadcast)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\BroadcastsCommand()
+        ));
     }
 }
