@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use React\Promise\PromiseInterface;
+use ApiClients\Client\Travis\CommandBus\Command\AccountsCommand;
 use ApiClients\Client\Travis\Resource\Account as BaseAccount;
+use ApiClients\Client\Travis\Resource\AccountInterface;
+use React\Promise\PromiseInterface;
+use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -17,16 +19,10 @@ class Account extends BaseAccount
      */
     public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(new SimpleRequestCommand('accounts'))->then(function ($json) {
-            foreach ($json['accounts'] as $account) {
-                if ($account['id'] != $this->id()) {
-                    continue;
-                }
-
-                return resolve($this->handleCommand(new HydrateCommand('Account', $account)));
-            }
-
-            return reject();
-        });
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new AccountsCommand()
+        ))->filter(function (AccountInterface $account) {
+            return $this->id() === $account->id();
+        }));
     }
 }
