@@ -73,13 +73,9 @@ class AsyncClient
      */
     public function hooks(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('hooks'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['hooks']);
-        })->flatMap(function ($hook) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Hook', $hook)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\HooksCommand()
+        ));
     }
 
     /**
