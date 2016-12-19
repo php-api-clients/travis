@@ -16,7 +16,7 @@ use Rx\React\Promise;
 use function React\Promise\resolve;
 use function WyriHaximus\React\futureFunctionPromise;
 
-final class FetchAndIterateService implements ServiceInterface
+class FetchAndIterateService implements ServiceInterface
 {
     /**
      * @var RequestService
