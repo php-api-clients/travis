@@ -13,7 +13,6 @@ use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
-use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
@@ -52,9 +51,7 @@ class AsyncClient
      */
     public function user(): PromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('users'))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('User', $response->getBody()->getJson()['user']));
-        });
+        return $this->client->handle(new Command\UserCommand());
     }
 
     /**
