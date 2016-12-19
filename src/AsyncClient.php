@@ -60,9 +60,7 @@ class AsyncClient
      */
     public function sshKey(int $id): PromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('settings/ssh_key/' . $id))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('SSHKey', $response->getBody()->getJson()['ssh_key']));
-        });
+        return $this->client->handle(new Command\SSHKeyCommand($id));
     }
 
     /**
