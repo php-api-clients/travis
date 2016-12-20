@@ -5,6 +5,7 @@ namespace ApiClients\Tests\Client\Travis\CommandBus\Handler;
 use ApiClients\Client\Travis\CommandBus\Command\UserCommand;
 use ApiClients\Client\Travis\CommandBus\Handler\UserHandler;
 use ApiClients\Client\Travis\Resource\UserInterface;
+use ApiClients\Client\Travis\Service\FetchAndHydrateService;
 use ApiClients\Foundation\Hydrator\Hydrator;
 use ApiClients\Foundation\Transport\ClientInterface;
 use ApiClients\Foundation\Transport\JsonStream;
@@ -47,7 +48,7 @@ final class UserHandlerTest extends TestCase
             Argument::exact($json)
         )->shouldBeCalled()->willReturn($userResource);
 
-        $handler = new UserHandler($requestService, $hydrator->reveal());
+        $handler = new UserHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
 
         self::assertSame($userResource, await($handler->handle($command), Factory::create()));
     }
