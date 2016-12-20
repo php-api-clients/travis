@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "20158e61c93b648e380bdb20679475b4",
-    "content-hash": "11365d5b76a366a1d8e2ee69102c4771",
+    "hash": "50c34275eb4e8665f78e867068729ef6",
+    "content-hash": "5b5888a49000e2673b97547869f19a64",
     "packages": [
         {
             "name": "api-clients/client-services",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/client-services.git",
-                "reference": "3d586b016c0816d6beb6d6db02a56a346231be13"
+                "reference": "0d833246abbc6de1fd94d4702112e231445784e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/client-services/zipball/3d586b016c0816d6beb6d6db02a56a346231be13",
-                "reference": "3d586b016c0816d6beb6d6db02a56a346231be13",
+                "url": "https://api.github.com/repos/php-api-clients/client-services/zipball/0d833246abbc6de1fd94d4702112e231445784e4",
+                "reference": "0d833246abbc6de1fd94d4702112e231445784e4",
                 "shasum": ""
             },
             "require": {
@@ -49,8 +49,8 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "description": "Async first TravisCI PHP API Client",
-            "time": "2016-12-20 21:25:00"
+            "description": "Generic client services",
+            "time": "2016-12-20 21:43:38"
         },
         {
             "name": "api-clients/command-bus",
@@ -1900,30 +1900,25 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc"
+                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce015ec5879b96f5d30905f035f223aa85013fcc",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
+                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0|~1.0",
                 "php": ">=5.3.0",
                 "react/event-loop": "0.4.*|0.3.*",
-                "react/stream": "0.4.*|0.3.*"
+                "react/stream": "^0.4.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Socket\\": "src"
@@ -1937,20 +1932,20 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-03-01 20:10:35"
+            "time": "2016-12-19 22:52:38"
         },
         {
             "name": "react/socket-client",
-            "version": "v0.5.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf"
+                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3cb406a14008c092207d95a63ebe7739f74843bf",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/6c5560be7d19992f2eb385ef442889ea73e80ff6",
+                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6",
                 "shasum": ""
             },
             "require": {
@@ -1959,10 +1954,10 @@
                 "react/event-loop": "0.4.*|0.3.*",
                 "react/promise": "^2.1 || ^1.2",
                 "react/promise-timer": "~1.0",
-                "react/stream": "0.4.*|0.3.*"
+                "react/stream": "^0.4.5"
             },
             "require-dev": {
-                "clue/block-react": "~1.0"
+                "clue/block-react": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -1978,7 +1973,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-11-20 00:11:24"
+            "time": "2016-12-19 23:23:16"
         },
         {
             "name": "react/stream",
@@ -3224,16 +3219,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929"
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/903fd6318d0a90b4770a009ff73e4a4e9c437929",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c14196e64a78570034afd0b7a9f3757ba71c2a0a",
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a",
                 "shasum": ""
             },
             "require": {
@@ -3283,7 +3278,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-11-28 16:00:31"
+            "time": "2016-12-20 15:22:42"
         },
         {
             "name": "phpunit/php-file-iterator",
