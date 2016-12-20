@@ -5,7 +5,7 @@ namespace ApiClients\Tests\Client\Travis\CommandBus\Handler;
 use ApiClients\Client\Travis\CommandBus\Command\BroadcastsCommand;
 use ApiClients\Client\Travis\CommandBus\Handler\BroadcastsHandler;
 use ApiClients\Client\Travis\Resource\BroadcastInterface;
-use ApiClients\Client\Travis\Service\FetchAndIterateService;
+use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use ApiClients\Tools\TestUtilities\TestCase;
 
 final class BroadcastsHandlerTest extends TestCase

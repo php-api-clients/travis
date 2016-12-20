@@ -4,7 +4,7 @@ namespace ApiClients\Client\Travis\CommandBus\Handler;
 
 use ApiClients\Client\Travis\CommandBus\Command\AccountsCommand;
 use ApiClients\Client\Travis\Resource\AccountInterface;
-use ApiClients\Client\Travis\Service\FetchAndIterateService;
+use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use function React\Promise\resolve;

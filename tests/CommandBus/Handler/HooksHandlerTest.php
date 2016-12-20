@@ -5,7 +5,7 @@ namespace ApiClients\Tests\Client\Travis\CommandBus\Handler;
 use ApiClients\Client\Travis\CommandBus\Command\HooksCommand;
 use ApiClients\Client\Travis\CommandBus\Handler\HooksHandler;
 use ApiClients\Client\Travis\Resource\HookInterface;
-use ApiClients\Client\Travis\Service\FetchAndIterateService;
+use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use ApiClients\Tools\TestUtilities\TestCase;
 
 final class HooksHandlerTest extends TestCase

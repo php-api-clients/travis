@@ -4,7 +4,7 @@ namespace ApiClients\Client\Travis\CommandBus\Handler;
 
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
-use ApiClients\Client\Travis\Service\FetchAndHydrateService;
+use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
 use function WyriHaximus\React\futureFunctionPromise;

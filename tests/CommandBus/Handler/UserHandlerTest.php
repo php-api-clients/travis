@@ -5,7 +5,7 @@ namespace ApiClients\Tests\Client\Travis\CommandBus\Handler;
 use ApiClients\Client\Travis\CommandBus\Command\UserCommand;
 use ApiClients\Client\Travis\CommandBus\Handler\UserHandler;
 use ApiClients\Client\Travis\Resource\UserInterface;
-use ApiClients\Client\Travis\Service\FetchAndHydrateService;
+use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Foundation\Hydrator\Hydrator;
 use ApiClients\Foundation\Transport\ClientInterface;
 use ApiClients\Foundation\Transport\JsonStream;

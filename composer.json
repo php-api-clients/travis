@@ -17,6 +17,7 @@
   ],
   "require": {
     "php": "^7.0",
+    "api-clients/client-services": "dev-master",
     "api-clients/foundation": "dev-master",
     "api-clients/pusher": "dev-master",
     "api-clients/rx": "dev-master",
