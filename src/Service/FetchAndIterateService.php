@@ -14,6 +14,7 @@ use RingCentral\Psr7\Request;
 use Rx\Observable;
 use Rx\React\Promise;
 use function React\Promise\resolve;
+use function igorw\get_in;
 use function WyriHaximus\React\futureFunctionPromise;
 
 class FetchAndIterateService implements ServiceInterface
@@ -55,7 +56,7 @@ class FetchAndIterateService implements ServiceInterface
                     new Request('GET', $path)
                 )
             )->flatMap(function ($response) use ($index) {
-                return Observable::fromArray($response->getBody()->getJson()[$index]);
+                return Observable::fromArray(get_in($response->getBody()->getJson(), explode('.', $index), []));
             })->map(function ($json) use ($hydrateClass) {
                 return $this->hydrator->hydrate(
                     $hydrateClass,

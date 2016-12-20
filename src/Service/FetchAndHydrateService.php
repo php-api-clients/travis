@@ -9,6 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use React\Promise\CancellablePromiseInterface;
 use RingCentral\Psr7\Request;
 use Rx\Observable;
+use function igorw\get_in;
 use function React\Promise\resolve;
 use function WyriHaximus\React\futureFunctionPromise;
 
@@ -50,7 +51,7 @@ class FetchAndHydrateService implements ServiceInterface
         )->then(function (ResponseInterface $response) use ($hydrateClass, $index) {
             return $this->hydrator->hydrate(
                 $hydrateClass,
-                $response->getBody()->getJson()[$index]
+                get_in($response->getBody()->getJson(), explode('.', $index), [])
             );
         });
     }

@@ -20,6 +20,7 @@
     "api-clients/foundation": "dev-master",
     "api-clients/pusher": "dev-master",
     "api-clients/rx": "dev-master",
+    "igorw/get-in": "^1.0",
     "reactivex/rxphp": "dev-custom_operators as 1.4.0"
   },
   "require-dev": {
