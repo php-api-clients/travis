@@ -7,6 +7,7 @@ use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
+use ApiClients\Client\Travis\CommandBus\Command\VarsCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
@@ -200,13 +201,9 @@ class Repository extends BaseRepository
      */
     public function vars(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('settings/env_vars?repository_id=' . $this->id()))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['env_vars']);
-        })->flatMap(function (array $envVar) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('EnvironmentVariable', $envVar)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new VarsCommand($this->id())
+        ));
     }
 
     /**
