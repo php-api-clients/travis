@@ -4,6 +4,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
@@ -23,6 +24,7 @@ use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use function React\Promise\reject;
 use function React\Promise\resolve;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 
 class Repository extends BaseRepository
 {
@@ -212,13 +214,9 @@ class Repository extends BaseRepository
      */
     public function caches(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/caches'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['caches']);
-        })->flatMap(function (array $cache) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Cache', $cache)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new CachesCommand($this->slug())
+        ));
     }
 
     /**
