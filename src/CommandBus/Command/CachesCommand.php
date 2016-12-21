@@ -12,21 +12,21 @@ final class CachesCommand
     /**
      * @var string
      */
-    private $repository;
+    private $repositoryId;
 
     /**
-     * @param string $repository
+     * @param int $repositoryId
      */
-    public function __construct(string $repository)
+    public function __construct(int $repositoryId)
     {
-        $this->repository = $repository;
+        $this->repositoryId = $repositoryId;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getRepository(): string
+    public function getRepositoryId(): int
     {
-        return $this->repository;
+        return $this->repositoryId;
     }
 }

@@ -15,9 +15,9 @@ final class CachesHandlerTest extends TestCase
 {
     public function testBroadcasts()
     {
-        $command = new CachesCommand('api-clients/travis');
+        $command = new CachesCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('repos/api-clients/travis/caches', 'caches', CacheInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->handle('repos/123/caches', 'caches', CacheInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new CachesHandler($service->reveal());
         $handler->handle($command);
     }

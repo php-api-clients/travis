@@ -212,7 +212,7 @@ class Repository extends BaseRepository
     public function caches(): ObservableInterface
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new CachesCommand($this->slug())
+            new CachesCommand($this->id())
         ));
     }
 

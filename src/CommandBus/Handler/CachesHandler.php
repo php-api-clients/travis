@@ -36,7 +36,7 @@ final class CachesHandler
     public function handle(CachesCommand $command): PromiseInterface
     {
         return $this->service->handle(
-            'repos/' . $command->getRepository() . '/caches',
+            'repos/' . (string)$command->getRepositoryId() . '/caches',
             'caches',
             CacheInterface::HYDRATE_CLASS
         );
