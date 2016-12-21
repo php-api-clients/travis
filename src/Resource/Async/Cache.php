@@ -20,6 +20,12 @@ class Cache extends BaseCache
             new CachesCommand($this->repositoryId())
         ))->filter(function (CacheInterface $cache) {
             return $this->slug() === $cache->slug();
-        }));
+        }))->then(function ($cache) {
+            if ($cache === null) {
+                return reject();
+            }
+
+            return resolve($cache);
+        });
     }
 }
