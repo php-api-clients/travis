@@ -2,14 +2,16 @@
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
+use ApiClients\Client\Travis\CommandBus\Command\CommitsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
 use ApiClients\Client\Travis\CommandBus\Command\SettingsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\VarsCommand;
+use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
@@ -23,11 +25,9 @@ use Rx\Observer\CallbackObserver;
 use Rx\ObserverInterface;
 use Rx\React\Promise;
 use Rx\SchedulerInterface;
-use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
-use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 
 class Repository extends BaseRepository
 {
@@ -69,13 +69,9 @@ class Repository extends BaseRepository
      */
     public function commits(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['commits']);
-        })->flatMap(function (array $commit) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Commit', $commit)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new CommitsCommand($this->slug())
+        ));
     }
 
     public function events(): Observable
