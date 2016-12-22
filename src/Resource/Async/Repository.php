@@ -8,6 +8,7 @@ use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
+use ApiClients\Client\Travis\CommandBus\Command\SettingsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\VarsCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
@@ -115,12 +116,8 @@ class Repository extends BaseRepository
     public function settings(): PromiseInterface
     {
         return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->id() . '/settings')
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Settings', $response->getBody()->getJson()['settings'])
-            ));
-        });
+            new SettingsCommand($this->id())
+        );
     }
 
     /**
