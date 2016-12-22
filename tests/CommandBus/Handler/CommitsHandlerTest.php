@@ -14,7 +14,11 @@ final class CommitsHandlerTest extends TestCase
     {
         $command = new CommitsCommand('api-clients/travis');
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('repos/api-clients/travis/builds', 'commits', CommitInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->handle(
+            'repos/api-clients/travis/builds',
+            'commits',
+            CommitInterface::HYDRATE_CLASS
+        )->shouldBeCalled();
         $handler = new CommitsHandler($service->reveal());
         $handler->handle($command);
     }
