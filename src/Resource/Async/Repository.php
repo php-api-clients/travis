@@ -4,6 +4,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
@@ -187,13 +188,9 @@ class Repository extends BaseRepository
      */
     public function branches(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/branches'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['branches']);
-        })->flatMap(function (array $branch) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Branch', $branch)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new BranchesCommand($this->id())
+        ));
     }
 
     /**
