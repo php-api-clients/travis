@@ -3,21 +3,16 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use Psr\Http\Message\ResponseInterface;
-use React\Promise\PromiseInterface;
 use ApiClients\Client\Travis\Resource\Commit as BaseCommit;
-use function React\Promise\resolve;
+use Exception;
+use React\Promise\PromiseInterface;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
+use function React\Promise\reject;
 
 class Commit extends BaseCommit
 {
-    public function refresh(): PromiseInterface
+    public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('builds/' . $this->id)
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(new HydrateCommand('Build', $response->getBody()->getJosn()['build'])));
-        });
+        return reject(new Exception('Can\'t refresh as there is no reference to the relative repository'));
     }
 }
