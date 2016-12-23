@@ -5,6 +5,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
+use ApiClients\Client\Travis\CommandBus\Command\BuildsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CommitsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
@@ -33,13 +34,9 @@ class Repository extends BaseRepository
 {
     public function builds(): Observable
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['builds']);
-        })->flatMap(function (array $build) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Build', $build)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new BuildsCommand($this->slug())
+        ));
     }
 
     public function jobs(int $buildId): Observable
