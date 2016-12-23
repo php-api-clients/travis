@@ -5,6 +5,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
+use ApiClients\Client\Travis\CommandBus\Command\BuildCommand;
 use ApiClients\Client\Travis\CommandBus\Command\BuildsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\CommitsCommand;
@@ -52,13 +53,7 @@ class Repository extends BaseRepository
      */
     public function build(int $id): PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->slug() . '/builds/' . $id)
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Build', $response->getBody()->getJson()['build'])
-            ));
-        });
+        return $this->handleCommand(new BuildCommand($id));
     }
 
     /**

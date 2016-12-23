@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
+use ApiClients\Client\Travis\CommandBus\Command\BuildCommand;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use Psr\Http\Message\ResponseInterface;
@@ -46,12 +47,6 @@ class Build extends BaseBuild
 
     public function refresh(): PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('builds/' . $this->id)
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(
-                new SimpleRequestCommand('Build', $response->getBody()->getJson()['build'])
-            ));
-        });
+        return $this->handleCommand(new BuildCommand($this->id()));
     }
 }
