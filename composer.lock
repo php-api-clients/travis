@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/client-services.git",
-                "reference": "0d833246abbc6de1fd94d4702112e231445784e4"
+                "reference": "c4ae50494cd67e366c85f4b729c8361af7d2c863"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/client-services/zipball/0d833246abbc6de1fd94d4702112e231445784e4",
-                "reference": "0d833246abbc6de1fd94d4702112e231445784e4",
+                "url": "https://api.github.com/repos/php-api-clients/client-services/zipball/c4ae50494cd67e366c85f4b729c8361af7d2c863",
+                "reference": "c4ae50494cd67e366c85f4b729c8361af7d2c863",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Generic client services",
-            "time": "2016-12-20 21:43:38"
+            "time": "2016-12-21 07:01:43"
         },
         {
             "name": "api-clients/command-bus",
