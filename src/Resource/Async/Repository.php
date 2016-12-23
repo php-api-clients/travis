@@ -5,13 +5,12 @@ namespace ApiClients\Client\Travis\Resource\Async;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command;
+use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use ApiClients\Foundation\Transport\JsonStream;
 use GuzzleHttp\Psr7\Request;
-use Psr\Http\Message\ResponseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -105,14 +104,12 @@ class Repository extends BaseRepository
      */
     public function isActive(): PromiseInterface
     {
-        return $this->handleCommand(new SimpleRequestCommand('hooks'))->then(function (ResponseInterface $response) {
-            $active = false;
-            foreach ($response->getBody()->getJson()['hooks'] as $hook) {
-                if ($hook['id'] == $this->id()) {
-                    $active = (bool)$hook['active'];
-                    break;
-                }
-            }
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new Command\HooksCommand()
+        ))->filter(function (HookInterface $hook) {
+            return $this->id() === $hook->id();
+        }))->then(function (HookInterface $hook) {
+            $active = $hook->active();
 
             if ($active) {
                 return resolve($active);
