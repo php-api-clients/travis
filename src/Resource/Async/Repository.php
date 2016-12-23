@@ -4,15 +4,7 @@ namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
-use ApiClients\Client\Travis\CommandBus\Command\BuildCommand;
-use ApiClients\Client\Travis\CommandBus\Command\BuildsCommand;
-use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
-use ApiClients\Client\Travis\CommandBus\Command\CommitsCommand;
-use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
-use ApiClients\Client\Travis\CommandBus\Command\RepositoryKeyCommand;
-use ApiClients\Client\Travis\CommandBus\Command\SettingsCommand;
-use ApiClients\Client\Travis\CommandBus\Command\VarsCommand;
+use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
@@ -36,7 +28,7 @@ class Repository extends BaseRepository
     public function builds(): Observable
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new BuildsCommand($this->slug())
+            new Command\BuildsCommand($this->slug())
         ));
     }
 
@@ -62,7 +54,7 @@ class Repository extends BaseRepository
     public function commits(): ObservableInterface
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new CommitsCommand($this->slug())
+            new Command\CommitsCommand($this->slug())
         ));
     }
 
@@ -104,7 +96,7 @@ class Repository extends BaseRepository
     public function settings(): PromiseInterface
     {
         return $this->handleCommand(
-            new SettingsCommand($this->id())
+            new Command\SettingsCommand($this->id())
         );
     }
 
@@ -174,7 +166,7 @@ class Repository extends BaseRepository
     public function branches(): ObservableInterface
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new BranchesCommand($this->id())
+            new Command\BranchesCommand($this->id())
         ));
     }
 
@@ -184,7 +176,7 @@ class Repository extends BaseRepository
     public function vars(): ObservableInterface
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new VarsCommand($this->id())
+            new Command\VarsCommand($this->id())
         ));
     }
 
@@ -194,7 +186,7 @@ class Repository extends BaseRepository
     public function caches(): ObservableInterface
     {
         return unwrapObservableFromPromise($this->handleCommand(
-            new CachesCommand($this->id())
+            new Command\CachesCommand($this->id())
         ));
     }
 
@@ -204,14 +196,14 @@ class Repository extends BaseRepository
     public function key(): PromiseInterface
     {
         return $this->handleCommand(
-            new RepositoryKeyCommand($this->slug())
+            new Command\RepositoryKeyCommand($this->slug())
         );
     }
 
     public function refresh(): PromiseInterface
     {
         return $this->handleCommand(
-            new RepositoryCommand($this->slug)
+            new Command\RepositoryCommand($this->slug)
         );
     }
 }
