@@ -4,17 +4,14 @@ declare(strict_types=1);
 namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Travis\CommandBus\Command\BuildCommand;
+use ApiClients\Client\Travis\CommandBus\Command\JobCommand;
 use ApiClients\Client\Travis\CommandBus\Command\JobsCommand;
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use Psr\Http\Message\ResponseInterface;
+use ApiClients\Client\Travis\Resource\Build as BaseBuild;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
-use Rx\React\Promise;
-use ApiClients\Client\Travis\Resource\Build as BaseBuild;
-use function React\Promise\resolve;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
+use function React\Promise\resolve;
 
 class Build extends BaseBuild
 {
@@ -34,13 +31,7 @@ class Build extends BaseBuild
      */
     public function job(int $id): PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('jobs/' . $id)
-        )->then(function (ResponseInterface $response) {
-            return $this->handleCommand(
-                new HydrateCommand('Job', $response->getBody()->getJson()['job'])
-            );
-        });
+        return $this->handleCommand(new JobCommand($id));
     }
 
     public function refresh(): PromiseInterface
