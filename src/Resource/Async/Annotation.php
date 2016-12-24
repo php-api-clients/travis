@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use React\Promise\PromiseInterface;
+use ApiClients\Client\Travis\CommandBus\Command\AnnotationsCommand;
 use ApiClients\Client\Travis\Resource\Annotation as BaseAnnotation;
+use ApiClients\Client\Travis\Resource\AnnotationInterface;
+use React\Promise\PromiseInterface;
+use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -17,18 +19,10 @@ class Annotation extends BaseAnnotation
      */
     public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('jobs/' . $this->jobId() . '/annotations')
-        )->then(function ($json) {
-            foreach ($json['annotations'] as $annotation) {
-                if ($annotation['id'] != $this->id()) {
-                    continue;
-                }
-
-                return resolve($this->handleCommand(new HydrateCommand('Annotation', $annotation)));
-            }
-
-            return reject();
-        });
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new AnnotationsCommand($this->jobId())
+        ))->filter(function (AnnotationInterface $annotation) {
+            return $this->id() === $annotation->id();
+        }));
     }
 }
