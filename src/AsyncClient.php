@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ApiClients\Client\Travis;
 
 use ApiClients\Client\Travis\CommandBus\Command;
+use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Foundation\Client;
 use ApiClients\Foundation\Factory;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
@@ -15,6 +16,7 @@ use Rx\Observable;
 use Rx\ObservableInterface;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
+use Rx\React\Promise;
 
 class AsyncClient
 {
@@ -44,6 +46,22 @@ class AsyncClient
     public function repository(string $repository): CancellablePromiseInterface
     {
         return $this->client->handle(new Command\RepositoryCommand($repository));
+    }
+
+    /**
+     * @return ObservableInterface
+     */
+    public function repositories(): ObservableInterface
+    {
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\HooksCommand()
+        ))->filter(function (HookInterface $hook) {
+            return $hook->active();
+        })->flatMap(function (HookInterface $hook) {
+            return Promise::toObservable($this->client->handle(
+                new Command\RepositoryIdCommand($hook->id())
+            ));
+        });
     }
 
     /**
