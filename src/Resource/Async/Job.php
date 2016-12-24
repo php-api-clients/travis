@@ -5,10 +5,10 @@ namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
 use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\CommandBus\Command\AnnotationsCommand;
 use ApiClients\Client\Travis\CommandBus\Command\JobCommand;
 use ApiClients\Client\Travis\Resource\Job as BaseJob;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -16,6 +16,7 @@ use Rx\Observer\CallbackObserver;
 use Rx\ObserverInterface;
 use Rx\React\Promise;
 use Rx\SchedulerInterface;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
 class Job extends BaseJob
@@ -46,13 +47,9 @@ class Job extends BaseJob
      */
     public function annotations(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('jobs/' . $this->id() . '/annotations'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response['annotations']);
-        })->flatMap(function ($annotation) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Annotation', $annotation)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new AnnotationsCommand($this->id())
+        ));
     }
 
     /**
