@@ -19,20 +19,14 @@
     "php": "^7.0",
     "api-clients/client-services": "dev-master",
     "api-clients/foundation": "dev-master",
+    "api-clients/middleware-pool": "dev-master",
     "api-clients/pusher": "dev-master",
-    "api-clients/rx": "dev-master",
-    "reactivex/rxphp": "dev-custom_operators as 1.4.0"
+    "api-clients/rx": "dev-master"
   },
   "require-dev": {
     "api-clients/resource-generator": "dev-master",
     "api-clients/test-utilities": "^2.0"
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/mbonneau/RxPHP"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "ApiClients\\Client\\Travis\\": "src/"
