@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/foundation.git",
-                "reference": "1da4978b2cc4062b6931b34796987773cca0dc2b"
+                "reference": "07ca78209cb6caeb55efaa34de823441d88cea8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/1da4978b2cc4062b6931b34796987773cca0dc2b",
-                "reference": "1da4978b2cc4062b6931b34796987773cca0dc2b",
+                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/07ca78209cb6caeb55efaa34de823441d88cea8c",
+                "reference": "07ca78209cb6caeb55efaa34de823441d88cea8c",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-12-17 22:15:01"
+            "time": "2016-12-26 08:59:19"
         },
         {
             "name": "api-clients/hydrator",
@@ -2455,12 +2455,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/middleware-pool.git",
-                "reference": "4a70e3f7cddc42cf8a7b17860bee70fc095495ff"
+                "reference": "f4a25dad2ffde5a943431f9a02c99bd382abb4ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/middleware-pool/zipball/4a70e3f7cddc42cf8a7b17860bee70fc095495ff",
-                "reference": "4a70e3f7cddc42cf8a7b17860bee70fc095495ff",
+                "url": "https://api.github.com/repos/php-api-clients/middleware-pool/zipball/f4a25dad2ffde5a943431f9a02c99bd382abb4ea",
+                "reference": "f4a25dad2ffde5a943431f9a02c99bd382abb4ea",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2491,7 @@
                 }
             ],
             "description": "Request pool middleware",
-            "time": "2016-12-25 17:14:32"
+            "time": "2016-12-26 08:54:03"
         },
         {
             "name": "api-clients/resource-generator",
