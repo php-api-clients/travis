@@ -2,10 +2,12 @@
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use React\Promise\PromiseInterface;
+use ApiClients\Client\Travis\CommandBus\Command\BroadcastsCommand;
 use ApiClients\Client\Travis\Resource\Broadcast as BaseBroadcast;
+use ApiClients\Client\Travis\Resource\BroadcastInterface;
+use React\Promise\PromiseInterface;
+use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -13,18 +15,10 @@ class Broadcast extends BaseBroadcast
 {
     public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->repositoryId() . '/branches')
-        )->then(function ($json) {
-            foreach ($json['broadcasts'] as $broadcast) {
-                if ($broadcast['id'] != $this->id()) {
-                    continue;
-                }
-
-                return resolve($this->handleCommand(new HydrateCommand('Broadcast', $broadcast)));
-            }
-
-            return reject();
-        });
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new BroadcastsCommand()
+        ))->filter(function (BroadcastInterface $broadcast) {
+            return $this->id() === $broadcast->id();
+        }));
     }
 }

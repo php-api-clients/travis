@@ -2,10 +2,12 @@
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use React\Promise\PromiseInterface;
+use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
 use ApiClients\Client\Travis\Resource\Branch as BaseBranch;
+use ApiClients\Client\Travis\Resource\BranchInterface;
+use React\Promise\PromiseInterface;
+use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -16,18 +18,16 @@ class Branch extends BaseBranch
      */
     public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->repositoryId() . '/branches')
-        )->then(function ($json) {
-            foreach ($json['branches'] as $branch) {
-                if ($branch['id'] != $this->id()) {
-                    continue;
-                }
-
-                return resolve($this->handleCommand(new HydrateCommand('Branch', $branch)));
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new BranchesCommand($this->repositoryId())
+        ))->filter(function (BranchInterface $branch) {
+            return $this->id() === $branch->id();
+        }))->then(function ($branch) {
+            if ($branch === null) {
+                return reject();
             }
 
-            return reject();
+            return resolve($branch);
         });
     }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis;
 
+use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Foundation\Client;
 use ApiClients\Foundation\Factory;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
@@ -12,7 +13,7 @@ use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
-use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
 class AsyncClient
@@ -42,9 +43,7 @@ class AsyncClient
      */
     public function repository(string $repository): CancellablePromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('repos/' . $repository))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('Repository', $response->getBody()->getJson()['repo']));
-        });
+        return $this->client->handle(new Command\RepositoryCommand($repository));
     }
 
     /**
@@ -52,9 +51,7 @@ class AsyncClient
      */
     public function user(): PromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('users'))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('User', $response->getBody()->getJson()['user']));
-        });
+        return $this->client->handle(new Command\UserCommand());
     }
 
     /**
@@ -63,9 +60,7 @@ class AsyncClient
      */
     public function sshKey(int $id): PromiseInterface
     {
-        return $this->client->handle(new SimpleRequestCommand('settings/ssh_key/' . $id))->then(function ($response) {
-            return $this->client->handle(new HydrateCommand('SSHKey', $response->getBody()->getJson()['ssh_key']));
-        });
+        return $this->client->handle(new Command\SSHKeyCommand($id));
     }
 
     /**
@@ -73,13 +68,9 @@ class AsyncClient
      */
     public function hooks(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('hooks'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['hooks']);
-        })->flatMap(function ($hook) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Hook', $hook)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\HooksCommand()
+        ));
     }
 
     /**
@@ -87,13 +78,9 @@ class AsyncClient
      */
     public function accounts(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('accounts'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['accounts']);
-        })->flatMap(function ($account) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Account', $account)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\AccountsCommand()
+        ));
     }
 
     /**
@@ -101,12 +88,8 @@ class AsyncClient
      */
     public function broadcasts(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->client->handle(new SimpleRequestCommand('broadcasts'))
-        )->flatMap(function ($response) {
-            return Observable::fromArray($response->getBody()->getJson()['broadcasts']);
-        })->flatMap(function ($broadcast) {
-            return Promise::toObservable($this->client->handle(new HydrateCommand('Broadcast', $broadcast)));
-        });
+        return unwrapObservableFromPromise($this->client->handle(
+            new Command\BroadcastsCommand()
+        ));
     }
 }

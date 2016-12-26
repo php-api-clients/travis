@@ -54,7 +54,7 @@ class ApiSettings
         if (!empty($token)) {
             $transportOptions = $options[FoundationOptions::TRANSPORT_OPTIONS];
             $transportOptions[TransportOptions::MIDDLEWARE][] = TokenAuthorizationHeaderMiddleware::class;
-            $options[FoundationOptions::TRANSPORT_OPTIONS][TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
+            $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
                 TokenAuthorizationHeaderMiddleware::class => [
                     Options::TOKEN => $token,
                 ],

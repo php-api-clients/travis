@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
-use React\Promise\PromiseInterface;
+use ApiClients\Client\Travis\CommandBus\Command\HooksCommand;
 use ApiClients\Client\Travis\Resource\Hook as BaseHook;
+use ApiClients\Client\Travis\Resource\HookInterface;
+use React\Promise\PromiseInterface;
+use Rx\React\Promise;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -14,16 +16,10 @@ class Hook extends BaseHook
 {
     public function refresh() : PromiseInterface
     {
-        return $this->handleCommand(new SimpleRequestCommand('hooks'))->then(function ($json) {
-            foreach ($json['hooks'] as $hook) {
-                if ($hook['id'] != $this->id()) {
-                    continue;
-                }
-
-                return resolve($this->handleCommand(new HydrateCommand('Hook', $hook)));
-            }
-
-            return reject();
-        });
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new HooksCommand()
+        ))->filter(function (HookInterface $hook) {
+            return $this->id() === $hook->id();
+        }));
     }
 }

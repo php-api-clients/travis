@@ -2,14 +2,15 @@
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Client\Pusher\AsyncClient;
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Travis\ApiSettings;
+use ApiClients\Client\Travis\CommandBus\Command;
+use ApiClients\Client\Travis\Resource\HookInterface;
+use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use ApiClients\Foundation\Transport\JsonStream;
 use GuzzleHttp\Psr7\Request;
-use Psr\Http\Message\ResponseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -17,8 +18,7 @@ use Rx\Observer\CallbackObserver;
 use Rx\ObserverInterface;
 use Rx\React\Promise;
 use Rx\SchedulerInterface;
-use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
+use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
 
@@ -26,13 +26,9 @@ class Repository extends BaseRepository
 {
     public function builds(): Observable
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['builds']);
-        })->flatMap(function (array $build) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Build', $build)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new Command\BuildsCommand($this->slug())
+        ));
     }
 
     public function jobs(int $buildId): Observable
@@ -48,13 +44,7 @@ class Repository extends BaseRepository
      */
     public function build(int $id): PromiseInterface
     {
-        return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->slug() . '/builds/' . $id)
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Build', $response->getBody()->getJson()['build'])
-            ));
-        });
+        return $this->handleCommand(new BuildCommand($id));
     }
 
     /**
@@ -62,13 +52,9 @@ class Repository extends BaseRepository
      */
     public function commits(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/builds'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['commits']);
-        })->flatMap(function (array $commit) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Commit', $commit)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new Command\CommitsCommand($this->slug())
+        ));
     }
 
     public function events(): Observable
@@ -109,12 +95,8 @@ class Repository extends BaseRepository
     public function settings(): PromiseInterface
     {
         return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->id() . '/settings')
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Settings', $response->getBody()->getJson()['settings'])
-            ));
-        });
+            new Command\SettingsCommand($this->id())
+        );
     }
 
     /**
@@ -122,14 +104,12 @@ class Repository extends BaseRepository
      */
     public function isActive(): PromiseInterface
     {
-        return $this->handleCommand(new SimpleRequestCommand('hooks'))->then(function (ResponseInterface $response) {
-            $active = false;
-            foreach ($response->getBody()->getJson()['hooks'] as $hook) {
-                if ($hook['id'] == $this->id()) {
-                    $active = (bool)$hook['active'];
-                    break;
-                }
-            }
+        return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
+            new Command\HooksCommand()
+        ))->filter(function (HookInterface $hook) {
+            return $this->id() === $hook->id();
+        }))->then(function (HookInterface $hook) {
+            $active = $hook->active();
 
             if ($active) {
                 return resolve($active);
@@ -182,13 +162,9 @@ class Repository extends BaseRepository
      */
     public function branches(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/branches'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['branches']);
-        })->flatMap(function (array $branch) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Branch', $branch)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new Command\BranchesCommand($this->id())
+        ));
     }
 
     /**
@@ -196,13 +172,9 @@ class Repository extends BaseRepository
      */
     public function vars(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('settings/env_vars?repository_id=' . $this->id()))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['env_vars']);
-        })->flatMap(function (array $envVar) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('EnvironmentVariable', $envVar)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new Command\VarsCommand($this->id())
+        ));
     }
 
     /**
@@ -210,13 +182,9 @@ class Repository extends BaseRepository
      */
     public function caches(): ObservableInterface
     {
-        return Promise::toObservable(
-            $this->handleCommand(new SimpleRequestCommand('repos/' . $this->slug() . '/caches'))
-        )->flatMap(function (ResponseInterface $response) {
-            return Observable::fromArray($response->getBody()->getJson()['caches']);
-        })->flatMap(function (array $cache) {
-            return Promise::toObservable($this->handleCommand(new HydrateCommand('Cache', $cache)));
-        });
+        return unwrapObservableFromPromise($this->handleCommand(
+            new Command\CachesCommand($this->id())
+        ));
     }
 
     /**
@@ -225,20 +193,14 @@ class Repository extends BaseRepository
     public function key(): PromiseInterface
     {
         return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->slug() . '/key')
-        )->then(function (ResponseInterface $response) {
-            return resolve($this->handleCommand(new HydrateCommand('RepositoryKey', $response->getBody()->getJson())));
-        });
+            new Command\RepositoryKeyCommand($this->slug())
+        );
     }
 
     public function refresh(): PromiseInterface
     {
         return $this->handleCommand(
-            new SimpleRequestCommand('repos/' . $this->slug)
-        )->then(function ($response) {
-            return resolve($this->handleCommand(
-                new HydrateCommand('Repository', $response->getBody()->getJson()['repo'])
-            ));
-        });
+            new Command\RepositoryCommand($this->slug)
+        );
     }
 }

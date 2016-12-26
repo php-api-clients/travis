@@ -17,8 +17,10 @@
   ],
   "require": {
     "php": "^7.0",
+    "api-clients/client-services": "dev-master",
     "api-clients/foundation": "dev-master",
-    "api-clients/pusher": "dev-master"
+    "api-clients/pusher": "dev-master",
+    "api-clients/rx": "dev-master"
   },
   "require-dev": {
     "api-clients/resource-generator": "dev-master",
@@ -36,6 +38,14 @@
   },
   "config": {
     "sort-packages": true
+  },
+  "extra": {
+    "api-clients": {
+      "command-bus": {
+        "path": "src/CommandBus",
+        "namespace": "ApiClients\\Client\\Travis\\CommandBus"
+      }
+    }
   },
   "scripts": {
     "ensure-installed": "composer install --ansi -n -q",
