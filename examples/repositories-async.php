@@ -16,7 +16,7 @@ $loop = Factory::create();
 $client = new AsyncClient(
     $loop,
     require 'resolve_key.php',
-    [
+    [ // We're passing these extra options to ensure we don't request all repositories at once (!!!)
         Options::TRANSPORT_OPTIONS => [
             TransportOptions::DEFAULT_REQUEST_OPTIONS => [
                 PoolMiddleware::class => [
