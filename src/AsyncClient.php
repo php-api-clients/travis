@@ -4,15 +4,15 @@ declare(strict_types=1);
 namespace ApiClients\Client\Travis;
 
 use ApiClients\Client\Travis\CommandBus\Command;
+use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Foundation\Client;
 use ApiClients\Foundation\Factory;
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
-use ApiClients\Foundation\Transport\CommandBus\Command\SimpleRequestCommand;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
+use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
@@ -26,12 +26,17 @@ class AsyncClient
     /**
      * @param LoopInterface $loop
      * @param string $token
+     * @param array $options
      * @param Client|null $client
      */
-    public function __construct(LoopInterface $loop, string $token = '', Client $client = null)
-    {
+    public function __construct(
+        LoopInterface $loop,
+        string $token = '',
+        array $options = [],
+        Client $client = null
+    ) {
         if (!($client instanceof Client)) {
-            $this->options = ApiSettings::getOptions($token, 'Async');
+            $this->options = ApiSettings::getOptions($token, 'Async', $options);
             $client = Factory::create($loop, $this->options);
         }
         $this->client = $client;
@@ -44,6 +49,20 @@ class AsyncClient
     public function repository(string $repository): CancellablePromiseInterface
     {
         return $this->client->handle(new Command\RepositoryCommand($repository));
+    }
+
+    /**
+     * @return ObservableInterface
+     */
+    public function repositories(): ObservableInterface
+    {
+        return $this->hooks()->filter(function ($hook) {
+            return $hook->active();
+        })->flatMap(function (HookInterface $hook) {
+            return Promise::toObservable($this->client->handle(
+                new Command\RepositoryIdCommand($hook->id())
+            ));
+        });
     }
 
     /**

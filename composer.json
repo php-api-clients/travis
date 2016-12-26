@@ -23,8 +23,12 @@
     "api-clients/rx": "dev-master"
   },
   "require-dev": {
+    "api-clients/middleware-pool": "dev-master",
     "api-clients/resource-generator": "dev-master",
     "api-clients/test-utilities": "^2.0"
+  },
+  "suggest": {
+    "api-clients/middleware-pool": "Keep your request count under control"
   },
   "autoload": {
     "psr-4": {

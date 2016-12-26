@@ -33,6 +33,6 @@ abstract class Hook extends AbstractResource implements HookInterface
      */
     public function active() : bool
     {
-        return $this->active;
+        return (bool)$this->active;
     }
 }
