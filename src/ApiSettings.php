@@ -46,19 +46,23 @@ class ApiSettings
      */
     public static function getOptions(
         string $token,
-        string $suffix
+        string $suffix,
+        array $suppliedOptions = []
     ): array {
-        $options = self::TRANSPORT_OPTIONS;
+        $options = array_replace_recursive(self::TRANSPORT_OPTIONS, $suppliedOptions);
         $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
 
         if (!empty($token)) {
             $transportOptions = $options[FoundationOptions::TRANSPORT_OPTIONS];
             $transportOptions[TransportOptions::MIDDLEWARE][] = TokenAuthorizationHeaderMiddleware::class;
-            $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = [
-                TokenAuthorizationHeaderMiddleware::class => [
-                    Options::TOKEN => $token,
-                ],
-            ];
+            $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = array_merge_recursive(
+                $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] ?? [],
+                [
+                    TokenAuthorizationHeaderMiddleware::class => [
+                        Options::TOKEN => $token,
+                    ],
+                ]
+            );
             $options[FoundationOptions::TRANSPORT_OPTIONS] = $transportOptions;
         }
 
