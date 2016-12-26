@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/foundation.git",
-                "reference": "07ca78209cb6caeb55efaa34de823441d88cea8c"
+                "reference": "9faab8e05ad9ee5d03c4a02a4c18531d22463264"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/07ca78209cb6caeb55efaa34de823441d88cea8c",
-                "reference": "07ca78209cb6caeb55efaa34de823441d88cea8c",
+                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/9faab8e05ad9ee5d03c4a02a4c18531d22463264",
+                "reference": "9faab8e05ad9ee5d03c4a02a4c18531d22463264",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,10 @@
             "autoload": {
                 "psr-4": {
                     "ApiClients\\Foundation\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -146,7 +149,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-12-26 08:59:19"
+            "time": "2016-12-26 15:07:22"
         },
         {
             "name": "api-clients/hydrator",

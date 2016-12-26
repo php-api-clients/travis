@@ -9,6 +9,7 @@ use ApiClients\Foundation\Transport\Middleware\JsonEncodeMiddleware;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
 use ApiClients\Foundation\Transport\UserAgentStrategies;
 use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
+use function ApiClients\Foundation\options_merge;
 
 class ApiSettings
 {
@@ -49,7 +50,7 @@ class ApiSettings
         string $suffix,
         array $suppliedOptions = []
     ): array {
-        $options = array_replace_recursive(self::TRANSPORT_OPTIONS, $suppliedOptions);
+        $options = options_merge(self::TRANSPORT_OPTIONS, $suppliedOptions);
         $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
 
         if (!empty($token)) {
