@@ -86,6 +86,19 @@ class Client
     /**
      * @return array
      */
+    public function repositories(): array
+    {
+        return await(
+            Promise::fromObservable(
+                $this->client->repositories()->toArray()
+            ),
+            $this->loop
+        );
+    }
+
+    /**
+     * @return array
+     */
     public function accounts(): array
     {
         return await(
