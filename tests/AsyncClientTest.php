@@ -3,7 +3,7 @@
 namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\AsyncClient;
-use ApiClients\Client\Travis\CommandBus\Command\HooksCommand;
+use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
@@ -34,11 +34,25 @@ final class AsyncClientTest extends TestCase
         $loop = Factory::create();
         $client = $this->prophesize(ClientInterface::class);
         $client->handle(
-            Argument::type(HooksCommand::class)
+            Argument::type(Command\HooksCommand::class)
         )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
 
         $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
         $result = await(Promise::fromObservable($asyncClient->hooks()), $loop);
+        self::assertSame($expected, $result);
+    }
+
+    public function testAccounts()
+    {
+        $expected = 'foo.bar';
+        $loop = Factory::create();
+        $client = $this->prophesize(ClientInterface::class);
+        $client->handle(
+            Argument::type(Command\AccountsCommand::class)
+        )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
+
+        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $result = await(Promise::fromObservable($asyncClient->accounts()), $loop);
         self::assertSame($expected, $result);
     }
 }
