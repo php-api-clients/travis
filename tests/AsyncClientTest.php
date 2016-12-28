@@ -3,6 +3,7 @@
 namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\CommandBus\Command\HooksCommand;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
@@ -24,6 +25,20 @@ final class AsyncClientTest extends TestCase
 
         $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
         $result = await($asyncClient->repository('php-api-clients/travis'), $loop);
+        self::assertSame($expected, $result);
+    }
+
+    public function testHooks()
+    {
+        $expected = 'foo.bar';
+        $loop = Factory::create();
+        $client = $this->prophesize(ClientInterface::class);
+        $client->handle(
+            Argument::type(HooksCommand::class)
+        )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
+
+        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $result = await(Promise::fromObservable($asyncClient->hooks()), $loop);
         self::assertSame($expected, $result);
     }
 }
