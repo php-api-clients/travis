@@ -42,6 +42,20 @@ final class AsyncClientTest extends TestCase
         self::assertSame($expected, $result);
     }
 
+    public function testSshKey()
+    {
+        $expected = 'foo.bar';
+        $loop = Factory::create();
+        $client = $this->prophesize(ClientInterface::class);
+        $client->handle(
+            Argument::which('getId', 123)
+        )->shouldBeCalled()->willReturn(resolve($expected));
+
+        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $result = await($asyncClient->sshKey(123), $loop);
+        self::assertSame($expected, $result);
+    }
+
     public function testHooks()
     {
         $expected = 'foo.bar';
