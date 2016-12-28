@@ -10,7 +10,7 @@ use ApiClients\Client\Travis\Resource\CommitInterface;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop   = Factory::create();
-$client = new AsyncClient($loop);
+$client = AsyncClient::create($loop);
 
 $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->then(function (Repository $repository) {
     echo 'Repository: ', PHP_EOL;

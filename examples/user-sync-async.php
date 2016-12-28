@@ -10,7 +10,7 @@ use function React\Promise\resolve;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient($loop, require 'resolve_key.php');
+$client = AsyncClient::create($loop, require 'resolve_key.php');
 
 $client->user()->then(function (UserInterface $user) {
     echo 'Previous sync: ', $user->syncedAt()->format(DATE_ISO8601), PHP_EOL;

@@ -9,7 +9,7 @@ use function ApiClients\Foundation\resource_pretty_print;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient($loop);
+$client = AsyncClient::create($loop);
 
 $repos = [
     'WyriHaximus/php-travis-client',
@@ -24,7 +24,7 @@ if (count($argv) > 1) {
 
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        $repo->key()->then(function (RepositoryKeyInterface $key) {
+        $repo->key()->done(function (RepositoryKeyInterface $key) {
             resource_pretty_print($key);
         });
     });

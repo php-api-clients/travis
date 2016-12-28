@@ -10,7 +10,7 @@ use function ApiClients\Foundation\resource_pretty_print;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient($loop, require 'resolve_key.php');
+$client = AsyncClient::create($loop, require 'resolve_key.php');
 
 $repos = [
     'WyriHaximus/php-travis-client',
