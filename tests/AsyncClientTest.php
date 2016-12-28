@@ -55,4 +55,18 @@ final class AsyncClientTest extends TestCase
         $result = await(Promise::fromObservable($asyncClient->accounts()), $loop);
         self::assertSame($expected, $result);
     }
+
+    public function testBroadcasts()
+    {
+        $expected = 'foo.bar';
+        $loop = Factory::create();
+        $client = $this->prophesize(ClientInterface::class);
+        $client->handle(
+            Argument::type(Command\BroadcastsCommand::class)
+        )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
+
+        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $result = await(Promise::fromObservable($asyncClient->broadcasts()), $loop);
+        self::assertSame($expected, $result);
+    }
 }
