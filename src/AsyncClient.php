@@ -1,11 +1,11 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace ApiClients\Client\Travis;
 
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Foundation\Client;
+use ApiClients\Foundation\ClientInterface;
 use ApiClients\Foundation\Factory;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
@@ -16,10 +16,10 @@ use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
-class AsyncClient
+final class AsyncClient
 {
     /**
-     * @var Client
+     * @var ClientInterface
      */
     protected $client;
 
@@ -27,15 +27,15 @@ class AsyncClient
      * @param LoopInterface $loop
      * @param string $token
      * @param array $options
-     * @param Client|null $client
+     * @param ClientInterface|null $client
      */
     public function __construct(
         LoopInterface $loop,
         string $token = '',
         array $options = [],
-        Client $client = null
+        ClientInterface $client = null
     ) {
-        if (!($client instanceof Client)) {
+        if (!($client instanceof ClientInterface)) {
             $this->options = ApiSettings::getOptions($token, 'Async', $options);
             $client = Factory::create($loop, $this->options);
         }

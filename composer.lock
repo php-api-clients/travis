@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/foundation.git",
-                "reference": "9faab8e05ad9ee5d03c4a02a4c18531d22463264"
+                "reference": "e694a5d622d3c830dfa01354d6b3c98f4ff5a198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/9faab8e05ad9ee5d03c4a02a4c18531d22463264",
-                "reference": "9faab8e05ad9ee5d03c4a02a4c18531d22463264",
+                "url": "https://api.github.com/repos/php-api-clients/foundation/zipball/e694a5d622d3c830dfa01354d6b3c98f4ff5a198",
+                "reference": "e694a5d622d3c830dfa01354d6b3c98f4ff5a198",
                 "shasum": ""
             },
             "require": {
@@ -149,7 +149,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2016-12-26 15:07:22"
+            "time": "2016-12-28 07:20:59"
         },
         {
             "name": "api-clients/hydrator",
@@ -1851,16 +1851,16 @@
         },
         {
             "name": "react/promise-timer",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a"
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/6a46050d801688e08d1a550b97b1f3735505c62a",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd",
                 "shasum": ""
             },
             "require": {
@@ -1897,7 +1897,7 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2016-02-29 19:03:45"
+            "time": "2016-12-27 08:12:19"
         },
         {
             "name": "react/socket",
@@ -2026,12 +2026,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "c7d351d579f90134eef3701d87eb1ea8cd1e072e"
+                "reference": "7c7d8584dc8d92337fdaedbe74c4ced5f95e9a69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/c7d351d579f90134eef3701d87eb1ea8cd1e072e",
-                "reference": "c7d351d579f90134eef3701d87eb1ea8cd1e072e",
+                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/7c7d8584dc8d92337fdaedbe74c4ced5f95e9a69",
+                "reference": "7c7d8584dc8d92337fdaedbe74c4ced5f95e9a69",
                 "shasum": ""
             },
             "require": {
@@ -2084,7 +2084,7 @@
                 "reactive",
                 "rx"
             ],
-            "time": "2016-12-24 23:43:32"
+            "time": "2016-12-26 16:39:28"
         },
         {
             "name": "ringcentral/psr7",
