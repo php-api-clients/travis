@@ -2,7 +2,6 @@
 
 namespace ApiClients\Tests\Client\Travis;
 
-
 use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
 use ApiClients\Client\Travis\Options;
@@ -60,7 +59,6 @@ class ApiSettingsTest extends TestCase
                 return $options;
             })(ApiSettings::TRANSPORT_OPTIONS)
         ];
-
     }
 
     /**
