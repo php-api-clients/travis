@@ -28,6 +28,20 @@ final class AsyncClientTest extends TestCase
         self::assertSame($expected, $result);
     }
 
+    public function testUser()
+    {
+        $expected = 'foo.bar';
+        $loop = Factory::create();
+        $client = $this->prophesize(ClientInterface::class);
+        $client->handle(
+            Argument::type(Command\UserCommand::class)
+        )->shouldBeCalled()->willReturn(resolve($expected));
+
+        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $result = await($asyncClient->user(), $loop);
+        self::assertSame($expected, $result);
+    }
+
     public function testHooks()
     {
         $expected = 'foo.bar';
