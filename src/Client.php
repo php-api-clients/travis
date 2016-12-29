@@ -13,26 +13,53 @@ use ApiClients\Client\Travis\Resource\UserInterface;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 
-class Client
+final class Client
 {
     /**
      * @var LoopInterface
      */
-    protected $loop;
+    private $loop;
 
     /**
      * @var AsyncClient
      */
-    protected $client;
+    private $asyncClient;
 
     /**
      * @param string $token
+     * @param array $options
+     * @return Client
      */
-    public function __construct(string $token = '')
+    public static function create(
+        string $token = '',
+        array $options = []
+    ): self {
+        $loop = LoopFactory::create();
+        $options = ApiSettings::getOptions($token, 'Sync', $options);
+        $client = Factory::create($loop, $options);
+        $asyncClient = AsyncClient::createFromClient($client);
+        return self::createFromClient($loop, $asyncClient);
+    }
+
+    /**
+     * @param LoopInterface $loop
+     * @param AsyncClient $asyncClient
+     * @return Client
+     */
+    public static function createFromClient(LoopInterface $loop, AsyncClient $asyncClient): self
     {
-        $this->loop = LoopFactory::create();
-        $this->options = ApiSettings::getOptions($token, 'Sync');
-        $this->client = new AsyncClient($this->loop, $token, Factory::create($this->loop, $this->options));
+        return new self($loop, $asyncClient);
+    }
+
+    /**
+     * Client constructor.
+     * @param LoopInterface $loop
+     * @param AsyncClient $asyncClient
+     */
+    private function __construct(LoopInterface $loop, AsyncClient $asyncClient)
+    {
+        $this->loop = $loop;
+        $this->asyncClient = $asyncClient;
     }
 
     /**
@@ -42,7 +69,7 @@ class Client
     public function repository(string $repository): RepositoryInterface
     {
         return await(
-            $this->client->repository($repository),
+            $this->asyncClient->repository($repository),
             $this->loop
         );
     }
@@ -53,7 +80,7 @@ class Client
     public function user(): UserInterface
     {
         return await(
-            $this->client->user(),
+            $this->asyncClient->user(),
             $this->loop
         );
     }
@@ -65,7 +92,7 @@ class Client
     public function sshKey(int $id): SSHKeyInterface
     {
         return await(
-            $this->client->sshKey($id),
+            $this->asyncClient->sshKey($id),
             $this->loop
         );
     }
@@ -77,7 +104,7 @@ class Client
     {
         return await(
             Promise::fromObservable(
-                $this->client->hooks()->toArray()
+                $this->asyncClient->hooks()->toArray()
             ),
             $this->loop
         );
@@ -90,7 +117,7 @@ class Client
     {
         return await(
             Promise::fromObservable(
-                $this->client->repositories()->toArray()
+                $this->asyncClient->repositories()->toArray()
             ),
             $this->loop
         );
@@ -103,7 +130,7 @@ class Client
     {
         return await(
             Promise::fromObservable(
-                $this->client->accounts()->toArray()
+                $this->asyncClient->accounts()->toArray()
             ),
             $this->loop
         );
@@ -116,7 +143,7 @@ class Client
     {
         return await(
             Promise::fromObservable(
-                $this->client->broadcasts()->toArray()
+                $this->asyncClient->broadcasts()->toArray()
             ),
             $this->loop
         );

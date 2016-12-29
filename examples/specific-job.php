@@ -4,7 +4,7 @@ use ApiClients\Client\Travis\Client;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-$client = new Client();
+$client = Client::create();
 
 $repository = $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client');
 echo 'Repository: ', PHP_EOL;
