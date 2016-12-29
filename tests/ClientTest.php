@@ -7,6 +7,7 @@ use ApiClients\Client\Travis\Client;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
+use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
@@ -61,5 +62,21 @@ final class ClientTest extends TestCase
         $result = $client->user();
 
         self::assertSame($user, $result);
+    }
+
+    public function testSshKey()
+    {
+        $sshKeyId = 1337;
+        $sshKey = $this->prophesize(SSHKeyInterface::class)->reveal();
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->sshKey($sshKeyId)->shouldBeCalled()->willReturn(resolve($sshKey));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->sshKey($sshKeyId);
+
+        self::assertSame($sshKey, $result);
     }
 }
