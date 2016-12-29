@@ -21,7 +21,7 @@ final class Client implements ClientInterface
     private $loop;
 
     /**
-     * @var AsyncClient
+     * @var AsyncClientInterface
      */
     private $asyncClient;
 
@@ -43,10 +43,10 @@ final class Client implements ClientInterface
 
     /**
      * @param LoopInterface $loop
-     * @param AsyncClient $asyncClient
+     * @param AsyncClientInterface $asyncClient
      * @return Client
      */
-    public static function createFromClient(LoopInterface $loop, AsyncClient $asyncClient): self
+    public static function createFromClient(LoopInterface $loop, AsyncClientInterface $asyncClient): self
     {
         return new self($loop, $asyncClient);
     }
@@ -54,9 +54,9 @@ final class Client implements ClientInterface
     /**
      * Client constructor.
      * @param LoopInterface $loop
-     * @param AsyncClient $asyncClient
+     * @param AsyncClientInterface $asyncClient
      */
-    private function __construct(LoopInterface $loop, AsyncClient $asyncClient)
+    private function __construct(LoopInterface $loop, AsyncClientInterface $asyncClient)
     {
         $this->loop = $loop;
         $this->asyncClient = $asyncClient;
