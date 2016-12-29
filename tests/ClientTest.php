@@ -100,7 +100,7 @@ final class ClientTest extends TestCase
     private function generateResources(string $class, int $count): \Generator
     {
         for ($i = 0; $i < $count; $i++) {
-            yield $this->prophesize(HookInterface::class)->reveal();
+            yield $this->prophesize($class)->reveal();
         }
     }
 }
