@@ -7,6 +7,7 @@ use ApiClients\Client\Travis\Client;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
+use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
 use function Clue\React\Block\await;
@@ -45,5 +46,20 @@ final class ClientTest extends TestCase
         $result = $client->repository($repositorySlug);
 
         self::assertSame($repository, $result);
+    }
+
+    public function testUser()
+    {
+        $user = $this->prophesize(UserInterface::class)->reveal();
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->user()->shouldBeCalled()->willReturn(resolve($user));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->user();
+
+        self::assertSame($user, $result);
     }
 }
