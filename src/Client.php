@@ -13,7 +13,7 @@ use ApiClients\Client\Travis\Resource\UserInterface;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 
-final class Client
+final class Client implements ClientInterface
 {
     /**
      * @var LoopInterface
