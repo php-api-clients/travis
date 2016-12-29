@@ -6,6 +6,7 @@ use ApiClients\Client\Travis\AsyncClientInterface;
 use ApiClients\Client\Travis\Client;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
+use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
@@ -14,6 +15,7 @@ use Prophecy\Argument;
 use function Clue\React\Block\await;
 use React\EventLoop\Factory;
 use function React\Promise\resolve;
+use Rx\Observable;
 
 final class ClientTest extends TestCase
 {
@@ -78,5 +80,27 @@ final class ClientTest extends TestCase
         $result = $client->sshKey($sshKeyId);
 
         self::assertSame($sshKey, $result);
+    }
+
+    public function testHooks()
+    {
+        $hooks = iterator_to_array($this->generateResources(HookInterface::class, 1300));
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->hooks()->shouldBeCalled()->willReturn(Observable::fromArray($hooks));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->hooks();
+
+        self::assertSame($hooks, $result);
+    }
+
+    private function generateResources(string $class, int $count): \Generator
+    {
+        for ($i = 0; $i < $count; $i++) {
+            yield $this->prophesize(HookInterface::class)->reveal();
+        }
     }
 }
