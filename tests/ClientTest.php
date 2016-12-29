@@ -6,6 +6,7 @@ use ApiClients\Client\Travis\AsyncClientInterface;
 use ApiClients\Client\Travis\Client;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
+use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
 use function Clue\React\Block\await;
@@ -28,5 +29,21 @@ final class ClientTest extends TestCase
 
         self::assertInstanceOf(ClientInterface::class, $client);
         self::assertInstanceOf(Client::class, $client);
+    }
+
+    public function testRepository()
+    {
+        $repositorySlug = 'php-api-clients/travis';
+        $repository = $this->prophesize(RepositoryInterface::class)->reveal();
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->repository($repositorySlug)->shouldBeCalled()->willReturn(resolve($repository));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->repository($repositorySlug);
+
+        self::assertSame($repository, $result);
     }
 }
