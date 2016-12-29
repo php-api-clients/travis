@@ -13,7 +13,7 @@ use function ApiClients\Foundation\resource_pretty_print;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = Factory::create();
-$client = new AsyncClient(
+$client = AsyncClient::create(
     $loop,
     require 'resolve_key.php',
     [ // We're passing these extra options to ensure we don't request all repositories at once (!!!)

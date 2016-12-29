@@ -9,7 +9,7 @@ use ApiClients\Client\Travis\Resource\Async\Repository;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop   = Factory::create();
-$client = new AsyncClient($loop);
+$client = AsyncClient::create($loop);
 
 $jobs = $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->flatMap(function (Repository $repository) {
     return $repository->jobs($repository->lastBuildId());

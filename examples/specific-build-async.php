@@ -7,7 +7,7 @@ use ApiClients\Client\Travis\Resource\BuildInterface;
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 $loop = \React\EventLoop\Factory::create();
-$client = new AsyncClient($loop);
+$client = AsyncClient::create($loop);
 
 $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->subscribeCallback(function (Repository $repository) use ($argv) {
     echo 'Repository: ', PHP_EOL;

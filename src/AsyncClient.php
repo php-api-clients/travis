@@ -4,7 +4,6 @@ namespace ApiClients\Client\Travis;
 
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
-use ApiClients\Foundation\Client;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Foundation\Factory;
 use React\EventLoop\LoopInterface;
@@ -21,24 +20,38 @@ final class AsyncClient
     /**
      * @var ClientInterface
      */
-    protected $client;
+    private $client;
 
     /**
      * @param LoopInterface $loop
      * @param string $token
      * @param array $options
-     * @param ClientInterface|null $client
+     * @return AsyncClient
      */
-    public function __construct(
+    public static function create(
         LoopInterface $loop,
         string $token = '',
-        array $options = [],
-        ClientInterface $client = null
-    ) {
-        if (!($client instanceof ClientInterface)) {
-            $this->options = ApiSettings::getOptions($token, 'Async', $options);
-            $client = Factory::create($loop, $this->options);
-        }
+        array $options = []
+    ): self {
+        $options = ApiSettings::getOptions($token, 'Async', $options);
+        $client = Factory::create($loop, $options);
+        return new self($client);
+    }
+
+    /**
+     * @param ClientInterface $client
+     * @return AsyncClient
+     */
+    public static function createFromClient(ClientInterface $client): self
+    {
+        return new self($client);
+    }
+
+    /**
+     * @param ClientInterface $client
+     */
+    private function __construct(ClientInterface $client)
+    {
         $this->client = $client;
     }
 

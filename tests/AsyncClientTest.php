@@ -23,7 +23,7 @@ final class AsyncClientTest extends TestCase
             Argument::which('getRepository', 'php-api-clients/travis')
         )->shouldBeCalled()->willReturn(resolve($expected));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await($asyncClient->repository('php-api-clients/travis'), $loop);
         self::assertSame($expected, $result);
     }
@@ -37,7 +37,7 @@ final class AsyncClientTest extends TestCase
             Argument::type(Command\UserCommand::class)
         )->shouldBeCalled()->willReturn(resolve($expected));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await($asyncClient->user(), $loop);
         self::assertSame($expected, $result);
     }
@@ -51,7 +51,7 @@ final class AsyncClientTest extends TestCase
             Argument::which('getId', 123)
         )->shouldBeCalled()->willReturn(resolve($expected));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await($asyncClient->sshKey(123), $loop);
         self::assertSame($expected, $result);
     }
@@ -65,7 +65,7 @@ final class AsyncClientTest extends TestCase
             Argument::type(Command\HooksCommand::class)
         )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await(Promise::fromObservable($asyncClient->hooks()), $loop);
         self::assertSame($expected, $result);
     }
@@ -79,7 +79,7 @@ final class AsyncClientTest extends TestCase
             Argument::type(Command\AccountsCommand::class)
         )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await(Promise::fromObservable($asyncClient->accounts()), $loop);
         self::assertSame($expected, $result);
     }
@@ -93,7 +93,7 @@ final class AsyncClientTest extends TestCase
             Argument::type(Command\BroadcastsCommand::class)
         )->shouldBeCalled()->willReturn(resolve(Promise::toObservable(resolve($expected))));
 
-        $asyncClient = new AsyncClient($loop, 'token', [], $client->reveal());
+        $asyncClient = AsyncClient::createFromClient($client->reveal());
         $result = await(Promise::fromObservable($asyncClient->broadcasts()), $loop);
         self::assertSame($expected, $result);
     }
