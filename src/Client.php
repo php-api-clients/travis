@@ -13,7 +13,7 @@ use ApiClients\Client\Travis\Resource\UserInterface;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
 
-final class Client
+final class Client implements ClientInterface
 {
     /**
      * @var LoopInterface
@@ -21,7 +21,7 @@ final class Client
     private $loop;
 
     /**
-     * @var AsyncClient
+     * @var AsyncClientInterface
      */
     private $asyncClient;
 
@@ -43,10 +43,10 @@ final class Client
 
     /**
      * @param LoopInterface $loop
-     * @param AsyncClient $asyncClient
+     * @param AsyncClientInterface $asyncClient
      * @return Client
      */
-    public static function createFromClient(LoopInterface $loop, AsyncClient $asyncClient): self
+    public static function createFromClient(LoopInterface $loop, AsyncClientInterface $asyncClient): self
     {
         return new self($loop, $asyncClient);
     }
@@ -54,9 +54,9 @@ final class Client
     /**
      * Client constructor.
      * @param LoopInterface $loop
-     * @param AsyncClient $asyncClient
+     * @param AsyncClientInterface $asyncClient
      */
-    private function __construct(LoopInterface $loop, AsyncClient $asyncClient)
+    private function __construct(LoopInterface $loop, AsyncClientInterface $asyncClient)
     {
         $this->loop = $loop;
         $this->asyncClient = $asyncClient;

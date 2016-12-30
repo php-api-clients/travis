@@ -15,7 +15,7 @@ use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
-final class AsyncClient
+final class AsyncClient implements AsyncClientInterface
 {
     /**
      * @var ClientInterface
