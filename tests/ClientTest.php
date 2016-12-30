@@ -6,6 +6,8 @@ use ApiClients\Client\Travis\AsyncClientInterface;
 use ApiClients\Client\Travis\Client;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
+use ApiClients\Client\Travis\Resource\AccountInterface;
+use ApiClients\Client\Travis\Resource\BroadcastInterface;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
@@ -82,19 +84,49 @@ final class ClientTest extends TestCase
         self::assertSame($sshKey, $result);
     }
 
-    public function testHooks()
+    public function provideObservableMethods()
     {
-        $hooks = iterator_to_array($this->generateResources(HookInterface::class, 1300));
+        yield [
+            'hooks',
+            HookInterface::class,
+            random_int(1300, 6500),
+        ];
+
+        yield [
+            'repositories',
+            RepositoryInterface::class,
+            random_int(1300, 6500),
+        ];
+
+        yield [
+            'accounts',
+            AccountInterface::class,
+            random_int(1300, 6500),
+        ];
+
+        yield [
+            'broadcasts',
+            BroadcastInterface::class,
+            random_int(1300, 6500),
+        ];
+    }
+
+    /**
+     * @dataProvider provideObservableMethods
+     */
+    public function testObservableMethods(string $method, string $resourceInterface, int $resourceCount)
+    {
+        $resources = iterator_to_array($this->generateResources($resourceInterface, $resourceCount));
 
         $loop = Factory::create();
         $asyncClient = $this->prophesize(AsyncClientInterface::class);
-        $asyncClient->hooks()->shouldBeCalled()->willReturn(Observable::fromArray($hooks));
+        $asyncClient->$method()->shouldBeCalled()->willReturn(Observable::fromArray($resources));
 
         $client = Client::createFromClient($loop, $asyncClient->reveal());
 
-        $result = $client->hooks();
+        $result = $client->$method();
 
-        self::assertSame($hooks, $result);
+        self::assertSame($resources, $result);
     }
 
     private function generateResources(string $class, int $count): \Generator
