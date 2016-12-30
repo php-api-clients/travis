@@ -89,25 +89,25 @@ final class ClientTest extends TestCase
         yield [
             'hooks',
             HookInterface::class,
-            random_int(1300, 6500),
+            random_int(13, 65),
         ];
 
         yield [
             'repositories',
             RepositoryInterface::class,
-            random_int(1300, 6500),
+            random_int(13, 65),
         ];
 
         yield [
             'accounts',
             AccountInterface::class,
-            random_int(1300, 6500),
+            random_int(13, 65),
         ];
 
         yield [
             'broadcasts',
             BroadcastInterface::class,
-            random_int(1300, 6500),
+            random_int(13, 65),
         ];
     }
 
