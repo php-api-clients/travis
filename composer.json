@@ -23,11 +23,13 @@
     "api-clients/rx": "dev-master"
   },
   "require-dev": {
+    "api-clients/middleware-delay": "dev-master",
     "api-clients/middleware-pool": "dev-master",
     "api-clients/resource-generator": "dev-master",
     "api-clients/test-utilities": "^2.0"
   },
   "suggest": {
+    "api-clients/middleware-delay": "Add a delay between requests to not hammer Travis",
     "api-clients/middleware-pool": "Keep your request count under control"
   },
   "autoload": {

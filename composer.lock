@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c0dd4c5e342c6cdeaaf6b6d93c0b880",
-    "content-hash": "4093f34c667383b6684208ebf9d7bef7",
+    "hash": "afde6a6f151534a615bcf71d2f716c3b",
+    "content-hash": "26ef6302ea6aede976286d94c215e214",
     "packages": [
         {
             "name": "api-clients/client-services",
@@ -2454,6 +2454,47 @@
     ],
     "packages-dev": [
         {
+            "name": "api-clients/middleware-delay",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-api-clients/middleware-delay.git",
+                "reference": "dc17cab05ff26d4800649b741c38c66b0fb059d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-api-clients/middleware-delay/zipball/dc17cab05ff26d4800649b741c38c66b0fb059d6",
+                "reference": "dc17cab05ff26d4800649b741c38c66b0fb059d6",
+                "shasum": ""
+            },
+            "require": {
+                "api-clients/middleware": "^1.0",
+                "php": "^7.0",
+                "wyrihaximus/ticking-promise": "^1.6"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApiClients\\Middleware\\Delay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Request pool middleware",
+            "time": "2016-12-29 22:14:50"
+        },
+        {
             "name": "api-clients/middleware-pool",
             "version": "dev-master",
             "source": {
@@ -4881,6 +4922,7 @@
         "api-clients/foundation": 20,
         "api-clients/pusher": 20,
         "api-clients/rx": 20,
+        "api-clients/middleware-delay": 20,
         "api-clients/middleware-pool": 20,
         "api-clients/resource-generator": 20
     },

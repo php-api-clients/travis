@@ -3,6 +3,7 @@
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Foundation\Options;
+use ApiClients\Middleware\Delay\DelayMiddleware;
 use ApiClients\Middleware\Pool\PoolMiddleware;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
 use React\EventLoop\Factory;
@@ -22,9 +23,13 @@ $client = AsyncClient::create(
                 PoolMiddleware::class => [
                     \ApiClients\Middleware\Pool\Options::POOL => new Pool(1),
                 ],
+                DelayMiddleware::class => [
+                    \ApiClients\Middleware\Delay\Options::DELAY => 3,
+                ],
             ],
             TransportOptions::MIDDLEWARE => [
                 PoolMiddleware::class,
+                DelayMiddleware::class,
             ],
         ],
     ]
