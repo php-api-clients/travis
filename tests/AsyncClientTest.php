@@ -3,6 +3,7 @@
 namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\AsyncClient;
+use ApiClients\Client\Travis\AsyncClientInterface;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
@@ -14,6 +15,22 @@ use Rx\React\Promise;
 
 final class AsyncClientTest extends TestCase
 {
+    public function testCreate()
+    {
+        $client = AsyncClient::create(Factory::create());
+
+        self::assertInstanceOf(AsyncClientInterface::class, $client);
+        self::assertInstanceOf(AsyncClient::class, $client);
+    }
+
+    public function testCreateFromClient()
+    {
+        $client = AsyncClient::createFromClient($this->prophesize(ClientInterface::class)->reveal());
+
+        self::assertInstanceOf(AsyncClientInterface::class, $client);
+        self::assertInstanceOf(AsyncClient::class, $client);
+    }
+
     public function testRepository()
     {
         $expected = 'foo.bar';
