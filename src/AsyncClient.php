@@ -23,6 +23,8 @@ final class AsyncClient implements AsyncClientInterface
     private $client;
 
     /**
+     * Create a new AsyncClient based on the loop and other options pass
+     *
      * @param LoopInterface $loop
      * @param string $token
      * @param array $options
@@ -39,6 +41,9 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
+     * Create an AsyncClient from a ApiClients\Foundation\ClientInterface.
+     * Be sure to pass in a client with the options from ApiSettings and the Async namespace suffix.
+     *
      * @param ClientInterface $client
      * @return AsyncClient
      */
@@ -56,8 +61,7 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @param string $repository
-     * @return CancellablePromiseInterface
+     * {@inheritdoc}
      */
     public function repository(string $repository): CancellablePromiseInterface
     {
@@ -65,7 +69,13 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @return ObservableInterface
+     * Warning this a intensive operation as it has to make a call for each hook
+     * to turn it into a Repository!!!
+     *
+     * Take a look at examples/repositories-async.php on how to limit the amount of
+     * concurrent requests.
+     *
+     * {@inheritdoc}
      */
     public function repositories(): ObservableInterface
     {
@@ -79,7 +89,7 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @return PromiseInterface
+     * {@inheritdoc}
      */
     public function user(): PromiseInterface
     {
@@ -87,8 +97,7 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @param int $id
-     * @return PromiseInterface
+     * {@inheritdoc}
      */
     public function sshKey(int $id): PromiseInterface
     {
@@ -106,7 +115,7 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @return ObservableInterface
+     * {@inheritdoc}
      */
     public function accounts(): ObservableInterface
     {
@@ -116,7 +125,7 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @return ObservableInterface
+     * {@inheritdoc}
      */
     public function broadcasts(): ObservableInterface
     {
