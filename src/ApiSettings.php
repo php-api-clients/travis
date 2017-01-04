@@ -11,7 +11,7 @@ use ApiClients\Foundation\Transport\UserAgentStrategies;
 use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
 use function ApiClients\Foundation\options_merge;
 
-class ApiSettings
+final class ApiSettings
 {
     /**
      * Travis' Pusher App ID as found on: https://docs.travis-ci.com/api?http#external-apis
@@ -21,7 +21,7 @@ class ApiSettings
 
     const NAMESPACE = 'ApiClients\\Client\\Travis\\Resource';
 
-    const TRANSPORT_OPTIONS = [
+    const DEFAULT_TRANSPORT_OPTIONS = [
         FoundationOptions::HYDRATOR_OPTIONS => [
             HydratorOptions::NAMESPACE => self::NAMESPACE,
             HydratorOptions::NAMESPACE_DIR => __DIR__ . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR,
@@ -41,8 +41,12 @@ class ApiSettings
     ];
 
     /**
+     * Get client options based on $token, $suffix, and $suppliedOptions.
+     * Will add auth middleware when $token isn't empty
+     *
      * @param string $token
      * @param string $suffix
+     * @param array $suppliedOptions
      * @return array
      */
     public static function getOptions(
@@ -50,10 +54,10 @@ class ApiSettings
         string $suffix,
         array $suppliedOptions = []
     ): array {
-        $options = options_merge(self::TRANSPORT_OPTIONS, $suppliedOptions);
+        $options = options_merge(self::DEFAULT_TRANSPORT_OPTIONS, $suppliedOptions);
         $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = $suffix;
 
-        if (!empty($token)) {
+        if ($token !== '') {
             $transportOptions = $options[FoundationOptions::TRANSPORT_OPTIONS];
             $transportOptions[TransportOptions::MIDDLEWARE][] = TokenAuthorizationHeaderMiddleware::class;
             $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] = array_merge_recursive(
