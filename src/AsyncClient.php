@@ -26,7 +26,7 @@ final class AsyncClient implements AsyncClientInterface
      * Create a new AsyncClient based on the loop and other options pass
      *
      * @param LoopInterface $loop
-     * @param string $token
+     * @param string $token Instructions to fetch the token: https://blog.travis-ci.com/2013-01-28-token-token-token/
      * @param array $options
      * @return AsyncClient
      */
