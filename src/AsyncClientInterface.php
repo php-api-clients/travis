@@ -65,6 +65,7 @@ interface AsyncClientInterface
      * Fetch a stream of which users and orgs the currently authenticated user has access to.
      * This will return a stream of Resource\Async\Account objects.
      * (Requires auth token to be passed to the client!)
+     *
      * @return ObservableInterface
      */
     public function accounts(): ObservableInterface;
@@ -73,6 +74,7 @@ interface AsyncClientInterface
      * Fetch a list of currently active broadcast. Used by the Travis team to spread news on the site.
      * This will return a stream of Resource\Async\Broadcast objects.
      * (Requires auth token to be passed to the client!)
+     *
      * @return ObservableInterface
      */
     public function broadcasts(): ObservableInterface;
