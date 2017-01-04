@@ -26,6 +26,8 @@ final class Client implements ClientInterface
     private $asyncClient;
 
     /**
+     * Create a new AsyncClient based on the loop and other options pass
+     *
      * @param string $token Instructions to fetch the token: https://blog.travis-ci.com/2013-01-28-token-token-token/
      * @param array $options
      * @return Client
@@ -42,6 +44,10 @@ final class Client implements ClientInterface
     }
 
     /**
+     * Create an Client from a AsyncClientInterface.
+     * Be sure to pass in a client with the options from ApiSettings and the Sync namespace suffix,
+     * and pass in the same loop as associated with the AsyncClient you're passing in.
+     *
      * @param LoopInterface $loop
      * @param AsyncClientInterface $asyncClient
      * @return Client
@@ -52,7 +58,6 @@ final class Client implements ClientInterface
     }
 
     /**
-     * Client constructor.
      * @param LoopInterface $loop
      * @param AsyncClientInterface $asyncClient
      */
@@ -63,8 +68,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @param string $repository
-     * @return RepositoryInterface
+     * {@inheritdoc}
      */
     public function repository(string $repository): RepositoryInterface
     {
@@ -75,7 +79,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @return UserInterface
+     * {@inheritdoc}
      */
     public function user(): UserInterface
     {
@@ -86,8 +90,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @param int $id
-     * @return SSHKeyInterface
+     * {@inheritdoc}
      */
     public function sshKey(int $id): SSHKeyInterface
     {
@@ -98,7 +101,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function hooks(): array
     {
@@ -111,7 +114,13 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @return array
+     * Warning this a intensive operation as it has to make a call for each hook
+     * to turn it into a Repository!!!
+     *
+     * Take a look at examples/repositories-async.php on how to limit the amount of
+     * concurrent requests.
+     *
+     * {@inheritdoc}
      */
     public function repositories(): array
     {
@@ -124,7 +133,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function accounts(): array
     {
@@ -137,7 +146,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function broadcasts(): array
     {
