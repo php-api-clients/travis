@@ -26,7 +26,7 @@ final class Client implements ClientInterface
     private $asyncClient;
 
     /**
-     * @param string $token
+     * @param string $token Instructions to fetch the token: https://blog.travis-ci.com/2013-01-28-token-token-token/
      * @param array $options
      * @return Client
      */
