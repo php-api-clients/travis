@@ -23,7 +23,7 @@ class ApiSettingsTest extends TestCase
             (function ($options) {
                 $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = 'Async';
                 return $options;
-            })(ApiSettings::TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
         ];
 
         yield [
@@ -44,7 +44,7 @@ class ApiSettingsTest extends TestCase
                 );
                 $options[FoundationOptions::TRANSPORT_OPTIONS] = $transportOptions;
                 return $options;
-            })(ApiSettings::TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
         ];
 
         yield [
@@ -57,7 +57,7 @@ class ApiSettingsTest extends TestCase
                 $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = 'Async';
                 $options['foo'] = 'bar';
                 return $options;
-            })(ApiSettings::TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
         ];
     }
 
