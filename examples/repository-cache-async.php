@@ -13,7 +13,7 @@ $loop = Factory::create();
 $client = AsyncClient::create($loop, require 'resolve_key.php');
 
 $repos = [
-    'WyriHaximus/php-travis-client',
+    'php-api-clients/travis',
 ];
 
 if (count($argv) > 1) {
@@ -25,8 +25,17 @@ if (count($argv) > 1) {
 
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        $repo->caches()->subscribe(new CallbackObserver(function (CacheInterface $cache) {
+        $cacheSize = 0;
+        $cacheCount = 0;
+        $repo->caches()->subscribe(new CallbackObserver(function (CacheInterface $cache) use (&$cacheSize, &$cacheCount) {
             resource_pretty_print($cache);
+            $cacheSize += $cache->size();
+            $cacheCount++;
+        }, null, function () use ($repo, &$cacheSize, &$cacheCount) {
+            echo $repo->slug(), PHP_EOL;
+            echo "\t", 'Size: ', round($cacheSize / 1024 / 1024), 'MB', PHP_EOL;
+            echo "\t", 'Count: ', $cacheCount, PHP_EOL;
+            echo "\t", 'Average Size: ', round(($cacheCount === 0 ? 0 : $cacheSize / $cacheCount) / 1024 / 1024), 'MB', PHP_EOL;
         }));
     });
 }
