@@ -10,6 +10,12 @@ use React\Promise\CancellablePromiseInterface;
 use ApiClients\Client\Travis\Options;
 use function React\Promise\resolve;
 
+/**
+ * Middleware that adds the authorization token
+ * required by travis for authenticated requests.
+ *
+ * @link https://docs.travis-ci.com/api#authentication
+ */
 class TokenAuthorizationHeaderMiddleware implements MiddlewareInterface
 {
     use DefaultPriorityTrait;
