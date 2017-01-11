@@ -3,8 +3,8 @@
 namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
-use ApiClients\Client\Travis\Options;
+use ApiClients\Middleware\TokenAuthorization\Options as TokenAuthorizationHeaderMiddlewareOptions;
+use ApiClients\Middleware\TokenAuthorization\TokenAuthorizationHeaderMiddleware;
 use ApiClients\Foundation\Hydrator\Options as HydratorOptions;
 use ApiClients\Foundation\Options as FoundationOptions;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
@@ -38,7 +38,7 @@ class ApiSettingsTest extends TestCase
                     $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] ?? [],
                     [
                         TokenAuthorizationHeaderMiddleware::class => [
-                            Options::TOKEN => 'foo.bar',
+                            TokenAuthorizationHeaderMiddlewareOptions::TOKEN => 'foo.bar',
                         ],
                     ]
                 );
