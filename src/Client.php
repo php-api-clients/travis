@@ -122,11 +122,11 @@ final class Client implements ClientInterface
      *
      * {@inheritdoc}
      */
-    public function repositories(): array
+    public function repositories(callable $filter = null): array
     {
         return await(
             Promise::fromObservable(
-                $this->asyncClient->repositories()->toArray()
+                $this->asyncClient->repositories($filter)->toArray()
             ),
             $this->loop
         );

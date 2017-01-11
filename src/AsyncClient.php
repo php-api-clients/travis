@@ -77,11 +77,17 @@ final class AsyncClient implements AsyncClientInterface
      *
      * {@inheritdoc}
      */
-    public function repositories(): ObservableInterface
+    public function repositories(callable $filter = null): ObservableInterface
     {
+        if ($filter === null) {
+            $filter = function () {
+                return true;
+            };
+        }
+
         return $this->hooks()->filter(function ($hook) {
             return $hook->active();
-        })->flatMap(function (HookInterface $hook) {
+        })->filter($filter)->flatMap(function (HookInterface $hook) {
             return Promise::toObservable($this->client->handle(
                 new Command\RepositoryIdCommand($hook->id())
             ));

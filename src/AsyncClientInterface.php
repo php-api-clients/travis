@@ -26,9 +26,14 @@ interface AsyncClientInterface
      * This will return a stream of Resource\Async\Repository objects.
      * (Requires auth token to be passed to the client!)
      *
+     * This function accepts an optional callable passed into a filter call
+     * on the hooks observable before it fetches the repository information.
+     * It could be used to only fetch new repositories.
+     *
+     * @param callable|null $filter
      * @return ObservableInterface
      */
-    public function repositories(): ObservableInterface;
+    public function repositories(callable $filter = null): ObservableInterface;
 
     /**
      * Fetch information about the current authenticated user.

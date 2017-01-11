@@ -25,9 +25,14 @@ interface ClientInterface
     public function repository(string $repository): RepositoryInterface;
 
     /**
+     * This function accepts an optional callable passed into a filter call
+     * on the hooks observable before it fetches the repository information.
+     * It could be used to only fetch new repositories.
+     *
+     * @param callable|null $filter
      * @return array
      */
-    public function repositories(): array;
+    public function repositories(callable $filter = null): array;
 
     /**
      * Fetch information about the current authenticated user.
