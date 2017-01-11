@@ -8,7 +8,8 @@ use ApiClients\Foundation\Transport\Middleware\JsonDecodeMiddleware;
 use ApiClients\Foundation\Transport\Middleware\JsonEncodeMiddleware;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
 use ApiClients\Foundation\Transport\UserAgentStrategies;
-use ApiClients\Client\Travis\Middleware\TokenAuthorizationHeaderMiddleware;
+use ApiClients\Middleware\TokenAuthorization\Options as TokenAuthorizationHeaderMiddlewareOptions;
+use ApiClients\Middleware\TokenAuthorization\TokenAuthorizationHeaderMiddleware;
 use function ApiClients\Foundation\options_merge;
 
 final class ApiSettings
@@ -64,7 +65,7 @@ final class ApiSettings
                 $transportOptions[TransportOptions::DEFAULT_REQUEST_OPTIONS] ?? [],
                 [
                     TokenAuthorizationHeaderMiddleware::class => [
-                        Options::TOKEN => $token,
+                        TokenAuthorizationHeaderMiddlewareOptions::TOKEN => $token,
                     ],
                 ]
             );
