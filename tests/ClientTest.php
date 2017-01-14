@@ -138,6 +138,25 @@ final class ClientTest extends TestCase
         self::assertSame($resources, $result);
     }
 
+    public function testRepositoriesFilter()
+    {
+        $func = function () {
+            return true;
+        };
+
+        $resources = iterator_to_array($this->generateResources(RepositoryInterface::class, random_int(13, 65)));
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->repositories($func)->shouldBeCalled()->willReturn(Observable::fromArray($resources));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->repositories($func);
+
+        self::assertSame($resources, $result);
+    }
+
     private function generateResources(string $class, int $count): \Generator
     {
         for ($i = 0; $i < $count; $i++) {
