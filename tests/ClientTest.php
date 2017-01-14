@@ -93,12 +93,6 @@ final class ClientTest extends TestCase
         ];
 
         yield [
-            'repositories',
-            RepositoryInterface::class,
-            random_int(13, 65),
-        ];
-
-        yield [
             'accounts',
             AccountInterface::class,
             random_int(13, 65),
@@ -125,6 +119,21 @@ final class ClientTest extends TestCase
         $client = Client::createFromClient($loop, $asyncClient->reveal());
 
         $result = $client->$method();
+
+        self::assertSame($resources, $result);
+    }
+
+    public function testRepositories()
+    {
+        $resources = iterator_to_array($this->generateResources(RepositoryInterface::class, random_int(13, 65)));
+
+        $loop = Factory::create();
+        $asyncClient = $this->prophesize(AsyncClientInterface::class);
+        $asyncClient->repositories(null)->shouldBeCalled()->willReturn(Observable::fromArray($resources));
+
+        $client = Client::createFromClient($loop, $asyncClient->reveal());
+
+        $result = $client->repositories();
 
         self::assertSame($resources, $result);
     }
