@@ -1,8 +1,8 @@
 yaml_location: yaml
-api_settings: WyriHaximus\Travis\ApiSettings
+api_settings: ApiClients\Client\Travis\ApiSettings
 src:
   path: src/Resource
-  namespace: WyriHaximus\Travis\Resource
+  namespace: ApiClients\Client\Travis\Resource
 tests:
   path: tests/Resource
-  namespace: WyriHaximus\Tests\Travis\Resource
+  namespace: ApiClients\Tests\Client\Travis\Resource
