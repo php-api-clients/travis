@@ -3,10 +3,12 @@
 namespace ApiClients\Client\Travis\Resource\Async;
 
 use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
+use ApiClients\Client\Pusher\Event;
 use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
+use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\JsonStream;
@@ -44,7 +46,7 @@ class Repository extends BaseRepository
      */
     public function build(int $id): PromiseInterface
     {
-        return $this->handleCommand(new BuildCommand($id));
+        return $this->handleCommand(new Command\BuildCommand($id));
     }
 
     /**
@@ -57,36 +59,14 @@ class Repository extends BaseRepository
         ));
     }
 
+    /**
+     * @return Observable
+     */
     public function events(): Observable
     {
-        return Observable::create(function (
-            ObserverInterface $observer,
-            SchedulerInterface $scheduler
-        ) {
-            $this->handleCommand(
-                new SharedAppClientCommand(ApiSettings::PUSHER_KEY)
-            )->then(function ($pusher) use ($observer) {
-                $pusher->channel('repo-' . $this->id)->filter(function ($message) {
-                    return in_array($message->event, [
-                        'build:created',
-                        'build:started',
-                        'build:finished',
-                    ]);
-                })->map(function ($message) {
-                    return json_decode($message->data, true);
-                })->filter(function ($json) {
-                    return isset($json['repository']);
-                })->flatMap(function ($json) {
-                    return Promise::toObservable(
-                        $this->handleCommand(
-                            new HydrateCommand('Repository', $json['repository'])
-                        )
-                    );
-                })->subscribe(new CallbackObserver(function ($repository) use ($observer) {
-                    $observer->onNext($repository);
-                }));
-            });
-        });
+        return unwrapObservableFromPromise(
+            $this->handleCommand(new Command\RepositoryEventsCommand($this->id()))
+        );
     }
 
     /**

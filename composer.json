@@ -21,7 +21,8 @@
     "api-clients/foundation": "dev-master",
     "api-clients/middleware-token-authorization": "dev-master",
     "api-clients/pusher": "dev-master",
-    "api-clients/rx": "dev-master"
+    "api-clients/rx": "dev-master",
+    "api-clients/rx-operators": "dev-master"
   },
   "require-dev": {
     "api-clients/middleware-delay": "dev-master",
