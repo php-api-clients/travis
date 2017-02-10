@@ -2,14 +2,9 @@
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
-use ApiClients\Client\Pusher\CommandBus\Command\SharedAppClientCommand;
-use ApiClients\Client\Pusher\Event;
-use ApiClients\Client\Travis\ApiSettings;
 use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
-use ApiClients\Client\Travis\Resource\RepositoryInterface;
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\JsonStream;
 use GuzzleHttp\Psr7\Request;
@@ -17,10 +12,7 @@ use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
-use Rx\Observer\CallbackObserver;
-use Rx\ObserverInterface;
 use Rx\React\Promise;
-use Rx\SchedulerInterface;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\reject;
 use function React\Promise\resolve;
