@@ -13,6 +13,7 @@ use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateCommand;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use ApiClients\Foundation\Transport\JsonStream;
 use GuzzleHttp\Psr7\Request;
+use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
@@ -42,9 +43,9 @@ class Repository extends BaseRepository
 
     /**
      * @param int $id
-     * @return PromiseInterface
+     * @return CancellablePromiseInterface
      */
-    public function build(int $id): PromiseInterface
+    public function build(int $id): CancellablePromiseInterface
     {
         return $this->handleCommand(new Command\BuildCommand($id));
     }
