@@ -63,7 +63,10 @@ final class RepositoryEventsHandler
                 })->filter(function (Event $event) {
                     return isset($event->getData()['repository']);
                 })->map(function (Event $event) {
-                    return $this->hydrator->hydrate(RepositoryInterface::HYDRATE_CLASS, $event->getData()['repository']);
+                    return $this->hydrator->hydrate(
+                        RepositoryInterface::HYDRATE_CLASS,
+                        $event->getData()['repository']
+                    );
                 })
             );
         });
