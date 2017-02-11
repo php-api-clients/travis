@@ -10,7 +10,7 @@ use WyriHaximus\Tactician\CommandHandler\Annotations\Handler;
 final class JobLogCommand
 {
     /**
-     * @var string
+     * @var int
      */
     private $id;
 
