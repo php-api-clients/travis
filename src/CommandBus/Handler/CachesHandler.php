@@ -3,9 +3,7 @@
 namespace ApiClients\Client\Travis\CommandBus\Handler;
 
 use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
-use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Client\Travis\Resource\CacheInterface;
-use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
