@@ -9,7 +9,6 @@ use ApiClients\Foundation\Factory;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
-use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
