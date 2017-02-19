@@ -2,19 +2,19 @@
 
 namespace ApiClients\Client\Travis\CommandBus\Handler;
 
+use ApiClients\Client\Pusher\AsyncClient as PusherAsyncClient;
 use ApiClients\Client\Pusher\Event;
 use ApiClients\Client\Pusher\Service\SharedAppClientService;
 use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Client\Travis\AsyncClient;
-use ApiClients\Client\Pusher\AsyncClient as PusherAsyncClient;
-use ApiClients\Client\Travis\CommandBus\Command\JobCommand;
 use ApiClients\Client\Travis\CommandBus\Command\JobLogCommand;
 use ApiClients\Client\Travis\Resource\LogLineInterface;
 use ApiClients\Foundation\Hydrator\Hydrator;
 use React\Promise\PromiseInterface;
+use Rx\Observable;
+use Rx\ObserverInterface;
+use Rx\SchedulerInterface;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
-use Rx\React\Promise;
 use function WyriHaximus\React\futureFunctionPromise;
 
 final class JobLogHandler
@@ -51,13 +51,34 @@ final class JobLogHandler
         return $this->pusher->handle(
             ApiSettings::PUSHER_KEY
         )->then(function (PusherAsyncClient $pusher) use ($command) {
-            return resolve(
-                $pusher->channel('job-' . (string)$command->getId())->filter(function (Event $event) {
+            return resolve(Observable::create(function (
+                ObserverInterface $observer,
+                SchedulerInterface $scheduler
+            ) use (
+                $pusher,
+                $command
+            ) {
+                $subscription = $pusher->channel('job-' . (string)$command->getId())->filter(function (Event $event) {
                     return $event->getEvent() === 'job:log';
                 })->map(function (Event $event) {
                     return $this->hydrator->hydrate(LogLineInterface::HYDRATE_CLASS, $event->getData());
-                })
-            );
+                })->subscribeCallback(
+                    function (LogLineInterface $line) use ($observer, &$subscription) {
+                        $observer->onNext($line);
+
+                        if ($line->final()) {
+                            $subscription->dispose();
+                        }
+                    },
+                    function ($error) use ($observer) {
+                        $observer->onError($error);
+                    },
+                    function () use ($observer) {
+                        $observer->onComplete();
+                    },
+                    $scheduler
+                );
+            }));
         });
     }
 }
