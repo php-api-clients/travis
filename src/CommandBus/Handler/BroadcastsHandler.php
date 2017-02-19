@@ -6,7 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\BroadcastsCommand;
 use ApiClients\Client\Travis\Resource\BroadcastInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
-use Rx\Observable;
 use function React\Promise\resolve;
 use function WyriHaximus\React\futureFunctionPromise;
 
