@@ -14,7 +14,6 @@ use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\reject;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository
@@ -82,13 +81,7 @@ class Repository extends BaseRepository
         ))->filter(function (HookInterface $hook) {
             return $this->id() === $hook->id();
         }))->then(function (HookInterface $hook) {
-            $active = $hook->active();
-
-            if ($active) {
-                return resolve($active);
-            }
-
-            return reject($active);
+            return resolve($hook->active());
         });
     }
 
