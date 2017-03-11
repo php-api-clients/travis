@@ -11,14 +11,14 @@
 # Goals
 
 * 100% TravisCI [API](https://docs.travis-ci.com/api) support
-* Third party API support (like Pusher)
+* Live log streaming support from Pusher
 * Both synchronous and asynchronous
 
 # License
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Cees-Jan Kiewiet
+Copyright (c) 2017 Cees-Jan Kiewiet
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
