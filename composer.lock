@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6f3da6f510ccf8e8d666acc511bcc7a",
+    "content-hash": "318d42981720f94660c680095c9e01eb",
     "packages": [
         {
             "name": "api-clients/client-services",
@@ -2884,16 +2884,16 @@
         },
         {
             "name": "api-clients/test-utilities",
-            "version": "2.1.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/test-utilities.git",
-                "reference": "427429883c6d811c4c76d97f065a7db4b384cbad"
+                "reference": "efab1bb505e04e4b9e3c995393451e0eebb9ba7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/test-utilities/zipball/427429883c6d811c4c76d97f065a7db4b384cbad",
-                "reference": "427429883c6d811c4c76d97f065a7db4b384cbad",
+                "url": "https://api.github.com/repos/php-api-clients/test-utilities/zipball/efab1bb505e04e4b9e3c995393451e0eebb9ba7d",
+                "reference": "efab1bb505e04e4b9e3c995393451e0eebb9ba7d",
                 "shasum": ""
             },
             "require": {
@@ -2902,8 +2902,7 @@
                 "jakub-onderka/php-parallel-lint": "^0.9.2",
                 "phake/phake": "^2.3",
                 "php": "^7.0",
-                "phpspec/prophecy": "^1.6",
-                "phpunit/phpunit": "^6.0 || ^5.6",
+                "phpunit/phpunit": "^6.0",
                 "squizlabs/php_codesniffer": "^2.6"
             },
             "type": "library",
@@ -2922,7 +2921,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2017-02-03T20:53:52+00:00"
+            "time": "2017-02-04T10:56:09+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -5174,6 +5173,7 @@
         "api-clients/foundation": 20,
         "api-clients/pusher": 20,
         "api-clients/rx": 20,
+        "api-clients/rx-operators": 20,
         "api-clients/middleware-delay": 20,
         "api-clients/middleware-pool": 20,
         "api-clients/resource-generator": 20
