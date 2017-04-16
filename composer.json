@@ -19,6 +19,7 @@
     "php": "^7.0",
     "api-clients/client-services": "dev-master",
     "api-clients/foundation": "dev-master",
+    "api-clients/middleware-json": "dev-master",
     "api-clients/middleware-token-authorization": "^2.0",
     "api-clients/middleware-user-agent": "^1.0",
     "api-clients/pusher": "dev-master",
