@@ -14,7 +14,7 @@ final class CommitsHandlerTest extends TestCase
     {
         $command = new CommitsCommand('api-clients/travis');
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle(
+        $service->iterate(
             'repos/api-clients/travis/builds',
             'commits',
             CommitInterface::HYDRATE_CLASS

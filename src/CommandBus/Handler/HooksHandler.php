@@ -32,6 +32,6 @@ final class HooksHandler
      */
     public function handle(HooksCommand $command): PromiseInterface
     {
-        return $this->fetchAndIterateService->handle('hooks', 'hooks', HookInterface::HYDRATE_CLASS);
+        return resolve($this->fetchAndIterateService->iterate('hooks', 'hooks', HookInterface::HYDRATE_CLASS));
     }
 }

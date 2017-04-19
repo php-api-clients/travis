@@ -17,7 +17,7 @@ final class CachesHandlerTest extends TestCase
     {
         $command = new CachesCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('repos/123/caches', 'caches', CacheInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('repos/123/caches', 'caches', CacheInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new CachesHandler($service->reveal());
         $handler->handle($command);
     }

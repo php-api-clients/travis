@@ -32,6 +32,6 @@ final class AccountsHandler
      */
     public function handle(AccountsCommand $command): PromiseInterface
     {
-        return $this->fetchAndIterateService->handle('accounts', 'accounts', AccountInterface::HYDRATE_CLASS);
+        return resolve($this->fetchAndIterateService->iterate('accounts', 'accounts', AccountInterface::HYDRATE_CLASS));
     }
 }

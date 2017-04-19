@@ -32,6 +32,6 @@ final class UserHandler
      */
     public function handle(UserCommand $command): PromiseInterface
     {
-        return $this->service->handle('users', 'user', UserInterface::HYDRATE_CLASS);
+        return $this->service->fetch('users', 'user', UserInterface::HYDRATE_CLASS);
     }
 }

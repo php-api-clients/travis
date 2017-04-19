@@ -14,7 +14,7 @@ final class BranchesHandlerTest extends TestCase
     {
         $command = new BranchesCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('repos/123/branches', 'branches', BranchInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('repos/123/branches', 'branches', BranchInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new BranchesHandler($service->reveal());
         $handler->handle($command);
     }

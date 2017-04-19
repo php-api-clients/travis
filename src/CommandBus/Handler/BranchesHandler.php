@@ -33,10 +33,10 @@ final class BranchesHandler
      */
     public function handle(BranchesCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'repos/' . (string)$command->getRepositoryId() . '/branches',
             'branches',
             BranchInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }

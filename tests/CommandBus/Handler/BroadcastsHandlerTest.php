@@ -14,7 +14,7 @@ final class BroadcastsHandlerTest extends TestCase
     {
         $command = new BroadcastsCommand();
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('broadcasts', 'broadcasts', BroadcastInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('broadcasts', 'broadcasts', BroadcastInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new BroadcastsHandler($service->reveal());
         $handler->handle($command);
     }

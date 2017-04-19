@@ -33,10 +33,10 @@ final class BuildsHandler
      */
     public function handle(BuildsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'repos/' . $command->getRepository() . '/builds',
             'builds',
             BuildInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }

@@ -14,7 +14,7 @@ final class AnnotationsHandlerTest extends TestCase
     {
         $command = new AnnotationsCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('jobs/123/annotations', 'annotations', AnnotationInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('jobs/123/annotations', 'annotations', AnnotationInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new AnnotationsHandler($service->reveal());
         $handler->handle($command);
     }

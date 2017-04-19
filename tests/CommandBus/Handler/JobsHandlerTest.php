@@ -14,7 +14,7 @@ final class JobsHandlerTest extends TestCase
     {
         $command = new JobsCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('builds/123', 'jobs', JobInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('builds/123', 'jobs', JobInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new JobsHandler($service->reveal());
         $handler->handle($command);
     }

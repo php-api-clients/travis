@@ -33,10 +33,10 @@ final class CommitsHandler
      */
     public function handle(CommitsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'repos/' . $command->getRepository() . '/builds',
             'commits',
             CommitInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }

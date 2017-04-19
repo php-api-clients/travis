@@ -32,7 +32,7 @@ final class JobHandler
      */
     public function handle(JobCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return $this->service->fetch(
             'jobs/' . (string)$command->getId(),
             'job',
             JobInterface::HYDRATE_CLASS

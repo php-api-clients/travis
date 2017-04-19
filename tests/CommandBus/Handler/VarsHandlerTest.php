@@ -13,6 +13,8 @@ use ApiClients\Client\Travis\Resource\CacheInterface;
 use ApiClients\Client\Travis\Resource\EnvironmentVariableInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use ApiClients\Tools\TestUtilities\TestCase;
+use function React\Promise\resolve;
+use Rx\Observable;
 
 final class VarsHandlerTest extends TestCase
 {
@@ -20,11 +22,11 @@ final class VarsHandlerTest extends TestCase
     {
         $command = new VarsCommand(123);
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle(
+        $service->iterate(
             'settings/env_vars?repository_id=123',
             'env_vars',
             EnvironmentVariableInterface::HYDRATE_CLASS
-        )->shouldBeCalled();
+        )->shouldBeCalled()->willReturn(Observable::fromArray([]));
         $handler = new VarsHandler($service->reveal());
         $handler->handle($command);
     }

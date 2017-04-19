@@ -17,7 +17,7 @@ final class RepositoryIdHandlerTest extends TestCase
     {
         $command = new RepositoryIdCommand(123);
         $service = $this->prophesize(FetchAndHydrateService::class);
-        $service->handle('repos/123', 'repo', RepositoryInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->fetch('repos/123', 'repo', RepositoryInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new RepositoryIdHandler($service->reveal());
         $handler->handle($command);
     }

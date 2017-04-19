@@ -48,7 +48,7 @@ final class JobLogHandler
      */
     public function handle(JobLogCommand $command): PromiseInterface
     {
-        return $this->pusher->handle(
+        return $this->pusher->share(
             ApiSettings::PUSHER_KEY
         )->then(function (PusherAsyncClient $pusher) use ($command) {
             return resolve(Observable::create(function (

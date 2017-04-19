@@ -17,7 +17,7 @@ final class BuildHandlerTest extends TestCase
     {
         $command = new BuildCommand(123);
         $service = $this->prophesize(FetchAndHydrateService::class);
-        $service->handle('builds/123', 'build', BuildInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->fetch('builds/123', 'build', BuildInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new BuildHandler($service->reveal());
         $handler->handle($command);
     }

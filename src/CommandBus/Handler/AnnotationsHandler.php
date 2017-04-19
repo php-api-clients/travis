@@ -33,10 +33,10 @@ final class AnnotationsHandler
      */
     public function handle(AnnotationsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'jobs/' . (string)$command->getRepositoryId() . '/annotations',
             'annotations',
             AnnotationInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }
