@@ -32,6 +32,8 @@ final class BroadcastsHandler
      */
     public function handle(BroadcastsCommand $command): PromiseInterface
     {
-        return resolve($this->fetchAndIterateService->iterate('broadcasts', 'broadcasts', BroadcastInterface::HYDRATE_CLASS));
+        return resolve(
+            $this->fetchAndIterateService->iterate('broadcasts', 'broadcasts', BroadcastInterface::HYDRATE_CLASS)
+        );
     }
 }
