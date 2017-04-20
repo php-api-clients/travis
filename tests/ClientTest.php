@@ -4,7 +4,6 @@ namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\AsyncClientInterface;
 use ApiClients\Client\Travis\Client;
-use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\ClientInterface;
 use ApiClients\Client\Travis\Resource\AccountInterface;
 use ApiClients\Client\Travis\Resource\BroadcastInterface;
@@ -13,11 +12,10 @@ use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
-use Prophecy\Argument;
-use function Clue\React\Block\await;
 use React\EventLoop\Factory;
-use function React\Promise\resolve;
 use Rx\Observable;
+use Rx\Scheduler\ImmediateScheduler;
+use function React\Promise\resolve;
 
 final class ClientTest extends TestCase
 {
@@ -114,7 +112,7 @@ final class ClientTest extends TestCase
 
         $loop = Factory::create();
         $asyncClient = $this->prophesize(AsyncClientInterface::class);
-        $asyncClient->$method()->shouldBeCalled()->willReturn(Observable::fromArray($resources));
+        $asyncClient->$method()->shouldBeCalled()->willReturn(Observable::fromArray($resources, new ImmediateScheduler()));
 
         $client = Client::createFromClient($loop, $asyncClient->reveal());
 
@@ -129,7 +127,7 @@ final class ClientTest extends TestCase
 
         $loop = Factory::create();
         $asyncClient = $this->prophesize(AsyncClientInterface::class);
-        $asyncClient->repositories(null)->shouldBeCalled()->willReturn(Observable::fromArray($resources));
+        $asyncClient->repositories(null)->shouldBeCalled()->willReturn(Observable::fromArray($resources, new ImmediateScheduler()));
 
         $client = Client::createFromClient($loop, $asyncClient->reveal());
 
@@ -148,7 +146,7 @@ final class ClientTest extends TestCase
 
         $loop = Factory::create();
         $asyncClient = $this->prophesize(AsyncClientInterface::class);
-        $asyncClient->repositories($func)->shouldBeCalled()->willReturn(Observable::fromArray($resources));
+        $asyncClient->repositories($func)->shouldBeCalled()->willReturn(Observable::fromArray($resources, new ImmediateScheduler()));
 
         $client = Client::createFromClient($loop, $asyncClient->reveal());
 
