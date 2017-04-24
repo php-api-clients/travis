@@ -23,33 +23,14 @@ final class RepositoryKeyHandlerTest extends TestCase
     public function testRepositoryKey()
     {
         $repositoryResource = $this->prophesize(RepositoryKeyInterface::class)->reveal();
-        $json = [
-            'foo' => 'bar',
-        ];
+
         $repository = 'wyrihaximus/tactician-command-handler-mapper';
         $command = new RepositoryKeyCommand($repository);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->request(
-            Argument::type(RequestInterface::class),
-            Argument::type('array')
-        )->shouldBeCalled()->willReturn(resolve(
-            new Response(
-                200,
-                [],
-                new JsonStream($json)
-            )
-        ));
+        $service = $this->prophesize(FetchAndHydrateService::class);
+        $service->fetch('repos/wyrihaximus/tactician-command-handler-mapper/key', '', RepositoryKeyInterface::HYDRATE_CLASS)->shouldBeCalled()->willReturn(resolve($repositoryResource));
 
-        $requestService = new RequestService($client->reveal());
-
-        $hydrator = $this->prophesize(Hydrator::class);
-        $hydrator->hydrate(
-            Argument::exact(RepositoryKeyInterface::HYDRATE_CLASS),
-            Argument::exact($json)
-        )->shouldBeCalled()->willReturn($repositoryResource);
-
-        $handler = new RepositoryKeyHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
+        $handler = new RepositoryKeyHandler($service->reveal());
 
         self::assertSame($repositoryResource, await($handler->handle($command), Factory::create()));
     }

@@ -32,7 +32,7 @@ final class RepositoryKeyHandler
      */
     public function handle(RepositoryKeyCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return $this->service->fetch(
             'repos/' . $command->getRepository() . '/key',
             '',
             RepositoryKeyInterface::HYDRATE_CLASS

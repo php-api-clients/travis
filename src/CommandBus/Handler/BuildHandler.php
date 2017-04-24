@@ -32,7 +32,7 @@ final class BuildHandler
      */
     public function handle(BuildCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return $this->service->fetch(
             'builds/' . (string)$command->getId(),
             'build',
             BuildInterface::HYDRATE_CLASS

@@ -33,10 +33,10 @@ final class JobsHandler
      */
     public function handle(JobsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'builds/' . (string)$command->getBuildId(),
             'jobs',
             JobInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }

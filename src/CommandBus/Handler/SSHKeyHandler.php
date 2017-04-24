@@ -32,7 +32,7 @@ final class SSHKeyHandler
      */
     public function handle(SSHKeyCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return $this->service->fetch(
             'settings/ssh_key/' . (string) $command->getId(),
             'ssh_key',
             SSHKeyInterface::HYDRATE_CLASS

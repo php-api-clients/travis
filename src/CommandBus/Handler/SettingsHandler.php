@@ -32,7 +32,7 @@ final class SettingsHandler
      */
     public function handle(SettingsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return $this->service->fetch(
             'repos/' . $command->getRepositoryId() . '/settings',
             'settings',
             SettingsInterface::HYDRATE_CLASS

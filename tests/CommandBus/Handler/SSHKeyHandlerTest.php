@@ -23,33 +23,13 @@ final class SSHKeyHandlerTest extends TestCase
     public function testSSHKey()
     {
         $sshKeyResource = $this->prophesize(SSHKeyInterface::class)->reveal();
-        $json = [
-            'foo' => 'bar',
-        ];
         $repositoryId = 123;
         $command = new SSHKeyCommand($repositoryId);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->request(
-            Argument::type(RequestInterface::class),
-            Argument::type('array')
-        )->shouldBeCalled()->willReturn(resolve(
-            new Response(
-                200,
-                [],
-                new JsonStream(['ssh_key' => $json])
-            )
-        ));
+        $service = $this->prophesize(FetchAndHydrateService::class);
+        $service->fetch('settings/ssh_key/123', 'ssh_key', SSHKeyInterface::HYDRATE_CLASS)->shouldBeCalled()->willReturn(resolve($sshKeyResource));
 
-        $requestService = new RequestService($client->reveal());
-
-        $hydrator = $this->prophesize(Hydrator::class);
-        $hydrator->hydrate(
-            Argument::exact(SSHKeyInterface::HYDRATE_CLASS),
-            Argument::exact($json)
-        )->shouldBeCalled()->willReturn($sshKeyResource);
-
-        $handler = new SSHKeyHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
+        $handler = new SSHKeyHandler($service->reveal());
 
         self::assertSame($sshKeyResource, await($handler->handle($command), Factory::create()));
     }

@@ -8,10 +8,10 @@ use ApiClients\Client\Travis\Exception\RepositoryDoesNotExist;
 use ApiClients\Client\Travis\Resource\Async\EmptyRepository;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Foundation\Resource\EmptyResourceInterface;
+use ApiClients\Middleware\Json\JsonStream;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Foundation\Hydrator\Hydrator;
 use ApiClients\Foundation\Transport\ClientInterface;
-use ApiClients\Foundation\Transport\JsonStream;
 use ApiClients\Foundation\Transport\Service\RequestService;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Clue\React\Buzz\Message\ResponseException;
@@ -28,33 +28,14 @@ final class RepositoryHandlerTest extends TestCase
     public function testRepository()
     {
         $repositoryResource = $this->prophesize(RepositoryInterface::class)->reveal();
-        $json = [
-            'foo' => 'bar',
-        ];
+
         $repository = 'wyrihaximus/tactician-command-handler-mapper';
         $command = new RepositoryCommand($repository);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->request(
-            Argument::type(RequestInterface::class),
-            Argument::type('array')
-        )->shouldBeCalled()->willReturn(resolve(
-            new Response(
-                200,
-                [],
-                new JsonStream(['repo' => $json])
-            )
-        ));
+        $service = $this->prophesize(FetchAndHydrateService::class);
+        $service->fetch('repos/wyrihaximus/tactician-command-handler-mapper', 'repo', RepositoryInterface::HYDRATE_CLASS)->shouldBeCalled()->willReturn(resolve($repositoryResource));
 
-        $requestService = new RequestService($client->reveal());
-
-        $hydrator = $this->prophesize(Hydrator::class);
-        $hydrator->hydrate(
-            Argument::exact(RepositoryInterface::HYDRATE_CLASS),
-            Argument::exact($json)
-        )->shouldBeCalled()->willReturn($repositoryResource);
-
-        $handler = new RepositoryHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
+        $handler = new RepositoryHandler($service->reveal());
 
         self::assertSame($repositoryResource, await($handler->handle($command), Factory::create()));
     }
@@ -64,31 +45,14 @@ final class RepositoryHandlerTest extends TestCase
         $this->expectException(RepositoryDoesNotExist::class);
 
         $repositoryResource = $this->prophesize(EmptyRepository::class)->reveal();
-        $json = [];
+
         $repository = 'wyrihaximus/tactician-command-handler-mapper';
         $command = new RepositoryCommand($repository);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->request(
-            Argument::type(RequestInterface::class),
-            Argument::type('array')
-        )->shouldBeCalled()->willReturn(resolve(
-            new Response(
-                200,
-                [],
-                new JsonStream(['repo' => $json])
-            )
-        ));
+        $service = $this->prophesize(FetchAndHydrateService::class);
+        $service->fetch('repos/wyrihaximus/tactician-command-handler-mapper', 'repo', RepositoryInterface::HYDRATE_CLASS)->shouldBeCalled()->willReturn(resolve($repositoryResource));
 
-        $requestService = new RequestService($client->reveal());
-
-        $hydrator = $this->prophesize(Hydrator::class);
-        $hydrator->hydrate(
-            Argument::exact(RepositoryInterface::HYDRATE_CLASS),
-            Argument::exact($json)
-        )->shouldBeCalled()->willReturn($repositoryResource);
-
-        $handler = new RepositoryHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
+        $handler = new RepositoryHandler($service->reveal());
 
         await($handler->handle($command), Factory::create());
     }
@@ -100,11 +64,8 @@ final class RepositoryHandlerTest extends TestCase
         $repository = 'wyrihaximus/tactician-command-handler-mapper';
         $command = new RepositoryCommand($repository);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->request(
-            Argument::type(RequestInterface::class),
-            Argument::type('array')
-        )->shouldBeCalled()->willReturn(reject(
+        $service = $this->prophesize(FetchAndHydrateService::class);
+        $service->fetch('repos/wyrihaximus/tactician-command-handler-mapper', 'repo', RepositoryInterface::HYDRATE_CLASS)->shouldBeCalled()->willReturn(reject(
             new ResponseException(
                 new Response(
                     404,
@@ -114,10 +75,7 @@ final class RepositoryHandlerTest extends TestCase
             )
         ));
 
-        $requestService = new RequestService($client->reveal());
-
-        $hydrator = $this->prophesize(Hydrator::class);
-        $handler = new RepositoryHandler(new FetchAndHydrateService($requestService, $hydrator->reveal()));
+        $handler = new RepositoryHandler($service->reveal());
 
         await($handler->handle($command), Factory::create());
     }

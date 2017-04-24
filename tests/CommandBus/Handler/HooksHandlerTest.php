@@ -14,7 +14,7 @@ final class HooksHandlerTest extends TestCase
     {
         $command = new HooksCommand();
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('hooks', 'hooks', HookInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('hooks', 'hooks', HookInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new HooksHandler($service->reveal());
         $handler->handle($command);
     }

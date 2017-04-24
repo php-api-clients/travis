@@ -14,7 +14,7 @@ final class AccountsHandlerTest extends TestCase
     {
         $command = new AccountsCommand();
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle('accounts', 'accounts', AccountInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->iterate('accounts', 'accounts', AccountInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new AccountsHandler($service->reveal());
         $handler->handle($command);
     }

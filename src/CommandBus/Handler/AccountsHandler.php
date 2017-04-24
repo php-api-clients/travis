@@ -6,7 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\AccountsCommand;
 use ApiClients\Client\Travis\Resource\AccountInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
-use Rx\Observable;
 use function React\Promise\resolve;
 use function WyriHaximus\React\futureFunctionPromise;
 
@@ -33,6 +32,6 @@ final class AccountsHandler
      */
     public function handle(AccountsCommand $command): PromiseInterface
     {
-        return $this->fetchAndIterateService->handle('accounts', 'accounts', AccountInterface::HYDRATE_CLASS);
+        return resolve($this->fetchAndIterateService->iterate('accounts', 'accounts', AccountInterface::HYDRATE_CLASS));
     }
 }

@@ -3,7 +3,6 @@
 namespace ApiClients\Client\Travis\CommandBus\Handler;
 
 use ApiClients\Client\Travis\CommandBus\Command\BranchesCommand;
-use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\Resource\BranchInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
@@ -34,10 +33,10 @@ final class BranchesHandler
      */
     public function handle(BranchesCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'repos/' . (string)$command->getRepositoryId() . '/branches',
             'branches',
             BranchInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }

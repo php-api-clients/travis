@@ -32,7 +32,7 @@ final class RepositoryIdHandler
      */
     public function handle(RepositoryIdCommand $command): PromiseInterface
     {
-        return $this->hydrateService->handle(
+        return $this->hydrateService->fetch(
             'repos/' . (string)$command->getRepositoryId(),
             'repo',
             RepositoryInterface::HYDRATE_CLASS

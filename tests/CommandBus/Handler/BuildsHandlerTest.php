@@ -14,7 +14,7 @@ final class BuildsHandlerTest extends TestCase
     {
         $command = new BuildsCommand('api-clients/travis');
         $service = $this->prophesize(FetchAndIterateService::class);
-        $service->handle(
+        $service->iterate(
             'repos/api-clients/travis/builds',
             'builds',
             BuildInterface::HYDRATE_CLASS

@@ -19,17 +19,18 @@
     "php": "^7.0",
     "api-clients/client-services": "dev-master",
     "api-clients/foundation": "dev-master",
-    "api-clients/middleware-json": "dev-master",
+    "api-clients/middleware-json": "^1.0",
     "api-clients/middleware-token-authorization": "^2.0",
     "api-clients/middleware-user-agent": "^1.0",
-    "api-clients/pusher": "dev-master",
-    "api-clients/rx": "dev-master"
+    "api-clients/pusher": "dev-improvement-handle-disconnects-and-reconnect-when-appropriate",
+    "api-clients/rx": "^2.0",
+    "api-clients/rx-operators": "^2.0"
   },
   "require-dev": {
-    "api-clients/middleware-delay": "dev-master",
-    "api-clients/middleware-pool": "dev-master",
+    "api-clients/middleware-delay": "^2.0",
+    "api-clients/middleware-pool": "^2.0",
     "api-clients/resource-generator": "dev-master",
-    "api-clients/test-utilities": "^2.0"
+    "api-clients/test-utilities": "^3.0.1"
   },
   "suggest": {
     "api-clients/middleware-delay": "Add a delay between requests to not hammer Travis",

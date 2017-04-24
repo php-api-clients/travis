@@ -9,11 +9,10 @@ use ApiClients\Foundation\Factory;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
-use Rx\Observable;
 use Rx\ObservableInterface;
 use Rx\React\Promise;
+use Rx\Scheduler;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\resolve;
 
 final class AsyncClient implements AsyncClientInterface
 {
@@ -35,6 +34,13 @@ final class AsyncClient implements AsyncClientInterface
         string $token = '',
         array $options = []
     ): self {
+        try {
+            Scheduler::setAsyncFactory(function () use ($loop) {
+                return new Scheduler\EventLoopScheduler($loop);
+            });
+        } catch (\Throwable $t) {
+        }
+
         $options = ApiSettings::getOptions($token, 'Async', $options);
         $client = Factory::create($loop, $options);
         return new self($client);

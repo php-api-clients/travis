@@ -27,7 +27,7 @@ final class SettingsHandlerTest extends TestCase
     {
         $command = new SettingsCommand(123);
         $service = $this->prophesize(FetchAndHydrateService::class);
-        $service->handle('repos/123/settings', 'settings', SettingsInterface::HYDRATE_CLASS)->shouldBeCalled();
+        $service->fetch('repos/123/settings', 'settings', SettingsInterface::HYDRATE_CLASS)->shouldBeCalled();
         $handler = new SettingsHandler($service->reveal());
         $handler->handle($command);
     }

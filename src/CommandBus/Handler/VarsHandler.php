@@ -33,10 +33,10 @@ final class VarsHandler
      */
     public function handle(VarsCommand $command): PromiseInterface
     {
-        return $this->service->handle(
+        return resolve($this->service->iterate(
             'settings/env_vars?repository_id=' . (string)$command->getRepositoryId(),
             'env_vars',
             EnvironmentVariableInterface::HYDRATE_CLASS
-        );
+        ));
     }
 }
