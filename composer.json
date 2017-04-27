@@ -17,7 +17,7 @@
   ],
   "require": {
     "php": "^7.0",
-    "api-clients/client-services": "dev-master",
+    "api-clients/client-services": "^1.0",
     "api-clients/foundation": "dev-master",
     "api-clients/middleware-json": "^1.0",
     "api-clients/middleware-token-authorization": "^2.0",
