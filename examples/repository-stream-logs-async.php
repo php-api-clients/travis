@@ -1,5 +1,6 @@
 <?php
 
+use function ApiClients\Tools\Rx\observableFromArray;
 use React\EventLoop\Factory;
 use Rx\Observable;
 use Rx\Observer\CallbackObserver;
@@ -26,7 +27,7 @@ if (count($argv) > 1) {
         $repos[] = $repo;
     }
 }
-Observable::fromArray($repos)
+observableFromArray($repos)
     ->flatMap(function ($repo) use ($client) {
         return Promise::toObservable($client->repository($repo));
     })
