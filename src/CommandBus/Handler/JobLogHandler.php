@@ -12,10 +12,7 @@ use ApiClients\Foundation\Hydrator\Hydrator;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObserverInterface;
-use Rx\SchedulerInterface;
-use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class JobLogHandler
 {
@@ -52,8 +49,7 @@ final class JobLogHandler
             ApiSettings::PUSHER_KEY
         )->then(function (PusherAsyncClient $pusher) use ($command) {
             return resolve(Observable::create(function (
-                ObserverInterface $observer,
-                SchedulerInterface $scheduler
+                ObserverInterface $observer
             ) use (
                 $pusher,
                 $command
@@ -62,7 +58,7 @@ final class JobLogHandler
                     return $event->getEvent() === 'job:log';
                 })->map(function (Event $event) {
                     return $this->hydrator->hydrate(LogLineInterface::HYDRATE_CLASS, $event->getData());
-                })->subscribeCallback(
+                })->subscribe(
                     function (LogLineInterface $line) use ($observer, &$subscription) {
                         $observer->onNext($line);
 
@@ -75,8 +71,7 @@ final class JobLogHandler
                     },
                     function () use ($observer) {
                         $observer->onComplete();
-                    },
-                    $scheduler
+                    }
                 );
             }));
         });
