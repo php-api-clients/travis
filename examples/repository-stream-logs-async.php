@@ -18,7 +18,8 @@ $loop   = Factory::create();
 $client = AsyncClient::create($loop);
 
 $repos = [
-    'WyriHaximus/php-travis-client',
+    'php-api-clients/travis',
+    'php-api-clients/pusher',
 ];
 
 if (count($argv) > 1) {
