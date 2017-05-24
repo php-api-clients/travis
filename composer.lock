@@ -435,12 +435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/pusher.git",
-                "reference": "ebd3a031b4ef42a2b1a09bf4d5e34e7d64970104"
+                "reference": "9be4f1df2aeb1d3fef8fc5ad415d973f453455fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/ebd3a031b4ef42a2b1a09bf4d5e34e7d64970104",
-                "reference": "ebd3a031b4ef42a2b1a09bf4d5e34e7d64970104",
+                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/9be4f1df2aeb1d3fef8fc5ad415d973f453455fd",
+                "reference": "9be4f1df2aeb1d3fef8fc5ad415d973f453455fd",
                 "shasum": ""
             },
             "require": {
@@ -484,7 +484,7 @@
             ],
             "description": "Async first Pusher client",
             "homepage": "https://php-api-clients.org/clients/pusher",
-            "time": "2017-05-23 20:39:11"
+            "time": "2017-05-24 18:05:19"
         },
         {
             "name": "api-clients/resource",
@@ -2985,7 +2985,7 @@
                 }
             ],
             "description": "Resource from YAML generation tool",
-            "time": "2017-05-15T08:59:28+00:00"
+            "time": "2017-05-15 08:59:28"
         },
         {
             "name": "api-clients/resource-test-utilities",
@@ -3032,7 +3032,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2017-05-21T12:13:29+00:00"
+            "time": "2017-05-21 12:13:29"
         },
         {
             "name": "api-clients/test-utilities",
