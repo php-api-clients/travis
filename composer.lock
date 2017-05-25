@@ -435,12 +435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/pusher.git",
-                "reference": "9be4f1df2aeb1d3fef8fc5ad415d973f453455fd"
+                "reference": "f8794f43f4224a9cc428b4152096c6670395e1e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/9be4f1df2aeb1d3fef8fc5ad415d973f453455fd",
-                "reference": "9be4f1df2aeb1d3fef8fc5ad415d973f453455fd",
+                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/f8794f43f4224a9cc428b4152096c6670395e1e2",
+                "reference": "f8794f43f4224a9cc428b4152096c6670395e1e2",
                 "shasum": ""
             },
             "require": {
@@ -484,7 +484,7 @@
             ],
             "description": "Async first Pusher client",
             "homepage": "https://php-api-clients.org/clients/pusher",
-            "time": "2017-05-24 18:05:19"
+            "time": "2017-05-24 20:16:01"
         },
         {
             "name": "api-clients/resource",
