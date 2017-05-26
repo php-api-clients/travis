@@ -1,16 +1,14 @@
 <?php
 
-use function ApiClients\Tools\Rx\observableFromArray;
-use React\EventLoop\Factory;
-use Rx\Observable;
-use Rx\Observer\CallbackObserver;
-use Rx\React\Promise;
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\Async\Build;
 use ApiClients\Client\Travis\Resource\Async\Job;
 use ApiClients\Client\Travis\Resource\Async\LogLine;
 use ApiClients\Client\Travis\Resource\Async\Repository;
+use React\EventLoop\Factory;
+use Rx\React\Promise;
 use function ApiClients\Foundation\resource_pretty_print;
+use function ApiClients\Tools\Rx\observableFromArray;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -54,9 +52,9 @@ observableFromArray($repos)
         echo 'Job ID: ', $job->id(), PHP_EOL;
         return $job->log();
     })
-    ->subscribe(new CallbackObserver(function (LogLine $line) {
+    ->subscribe(function (LogLine $line) {
         resource_pretty_print($line);
-    }));
+    });
 
 
 $loop->run();

@@ -1,10 +1,9 @@
 <?php
 
-use React\EventLoop\Factory;
-use Rx\Observer\CallbackObserver;
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\BranchInterface;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
+use React\EventLoop\Factory;
 use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
@@ -25,9 +24,9 @@ if (count($argv) > 1) {
 
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) {
-        $repo->branches()->subscribe(new CallbackObserver(function (BranchInterface $branch) {
+        $repo->branches()->subscribe(function (BranchInterface $branch) {
             resource_pretty_print($branch);
-        }));
+        });
     });
 }
 

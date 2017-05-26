@@ -1,10 +1,9 @@
 <?php
 
-use React\EventLoop\Factory;
-use Rx\Observable;
-use Rx\Observer\CallbackObserver;
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\Async\Repository;
+use React\EventLoop\Factory;
+use function ApiClients\Tools\Rx\observableFromArray;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
@@ -22,7 +21,7 @@ if (count($argv) > 1) {
     }
 }
 
-Observable::fromArray($repos)
+observableFromArray($repos)
     ->flatMap(function ($repo) use ($client) {
         return $client->repository($repo);
     })
@@ -30,11 +29,11 @@ Observable::fromArray($repos)
         echo 'Listening on repository: ', $repo->slug(), PHP_EOL;
         return $repo->events();
     })
-    ->subscribe(new CallbackObserver(function (Repository $repo) {
+    ->subscribe(function (Repository $repo) {
         echo 'Repo: ', $repo->slug(), PHP_EOL;
         echo 'Last build ID: ', $repo->lastBuildId(), PHP_EOL;
         echo 'Last build #: ', $repo->lastBuildNumber(), PHP_EOL;
         echo 'Last build state: ', $repo->lastBuildState(), PHP_EOL;
-    }));
+    });
 
 $loop->run();
