@@ -30,7 +30,7 @@
     "api-clients/middleware-delay": "^2.0",
     "api-clients/middleware-pool": "^2.0",
     "api-clients/resource-generator": "dev-master",
-    "api-clients/test-utilities": "^3.0.1"
+    "api-clients/test-utilities": "^4.1"
   },
   "suggest": {
     "api-clients/middleware-delay": "Add a delay between requests to not hammer Travis",
@@ -47,7 +47,10 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "platform": {
+      "php": "7.0"
+    }
   },
   "extra": {
     "api-clients": {
@@ -61,7 +64,11 @@
     "ensure-installed": "composer install --ansi -n -q",
     "cs": [
       "@ensure-installed",
-      "phpcs --standard=PSR2 src/"
+      "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
+    ],
+    "cs-fix": [
+      "@ensure-installed",
+      "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
     ],
     "unit": [
       "@ensure-installed",
@@ -91,9 +98,9 @@
       "@unit"
     ],
     "qa-ci": [
-      "@qa-all"
+      "@unit"
     ],
-    "qa-ci-coverage": [
+    "qa-ci-extended": [
       "@qa-all-coverage"
     ],
     "qa-ci-windows": [
