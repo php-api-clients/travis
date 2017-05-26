@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
 use ApiClients\Tools\TestUtilities\PhpCsFixerConfig;
+use PhpCsFixer\Config;
 
-return (function ()
+return (function (): Config
 {
     $paths = [
         __DIR__ . DIRECTORY_SEPARATOR . 'src',
