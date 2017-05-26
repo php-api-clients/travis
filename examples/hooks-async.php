@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use React\EventLoop\Factory;

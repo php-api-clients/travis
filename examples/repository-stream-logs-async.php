@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\Async\Build;
 use ApiClients\Client\Travis\Resource\Async\Job;
@@ -32,6 +31,7 @@ observableFromArray($repos)
     })
     ->flatMap(function (Repository $repo) {
         echo 'Listening on repository: ', $repo->slug(), PHP_EOL;
+
         return $repo->events();
     })
     ->filter(function (Repository $repo) {
@@ -39,10 +39,12 @@ observableFromArray($repos)
     })
     ->flatMap(function (Repository $repo) {
         echo 'Repo: ', $repo->slug(), PHP_EOL;
+
         return Promise::toObservable($repo->build($repo->lastBuildId()));
     })
     ->flatMap(function (Build $build) {
         echo 'Build ID: ', $build->id(), PHP_EOL;
+
         return $build->jobs();
     })
     ->filter(function (Job $job) {
@@ -50,11 +52,11 @@ observableFromArray($repos)
     })
     ->flatMap(function (Job $job) {
         echo 'Job ID: ', $job->id(), PHP_EOL;
+
         return $job->log();
     })
     ->subscribe(function (LogLine $line) {
         resource_pretty_print($line);
     });
-
 
 $loop->run();

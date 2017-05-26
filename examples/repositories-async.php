@@ -3,9 +3,9 @@
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Foundation\Options;
+use ApiClients\Foundation\Transport\Options as TransportOptions;
 use ApiClients\Middleware\Delay\DelayMiddleware;
 use ApiClients\Middleware\Pool\PoolMiddleware;
-use ApiClients\Foundation\Transport\Options as TransportOptions;
 use React\EventLoop\Factory;
 use ResourcePool\Pool;
 use Rx\Observer\CallbackObserver;

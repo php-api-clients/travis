@@ -1,9 +1,8 @@
-<?php
-
-use React\EventLoop\Factory;
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\RepositoryKeyInterface;
+use React\EventLoop\Factory;
 use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';

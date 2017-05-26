@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\Async\Repository;
 use ApiClients\Client\Travis\Resource\BuildInterface;
@@ -24,6 +23,5 @@ $client->repository($argv[1] ?? 'WyriHaximus/php-travis-client')->then(function 
         echo "\t\t" . 'duration: ' . $build->duration(), PHP_EOL;
     });
 });
-
 
 $loop->run();

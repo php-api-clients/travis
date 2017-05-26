@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\Client;
 use function ApiClients\Foundation\resource_pretty_print;
 

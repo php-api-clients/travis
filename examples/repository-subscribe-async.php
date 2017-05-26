@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use ApiClients\Client\Travis\AsyncClient;
 use ApiClients\Client\Travis\Resource\Async\Repository;
 use React\EventLoop\Factory;
@@ -27,6 +26,7 @@ observableFromArray($repos)
     })
     ->flatMap(function (Repository $repo) {
         echo 'Listening on repository: ', $repo->slug(), PHP_EOL;
+
         return $repo->events();
     })
     ->subscribe(function (Repository $repo) {
