@@ -9,7 +9,7 @@ abstract class EmptySettings implements SettingsInterface, EmptyResourceInterfac
     /**
      * @return bool
      */
-    public function buildsOnlyWithTravisYml() : bool
+    public function buildsOnlyWithTravisYml(): bool
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptySettings implements SettingsInterface, EmptyResourceInterfac
     /**
      * @return bool
      */
-    public function buildPushes() : bool
+    public function buildPushes(): bool
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptySettings implements SettingsInterface, EmptyResourceInterfac
     /**
      * @return bool
      */
-    public function buildPullRequests() : bool
+    public function buildPullRequests(): bool
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class EmptySettings implements SettingsInterface, EmptyResourceInterfac
     /**
      * @return int
      */
-    public function maximumNumberOfBuilds() : int
+    public function maximumNumberOfBuilds(): int
     {
         return null;
     }

@@ -10,7 +10,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -18,7 +18,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function sha() : string
+    public function sha(): string
     {
         return null;
     }
@@ -26,7 +26,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function branch() : string
+    public function branch(): string
     {
         return null;
     }
@@ -34,7 +34,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function message() : string
+    public function message(): string
     {
         return null;
     }
@@ -42,7 +42,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function comittedAt() : DateTimeInterface
+    public function comittedAt(): DateTimeInterface
     {
         return null;
     }
@@ -50,7 +50,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function authorName() : string
+    public function authorName(): string
     {
         return null;
     }
@@ -58,7 +58,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function authorEmail() : string
+    public function authorEmail(): string
     {
         return null;
     }
@@ -66,7 +66,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function committerName() : string
+    public function committerName(): string
     {
         return null;
     }
@@ -74,7 +74,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function committerEmail() : string
+    public function committerEmail(): string
     {
         return null;
     }
@@ -82,7 +82,7 @@ abstract class EmptyCommit implements CommitInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function compareUrl() : string
+    public function compareUrl(): string
     {
         return null;
     }

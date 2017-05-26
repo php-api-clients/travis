@@ -9,7 +9,7 @@ abstract class EmptyEnvironmentVariable implements EnvironmentVariableInterface,
     /**
      * @return string
      */
-    public function id() : string
+    public function id(): string
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyEnvironmentVariable implements EnvironmentVariableInterface,
     /**
      * @return string
      */
-    public function name() : string
+    public function name(): string
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptyEnvironmentVariable implements EnvironmentVariableInterface,
     /**
      * @return string
      */
-    public function value() : string
+    public function value(): string
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class EmptyEnvironmentVariable implements EnvironmentVariableInterface,
     /**
      * @return bool
      */
-    public function public() : bool
+    public function public(): bool
     {
         return null;
     }
@@ -41,7 +41,7 @@ abstract class EmptyEnvironmentVariable implements EnvironmentVariableInterface,
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return null;
     }

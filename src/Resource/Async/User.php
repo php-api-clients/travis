@@ -8,14 +8,13 @@ use ApiClients\Client\Travis\Resource\User as BaseUser;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
 use GuzzleHttp\Psr7\Request;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
 
 class User extends BaseUser
 {
     /**
      * @return PromiseInterface
      */
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return $this->handleCommand(
             new UserCommand()

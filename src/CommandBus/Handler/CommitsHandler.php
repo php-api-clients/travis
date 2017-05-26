@@ -8,7 +8,6 @@ use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class CommitsHandler
 {
@@ -26,9 +25,9 @@ final class CommitsHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param CommitsCommand $command
+     * @param  CommitsCommand   $command
      * @return PromiseInterface
      */
     public function handle(CommitsCommand $command): PromiseInterface

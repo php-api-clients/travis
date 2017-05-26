@@ -10,7 +10,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -18,7 +18,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return null;
     }
@@ -26,7 +26,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function commitId() : int
+    public function commitId(): int
     {
         return null;
     }
@@ -34,7 +34,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function number() : string
+    public function number(): string
     {
         return null;
     }
@@ -42,7 +42,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return array
      */
-    public function config() : array
+    public function config(): array
     {
         return null;
     }
@@ -50,7 +50,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function state() : string
+    public function state(): string
     {
         return null;
     }
@@ -58,7 +58,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function startedAt() : DateTimeInterface
+    public function startedAt(): DateTimeInterface
     {
         return null;
     }
@@ -66,7 +66,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function finishedAt() : DateTimeInterface
+    public function finishedAt(): DateTimeInterface
     {
         return null;
     }
@@ -74,7 +74,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function duration() : int
+    public function duration(): int
     {
         return null;
     }
@@ -82,7 +82,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return array
      */
-    public function jobIds() : array
+    public function jobIds(): array
     {
         return null;
     }
@@ -90,7 +90,7 @@ abstract class EmptyBranch implements BranchInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function pullRequest() : bool
+    public function pullRequest(): bool
     {
         return null;
     }

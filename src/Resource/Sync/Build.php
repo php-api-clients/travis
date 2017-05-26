@@ -2,10 +2,10 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use Rx\React\Promise;
 use ApiClients\Client\Travis\Resource\Build as BaseBuild;
 use ApiClients\Client\Travis\Resource\BuildInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 
 class Build extends BaseBuild
 {
@@ -24,7 +24,7 @@ class Build extends BaseBuild
     }
 
     /**
-     * @param int $id
+     * @param  int $id
      * @return Job
      */
     public function job(int $id): Job
@@ -41,7 +41,7 @@ class Build extends BaseBuild
     /**
      * @return Build
      */
-    public function refresh() : Build
+    public function refresh(): Build
     {
         return $this->wait(
             $this->handleCommand(

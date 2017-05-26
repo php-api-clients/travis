@@ -38,7 +38,7 @@ abstract class Account extends AbstractResource implements AccountInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -46,7 +46,7 @@ abstract class Account extends AbstractResource implements AccountInterface
     /**
      * @return string
      */
-    public function name() : string
+    public function name(): string
     {
         return $this->name;
     }
@@ -54,7 +54,7 @@ abstract class Account extends AbstractResource implements AccountInterface
     /**
      * @return string
      */
-    public function type() : string
+    public function type(): string
     {
         return $this->type;
     }
@@ -62,7 +62,7 @@ abstract class Account extends AbstractResource implements AccountInterface
     /**
      * @return string
      */
-    public function login() : string
+    public function login(): string
     {
         return $this->login;
     }
@@ -70,7 +70,7 @@ abstract class Account extends AbstractResource implements AccountInterface
     /**
      * @return int
      */
-    public function reposCount() : int
+    public function reposCount(): int
     {
         return $this->repos_count;
     }

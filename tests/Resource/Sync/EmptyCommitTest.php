@@ -2,16 +2,17 @@
 
 namespace ApiClients\Tests\Client\Travis\Resource\Sync;
 
-use ApiClients\Tools\ResourceTestUtilities\AbstractEmptyResourceTest;
 use ApiClients\Client\Travis\Resource\Sync\EmptyCommit;
+use ApiClients\Tools\ResourceTestUtilities\AbstractEmptyResourceTest;
 
 final class EmptyCommitTest extends AbstractEmptyResourceTest
 {
-    public function getSyncAsync() : string
+    public function getSyncAsync(): string
     {
         return 'Sync';
     }
-    public function getClass() : string
+
+    public function getClass(): string
     {
         return EmptyCommit::class;
     }

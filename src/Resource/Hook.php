@@ -23,7 +23,7 @@ abstract class Hook extends AbstractResource implements HookInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -31,7 +31,7 @@ abstract class Hook extends AbstractResource implements HookInterface
     /**
      * @return bool
      */
-    public function active() : bool
+    public function active(): bool
     {
         return (bool)$this->active;
     }

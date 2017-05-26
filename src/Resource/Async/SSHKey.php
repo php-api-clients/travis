@@ -6,14 +6,13 @@ namespace ApiClients\Client\Travis\Resource\Async;
 use ApiClients\Client\Travis\CommandBus\Command\SSHKeyCommand;
 use ApiClients\Client\Travis\Resource\SSHKey as BaseSSHKey;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
 
 class SSHKey extends BaseSSHKey
 {
     /**
      * @return PromiseInterface
      */
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return $this->handleCommand(new SSHKeyCommand($this->id()));
     }

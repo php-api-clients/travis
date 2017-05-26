@@ -3,14 +3,12 @@
 namespace ApiClients\Tests\Client\Travis;
 
 use ApiClients\Client\Travis\ApiSettings;
-use ApiClients\Middleware\TokenAuthorization\Options as TokenAuthorizationHeaderMiddlewareOptions;
-use ApiClients\Middleware\TokenAuthorization\TokenAuthorizationHeaderMiddleware;
 use ApiClients\Foundation\Hydrator\Options as HydratorOptions;
 use ApiClients\Foundation\Options as FoundationOptions;
 use ApiClients\Foundation\Transport\Options as TransportOptions;
+use ApiClients\Middleware\TokenAuthorization\Options as TokenAuthorizationHeaderMiddlewareOptions;
+use ApiClients\Middleware\TokenAuthorization\TokenAuthorizationHeaderMiddleware;
 use ApiClients\Tools\TestUtilities\TestCase;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
 
 class ApiSettingsTest extends TestCase
 {
@@ -22,8 +20,9 @@ class ApiSettingsTest extends TestCase
             [],
             (function ($options) {
                 $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = 'Async';
+
                 return $options;
-            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS),
         ];
 
         yield [
@@ -43,8 +42,9 @@ class ApiSettingsTest extends TestCase
                     ]
                 );
                 $options[FoundationOptions::TRANSPORT_OPTIONS] = $transportOptions;
+
                 return $options;
-            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS),
         ];
 
         yield [
@@ -56,8 +56,9 @@ class ApiSettingsTest extends TestCase
             (function ($options) {
                 $options[FoundationOptions::HYDRATOR_OPTIONS][HydratorOptions::NAMESPACE_SUFFIX] = 'Async';
                 $options['foo'] = 'bar';
+
                 return $options;
-            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS)
+            })(ApiSettings::DEFAULT_TRANSPORT_OPTIONS),
         ];
     }
 

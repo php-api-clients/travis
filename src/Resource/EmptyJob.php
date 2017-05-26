@@ -10,7 +10,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -18,7 +18,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function buildId() : int
+    public function buildId(): int
     {
         return null;
     }
@@ -26,7 +26,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return null;
     }
@@ -34,7 +34,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function commitId() : int
+    public function commitId(): int
     {
         return null;
     }
@@ -42,7 +42,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function logId() : int
+    public function logId(): int
     {
         return null;
     }
@@ -50,7 +50,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function number() : string
+    public function number(): string
     {
         return null;
     }
@@ -58,7 +58,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return array
      */
-    public function config() : array
+    public function config(): array
     {
         return null;
     }
@@ -66,7 +66,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function state() : string
+    public function state(): string
     {
         return null;
     }
@@ -74,7 +74,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function startedAt() : DateTimeInterface
+    public function startedAt(): DateTimeInterface
     {
         return null;
     }
@@ -82,7 +82,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function finishedAt() : DateTimeInterface
+    public function finishedAt(): DateTimeInterface
     {
         return null;
     }
@@ -90,7 +90,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function queue() : string
+    public function queue(): string
     {
         return null;
     }
@@ -98,7 +98,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function allowFailure() : bool
+    public function allowFailure(): bool
     {
         return null;
     }
@@ -106,7 +106,7 @@ abstract class EmptyJob implements JobInterface, EmptyResourceInterface
     /**
      * @return array
      */
-    public function annotationIds() : array
+    public function annotationIds(): array
     {
         return null;
     }

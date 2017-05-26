@@ -11,7 +11,6 @@ use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\resolve;
 
 class Job extends BaseJob
 {
@@ -21,6 +20,7 @@ class Job extends BaseJob
             $this->handleCommand(new JobLogCommand($this->id()))
         );
     }
+
     /**
      * @return ObservableInterface
      */

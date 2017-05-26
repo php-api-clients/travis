@@ -11,50 +11,50 @@ interface RepositoryInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return string
      */
-    public function slug() : string;
+    public function slug(): string;
 
     /**
      * @return string
      */
-    public function description() : string;
+    public function description(): string;
 
     /**
      * @return int
      */
-    public function lastBuildId() : int;
+    public function lastBuildId(): int;
 
     /**
      * @return int
      */
-    public function lastBuildNumber() : int;
+    public function lastBuildNumber(): int;
 
     /**
      * @return string
      */
-    public function lastBuildState() : string;
+    public function lastBuildState(): string;
 
     /**
      * @return int
      */
-    public function lastBuildDuration() : int;
+    public function lastBuildDuration(): int;
 
     /**
      * @return int
      */
-    public function lastBuildStartedAt() : int;
+    public function lastBuildStartedAt(): int;
 
     /**
      * @return int
      */
-    public function lastBuildFinishedAt() : int;
+    public function lastBuildFinishedAt(): int;
 
     /**
      * @return string
      */
-    public function githubLanguage() : string;
+    public function githubLanguage(): string;
 }

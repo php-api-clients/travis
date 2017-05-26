@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace ApiClients\Client\Travis\Resource\Async;
 
@@ -9,7 +9,7 @@ use function React\Promise\reject;
 
 class LogLine extends BaseLogLine
 {
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return reject(new Exception('Can\'t refresh as there is no reference to the relative job'));
     }

@@ -79,7 +79,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -87,7 +87,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return $this->repository_id;
     }
@@ -95,7 +95,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return int
      */
-    public function commitId() : int
+    public function commitId(): int
     {
         return $this->commit_id;
     }
@@ -103,7 +103,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return string
      */
-    public function number() : string
+    public function number(): string
     {
         return $this->number;
     }
@@ -111,7 +111,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return bool
      */
-    public function pullRequest() : bool
+    public function pullRequest(): bool
     {
         return $this->pull_request;
     }
@@ -119,7 +119,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return string
      */
-    public function pullRequestTitle() : string
+    public function pullRequestTitle(): string
     {
         return $this->pull_request_title;
     }
@@ -127,7 +127,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return int
      */
-    public function pullRequestNumber() : int
+    public function pullRequestNumber(): int
     {
         return $this->pull_request_number;
     }
@@ -135,7 +135,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return array
      */
-    public function config() : array
+    public function config(): array
     {
         return $this->config;
     }
@@ -143,7 +143,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return string
      */
-    public function state() : string
+    public function state(): string
     {
         return $this->state;
     }
@@ -151,7 +151,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return DateTimeInterface
      */
-    public function startedAt() : DateTimeInterface
+    public function startedAt(): DateTimeInterface
     {
         return $this->started_at;
     }
@@ -159,7 +159,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return DateTimeInterface
      */
-    public function finishedAt() : DateTimeInterface
+    public function finishedAt(): DateTimeInterface
     {
         return $this->finished_at;
     }
@@ -167,7 +167,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return int
      */
-    public function duration() : int
+    public function duration(): int
     {
         return $this->duration;
     }
@@ -175,7 +175,7 @@ abstract class Build extends AbstractResource implements BuildInterface
     /**
      * @return array
      */
-    public function jobIds() : array
+    public function jobIds(): array
     {
         return $this->job_ids;
     }

@@ -10,7 +10,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -18,7 +18,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function name() : string
+    public function name(): string
     {
         return null;
     }
@@ -26,7 +26,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function login() : string
+    public function login(): string
     {
         return null;
     }
@@ -34,7 +34,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function email() : string
+    public function email(): string
     {
         return null;
     }
@@ -42,7 +42,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function gravatarId() : string
+    public function gravatarId(): string
     {
         return null;
     }
@@ -50,7 +50,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function isSyncing() : bool
+    public function isSyncing(): bool
     {
         return null;
     }
@@ -58,7 +58,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function syncedAt() : DateTimeInterface
+    public function syncedAt(): DateTimeInterface
     {
         return null;
     }
@@ -66,7 +66,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function correctScopes() : bool
+    public function correctScopes(): bool
     {
         return null;
     }
@@ -74,7 +74,7 @@ abstract class EmptyUser implements UserInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function createdAt() : DateTimeInterface
+    public function createdAt(): DateTimeInterface
     {
         return null;
     }

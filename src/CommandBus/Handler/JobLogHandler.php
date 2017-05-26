@@ -29,7 +29,7 @@ final class JobLogHandler
     /**
      * JobLogHandler constructor.
      * @param SharedAppClientService $pusher
-     * @param Hydrator $hydrator
+     * @param Hydrator               $hydrator
      */
     public function __construct(SharedAppClientService $pusher, Hydrator $hydrator)
     {
@@ -38,9 +38,9 @@ final class JobLogHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param JobLogCommand $command
+     * @param  JobLogCommand    $command
      * @return PromiseInterface
      */
     public function handle(JobLogCommand $command): PromiseInterface

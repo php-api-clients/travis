@@ -14,7 +14,7 @@ use function React\Promise\resolve;
 
 class Cache extends BaseCache
 {
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
             new CachesCommand($this->repositoryId())

@@ -4,8 +4,6 @@ namespace ApiClients\Tests\Client\Travis\CommandBus\Command;
 
 use ApiClients\Client\Travis\CommandBus\Command\RepositoryCommand;
 use ApiClients\Tools\TestUtilities\TestCase;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
 
 final class RepositoryCommandTest extends TestCase
 {

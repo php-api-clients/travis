@@ -9,7 +9,7 @@ abstract class EmptyRepositoryKey implements RepositoryKeyInterface, EmptyResour
     /**
      * @return string
      */
-    public function key() : string
+    public function key(): string
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyRepositoryKey implements RepositoryKeyInterface, EmptyResour
     /**
      * @return string
      */
-    public function fingerprint() : string
+    public function fingerprint(): string
     {
         return null;
     }

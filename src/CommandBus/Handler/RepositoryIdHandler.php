@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\RepositoryIdCommand;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class RepositoryIdHandler
 {
@@ -25,9 +23,9 @@ final class RepositoryIdHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param RepositoryIdCommand $command
+     * @param  RepositoryIdCommand $command
      * @return PromiseInterface
      */
     public function handle(RepositoryIdCommand $command): PromiseInterface

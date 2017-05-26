@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\JobCommand;
 use ApiClients\Client\Travis\Resource\JobInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class JobHandler
 {
@@ -25,9 +23,9 @@ final class JobHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param JobCommand $command
+     * @param  JobCommand       $command
      * @return PromiseInterface
      */
     public function handle(JobCommand $command): PromiseInterface

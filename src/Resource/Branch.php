@@ -69,7 +69,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -77,7 +77,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return $this->repository_id;
     }
@@ -85,7 +85,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return int
      */
-    public function commitId() : int
+    public function commitId(): int
     {
         return $this->commit_id;
     }
@@ -93,7 +93,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return string
      */
-    public function number() : string
+    public function number(): string
     {
         return $this->number;
     }
@@ -101,7 +101,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return array
      */
-    public function config() : array
+    public function config(): array
     {
         return $this->config;
     }
@@ -109,7 +109,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return string
      */
-    public function state() : string
+    public function state(): string
     {
         return $this->state;
     }
@@ -117,7 +117,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return DateTimeInterface
      */
-    public function startedAt() : DateTimeInterface
+    public function startedAt(): DateTimeInterface
     {
         return $this->started_at;
     }
@@ -125,7 +125,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return DateTimeInterface
      */
-    public function finishedAt() : DateTimeInterface
+    public function finishedAt(): DateTimeInterface
     {
         return $this->finished_at;
     }
@@ -133,7 +133,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return int
      */
-    public function duration() : int
+    public function duration(): int
     {
         return $this->duration;
     }
@@ -141,7 +141,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return array
      */
-    public function jobIds() : array
+    public function jobIds(): array
     {
         return $this->job_ids;
     }
@@ -149,7 +149,7 @@ abstract class Branch extends AbstractResource implements BranchInterface
     /**
      * @return bool
      */
-    public function pullRequest() : bool
+    public function pullRequest(): bool
     {
         return $this->pull_request;
     }

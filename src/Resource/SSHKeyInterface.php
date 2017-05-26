@@ -11,15 +11,15 @@ interface SSHKeyInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return string
      */
-    public function description() : string;
+    public function description(): string;
 
     /**
      * @return string
      */
-    public function fingerprint() : string;
+    public function fingerprint(): string;
 }

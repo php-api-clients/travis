@@ -9,9 +9,9 @@ use ApiClients\Foundation\ClientInterface;
 use ApiClients\Tools\TestUtilities\TestCase;
 use Prophecy\Argument;
 use React\EventLoop\Factory;
+use Rx\React\Promise;
 use function Clue\React\Block\await;
 use function React\Promise\resolve;
-use Rx\React\Promise;
 
 final class AsyncClientTest extends TestCase
 {

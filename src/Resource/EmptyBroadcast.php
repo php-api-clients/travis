@@ -9,7 +9,7 @@ abstract class EmptyBroadcast implements BroadcastInterface, EmptyResourceInterf
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyBroadcast implements BroadcastInterface, EmptyResourceInterf
     /**
      * @return string
      */
-    public function message() : string
+    public function message(): string
     {
         return null;
     }

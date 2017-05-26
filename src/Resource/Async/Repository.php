@@ -33,7 +33,7 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @param int $id
+     * @param  int                         $id
      * @return CancellablePromiseInterface
      */
     public function build(int $id): CancellablePromiseInterface
@@ -102,28 +102,6 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @param bool $status
-     * @return PromiseInterface
-     */
-    protected function setActiveStatus(bool $status)
-    {
-        return $this->handleCommand(new RequestCommand(
-            new Request(
-                'PUT',
-                'hooks/' . $this->id(),
-                [],
-                new JsonStream([
-                    'hook' => [
-                        'active' => $status,
-                    ],
-                ])
-            )
-        ))->then(function () {
-            return $this->refresh();
-        });
-    }
-
-    /**
      * @return ObservableInterface
      */
     public function branches(): ObservableInterface
@@ -168,5 +146,27 @@ class Repository extends BaseRepository
         return $this->handleCommand(
             new Command\RepositoryCommand($this->slug)
         );
+    }
+
+    /**
+     * @param  bool             $status
+     * @return PromiseInterface
+     */
+    protected function setActiveStatus(bool $status)
+    {
+        return $this->handleCommand(new RequestCommand(
+            new Request(
+                'PUT',
+                'hooks/' . $this->id(),
+                [],
+                new JsonStream([
+                    'hook' => [
+                        'active' => $status,
+                    ],
+                ])
+            )
+        ))->then(function () {
+            return $this->refresh();
+        });
     }
 }

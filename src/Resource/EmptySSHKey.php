@@ -9,7 +9,7 @@ abstract class EmptySSHKey implements SSHKeyInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptySSHKey implements SSHKeyInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptySSHKey implements SSHKeyInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function fingerprint() : string
+    public function fingerprint(): string
     {
         return null;
     }

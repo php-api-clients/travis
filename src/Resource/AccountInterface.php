@@ -11,25 +11,25 @@ interface AccountInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return string
      */
-    public function name() : string;
+    public function name(): string;
 
     /**
      * @return string
      */
-    public function type() : string;
+    public function type(): string;
 
     /**
      * @return string
      */
-    public function login() : string;
+    public function login(): string;
 
     /**
      * @return int
      */
-    public function reposCount() : int;
+    public function reposCount(): int;
 }

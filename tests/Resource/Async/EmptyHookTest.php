@@ -2,16 +2,17 @@
 
 namespace ApiClients\Tests\Client\Travis\Resource\Async;
 
-use ApiClients\Tools\ResourceTestUtilities\AbstractEmptyResourceTest;
 use ApiClients\Client\Travis\Resource\Async\EmptyHook;
+use ApiClients\Tools\ResourceTestUtilities\AbstractEmptyResourceTest;
 
 final class EmptyHookTest extends AbstractEmptyResourceTest
 {
-    public function getSyncAsync() : string
+    public function getSyncAsync(): string
     {
         return 'Async';
     }
-    public function getClass() : string
+
+    public function getClass(): string
     {
         return EmptyHook::class;
     }

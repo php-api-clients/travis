@@ -64,7 +64,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -72,7 +72,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function sha() : string
+    public function sha(): string
     {
         return $this->sha;
     }
@@ -80,7 +80,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function branch() : string
+    public function branch(): string
     {
         return $this->branch;
     }
@@ -88,7 +88,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function message() : string
+    public function message(): string
     {
         return $this->message;
     }
@@ -96,7 +96,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return DateTimeInterface
      */
-    public function comittedAt() : DateTimeInterface
+    public function comittedAt(): DateTimeInterface
     {
         return $this->comitted_at;
     }
@@ -104,7 +104,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function authorName() : string
+    public function authorName(): string
     {
         return $this->author_name;
     }
@@ -112,7 +112,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function authorEmail() : string
+    public function authorEmail(): string
     {
         return $this->author_email;
     }
@@ -120,7 +120,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function committerName() : string
+    public function committerName(): string
     {
         return $this->committer_name;
     }
@@ -128,7 +128,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function committerEmail() : string
+    public function committerEmail(): string
     {
         return $this->committer_email;
     }
@@ -136,7 +136,7 @@ abstract class Commit extends AbstractResource implements CommitInterface
     /**
      * @return string
      */
-    public function compareUrl() : string
+    public function compareUrl(): string
     {
         return $this->compare_url;
     }

@@ -3,15 +3,9 @@ declare(strict_types=1);
 
 namespace ApiClients\Client\Travis;
 
-use ApiClients\Foundation\Factory;
-use React\EventLoop\Factory as LoopFactory;
-use React\EventLoop\LoopInterface;
-use Rx\React\Promise;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
 
 interface ClientInterface
 {
@@ -19,7 +13,7 @@ interface ClientInterface
      * Fetch the given repository.
      * This will return a Resource\Async\Repository object.
      *
-     * @param string $repository
+     * @param  string              $repository
      * @return RepositoryInterface
      */
     public function repository(string $repository): RepositoryInterface;
@@ -29,7 +23,7 @@ interface ClientInterface
      * on the hooks observable before it fetches the repository information.
      * It could be used to only fetch new repositories.
      *
-     * @param callable|null $filter
+     * @param  callable|null $filter
      * @return array
      */
     public function repositories(callable $filter = null): array;
@@ -37,7 +31,7 @@ interface ClientInterface
     /**
      * Fetch information about the current authenticated user.
      * This will return a Resource\Sync\User object.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return UserInterface
      */
@@ -47,9 +41,9 @@ interface ClientInterface
      * Fetch the SSH key for the given repository ID.
      * This will return a Resource\Sync\SSHKey object.
      * (Requires auth token to be passed to the client!)
-     * (Only available on Travis Pro: https://travis-ci.com/)
+     * (Only available on Travis Pro: https://travis-ci.com/).
      *
-     * @param int $id
+     * @param  int             $id
      * @return SSHKeyInterface
      */
     public function sshKey(int $id): SSHKeyInterface;
@@ -59,7 +53,7 @@ interface ClientInterface
      * Hooks represent whether a repository is active or not,
      * their ID's match that of the repository they represent.
      * This will return an array of Resource\Sync\Hook objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return array
      */
@@ -68,7 +62,7 @@ interface ClientInterface
     /**
      * Fetch a stream of which users and orgs the currently authenticated user has access to.
      * This will return an array of Resource\Sync\Account objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return array
      */
@@ -77,7 +71,7 @@ interface ClientInterface
     /**
      * Fetch a list of currently active broadcast. Used by the Travis team to spread news on the site.
      * This will return an array of Resource\Sync\Broadcast objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return array
      */

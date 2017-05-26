@@ -2,10 +2,10 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use Rx\React\Promise;
 use ApiClients\Client\Travis\Resource\Job as BaseJob;
 use ApiClients\Client\Travis\Resource\JobInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 
 class Job extends BaseJob
 {
@@ -23,7 +23,7 @@ class Job extends BaseJob
         );
     }
 
-    public function refresh() : Job
+    public function refresh(): Job
     {
         return $this->wait($this->handleCommand(
             new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)

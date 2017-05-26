@@ -7,7 +7,6 @@ use ApiClients\Client\Travis\Resource\BroadcastInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class BroadcastsHandler
 {
@@ -25,9 +24,9 @@ final class BroadcastsHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param BroadcastsCommand $command
+     * @param  BroadcastsCommand $command
      * @return PromiseInterface
      */
     public function handle(BroadcastsCommand $command): PromiseInterface

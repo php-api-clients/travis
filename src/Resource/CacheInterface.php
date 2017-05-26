@@ -12,25 +12,25 @@ interface CacheInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function repositoryId() : int;
+    public function repositoryId(): int;
 
     /**
      * @return int
      */
-    public function size() : int;
+    public function size(): int;
 
     /**
      * @return string
      */
-    public function slug() : string;
+    public function slug(): string;
 
     /**
      * @return string
      */
-    public function branch() : string;
+    public function branch(): string;
 
     /**
      * @return DateTimeInterface
      */
-    public function lastModified() : DateTimeInterface;
+    public function lastModified(): DateTimeInterface;
 }

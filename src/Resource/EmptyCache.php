@@ -10,7 +10,7 @@ abstract class EmptyCache implements CacheInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return null;
     }
@@ -18,7 +18,7 @@ abstract class EmptyCache implements CacheInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function size() : int
+    public function size(): int
     {
         return null;
     }
@@ -26,7 +26,7 @@ abstract class EmptyCache implements CacheInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function slug() : string
+    public function slug(): string
     {
         return null;
     }
@@ -34,7 +34,7 @@ abstract class EmptyCache implements CacheInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function branch() : string
+    public function branch(): string
     {
         return null;
     }
@@ -42,7 +42,7 @@ abstract class EmptyCache implements CacheInterface, EmptyResourceInterface
     /**
      * @return DateTimeInterface
      */
-    public function lastModified() : DateTimeInterface
+    public function lastModified(): DateTimeInterface
     {
         return null;
     }

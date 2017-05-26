@@ -2,18 +2,11 @@
 
 namespace ApiClients\Tests\Client\Travis\CommandBus\Handler;
 
-use ApiClients\Client\Travis\CommandBus\Command\AccountsCommand;
-use ApiClients\Client\Travis\CommandBus\Command\CachesCommand;
 use ApiClients\Client\Travis\CommandBus\Command\VarsCommand;
-use ApiClients\Client\Travis\CommandBus\Handler\AccountsHandler;
-use ApiClients\Client\Travis\CommandBus\Handler\CachesHandler;
 use ApiClients\Client\Travis\CommandBus\Handler\VarsHandler;
-use ApiClients\Client\Travis\Resource\AccountInterface;
-use ApiClients\Client\Travis\Resource\CacheInterface;
 use ApiClients\Client\Travis\Resource\EnvironmentVariableInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use ApiClients\Tools\TestUtilities\TestCase;
-use function React\Promise\resolve;
 use Rx\Observable;
 
 final class VarsHandlerTest extends TestCase

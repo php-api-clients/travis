@@ -9,12 +9,10 @@ use ApiClients\Client\Travis\Resource\HookInterface;
 use React\Promise\PromiseInterface;
 use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\reject;
-use function React\Promise\resolve;
 
 class Hook extends BaseHook
 {
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
             new HooksCommand()

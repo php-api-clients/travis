@@ -9,7 +9,7 @@ abstract class EmptyAnnotation implements AnnotationInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyAnnotation implements AnnotationInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function jobId() : int
+    public function jobId(): int
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptyAnnotation implements AnnotationInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class EmptyAnnotation implements AnnotationInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function url() : string
+    public function url(): string
     {
         return null;
     }
@@ -41,7 +41,7 @@ abstract class EmptyAnnotation implements AnnotationInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function status() : string
+    public function status(): string
     {
         return null;
     }

@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\SettingsCommand;
 use ApiClients\Client\Travis\Resource\SettingsInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class SettingsHandler
 {
@@ -25,9 +23,9 @@ final class SettingsHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param SettingsCommand $command
+     * @param  SettingsCommand  $command
      * @return PromiseInterface
      */
     public function handle(SettingsCommand $command): PromiseInterface

@@ -35,7 +35,7 @@ abstract class LogLine extends AbstractResource implements LogLineInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -43,7 +43,7 @@ abstract class LogLine extends AbstractResource implements LogLineInterface
     /**
      * @return string
      */
-    public function log() : string
+    public function log(): string
     {
         return $this->_log;
     }
@@ -51,7 +51,7 @@ abstract class LogLine extends AbstractResource implements LogLineInterface
     /**
      * @return int
      */
-    public function number() : int
+    public function number(): int
     {
         return $this->number;
     }
@@ -59,7 +59,7 @@ abstract class LogLine extends AbstractResource implements LogLineInterface
     /**
      * @return bool
      */
-    public function final() : bool
+    public function final(): bool
     {
         return $this->final;
     }

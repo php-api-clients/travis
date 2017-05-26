@@ -9,7 +9,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function slug() : string
+    public function slug(): string
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildId() : int
+    public function lastBuildId(): int
     {
         return null;
     }
@@ -41,7 +41,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildNumber() : int
+    public function lastBuildNumber(): int
     {
         return null;
     }
@@ -49,7 +49,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildState() : string
+    public function lastBuildState(): string
     {
         return null;
     }
@@ -57,7 +57,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildDuration() : int
+    public function lastBuildDuration(): int
     {
         return null;
     }
@@ -65,7 +65,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildStartedAt() : int
+    public function lastBuildStartedAt(): int
     {
         return null;
     }
@@ -73,7 +73,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return int
      */
-    public function lastBuildFinishedAt() : int
+    public function lastBuildFinishedAt(): int
     {
         return null;
     }
@@ -81,7 +81,7 @@ abstract class EmptyRepository implements RepositoryInterface, EmptyResourceInte
     /**
      * @return string
      */
-    public function githubLanguage() : string
+    public function githubLanguage(): string
     {
         return null;
     }

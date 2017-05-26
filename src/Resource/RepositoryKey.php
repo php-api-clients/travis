@@ -23,7 +23,7 @@ abstract class RepositoryKey extends AbstractResource implements RepositoryKeyIn
     /**
      * @return string
      */
-    public function key() : string
+    public function key(): string
     {
         return $this->key;
     }
@@ -31,7 +31,7 @@ abstract class RepositoryKey extends AbstractResource implements RepositoryKeyIn
     /**
      * @return string
      */
-    public function fingerprint() : string
+    public function fingerprint(): string
     {
         return $this->fingerprint;
     }

@@ -4,8 +4,8 @@ namespace ApiClients\Client\Travis\Resource;
 
 use ApiClients\Foundation\Hydrator\Annotation\EmptyResource;
 use ApiClients\Foundation\Resource\AbstractResource;
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 
 /**
  * @EmptyResource("EmptyUser")
@@ -60,7 +60,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -68,7 +68,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return string
      */
-    public function name() : string
+    public function name(): string
     {
         return $this->name;
     }
@@ -76,7 +76,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return string
      */
-    public function login() : string
+    public function login(): string
     {
         return $this->login;
     }
@@ -84,7 +84,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return string
      */
-    public function email() : string
+    public function email(): string
     {
         return $this->email;
     }
@@ -92,7 +92,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return string
      */
-    public function gravatarId() : string
+    public function gravatarId(): string
     {
         return $this->gravatar_id;
     }
@@ -100,7 +100,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return bool
      */
-    public function isSyncing() : bool
+    public function isSyncing(): bool
     {
         return $this->is_syncing;
     }
@@ -108,7 +108,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return DateTimeInterface
      */
-    public function syncedAt() : DateTimeInterface
+    public function syncedAt(): DateTimeInterface
     {
         return new DateTimeImmutable($this->synced_at);
     }
@@ -116,7 +116,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return bool
      */
-    public function correctScopes() : bool
+    public function correctScopes(): bool
     {
         return $this->correct_scopes;
     }
@@ -124,7 +124,7 @@ abstract class User extends AbstractResource implements UserInterface
     /**
      * @return DateTimeInterface
      */
-    public function createdAt() : DateTimeInterface
+    public function createdAt(): DateTimeInterface
     {
         return new DateTimeImmutable($this->created_at);
     }

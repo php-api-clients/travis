@@ -7,9 +7,6 @@ use ApiClients\Client\Travis\CommandBus\Handler\JobHandler;
 use ApiClients\Client\Travis\Resource\JobInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\TestUtilities\TestCase;
-use Prophecy\Argument;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
 
 final class JobHandlerTest extends TestCase
 {

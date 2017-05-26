@@ -9,7 +9,7 @@ abstract class EmptyHook implements HookInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyHook implements HookInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function active() : bool
+    public function active(): bool
     {
         return null;
     }

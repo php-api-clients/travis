@@ -15,6 +15,7 @@ final class RepositoryDoesNotExist extends Exception
     {
         $exception = new self('Repository "' . $repository . '" does not exist');
         $exception->repository = $repository;
+
         return $exception;
     }
 

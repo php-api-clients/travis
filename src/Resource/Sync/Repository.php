@@ -2,12 +2,12 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
-use Rx\React\Promise;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\RepositoryKeyInterface;
 use ApiClients\Client\Travis\Resource\SettingsInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
+use Rx\React\Promise;
 use function React\Promise\resolve;
 
 class Repository extends BaseRepository
@@ -27,7 +27,7 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @param int $id
+     * @param  int   $id
      * @return Build
      */
     public function build(int $id): Build
@@ -172,7 +172,7 @@ class Repository extends BaseRepository
     /**
      * @return Repository
      */
-    public function refresh() : Repository
+    public function refresh(): Repository
     {
         return $this->wait(
             $this->handleCommand(

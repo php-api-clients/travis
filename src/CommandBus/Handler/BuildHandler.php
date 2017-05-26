@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\BuildCommand;
 use ApiClients\Client\Travis\Resource\BuildInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class BuildHandler
 {
@@ -25,9 +23,9 @@ final class BuildHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param BuildCommand $command
+     * @param  BuildCommand     $command
      * @return PromiseInterface
      */
     public function handle(BuildCommand $command): PromiseInterface

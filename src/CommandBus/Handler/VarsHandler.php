@@ -8,7 +8,6 @@ use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class VarsHandler
 {
@@ -26,9 +25,9 @@ final class VarsHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param VarsCommand $command
+     * @param  VarsCommand      $command
      * @return PromiseInterface
      */
     public function handle(VarsCommand $command): PromiseInterface

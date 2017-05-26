@@ -14,7 +14,7 @@ use function React\Promise\resolve;
 
 class EnvironmentVariable extends BaseEnvironmentVariable
 {
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
             new VarsCommand($this->repositoryId())

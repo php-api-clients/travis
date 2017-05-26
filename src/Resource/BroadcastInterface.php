@@ -11,10 +11,10 @@ interface BroadcastInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return string
      */
-    public function message() : string;
+    public function message(): string;
 }

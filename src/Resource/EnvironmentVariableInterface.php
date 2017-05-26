@@ -11,25 +11,25 @@ interface EnvironmentVariableInterface extends ResourceInterface
     /**
      * @return string
      */
-    public function id() : string;
+    public function id(): string;
 
     /**
      * @return string
      */
-    public function name() : string;
+    public function name(): string;
 
     /**
      * @return string
      */
-    public function value() : string;
+    public function value(): string;
 
     /**
      * @return bool
      */
-    public function public() : bool;
+    public function public(): bool;
 
     /**
      * @return int
      */
-    public function repositoryId() : int;
+    public function repositoryId(): int;
 }

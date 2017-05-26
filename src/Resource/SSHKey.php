@@ -28,7 +28,7 @@ abstract class SSHKey extends AbstractResource implements SSHKeyInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -36,7 +36,7 @@ abstract class SSHKey extends AbstractResource implements SSHKeyInterface
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return $this->description;
     }
@@ -44,7 +44,7 @@ abstract class SSHKey extends AbstractResource implements SSHKeyInterface
     /**
      * @return string
      */
-    public function fingerprint() : string
+    public function fingerprint(): string
     {
         return $this->fingerprint;
     }

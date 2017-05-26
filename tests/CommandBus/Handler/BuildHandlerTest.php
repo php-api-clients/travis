@@ -7,9 +7,6 @@ use ApiClients\Client\Travis\CommandBus\Handler\BuildHandler;
 use ApiClients\Client\Travis\Resource\BuildInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\TestUtilities\TestCase;
-use Prophecy\Argument;
-use function Clue\React\Block\await;
-use function React\Promise\resolve;
 
 final class BuildHandlerTest extends TestCase
 {

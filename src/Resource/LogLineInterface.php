@@ -11,20 +11,20 @@ interface LogLineInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return string
      */
-    public function log() : string;
+    public function log(): string;
 
     /**
      * @return int
      */
-    public function number() : int;
+    public function number(): int;
 
     /**
      * @return bool
      */
-    public function final() : bool;
+    public function final(): bool;
 }

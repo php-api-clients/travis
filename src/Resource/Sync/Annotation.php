@@ -2,13 +2,13 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use ApiClients\Client\Travis\Resource\Annotation as BaseAnnotation;
 use ApiClients\Client\Travis\Resource\AnnotationInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 
 class Annotation extends BaseAnnotation
 {
-    public function refresh() : Annotation
+    public function refresh(): Annotation
     {
         return $this->wait($this->handleCommand(
             new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)

@@ -38,7 +38,7 @@ abstract class Annotation extends AbstractResource implements AnnotationInterfac
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -46,7 +46,7 @@ abstract class Annotation extends AbstractResource implements AnnotationInterfac
     /**
      * @return int
      */
-    public function jobId() : int
+    public function jobId(): int
     {
         return $this->job_id;
     }
@@ -54,7 +54,7 @@ abstract class Annotation extends AbstractResource implements AnnotationInterfac
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return $this->description;
     }
@@ -62,7 +62,7 @@ abstract class Annotation extends AbstractResource implements AnnotationInterfac
     /**
      * @return string
      */
-    public function url() : string
+    public function url(): string
     {
         return $this->url;
     }
@@ -70,7 +70,7 @@ abstract class Annotation extends AbstractResource implements AnnotationInterfac
     /**
      * @return string
      */
-    public function status() : string
+    public function status(): string
     {
         return $this->status;
     }

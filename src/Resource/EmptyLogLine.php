@@ -9,7 +9,7 @@ abstract class EmptyLogLine implements LogLineInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return null;
     }
@@ -17,7 +17,7 @@ abstract class EmptyLogLine implements LogLineInterface, EmptyResourceInterface
     /**
      * @return string
      */
-    public function log() : string
+    public function log(): string
     {
         return null;
     }
@@ -25,7 +25,7 @@ abstract class EmptyLogLine implements LogLineInterface, EmptyResourceInterface
     /**
      * @return int
      */
-    public function number() : int
+    public function number(): int
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class EmptyLogLine implements LogLineInterface, EmptyResourceInterface
     /**
      * @return bool
      */
-    public function final() : bool
+    public function final(): bool
     {
         return null;
     }

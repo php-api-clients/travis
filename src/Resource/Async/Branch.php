@@ -16,7 +16,7 @@ class Branch extends BaseBranch
     /**
      * @return PromiseInterface
      */
-    public function refresh() : PromiseInterface
+    public function refresh(): PromiseInterface
     {
         return Promise::fromObservable(unwrapObservableFromPromise($this->handleCommand(
             new BranchesCommand($this->repositoryId())

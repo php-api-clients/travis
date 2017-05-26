@@ -23,7 +23,7 @@ abstract class Broadcast extends AbstractResource implements BroadcastInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -31,7 +31,7 @@ abstract class Broadcast extends AbstractResource implements BroadcastInterface
     /**
      * @return string
      */
-    public function message() : string
+    public function message(): string
     {
         return $this->message;
     }

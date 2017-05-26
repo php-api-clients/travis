@@ -79,7 +79,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -87,7 +87,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return int
      */
-    public function buildId() : int
+    public function buildId(): int
     {
         return $this->build_id;
     }
@@ -95,7 +95,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return $this->repository_id;
     }
@@ -103,7 +103,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return int
      */
-    public function commitId() : int
+    public function commitId(): int
     {
         return $this->commit_id;
     }
@@ -111,7 +111,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return int
      */
-    public function logId() : int
+    public function logId(): int
     {
         return $this->log_id;
     }
@@ -119,7 +119,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return string
      */
-    public function number() : string
+    public function number(): string
     {
         return $this->number;
     }
@@ -127,7 +127,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return array
      */
-    public function config() : array
+    public function config(): array
     {
         return $this->config;
     }
@@ -135,7 +135,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return string
      */
-    public function state() : string
+    public function state(): string
     {
         return $this->state;
     }
@@ -143,7 +143,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return DateTimeInterface
      */
-    public function startedAt() : DateTimeInterface
+    public function startedAt(): DateTimeInterface
     {
         return $this->started_at;
     }
@@ -151,7 +151,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return DateTimeInterface
      */
-    public function finishedAt() : DateTimeInterface
+    public function finishedAt(): DateTimeInterface
     {
         return $this->finished_at;
     }
@@ -159,7 +159,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return string
      */
-    public function queue() : string
+    public function queue(): string
     {
         return $this->queue;
     }
@@ -167,7 +167,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return bool
      */
-    public function allowFailure() : bool
+    public function allowFailure(): bool
     {
         return $this->allow_failure;
     }
@@ -175,7 +175,7 @@ abstract class Job extends AbstractResource implements JobInterface
     /**
      * @return array
      */
-    public function annotationIds() : array
+    public function annotationIds(): array
     {
         return $this->annotation_ids;
     }

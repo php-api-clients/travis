@@ -11,10 +11,10 @@ interface RepositoryKeyInterface extends ResourceInterface
     /**
      * @return string
      */
-    public function key() : string;
+    public function key(): string;
 
     /**
      * @return string
      */
-    public function fingerprint() : string;
+    public function fingerprint(): string;
 }

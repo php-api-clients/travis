@@ -11,10 +11,10 @@ interface HookInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function id() : int;
+    public function id(): int;
 
     /**
      * @return bool
      */
-    public function active() : bool;
+    public function active(): bool;
 }

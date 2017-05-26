@@ -7,7 +7,6 @@ use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class HooksHandler
 {
@@ -25,9 +24,9 @@ final class HooksHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param HooksCommand $command
+     * @param  HooksCommand     $command
      * @return PromiseInterface
      */
     public function handle(HooksCommand $command): PromiseInterface

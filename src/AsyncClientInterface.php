@@ -2,12 +2,10 @@
 
 namespace ApiClients\Client\Travis;
 
-use ApiClients\Client\Travis\CommandBus\Command;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
 use Rx\ObservableInterface;
-use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
 
 interface AsyncClientInterface
@@ -16,7 +14,7 @@ interface AsyncClientInterface
      * Fetch the given repository.
      * This will resolve a Resource\Async\Repository object.
      *
-     * @param string $repository
+     * @param  string                      $repository
      * @return CancellablePromiseInterface
      */
     public function repository(string $repository): CancellablePromiseInterface;
@@ -24,13 +22,13 @@ interface AsyncClientInterface
     /**
      * Fetch all the repositories linked to the authenticated user's account.
      * This will return a stream of Resource\Async\Repository objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * This function accepts an optional callable passed into a filter call
      * on the hooks observable before it fetches the repository information.
      * It could be used to only fetch new repositories.
      *
-     * @param callable|null $filter
+     * @param  callable|null       $filter
      * @return ObservableInterface
      */
     public function repositories(callable $filter = null): ObservableInterface;
@@ -38,7 +36,7 @@ interface AsyncClientInterface
     /**
      * Fetch information about the current authenticated user.
      * This will resolve a Resource\Async\User object.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return PromiseInterface
      */
@@ -48,9 +46,9 @@ interface AsyncClientInterface
      * Fetch the SSH key for the given repository ID.
      * This will resolve a Resource\Async\SSHKey object.
      * (Requires auth token to be passed to the client!)
-     * (Only available on Travis Pro: https://travis-ci.com/)
+     * (Only available on Travis Pro: https://travis-ci.com/).
      *
-     * @param int $id
+     * @param  int              $id
      * @return PromiseInterface
      */
     public function sshKey(int $id): PromiseInterface;
@@ -60,7 +58,7 @@ interface AsyncClientInterface
      * Hooks represent whether a repository is active or not,
      * their ID's match that of the repository they represent.
      * This will return a stream of Resource\Async\Hook objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return ObservableInterface
      */
@@ -69,7 +67,7 @@ interface AsyncClientInterface
     /**
      * Fetch a stream of which users and orgs the currently authenticated user has access to.
      * This will return a stream of Resource\Async\Account objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return ObservableInterface
      */
@@ -78,7 +76,7 @@ interface AsyncClientInterface
     /**
      * Fetch a list of currently active broadcast. Used by the Travis team to spread news on the site.
      * This will return a stream of Resource\Async\Broadcast objects.
-     * (Requires auth token to be passed to the client!)
+     * (Requires auth token to be passed to the client!).
      *
      * @return ObservableInterface
      */

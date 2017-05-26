@@ -22,11 +22,19 @@ final class AsyncClient implements AsyncClientInterface
     private $client;
 
     /**
-     * Create a new AsyncClient based on the loop and other options pass
+     * @param ClientInterface $client
+     */
+    private function __construct(ClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * Create a new AsyncClient based on the loop and other options pass.
      *
-     * @param LoopInterface $loop
-     * @param string $token Instructions to fetch the token: https://blog.travis-ci.com/2013-01-28-token-token-token/
-     * @param array $options
+     * @param  LoopInterface $loop
+     * @param  string        $token   Instructions to fetch the token: https://blog.travis-ci.com/2013-01-28-token-token-token/
+     * @param  array         $options
      * @return AsyncClient
      */
     public static function create(
@@ -43,6 +51,7 @@ final class AsyncClient implements AsyncClientInterface
 
         $options = ApiSettings::getOptions($token, 'Async', $options);
         $client = Factory::create($loop, $options);
+
         return new self($client);
     }
 
@@ -50,20 +59,12 @@ final class AsyncClient implements AsyncClientInterface
      * Create an AsyncClient from a ApiClients\Foundation\ClientInterface.
      * Be sure to pass in a client with the options from ApiSettings and the Async namespace suffix.
      *
-     * @param ClientInterface $client
+     * @param  ClientInterface $client
      * @return AsyncClient
      */
     public static function createFromClient(ClientInterface $client): self
     {
         return new self($client);
-    }
-
-    /**
-     * @param ClientInterface $client
-     */
-    private function __construct(ClientInterface $client)
-    {
-        $this->client = $client;
     }
 
     /**

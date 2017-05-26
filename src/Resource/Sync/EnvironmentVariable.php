@@ -10,7 +10,7 @@ class EnvironmentVariable extends BaseEnvironmentVariable
     /**
      * @return EnvironmentVariable
      */
-    public function refresh() : EnvironmentVariable
+    public function refresh(): EnvironmentVariable
     {
         return $this->wait($this->callAsync('refresh'));
     }

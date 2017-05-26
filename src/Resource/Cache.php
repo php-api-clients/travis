@@ -39,7 +39,7 @@ abstract class Cache extends AbstractResource implements CacheInterface
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return $this->repository_id;
     }
@@ -47,7 +47,7 @@ abstract class Cache extends AbstractResource implements CacheInterface
     /**
      * @return int
      */
-    public function size() : int
+    public function size(): int
     {
         return $this->size;
     }
@@ -55,7 +55,7 @@ abstract class Cache extends AbstractResource implements CacheInterface
     /**
      * @return string
      */
-    public function slug() : string
+    public function slug(): string
     {
         return $this->slug;
     }
@@ -63,7 +63,7 @@ abstract class Cache extends AbstractResource implements CacheInterface
     /**
      * @return string
      */
-    public function branch() : string
+    public function branch(): string
     {
         return $this->branch;
     }
@@ -71,7 +71,7 @@ abstract class Cache extends AbstractResource implements CacheInterface
     /**
      * @return DateTimeInterface
      */
-    public function lastModified() : DateTimeInterface
+    public function lastModified(): DateTimeInterface
     {
         return $this->last_modified;
     }

@@ -63,7 +63,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         return $this->id;
     }
@@ -71,7 +71,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return string
      */
-    public function slug() : string
+    public function slug(): string
     {
         return $this->slug;
     }
@@ -79,7 +79,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return string
      */
-    public function description() : string
+    public function description(): string
     {
         return $this->description;
     }
@@ -87,7 +87,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function lastBuildId() : int
+    public function lastBuildId(): int
     {
         return (int)$this->last_build_id;
     }
@@ -95,7 +95,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function lastBuildNumber() : int
+    public function lastBuildNumber(): int
     {
         return $this->last_build_number;
     }
@@ -103,7 +103,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return string
      */
-    public function lastBuildState() : string
+    public function lastBuildState(): string
     {
         return $this->last_build_state;
     }
@@ -111,7 +111,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function lastBuildDuration() : int
+    public function lastBuildDuration(): int
     {
         return $this->last_build_duration;
     }
@@ -119,7 +119,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function lastBuildStartedAt() : int
+    public function lastBuildStartedAt(): int
     {
         return $this->last_build_started_at;
     }
@@ -127,7 +127,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return int
      */
-    public function lastBuildFinishedAt() : int
+    public function lastBuildFinishedAt(): int
     {
         return $this->last_build_finished_at;
     }
@@ -135,7 +135,7 @@ abstract class Repository extends AbstractResource implements RepositoryInterfac
     /**
      * @return string
      */
-    public function githubLanguage() : string
+    public function githubLanguage(): string
     {
         return $this->github_language;
     }

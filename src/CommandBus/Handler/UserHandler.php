@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command\UserCommand;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class UserHandler
 {
@@ -25,9 +23,9 @@ final class UserHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param UserCommand $command
+     * @param  UserCommand      $command
      * @return PromiseInterface
      */
     public function handle(UserCommand $command): PromiseInterface

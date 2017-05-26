@@ -8,7 +8,6 @@ use ApiClients\Tools\Services\Client\FetchAndHydrateService;
 use ApiClients\Tools\Services\Client\FetchAndIterateService;
 use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
-use function WyriHaximus\React\futureFunctionPromise;
 
 final class CachesHandler
 {
@@ -26,9 +25,9 @@ final class CachesHandler
     }
 
     /**
-     * Fetch the given repository and hydrate it
+     * Fetch the given repository and hydrate it.
      *
-     * @param CachesCommand $command
+     * @param  CachesCommand    $command
      * @return PromiseInterface
      */
     public function handle(CachesCommand $command): PromiseInterface

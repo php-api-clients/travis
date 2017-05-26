@@ -18,7 +18,7 @@ final class ApiSettings
 {
     /**
      * Travis' Pusher App ID as found on: https://docs.travis-ci.com/api?http#external-apis
-     * Will automate the retrieval of that key later in the PR
+     * Will automate the retrieval of that key later in the PR.
      */
     const PUSHER_KEY = '5df8ac576dcccf4fd076';
 
@@ -50,11 +50,11 @@ final class ApiSettings
 
     /**
      * Get client options based on $token, $suffix, and $suppliedOptions.
-     * Will add auth middleware when $token isn't empty
+     * Will add auth middleware when $token isn't empty.
      *
-     * @param string $token
-     * @param string $suffix
-     * @param array $suppliedOptions
+     * @param  string $token
+     * @param  string $suffix
+     * @param  array  $suppliedOptions
      * @return array
      */
     public static function getOptions(

@@ -11,20 +11,20 @@ interface SettingsInterface extends ResourceInterface
     /**
      * @return bool
      */
-    public function buildsOnlyWithTravisYml() : bool;
+    public function buildsOnlyWithTravisYml(): bool;
 
     /**
      * @return bool
      */
-    public function buildPushes() : bool;
+    public function buildPushes(): bool;
 
     /**
      * @return bool
      */
-    public function buildPullRequests() : bool;
+    public function buildPullRequests(): bool;
 
     /**
      * @return int
      */
-    public function maximumNumberOfBuilds() : int;
+    public function maximumNumberOfBuilds(): int;
 }

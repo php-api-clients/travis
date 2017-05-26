@@ -8,10 +8,8 @@ use ApiClients\Client\Travis\CommandBus\Command\JobCommand;
 use ApiClients\Client\Travis\CommandBus\Command\JobsCommand;
 use ApiClients\Client\Travis\Resource\Build as BaseBuild;
 use React\Promise\PromiseInterface;
-use Rx\Observable;
 use Rx\ObservableInterface;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\resolve;
 
 class Build extends BaseBuild
 {
@@ -26,7 +24,7 @@ class Build extends BaseBuild
     }
 
     /**
-     * @param int $id
+     * @param  int              $id
      * @return PromiseInterface
      */
     public function job(int $id): PromiseInterface

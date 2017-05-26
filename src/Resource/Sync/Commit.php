@@ -2,13 +2,13 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use ApiClients\Client\Travis\Resource\Commit as BaseCommit;
 use ApiClients\Client\Travis\Resource\CommitInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 
 class Commit extends BaseCommit
 {
-    public function refresh() : Commit
+    public function refresh(): Commit
     {
         return $this->wait($this->handleCommand(
             new BuildAsyncFromSyncCommand(self::HYDRATE_CLASS, $this)

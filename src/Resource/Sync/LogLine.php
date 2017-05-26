@@ -9,7 +9,7 @@ class LogLine extends BaseLogLine
     /**
      * @return LogLine
      */
-    public function refresh() : LogLine
+    public function refresh(): LogLine
     {
         return $this;
     }

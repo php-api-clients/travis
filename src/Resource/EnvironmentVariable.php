@@ -38,7 +38,7 @@ abstract class EnvironmentVariable extends AbstractResource implements Environme
     /**
      * @return string
      */
-    public function id() : string
+    public function id(): string
     {
         return $this->id;
     }
@@ -46,7 +46,7 @@ abstract class EnvironmentVariable extends AbstractResource implements Environme
     /**
      * @return string
      */
-    public function name() : string
+    public function name(): string
     {
         return $this->name;
     }
@@ -54,7 +54,7 @@ abstract class EnvironmentVariable extends AbstractResource implements Environme
     /**
      * @return string
      */
-    public function value() : string
+    public function value(): string
     {
         return $this->value;
     }
@@ -62,7 +62,7 @@ abstract class EnvironmentVariable extends AbstractResource implements Environme
     /**
      * @return bool
      */
-    public function public() : bool
+    public function public(): bool
     {
         return $this->public;
     }
@@ -70,7 +70,7 @@ abstract class EnvironmentVariable extends AbstractResource implements Environme
     /**
      * @return int
      */
-    public function repositoryId() : int
+    public function repositoryId(): int
     {
         return $this->repository_id;
     }

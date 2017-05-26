@@ -2,16 +2,16 @@
 
 namespace ApiClients\Client\Travis\Resource\Sync;
 
-use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 use ApiClients\Client\Travis\Resource\User as BaseUser;
 use ApiClients\Client\Travis\Resource\UserInterface;
+use ApiClients\Foundation\Hydrator\CommandBus\Command\BuildAsyncFromSyncCommand;
 
 class User extends BaseUser
 {
     /**
      * @return User
      */
-    public function sync() : User
+    public function sync(): User
     {
         return $this->wait(
             $this->handleCommand(
@@ -25,7 +25,7 @@ class User extends BaseUser
     /**
      * @return User
      */
-    public function refresh() : User
+    public function refresh(): User
     {
         return $this->wait(
             $this->handleCommand(
