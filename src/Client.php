@@ -7,6 +7,7 @@ use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Foundation\Factory;
+use ApiClients\Foundation\Resource\ResourceInterface;
 use React\EventLoop\Factory as LoopFactory;
 use React\EventLoop\LoopInterface;
 use Rx\React\Promise;
@@ -65,6 +66,22 @@ final class Client implements ClientInterface
     public static function createFromClient(LoopInterface $loop, AsyncClientInterface $asyncClient): self
     {
         return new self($loop, $asyncClient);
+    }
+
+    public function hydrate(string $resource): ResourceInterface
+    {
+        return await(
+            $this->asyncClient->hydrate($resource),
+            $this->loop
+        );
+    }
+
+    public function extract(ResourceInterface $resource): string
+    {
+        return await(
+            $this->asyncClient->extract($resource),
+            $this->loop
+        );
     }
 
     /**

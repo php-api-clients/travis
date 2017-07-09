@@ -2,6 +2,7 @@
 
 namespace ApiClients\Client\Travis;
 
+use ApiClients\Foundation\Resource\ResourceInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
@@ -10,6 +11,10 @@ use function React\Promise\resolve;
 
 interface AsyncClientInterface
 {
+    public function hydrate(string $resource): CancellablePromiseInterface;
+
+    public function extract(ResourceInterface $resource): CancellablePromiseInterface;
+
     /**
      * Fetch the given repository.
      * This will resolve a Resource\Async\Repository object.

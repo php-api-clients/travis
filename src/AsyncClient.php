@@ -6,8 +6,6 @@ use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Foundation\Factory;
-use ApiClients\Foundation\Hydrator\CommandBus\Command\ExtractFQCNCommand;
-use ApiClients\Foundation\Hydrator\CommandBus\Command\HydrateFQCNCommand;
 use ApiClients\Foundation\Resource\ResourceInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
@@ -16,7 +14,6 @@ use Rx\ObservableInterface;
 use Rx\React\Promise;
 use Rx\Scheduler;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
-use function React\Promise\resolve;
 
 final class AsyncClient implements AsyncClientInterface
 {
@@ -59,24 +56,14 @@ final class AsyncClient implements AsyncClientInterface
         return new self($client);
     }
 
-    public function hydrate(array $resource)
+    public function hydrate(string $resource): CancellablePromiseInterface
     {
-        $class = $resource['class'];
-        $json = $resource['json'];
-        return $this->client->handle(new HydrateFQCNCommand($class, $json));
+        return $this->client->hydrate($resource);
     }
 
-    public function extract(ResourceInterface $resource)
+    public function extract(ResourceInterface $resource): CancellablePromiseInterface
     {
-        $class = get_class($resource);
-        return $this->client->handle(
-            new ExtractFQCNCommand($class, $resource)
-        )->then(function ($json) use ($class) {
-            return resolve([
-                'class' => $class,
-                'json' => $json,
-            ]);
-        });
+        return $this->client->extract($resource);
     }
 
     /**

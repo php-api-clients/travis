@@ -23,12 +23,15 @@ if (count($argv) > 1) {
 foreach ($repos as $repo) {
     $client->repository($repo)->then(function (RepositoryInterface $repo) use ($client) {
         resource_pretty_print($repo);
+
         return $client->extract($repo);
-    })->then(function (array $json) use ($client) {
-        var_export($json);
+    })->then(function (string $json) use ($client) {
+        echo $json, PHP_EOL;
+
         return $client->hydrate($json);
     })->then(function (RepositoryInterface $repo) {
         resource_pretty_print($repo);
+
         return $repo->refresh();
     })->done(function (RepositoryInterface $repo) {
         resource_pretty_print($repo);
