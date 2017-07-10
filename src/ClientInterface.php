@@ -13,7 +13,7 @@ interface ClientInterface
     /**
      * Take a string create by the extract method and hydrate it back to a resource.
      *
-     * @param string $resource
+     * @param  string            $resource
      * @return ResourceInterface
      */
     public function hydrate(string $resource): ResourceInterface;
@@ -21,7 +21,7 @@ interface ClientInterface
     /**
      * Extract a resource into a string for storage.
      *
-     * @param ResourceInterface $resource
+     * @param  ResourceInterface $resource
      * @return string
      */
     public function extract(ResourceInterface $resource): string;
