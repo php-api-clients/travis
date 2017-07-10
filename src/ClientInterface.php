@@ -6,9 +6,26 @@ namespace ApiClients\Client\Travis;
 use ApiClients\Client\Travis\Resource\RepositoryInterface;
 use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
+use ApiClients\Foundation\Resource\ResourceInterface;
 
 interface ClientInterface
 {
+    /**
+     * Take a string create by the extract method and hydrate it back to a resource.
+     *
+     * @param string $resource
+     * @return ResourceInterface
+     */
+    public function hydrate(string $resource): ResourceInterface;
+
+    /**
+     * Extract a resource into a string for storage.
+     *
+     * @param ResourceInterface $resource
+     * @return string
+     */
+    public function extract(ResourceInterface $resource): string;
+
     /**
      * Fetch the given repository.
      * This will return a Resource\Async\Repository object.

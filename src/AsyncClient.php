@@ -6,6 +6,7 @@ use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Foundation\ClientInterface;
 use ApiClients\Foundation\Factory;
+use ApiClients\Foundation\Resource\ResourceInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
@@ -53,6 +54,16 @@ final class AsyncClient implements AsyncClientInterface
         $client = Factory::create($loop, $options);
 
         return new self($client);
+    }
+
+    public function hydrate(string $resource): CancellablePromiseInterface
+    {
+        return $this->client->hydrate($resource);
+    }
+
+    public function extract(ResourceInterface $resource): CancellablePromiseInterface
+    {
+        return $this->client->extract($resource);
     }
 
     /**
