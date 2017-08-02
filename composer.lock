@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a02b9f63ccd1435a521ecada7bb849cb",
+    "content-hash": "098527579418c8a5a2d3049f1bedcbbb",
     "packages": [
         {
             "name": "api-clients/client-services",
@@ -429,16 +429,16 @@
         },
         {
             "name": "api-clients/pusher",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/pusher.git",
-                "reference": "f8794f43f4224a9cc428b4152096c6670395e1e2"
+                "reference": "05924ef72966a1222398b2e4afeb04fb202c1113"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/f8794f43f4224a9cc428b4152096c6670395e1e2",
-                "reference": "f8794f43f4224a9cc428b4152096c6670395e1e2",
+                "url": "https://api.github.com/repos/php-api-clients/pusher/zipball/05924ef72966a1222398b2e4afeb04fb202c1113",
+                "reference": "05924ef72966a1222398b2e4afeb04fb202c1113",
                 "shasum": ""
             },
             "require": {
@@ -482,7 +482,7 @@
             ],
             "description": "Async first Pusher client",
             "homepage": "https://php-api-clients.org/clients/pusher",
-            "time": "2017-05-24 20:16:01"
+            "time": "2017-08-02T05:44:37+00:00"
         },
         {
             "name": "api-clients/resource",
@@ -5653,7 +5653,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "api-clients/foundation": 20,
-        "api-clients/pusher": 20,
         "api-clients/resource-generator": 20
     },
     "prefer-stable": true,
