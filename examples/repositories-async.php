@@ -40,10 +40,12 @@ $client->repositories()->subscribe(new CallbackObserver(
         resource_pretty_print($repository);
     },
     function ($e) {
-        echo (string)$e, PHP_EOL;
+        echo (string)$e,
+    PHP_EOL;
     },
     function () {
-        echo 'Done!', PHP_EOL;
+        echo 'Done!',
+    PHP_EOL;
     }
 ));
 
