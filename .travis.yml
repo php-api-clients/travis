@@ -52,9 +52,9 @@ install:
   - composer validate
   - if [ -z "$dropPlatform" ]; then composer config --unset platform.php; fi;
   - if [ -z "$qaExtended" ]; then phpenv config-rm xdebug.ini || :; fi;
-  - if [ -z "$dependencies" ]; then composer install --prefer-dist; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n; fi;
+  - if [ -z "$dependencies" ]; then composer install; fi;
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
   - composer show
 
 ## Run the actual test
