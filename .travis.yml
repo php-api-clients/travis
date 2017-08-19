@@ -1,9 +1,9 @@
 language: php
 
 ## Cache composer bits
-#cache:
-#  directories:
-#    - $HOME/.composer/cache/files
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 
 ## Build matrix for lowest and highest possible targets
 matrix:
