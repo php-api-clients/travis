@@ -22,7 +22,8 @@
     "api-clients/middleware-user-agent": "^2.0",
     "api-clients/pusher": "^1.0",
     "api-clients/rx": "^2.0",
-    "api-clients/rx-operators": "^2.0"
+    "api-clients/rx-operators": "^2.0",
+    "api-clients/transport": "^3.0"
   },
   "require-dev": {
     "api-clients/middleware-delay": "^3.0",
