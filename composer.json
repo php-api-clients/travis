@@ -17,6 +17,7 @@
     "php": "^7.0",
     "api-clients/client-services": "^1.0",
     "api-clients/foundation": "^1.0",
+    "api-clients/middleware": "^4.0",
     "api-clients/middleware-json": "^3.0",
     "api-clients/middleware-token-authorization": "^3.0",
     "api-clients/middleware-user-agent": "^2.0",
