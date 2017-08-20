@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96ed7fe414f0598fae5c0f170266f977",
+    "content-hash": "4bd13c1bc54c400ecde796027e4c7623",
     "packages": [
         {
             "name": "api-clients/client-services",
@@ -2933,16 +2933,16 @@
         },
         {
             "name": "api-clients/resource-generator",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/resource-generator.git",
-                "reference": "914f5004fc48e3cad8b3eb720e667e69957a4419"
+                "reference": "747c98360065adc26fef4d474209833dae37297c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/resource-generator/zipball/914f5004fc48e3cad8b3eb720e667e69957a4419",
-                "reference": "914f5004fc48e3cad8b3eb720e667e69957a4419",
+                "url": "https://api.github.com/repos/php-api-clients/resource-generator/zipball/747c98360065adc26fef4d474209833dae37297c",
+                "reference": "747c98360065adc26fef4d474209833dae37297c",
                 "shasum": ""
             },
             "require": {
@@ -2982,7 +2982,7 @@
                 }
             ],
             "description": "Resource from YAML generation tool",
-            "time": "2017-08-18T20:34:03+00:00"
+            "time": "2017-08-20T20:17:47+00:00"
         },
         {
             "name": "api-clients/resource-test-utilities",

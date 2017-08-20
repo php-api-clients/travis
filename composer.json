@@ -17,7 +17,6 @@
     "php": "^7.0",
     "api-clients/client-services": "^1.0",
     "api-clients/foundation": "^1.0",
-    "api-clients/middleware": "^4.0",
     "api-clients/middleware-json": "^3.0",
     "api-clients/middleware-token-authorization": "^3.0",
     "api-clients/middleware-user-agent": "^2.0",
@@ -28,7 +27,7 @@
   "require-dev": {
     "api-clients/middleware-delay": "^3.0",
     "api-clients/middleware-pool": "^3.0",
-    "api-clients/resource-generator": "^1.0",
+    "api-clients/resource-generator": "^1.0.1",
     "api-clients/test-utilities": "^4.1"
   },
   "suggest": {
