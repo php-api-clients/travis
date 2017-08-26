@@ -8,6 +8,7 @@ use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Foundation\Factory;
 use ApiClients\Foundation\Resource\ResourceInterface;
+use function ApiClients\Tools\Rx\setAsyncScheduler;
 use React\EventLoop\Factory as LoopFactory;
 use React\EventLoop\LoopInterface;
 use Rx\React\Promise;
@@ -49,6 +50,7 @@ final class Client implements ClientInterface
         $loop = LoopFactory::create();
         $options = ApiSettings::getOptions($token, 'Sync', $options);
         $client = Factory::create($loop, $options);
+        setAsyncScheduler($loop);
         $asyncClient = AsyncClient::createFromClient($client);
 
         return self::createFromClient($loop, $asyncClient);
