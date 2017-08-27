@@ -8,10 +8,10 @@ use ApiClients\Client\Travis\Resource\SSHKeyInterface;
 use ApiClients\Client\Travis\Resource\UserInterface;
 use ApiClients\Foundation\Factory;
 use ApiClients\Foundation\Resource\ResourceInterface;
-use function ApiClients\Tools\Rx\setAsyncScheduler;
 use React\EventLoop\Factory as LoopFactory;
 use React\EventLoop\LoopInterface;
 use Rx\React\Promise;
+use function ApiClients\Tools\Rx\setAsyncScheduler;
 use function Clue\React\Block\await;
 
 final class Client implements ClientInterface
