@@ -5,7 +5,7 @@ namespace ApiClients\Client\Travis;
 use ApiClients\Foundation\Resource\ResourceInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
-use Rx\ObservableInterface;
+use Rx\Observable;
 
 interface AsyncClientInterface
 {
@@ -43,10 +43,10 @@ interface AsyncClientInterface
      * on the hooks observable before it fetches the repository information.
      * It could be used to only fetch new repositories.
      *
-     * @param  callable|null       $filter
-     * @return ObservableInterface
+     * @param  callable|null $filter
+     * @return Observable
      */
-    public function repositories(callable $filter = null): ObservableInterface;
+    public function repositories(callable $filter = null): Observable;
 
     /**
      * Fetch information about the current authenticated user.
@@ -75,25 +75,25 @@ interface AsyncClientInterface
      * This will return a stream of Resource\Async\Hook objects.
      * (Requires auth token to be passed to the client!).
      *
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function hooks(): ObservableInterface;
+    public function hooks(): Observable;
 
     /**
      * Fetch a stream of which users and orgs the currently authenticated user has access to.
      * This will return a stream of Resource\Async\Account objects.
      * (Requires auth token to be passed to the client!).
      *
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function accounts(): ObservableInterface;
+    public function accounts(): Observable;
 
     /**
      * Fetch a list of currently active broadcast. Used by the Travis team to spread news on the site.
      * This will return a stream of Resource\Async\Broadcast objects.
      * (Requires auth token to be passed to the client!).
      *
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function broadcasts(): ObservableInterface;
+    public function broadcasts(): Observable;
 }

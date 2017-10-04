@@ -10,7 +10,7 @@ use ApiClients\Foundation\Resource\ResourceInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
-use Rx\ObservableInterface;
+use Rx\Observable;
 use Rx\React\Promise;
 use function ApiClients\Tools\Rx\setAsyncScheduler;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
@@ -90,7 +90,7 @@ final class AsyncClient implements AsyncClientInterface
      *
      * {@inheritdoc}
      */
-    public function repositories(callable $filter = null): ObservableInterface
+    public function repositories(callable $filter = null): Observable
     {
         if ($filter === null) {
             $filter = function () {
@@ -124,9 +124,9 @@ final class AsyncClient implements AsyncClientInterface
     }
 
     /**
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function hooks(): ObservableInterface
+    public function hooks(): Observable
     {
         return unwrapObservableFromPromise($this->client->handle(
             new Command\HooksCommand()
@@ -136,7 +136,7 @@ final class AsyncClient implements AsyncClientInterface
     /**
      * {@inheritdoc}
      */
-    public function accounts(): ObservableInterface
+    public function accounts(): Observable
     {
         return unwrapObservableFromPromise($this->client->handle(
             new Command\AccountsCommand()
@@ -146,7 +146,7 @@ final class AsyncClient implements AsyncClientInterface
     /**
      * {@inheritdoc}
      */
-    public function broadcasts(): ObservableInterface
+    public function broadcasts(): Observable
     {
         return unwrapObservableFromPromise($this->client->handle(
             new Command\BroadcastsCommand()
