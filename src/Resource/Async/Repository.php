@@ -6,7 +6,7 @@ use ApiClients\Client\Travis\CommandBus\Command;
 use ApiClients\Client\Travis\Resource\HookInterface;
 use ApiClients\Client\Travis\Resource\Repository as BaseRepository;
 use ApiClients\Foundation\Transport\CommandBus\Command\RequestCommand;
-use ApiClients\Foundation\Transport\JsonStream;
+use ApiClients\Middleware\Json\JsonStream;
 use GuzzleHttp\Psr7\Request;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
