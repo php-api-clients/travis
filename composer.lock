@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "d1f937cba7797802ba73c1f6e26aa3ea",
@@ -2284,6 +2284,7 @@
             "keywords": [
                 "Socket"
             ],
+            "abandoned": "react/socket",
             "time": "2016-12-24T11:19:15+00:00"
         },
         {
@@ -3072,6 +3073,112 @@
             "time": "2017-05-14T15:00:49+00:00"
         },
         {
+            "name": "composer/semver",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/semver.git",
+                "reference": "c7cb9a2095a074d131b65a8a0cd294479d785573"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/semver/zipball/c7cb9a2095a074d131b65a8a0cd294479d785573",
+                "reference": "c7cb9a2095a074d131b65a8a0cd294479d785573",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5 || ^5.0.5",
+                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Semver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                },
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com",
+                    "homepage": "http://robbast.nl"
+                }
+            ],
+            "description": "Semver library that offers utilities, version constraint parsing and validation.",
+            "keywords": [
+                "semantic",
+                "semver",
+                "validation",
+                "versioning"
+            ],
+            "time": "2016-08-30T16:08:34+00:00"
+        },
+        {
+            "name": "composer/xdebug-handler",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/xdebug-handler.git",
+                "reference": "dc523135366eb68f22268d069ea7749486458562"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/dc523135366eb68f22268d069ea7749486458562",
+                "reference": "dc523135366eb68f22268d069ea7749486458562",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Composer\\XdebugHandler\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Stevenson",
+                    "email": "john-stevenson@blueyonder.co.uk"
+                }
+            ],
+            "description": "Restarts a process without xdebug.",
+            "keywords": [
+                "Xdebug",
+                "performance"
+            ],
+            "time": "2018-11-29T10:59:02+00:00"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "v1.2.0",
             "source": {
@@ -3194,64 +3301,81 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.5.0",
+            "version": "v2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "63aad575ec2a29d50eb6c3b5cbc17430b28895b2"
+                "reference": "7136aa4e0c5f912e8af82383775460d906168a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/63aad575ec2a29d50eb6c3b5cbc17430b28895b2",
-                "reference": "63aad575ec2a29d50eb6c3b5cbc17430b28895b2",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/7136aa4e0c5f912e8af82383775460d906168a10",
+                "reference": "7136aa4e0c5f912e8af82383775460d906168a10",
                 "shasum": ""
             },
             "require": {
+                "composer/semver": "^1.4",
+                "composer/xdebug-handler": "^1.2",
                 "doctrine/annotations": "^1.2",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
-                "gecko-packages/gecko-php-unit": "^2.0",
-                "php": "^5.6 || >=7.0 <7.2",
-                "sebastian/diff": "^1.4",
-                "symfony/console": "^3.2",
-                "symfony/event-dispatcher": "^3.0",
-                "symfony/filesystem": "^3.0",
-                "symfony/finder": "^3.0",
-                "symfony/options-resolver": "^3.0",
+                "php": "^5.6 || >=7.0 <7.3",
+                "php-cs-fixer/diff": "^1.3",
+                "symfony/console": "^3.2 || ^4.0",
+                "symfony/event-dispatcher": "^3.0 || ^4.0",
+                "symfony/filesystem": "^3.0 || ^4.0",
+                "symfony/finder": "^3.0 || ^4.0",
+                "symfony/options-resolver": "^3.0 || ^4.0",
                 "symfony/polyfill-php70": "^1.0",
                 "symfony/polyfill-php72": "^1.4",
-                "symfony/process": "^3.0",
-                "symfony/stopwatch": "^3.0"
+                "symfony/process": "^3.0 || ^4.0",
+                "symfony/stopwatch": "^3.0 || ^4.0"
             },
             "conflict": {
                 "hhvm": "*"
             },
             "require-dev": {
-                "johnkary/phpunit-speedtrap": "^1.1",
+                "johnkary/phpunit-speedtrap": "^1.1 || ^2.0 || ^3.0",
                 "justinrainbow/json-schema": "^5.0",
+                "keradus/cli-executor": "^1.1",
+                "mikey179/vfsstream": "^1.6",
+                "php-coveralls/php-coveralls": "^2.1",
                 "php-cs-fixer/accessible-object": "^1.0",
-                "phpunit/phpunit": "^4.8.35 || ^5.4.3",
-                "satooshi/php-coveralls": "^1.0",
-                "symfony/phpunit-bridge": "^3.2.2"
+                "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.0.1",
+                "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.0.1",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1",
+                "phpunitgoodpractices/traits": "^1.5.1",
+                "symfony/phpunit-bridge": "^4.0"
             },
             "suggest": {
                 "ext-mbstring": "For handling non-UTF8 characters in cache signature.",
+                "php-cs-fixer/phpunit-constraint-isidenticalstring": "For IsIdenticalString constraint.",
+                "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "For XmlMatchesXsd constraint.",
                 "symfony/polyfill-mbstring": "When enabling `ext-mbstring` is not possible."
             },
             "bin": [
                 "php-cs-fixer"
             ],
             "type": "application",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.13-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PhpCsFixer\\": "src/"
                 },
                 "classmap": [
-                    "tests/Test/Assert/AssertTokensTrait.php",
                     "tests/Test/AbstractFixerTestCase.php",
+                    "tests/Test/AbstractIntegrationCaseFactory.php",
                     "tests/Test/AbstractIntegrationTestCase.php",
+                    "tests/Test/Assert/AssertTokensTrait.php",
                     "tests/Test/IntegrationCase.php",
-                    "tests/Test/IntegrationCaseFactory.php"
+                    "tests/Test/IntegrationCaseFactory.php",
+                    "tests/Test/IntegrationCaseFactoryInterface.php",
+                    "tests/Test/InternalIntegrationCaseFactory.php",
+                    "tests/TestCase.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3269,51 +3393,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2017-08-22T14:15:09+00:00"
-        },
-        {
-            "name": "gecko-packages/gecko-php-unit",
-            "version": "v2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GeckoPackages/GeckoPHPUnit.git",
-                "reference": "ab525fac9a9ffea219687f261b02008b18ebf2d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GeckoPackages/GeckoPHPUnit/zipball/ab525fac9a9ffea219687f261b02008b18ebf2d1",
-                "reference": "ab525fac9a9ffea219687f261b02008b18ebf2d1",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.6 || ^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.4.3"
-            },
-            "suggest": {
-                "ext-dom": "When testing with xml.",
-                "ext-libxml": "When testing with xml.",
-                "phpunit/phpunit": "This is an extension for it so make sure you have it some way."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GeckoPackages\\PHPUnit\\": "src/PHPUnit"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Additional PHPUnit asserts and constraints.",
-            "homepage": "https://github.com/GeckoPackages",
-            "keywords": [
-                "extension",
-                "filesystem",
-                "phpunit"
-            ],
-            "time": "2017-08-23T07:39:54+00:00"
+            "time": "2018-08-23T13:15:44+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3545,33 +3625,29 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.10",
+            "version": "v9.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -3586,10 +3662,11 @@
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
                 "csprng",
+                "polyfill",
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2018-07-02T15:55:56+00:00"
         },
         {
             "name": "phake/phake",
@@ -3648,6 +3725,57 @@
                 "testing"
             ],
             "time": "2017-03-20T05:16:34+00:00"
+        },
+        {
+            "name": "php-cs-fixer/diff",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-CS-Fixer/diff.git",
+                "reference": "78bb099e9c16361126c86ce82ec4405ebab8e756"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/diff/zipball/78bb099e9c16361126c86ce82ec4405ebab8e756",
+                "reference": "78bb099e9c16361126c86ce82ec4405ebab8e756",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "symfony/process": "^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kore Nordmann",
+                    "email": "mail@kore-nordmann.de"
+                },
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                },
+                {
+                    "name": "SpacePossum"
+                }
+            ],
+            "description": "sebastian/diff v2 backport support for PHP5.6",
+            "homepage": "https://github.com/PHP-CS-Fixer",
+            "keywords": [
+                "diff"
+            ],
+            "time": "2018-02-15T16:58:55+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4251,16 +4379,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
                 "shasum": ""
             },
             "require": {
@@ -4294,7 +4422,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -5151,16 +5279,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -5172,7 +5300,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -5206,30 +5334,30 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.5.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f"
+                "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/b6482e68974486984f59449ecea1fbbb22ff840f",
-                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/6b88000cdd431cd2e940caa2cb569201f3f84224",
+                "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224",
                 "shasum": ""
             },
             "require": {
-                "paragonie/random_compat": "~1.0|~2.0",
+                "paragonie/random_compat": "~1.0|~2.0|~9.99",
                 "php": ">=5.3.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -5265,20 +5393,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2018-09-21T06:26:08+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.5.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "8abc9097f5001d310f0edba727469c988acc6ea7"
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/8abc9097f5001d310f0edba727469c988acc6ea7",
-                "reference": "8abc9097f5001d310f0edba727469c988acc6ea7",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
                 "shasum": ""
             },
             "require": {
@@ -5287,7 +5415,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -5320,7 +5448,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-07-11T13:25:55+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/process",
