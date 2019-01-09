@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "d1f937cba7797802ba73c1f6e26aa3ea",
@@ -52,16 +52,16 @@
         },
         {
             "name": "api-clients/command-bus",
-            "version": "2.0.0",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/command-bus.git",
-                "reference": "18669ef197076a67386cda9f5b64e901c1484b60"
+                "reference": "b3974b5a1ebe3c391b728c59542bfa4231902531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/command-bus/zipball/18669ef197076a67386cda9f5b64e901c1484b60",
-                "reference": "18669ef197076a67386cda9f5b64e901c1484b60",
+                "url": "https://api.github.com/repos/php-api-clients/command-bus/zipball/b3974b5a1ebe3c391b728c59542bfa4231902531",
+                "reference": "b3974b5a1ebe3c391b728c59542bfa4231902531",
                 "shasum": ""
             },
             "require": {
@@ -69,9 +69,9 @@
                 "igorw/get-in": "^1.0",
                 "joshdifabio/composed": "^1.0",
                 "league/tactician": "^1.0",
-                "league/tactician-container": "^1.0",
+                "league/tactician-container": "^2.0 || ^1.0",
                 "php": "^7.0",
-                "react/event-loop": "^0.4.2",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4.2",
                 "wyrihaximus/tactician-command-handler-mapper": "^1.0",
                 "wyrihaximus/ticking-promise": "^1.6"
             },
@@ -96,7 +96,7 @@
                 }
             ],
             "description": "Light weight wrapper around league/tactician adding promised based interface(s) and next tick execution",
-            "time": "2016-12-08T08:36:09+00:00"
+            "time": "2017-12-24T23:31:24+00:00"
         },
         {
             "name": "api-clients/foundation",
@@ -148,16 +148,16 @@
         },
         {
             "name": "api-clients/hydrator",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/hydrator.git",
-                "reference": "3961cd61f639fcc959e57d47fa7fbc12b963c740"
+                "reference": "09a29c8a9cc1450aeb532c481741ced67d529a87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/hydrator/zipball/3961cd61f639fcc959e57d47fa7fbc12b963c740",
-                "reference": "3961cd61f639fcc959e57d47fa7fbc12b963c740",
+                "url": "https://api.github.com/repos/php-api-clients/hydrator/zipball/09a29c8a9cc1450aeb532c481741ced67d529a87",
+                "reference": "09a29c8a9cc1450aeb532c481741ced67d529a87",
                 "shasum": ""
             },
             "require": {
@@ -172,7 +172,7 @@
                 "wyrihaximus/ticking-promise": "^1.6"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^3.0.1",
+                "api-clients/test-utilities": "^4.2",
                 "phpbench/phpbench": "^0.11"
             },
             "type": "library",
@@ -200,7 +200,7 @@
                 }
             ],
             "description": "Hydrator wrapping ocramius/generated-hydrator specifically for api clients",
-            "time": "2017-06-20T15:28:48+00:00"
+            "time": "2018-03-19T20:11:13+00:00"
         },
         {
             "name": "api-clients/json",
@@ -668,26 +668,26 @@
         },
         {
             "name": "clue/block-react",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-block-react.git",
-                "reference": "966c255580ec7a0259338798ddb89f77e121fe9e"
+                "url": "https://github.com/clue/reactphp-block.git",
+                "reference": "a4a5cd64ded3b15affa168a2419fa4eda08b96aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-block-react/zipball/966c255580ec7a0259338798ddb89f77e121fe9e",
-                "reference": "966c255580ec7a0259338798ddb89f77e121fe9e",
+                "url": "https://api.github.com/repos/clue/reactphp-block/zipball/a4a5cd64ded3b15affa168a2419fa4eda08b96aa",
+                "reference": "a4a5cd64ded3b15affa168a2419fa4eda08b96aa",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "~2.1|~1.2",
-                "react/promise-timer": "~1.0"
+                "react/promise": "^2.7 || ^1.2.1",
+                "react/promise-timer": "^1.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -705,17 +705,19 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Integrate async React PHP components into your blocking environment",
-            "homepage": "https://github.com/clue/php-block-react",
+            "description": "Lightweight library that eases integrating async components built for ReactPHP in a traditional, blocking environment.",
+            "homepage": "https://github.com/clue/reactphp-block",
             "keywords": [
                 "async",
+                "await",
                 "blocking",
                 "event loop",
                 "promise",
                 "reactphp",
+                "sleep",
                 "synchronous"
             ],
-            "time": "2017-08-03T13:14:15+00:00"
+            "time": "2018-06-14T08:50:53+00:00"
         },
         {
             "name": "clue/buzz-react",
@@ -1239,16 +1241,16 @@
         },
         {
             "name": "league/tactician",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/tactician.git",
-                "reference": "1f3aaad497f07a8bef147a37c7e3f2f7c23fcd21"
+                "reference": "d0339e22fd9252fb0fa53102b488d2c514483b8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/tactician/zipball/1f3aaad497f07a8bef147a37c7e3f2f7c23fcd21",
-                "reference": "1f3aaad497f07a8bef147a37c7e3f2f7c23fcd21",
+                "url": "https://api.github.com/repos/thephpleague/tactician/zipball/d0339e22fd9252fb0fa53102b488d2c514483b8a",
+                "reference": "d0339e22fd9252fb0fa53102b488d2c514483b8a",
                 "shasum": ""
             },
             "require": {
@@ -1256,7 +1258,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.3",
+                "phpunit/phpunit": "^4.8.35",
                 "squizlabs/php_codesniffer": "~2.3"
             },
             "type": "library",
@@ -1286,29 +1288,29 @@
                 "command bus",
                 "service layer"
             ],
-            "time": "2016-02-20T11:14:36+00:00"
+            "time": "2017-11-30T09:17:20+00:00"
         },
         {
             "name": "league/tactician-container",
-            "version": "v1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/tactician-container.git",
-                "reference": "4b75997f6655a574c4b950c7c91714fde9f31d84"
+                "reference": "d1a5d884e072b8cafbff802d07766076eb2ffcb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/tactician-container/zipball/4b75997f6655a574c4b950c7c91714fde9f31d84",
-                "reference": "4b75997f6655a574c4b950c7c91714fde9f31d84",
+                "url": "https://api.github.com/repos/thephpleague/tactician-container/zipball/d1a5d884e072b8cafbff802d07766076eb2ffcb0",
+                "reference": "d1a5d884e072b8cafbff802d07766076eb2ffcb0",
                 "shasum": ""
             },
             "require": {
-                "container-interop/container-interop": "^1.1",
                 "league/tactician": "^1.0",
-                "php": ">=5.5"
+                "php": ">=5.5",
+                "psr/container": "^1.0"
             },
             "require-dev": {
-                "league/container": "~2.0",
+                "league/container": "~2.3",
                 "phpunit/phpunit": "~4.3",
                 "squizlabs/php_codesniffer": "~2.0"
             },
@@ -1328,7 +1330,7 @@
                     "homepage": "http://futurepixels.co.uk"
                 }
             ],
-            "description": "Tactician integration for any container implementing the container-interop interface",
+            "description": "Tactician integration for any container implementing PSR-11",
             "keywords": [
                 "container",
                 "container-interop",
@@ -1337,7 +1339,7 @@
                 "league",
                 "tactician"
             ],
-            "time": "2015-12-31T12:41:26+00:00"
+            "time": "2017-04-13T06:27:12+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -1447,16 +1449,16 @@
         },
         {
             "name": "ocramius/generated-hydrator",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/GeneratedHydrator.git",
-                "reference": "7cf05fe50e23e5f1c3bb063744360a23552d6075"
+                "reference": "9b6b62db9959bec8fec88111e081e9456e36179f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/GeneratedHydrator/zipball/7cf05fe50e23e5f1c3bb063744360a23552d6075",
-                "reference": "7cf05fe50e23e5f1c3bb063744360a23552d6075",
+                "url": "https://api.github.com/repos/Ocramius/GeneratedHydrator/zipball/9b6b62db9959bec8fec88111e081e9456e36179f",
+                "reference": "9b6b62db9959bec8fec88111e081e9456e36179f",
                 "shasum": ""
             },
             "require": {
@@ -1467,7 +1469,7 @@
             },
             "require-dev": {
                 "phpbench/phpbench": "^0.13.0",
-                "phpunit/phpunit": "^5.7.21",
+                "phpunit/phpunit": "^6.4",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-filter": "^2.7",
                 "zendframework/zend-servicemanager": "^3.2",
@@ -1504,7 +1506,7 @@
                 "performance",
                 "serializer"
             ],
-            "time": "2017-07-22T13:48:48+00:00"
+            "time": "2017-11-28T20:58:11+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2050,16 +2052,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.5.1",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053"
+                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/62785ae604c8d69725d693eb370e1d67e94c4053",
-                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
+                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
                 "shasum": ""
             },
             "require": {
@@ -2092,7 +2094,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-03-25T12:08:31+00:00"
+            "time": "2019-01-07T21:25:54+00:00"
         },
         {
             "name": "react/promise-stream",
@@ -2152,25 +2154,25 @@
         },
         {
             "name": "react/promise-timer",
-            "version": "v1.2.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af"
+                "reference": "a11206938ca2394dc7bb368f5da25cd4533fa603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/3bc527fbd1201a193ab41c19b9a770d71a3514af",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/a11206938ca2394dc7bb368f5da25cd4533fa603",
+                "reference": "a11206938ca2394dc7bb368f5da25cd4533fa603",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "~2.1|~1.2"
+                "react/promise": "^2.7.0 || ^1.2.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -2191,8 +2193,8 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Trivial timeout implementation for Promises",
-            "homepage": "https://github.com/react/promise-timer",
+            "description": "A trivial implementation of timeouts for Promises, built on top of ReactPHP.",
+            "homepage": "https://github.com/reactphp/promise-timer",
             "keywords": [
                 "async",
                 "event-loop",
@@ -2201,7 +2203,7 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2017-08-08T16:30:19+00:00"
+            "time": "2018-06-13T16:45:37+00:00"
         },
         {
             "name": "react/socket",
@@ -2284,6 +2286,7 @@
             "keywords": [
                 "Socket"
             ],
+            "abandoned": "react/socket",
             "time": "2016-12-24T11:19:15+00:00"
         },
         {
@@ -2615,16 +2618,16 @@
         },
         {
             "name": "wyrihaximus/doctrine-annotation-autoloader",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-doctrine-annotation-autoloader.git",
-                "reference": "9670f84b7d3ca53723556988080ebc939da345af"
+                "reference": "e78712e878561e29162908f7067a76c9fd084455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-doctrine-annotation-autoloader/zipball/9670f84b7d3ca53723556988080ebc939da345af",
-                "reference": "9670f84b7d3ca53723556988080ebc939da345af",
+                "url": "https://api.github.com/repos/WyriHaximus/php-doctrine-annotation-autoloader/zipball/e78712e878561e29162908f7067a76c9fd084455",
+                "reference": "e78712e878561e29162908f7067a76c9fd084455",
                 "shasum": ""
             },
             "require": {
@@ -2647,7 +2650,7 @@
                 }
             ],
             "description": "Request middleware",
-            "time": "2017-06-19T15:02:15+00:00"
+            "time": "2018-12-24T00:51:41+00:00"
         },
         {
             "name": "wyrihaximus/tactician-command-handler-mapper",
@@ -2696,20 +2699,21 @@
         },
         {
             "name": "wyrihaximus/ticking-promise",
-            "version": "1.6.1",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/TickingPromise.git",
-                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12"
+                "reference": "4bb99024402bb7526de8880f3dab0c1f0858def5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/TickingPromise/zipball/8d26b1458e32c367ba6fb8ad5042046279acdb12",
-                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12",
+                "url": "https://api.github.com/repos/WyriHaximus/TickingPromise/zipball/4bb99024402bb7526de8880f3dab0c1f0858def5",
+                "reference": "4bb99024402bb7526de8880f3dab0c1f0858def5",
                 "shasum": ""
             },
             "require": {
-                "react/event-loop": "^0.4",
+                "php": "^7.0 || ^5.4",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4",
                 "react/promise": "~2.1"
             },
             "require-dev": {
@@ -2738,30 +2742,30 @@
                 }
             ],
             "description": "Wrapping ticks into a promise",
-            "time": "2016-03-05T20:23:05+00:00"
+            "time": "2018-04-05T12:36:50+00:00"
         },
         {
             "name": "zendframework/zend-hydrator",
-            "version": "2.2.2",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "e3ecc4920c1724e1949213163fee82200e8e6f6c"
+                "reference": "70b02f4d8676e64af932625751750b5ca72fff3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/e3ecc4920c1724e1949213163fee82200e8e6f6c",
-                "reference": "e3ecc4920c1724e1949213163fee82200e8e6f6c",
+                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/70b02f4d8676e64af932625751750b5ca72fff3a",
+                "reference": "70b02f4d8676e64af932625751750b5ca72fff3a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0 || ^5.6",
+                "php": "^5.6 || ^7.0",
                 "zendframework/zend-stdlib": "^3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0.10 || ^5.7.17",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
                 "zendframework/zend-coding-standard": "~1.0.0",
-                "zendframework/zend-eventmanager": "^3.0",
+                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
                 "zendframework/zend-filter": "^2.6",
                 "zendframework/zend-inputfilter": "^2.6",
                 "zendframework/zend-serializer": "^2.6.1",
@@ -2776,10 +2780,10 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-release-1.0": "1.0-dev",
-                    "dev-release-1.1": "1.1-dev",
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
+                    "dev-release-1.0": "1.0.x-dev",
+                    "dev-release-1.1": "1.1.x-dev",
+                    "dev-master": "2.4.x-dev",
+                    "dev-develop": "2.5.x-dev"
                 },
                 "zf": {
                     "component": "Zend\\Hydrator",
@@ -2795,40 +2799,41 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "homepage": "https://github.com/zendframework/zend-hydrator",
+            "description": "Serialize objects to arrays, and vice versa",
             "keywords": [
+                "ZendFramework",
                 "hydrator",
-                "zf2"
+                "zf"
             ],
-            "time": "2017-05-17T18:40:45+00:00"
+            "time": "2018-11-19T19:16:10+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "3.1.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78"
+                "reference": "66536006722aff9e62d1b331025089b7ec71c065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/debedcfc373a293f9250cc9aa03cf121428c8e78",
-                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/66536006722aff9e62d1b331025089b7ec71c065",
+                "reference": "66536006722aff9e62d1b331025089b7ec71c065",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "athletic/athletic": "~0.1",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "^2.6.2"
+                "phpbench/phpbench": "^0.13",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+                "zendframework/zend-coding-standard": "~1.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev",
-                    "dev-develop": "3.2-dev"
+                    "dev-master": "3.2.x-dev",
+                    "dev-develop": "3.3.x-dev"
                 }
             },
             "autoload": {
@@ -2840,12 +2845,13 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "homepage": "https://github.com/zendframework/zend-stdlib",
+            "description": "SPL extensions, array utilities, error handlers, and more",
             "keywords": [
+                "ZendFramework",
                 "stdlib",
-                "zf2"
+                "zf"
             ],
-            "time": "2016-09-13T14:38:50+00:00"
+            "time": "2018-08-28T21:34:05+00:00"
         }
     ],
     "packages-dev": [
