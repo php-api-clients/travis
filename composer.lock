@@ -2385,16 +2385,16 @@
         },
         {
             "name": "reactivex/rxphp",
-            "version": "2.0.3",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "cc84689ab8061fafbfa58078c60f865155ac6c5f"
+                "reference": "fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/cc84689ab8061fafbfa58078c60f865155ac6c5f",
-                "reference": "cc84689ab8061fafbfa58078c60f865155ac6c5f",
+                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4",
+                "reference": "fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4",
                 "shasum": ""
             },
             "require": {
@@ -2404,7 +2404,7 @@
             "require-dev": {
                 "phpunit/phpcov": "^3.1",
                 "phpunit/phpunit": "^5.7",
-                "react/event-loop": "^0.4.2",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4.2",
                 "satooshi/php-coveralls": "~1.0"
             },
             "suggest": {
@@ -2446,7 +2446,7 @@
                 "reactive",
                 "rx"
             ],
-            "time": "2017-08-16T23:27:59+00:00"
+            "time": "2018-04-18T01:34:36+00:00"
         },
         {
             "name": "ringcentral/psr7",
@@ -2508,21 +2508,24 @@
         },
         {
             "name": "rx/operator-extras",
-            "version": "2.0.1",
+            "version": "2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RxPHP/RxOperatorExtras.git",
-                "reference": "3ccbd8dfb414ffe2c86199a98361903d383b9072"
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RxPHP/RxOperatorExtras/zipball/3ccbd8dfb414ffe2c86199a98361903d383b9072",
-                "reference": "3ccbd8dfb414ffe2c86199a98361903d383b9072",
+                "url": "https://api.github.com/repos/RxPHP/RxOperatorExtras/zipball/b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
                 "reactivex/rxphp": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5"
             },
             "type": "library",
             "autoload": {
@@ -2552,7 +2555,7 @@
                 "rx.php",
                 "rxphp"
             ],
-            "time": "2017-03-21T17:25:58+00:00"
+            "time": "2017-03-23T12:29:46+00:00"
         },
         {
             "name": "rx/websocket",
