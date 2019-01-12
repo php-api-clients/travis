@@ -611,16 +611,16 @@
         },
         {
             "name": "api-clients/transport",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/transport.git",
-                "reference": "bdc854f195c41041b8be75b62634b4e21613c9b5"
+                "reference": "50a78302cde17130d566f336b403a4ef87331f3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/bdc854f195c41041b8be75b62634b4e21613c9b5",
-                "reference": "bdc854f195c41041b8be75b62634b4e21613c9b5",
+                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/50a78302cde17130d566f336b403a4ef87331f3f",
+                "reference": "50a78302cde17130d566f336b403a4ef87331f3f",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
                 "api-clients/rx": "^2.0",
                 "clue/buzz-react": "^1.1",
                 "php": "^7.0",
-                "react/http-client": "^0.4.17",
+                "react/http-client": "^0.4.17 || ^0.5",
                 "react/promise-stream": "^0.1.0"
             },
             "require-dev": {
@@ -664,7 +664,7 @@
                 }
             ],
             "description": "Middleware infused clue/buzz-react",
-            "time": "2017-07-22T20:55:25+00:00"
+            "time": "2017-09-08T18:05:10+00:00"
         },
         {
             "name": "clue/block-react",
@@ -2149,16 +2149,16 @@
         },
         {
             "name": "react/promise-stream",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60"
+                "reference": "f4123898734cfa532099efceaf91d5592e5afe74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/45eaf9f20247fb1113b714b39d7b9e4bde733b60",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60",
+                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/f4123898734cfa532099efceaf91d5592e5afe74",
+                "reference": "f4123898734cfa532099efceaf91d5592e5afe74",
                 "shasum": ""
             },
             "require": {
@@ -2201,7 +2201,7 @@
                 "stream",
                 "unwrap"
             ],
-            "time": "2017-05-15T19:37:05+00:00"
+            "time": "2017-10-18T15:23:47+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -2669,16 +2669,16 @@
         },
         {
             "name": "wyrihaximus/doctrine-annotation-autoloader",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-doctrine-annotation-autoloader.git",
-                "reference": "9670f84b7d3ca53723556988080ebc939da345af"
+                "reference": "e78712e878561e29162908f7067a76c9fd084455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-doctrine-annotation-autoloader/zipball/9670f84b7d3ca53723556988080ebc939da345af",
-                "reference": "9670f84b7d3ca53723556988080ebc939da345af",
+                "url": "https://api.github.com/repos/WyriHaximus/php-doctrine-annotation-autoloader/zipball/e78712e878561e29162908f7067a76c9fd084455",
+                "reference": "e78712e878561e29162908f7067a76c9fd084455",
                 "shasum": ""
             },
             "require": {
@@ -2701,7 +2701,7 @@
                 }
             ],
             "description": "Request middleware",
-            "time": "2017-06-19T15:02:15+00:00"
+            "time": "2018-12-24T00:51:41+00:00"
         },
         {
             "name": "wyrihaximus/tactician-command-handler-mapper",
