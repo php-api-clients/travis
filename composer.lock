@@ -2509,21 +2509,24 @@
         },
         {
             "name": "rx/operator-extras",
-            "version": "2.0.1",
+            "version": "2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RxPHP/RxOperatorExtras.git",
-                "reference": "3ccbd8dfb414ffe2c86199a98361903d383b9072"
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RxPHP/RxOperatorExtras/zipball/3ccbd8dfb414ffe2c86199a98361903d383b9072",
-                "reference": "3ccbd8dfb414ffe2c86199a98361903d383b9072",
+                "url": "https://api.github.com/repos/RxPHP/RxOperatorExtras/zipball/b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
                 "reactivex/rxphp": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5"
             },
             "type": "library",
             "autoload": {
@@ -2553,7 +2556,7 @@
                 "rx.php",
                 "rxphp"
             ],
-            "time": "2017-03-21T17:25:58+00:00"
+            "time": "2017-03-23T12:29:46+00:00"
         },
         {
             "name": "rx/websocket",
