@@ -527,16 +527,16 @@
         },
         {
             "name": "api-clients/rx",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/rx.git",
-                "reference": "29a412eb5f13c8b28a0eab10f83c9b05c3804214"
+                "reference": "c38d42768ebdb6e396066bc03055c3c9117bc6e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/rx/zipball/29a412eb5f13c8b28a0eab10f83c9b05c3804214",
-                "reference": "29a412eb5f13c8b28a0eab10f83c9b05c3804214",
+                "url": "https://api.github.com/repos/php-api-clients/rx/zipball/c38d42768ebdb6e396066bc03055c3c9117bc6e9",
+                "reference": "c38d42768ebdb6e396066bc03055c3c9117bc6e9",
                 "shasum": ""
             },
             "require": {
@@ -567,7 +567,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2017-08-26T14:51:04+00:00"
+            "time": "2017-10-04T20:00:12+00:00"
         },
         {
             "name": "api-clients/rx-operators",
