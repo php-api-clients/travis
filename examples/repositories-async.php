@@ -8,7 +8,6 @@ use ApiClients\Middleware\Delay\DelayMiddleware;
 use ApiClients\Middleware\Pool\PoolMiddleware;
 use React\EventLoop\Factory;
 use ResourcePool\Pool;
-use Rx\Observer\CallbackObserver;
 use function ApiClients\Foundation\resource_pretty_print;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
@@ -35,18 +34,18 @@ $client = AsyncClient::create(
     ]
 );
 
-$client->repositories()->subscribe(new CallbackObserver(
+$client->repositories()->subscribe(
     function (RepositoryInterface $repository) {
         resource_pretty_print($repository);
     },
     function ($e) {
         echo (string)$e,
-    PHP_EOL;
+        PHP_EOL;
     },
     function () {
         echo 'Done!',
-    PHP_EOL;
+        PHP_EOL;
     }
-));
+);
 
 $loop->run();

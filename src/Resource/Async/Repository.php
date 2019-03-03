@@ -11,7 +11,6 @@ use GuzzleHttp\Psr7\Request;
 use React\Promise\CancellablePromiseInterface;
 use React\Promise\PromiseInterface;
 use Rx\Observable;
-use Rx\ObservableInterface;
 use Rx\React\Promise;
 use function ApiClients\Tools\Rx\unwrapObservableFromPromise;
 use function React\Promise\resolve;
@@ -42,9 +41,9 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function commits(): ObservableInterface
+    public function commits(): Observable
     {
         return unwrapObservableFromPromise($this->handleCommand(
             new Command\CommitsCommand($this->slug())
@@ -102,9 +101,9 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function branches(): ObservableInterface
+    public function branches(): Observable
     {
         return unwrapObservableFromPromise($this->handleCommand(
             new Command\BranchesCommand($this->id())
@@ -112,9 +111,9 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function vars(): ObservableInterface
+    public function vars(): Observable
     {
         return unwrapObservableFromPromise($this->handleCommand(
             new Command\VarsCommand($this->id())
@@ -122,9 +121,9 @@ class Repository extends BaseRepository
     }
 
     /**
-     * @return ObservableInterface
+     * @return Observable
      */
-    public function caches(): ObservableInterface
+    public function caches(): Observable
     {
         return unwrapObservableFromPromise($this->handleCommand(
             new Command\CachesCommand($this->id())
